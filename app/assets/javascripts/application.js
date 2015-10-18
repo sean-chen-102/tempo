@@ -13,4 +13,27 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require underscore
+//= require backbone
+//= require tempo
+//= require_tree ../templates
+//= require_tree ./models
+//= require_tree ./collections
+//= require_tree ./views
+//= require_tree ./routers
 //= require_tree .
+
+alert("application js !");
+
+window.App = {
+  Models: {},
+  Collections: {},
+  Views: {}
+}
+
+var init = function(){
+  console.log("init called");     
+  var router = new Router();
+  console.log(router);
+  Backbone.history.start();
+};

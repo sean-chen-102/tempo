@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   has_many :custom_activities
 
   # Validations
-  #validates :name, :username, :email, :encrypted_password, presence: true
+  validates :name, :username, :email, :encrypted_password, presence: true
   #validates :name, :username, length: { maximum: 20 }
   #validates :username, :email, uniqueness: true
   #validates :password, length: { minimum: 8 }, unless: "password.nil?"

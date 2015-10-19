@@ -22,34 +22,63 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
 
   def setup
     @user = User.new(name: "Example User", username: "example_user",
                      email: "user@example.com", password: "password")
   end
 
-  test "should be valid" do
+  test "user should be valid" do
     assert @user.valid?
   end
 
-  test "name should be present" do
+  test "user name should be present" do
   	@user.name = ""
     assert @user.invalid?
   end
 
-  test "username should be present" do
+  test "user username should be present" do
     @user.username = ""
     assert @user.invalid?
   end
 
-  test "email should be present" do
+  test "user email should be present" do
     @user.email = ""
     assert @user.invalid?
   end
 
+  test "user encrypted_password should be present" do
+    @user.encrypted_password = ""
+    assert @user.invalid?
+  end
 
+  test "user name can't be too long" do
+    @user.name = "a"*21
+    assert @user.invalid?
+  end
 
-end
+  test "user username can't be too long" do
+    @user.username = "a"*21
+    assert @user.invalid?
+  end
+
+  test "user username must be unique" do
+    duplicate_user = @user.dup
+    duplicate_user.email = "user1@example.com"
+    @user.save!
+    assert_not duplicate_user.valid?
+  end
+
+  test "user email must be unique" do
+    duplicate_user = @user.dup
+    duplicate_user.username = "example_user1"
+    @user.save!
+    assert_not duplicate_user.valid?
+  end
+
+  test "user email must follow correct format" do
+    @user.email = "dajsfkla;jkf;asdf"
+    assert @user.invalid?
+  end
+
+end  

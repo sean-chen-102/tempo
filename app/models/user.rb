@@ -31,10 +31,9 @@ class User < ActiveRecord::Base
 
   # Validations
   validates :name, :username, :email, :encrypted_password, presence: true
-  #validates :name, :username, length: { maximum: 20 }
-  #validates :username, :email, uniqueness: true
-  #validates :password, length: { minimum: 8 }, unless: "password.nil?"
+  validates :name, :username, length: { maximum: 20 }
+  validates :username, :email, uniqueness: true
   
-  # validates :email, format: { with: ^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$, message: "only allows letters" }
+  validates_format_of :email,:with => Devise::email_regexp
 
 end

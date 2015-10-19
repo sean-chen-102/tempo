@@ -8,6 +8,7 @@
 #  completion_time :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  user_id         :integer
 #
 
 class CustomActivity < ActiveRecord::Base
@@ -15,7 +16,7 @@ class CustomActivity < ActiveRecord::Base
 	belongs_to :user
 
 	# Validations
-	validates :title, presence: true
+	validates :title, :user_id, presence: true
 	validates :title, length: { maximum: 128 }
 
 	validates :completion_time, numericality: { greater_than: 0,

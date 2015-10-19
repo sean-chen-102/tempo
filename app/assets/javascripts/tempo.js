@@ -10,5 +10,4 @@ window.Tempo = {
 
 $(document).ready(function(){
   Tempo.initialize();
-  alert("TEST TEST TEST");
 });

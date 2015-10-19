@@ -17,10 +17,9 @@
   <tbody>
     <% @activities.each do |activity| %>
       <tr>
-        <td><%= activity.name %></td>
+        <td><%= activity.title %></td>
         <td><%= activity.completion_time %></td>
         <td><%= activity.link %></td>
-        <td><%= activity.snippet %></td>
         <td><%= activity.content %></td>
         <td><%= link_to 'Show', activity %></td>
         <td><%= link_to 'Edit', edit_activity_path(activity) %></td>

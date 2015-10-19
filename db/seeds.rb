@@ -281,6 +281,8 @@ end
 
 # Give fitness Interests to fitness Activities
 activity_list_fitness.each do |fitness_activity|
+  puts "HERE: #{fitness_activity}"
+  puts "#{fitness_activity.inspect}"
   fitness_activity.interests << fitness_interest
 end
 

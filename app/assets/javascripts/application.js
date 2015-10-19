@@ -23,7 +23,6 @@
 //= require_tree ./routers
 //= require_tree .
 
-alert("application js !");
 
 window.App = {
   Models: {},

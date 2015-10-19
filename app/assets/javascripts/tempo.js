@@ -4,7 +4,7 @@ window.Tempo = {
   Views: {},
   Routers: {},
   initialize: function() {
-    alert('Hello from Backbone!');
+  	console.log("Initial");
   }
 };
 

@@ -33,6 +33,8 @@ class User < ActiveRecord::Base
   validates :name, :username, :email, :encrypted_password, presence: true
   validates :name, :username, length: { maximum: 20 }
   validates :username, :email, uniqueness: true
+  # TODO: Need to check this validation
+  validates :password, length: { minimum: 8 }, unless: "password.nil?"
   
   validates_format_of :email,:with => Devise::email_regexp
 

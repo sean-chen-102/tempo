@@ -47,3 +47,6 @@ group :development, :test do
   gem 'spring'
 end
 
+gem 'backbone-on-rails'
+gem 'ruby-haml-js'
+

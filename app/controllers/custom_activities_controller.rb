@@ -69,6 +69,6 @@ class CustomActivitiesController < ApplicationController
 	
 	  # Never trust parameters from the scary internet, only allow the white list through.
 	  def custom_activity_params
-	    params.require(:custom_activity).permit(:name, :completion_time, :link, :snippet, :content)
+	    params.require(:custom_activity).permit(:title, :completion_time, :content)
 	  end
 end

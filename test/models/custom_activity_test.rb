@@ -3,11 +3,9 @@
 # Table name: custom_activities
 #
 #  id              :integer          not null, primary key
-#  name            :string
-#  completion_time :integer
-#  link            :string
-#  snippet         :string
+#  title           :string
 #  content         :string
+#  completion_time :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #

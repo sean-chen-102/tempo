@@ -3,11 +3,9 @@
 # Table name: custom_activities
 #
 #  id              :integer          not null, primary key
-#  name            :string
-#  completion_time :integer
-#  link            :string
-#  snippet         :string
+#  title           :string
 #  content         :string
+#  completion_time :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
@@ -15,15 +13,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  completion_time: 1
-  link: MyString
-  snippet: MyString
+  title: MyString
   content: MyString
+  completion_time: 1
 
 two:
-  name: MyString
-  completion_time: 1
-  link: MyString
-  snippet: MyString
+  title: MyString
   content: MyString
+  completion_time: 1

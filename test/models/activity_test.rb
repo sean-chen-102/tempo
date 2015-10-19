@@ -3,11 +3,11 @@
 # Table name: activities
 #
 #  id              :integer          not null, primary key
-#  name            :string
-#  completion_time :integer
-#  link            :string
-#  snippet         :string
+#  title           :string
 #  content         :string
+#  completion_time :integer
+#  content_type    :string
+#  link            :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #

@@ -9,4 +9,10 @@
 #
 
 class Interest < ActiveRecord::Base
+	# Associations
+	has_and_belongs_to_many :activities
+
+	# Validations
+	validates :name, presence: true
+	validates :name, length: { maximum: 30 }
 end

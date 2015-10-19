@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151019044940) do
+ActiveRecord::Schema.define(version: 20151019065314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,22 +26,30 @@ ActiveRecord::Schema.define(version: 20151019044940) do
     t.datetime "updated_at",      null: false
   end
 
+  create_table "activities_interests", id: false, force: :cascade do |t|
+    t.integer "activity_id", null: false
+    t.integer "interest_id", null: false
+  end
+
   create_table "custom_activities", force: :cascade do |t|
     t.string   "title"
     t.string   "content"
     t.integer  "completion_time"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "user_id"
   end
+
+  add_index "custom_activities", ["user_id"], name: "index_custom_activities_on_user_id", using: :btree
 
   create_table "interests", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "activity_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
-  add_index "interests", ["activity_id"], name: "index_interests_on_activity_id", using: :btree
+  add_index "interests", ["user_id"], name: "index_interests_on_user_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
@@ -70,5 +78,6 @@ ActiveRecord::Schema.define(version: 20151019044940) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "interests", "activities"
+  add_foreign_key "custom_activities", "users"
+  add_foreign_key "interests", "users"
 end

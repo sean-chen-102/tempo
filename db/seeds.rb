@@ -7,8 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # SET UP USERS
-user_1 = User.create({ name: "Sally", email: "sally@mail.com", password: "password" })
-user_2 = User.create({ name: "Ben", email: "ben@mail.com", password: "password"})
+user_1 = User.create({ name: "Sally", username: "sillysally23", email: "sally@mail.com", password: "password" })
+user_2 = User.create({ name: "Ben", username: "trap_queen", email: "ben@mail.com", password: "password"})
 user_list = [user_1, user_2]
 
 
@@ -281,8 +281,6 @@ end
 
 # Give fitness Interests to fitness Activities
 activity_list_fitness.each do |fitness_activity|
-  puts "HERE: #{fitness_activity}"
-  puts "#{fitness_activity.inspect}"
   fitness_activity.interests << fitness_interest
 end
 
@@ -300,5 +298,9 @@ end
 activity_list_science.each do |science_activity|
   science_activity.interests << science_interest
 end
+
+# Give an Activity multiple interests
+activity_list_tech[0].interests << news_interest
+activity_list_tech[0].interests << science_interest
 
 # Test

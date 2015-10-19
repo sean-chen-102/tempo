@@ -7,11 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # SET UP USERS
-user_1 = { name: "Sally", email: "sally@mail.com", password: "password" }
-user_2 = { name: "Ben", email: "ben@mail.com", password: "password"}
-
+user_1 = User.create({ name: "Sally", email: "sally@mail.com", password: "password" })
+user_2 = User.create({ name: "Ben", email: "ben@mail.com", password: "password"})
 user_list = [user_1, user_2]
-users = User.create(user_list) # create the users
 
 
 # SET UP INTERESTS
@@ -262,23 +260,23 @@ custom_activities = user1_custom_activities + user2_custom_activities
 
 # SET UP ASSOCIATIONS
 # Give Interests to user_1
-user1_interests.each do |iterest|
-  user1.interests << interest
+user1_interests.each do |interest|
+  user_1.interests << interest
 end
 
 # Give Interests to user_2
-user2_interests.each do |iterest|
-  user2.interests << interest
+user2_interests.each do |interest|
+  user_2.interests << interest
 end
 
 # Give CustomActivities to user_1
 user1_custom_activities.each do |custom_activity|
-  user_1.custom_actvities << custom_activity
+  user_1.custom_activities << custom_activity
 end
 
 # Give CustomActivities to user_2
 user2_custom_activities.each do |custom_activity|
-  user_2.custom_actvities << custom_activity
+  user_2.custom_activities << custom_activity
 end
 
 # Give fitness Interests to fitness Activities
@@ -301,4 +299,4 @@ activity_list_science.each do |science_activity|
   science_activity.interests << science_interest
 end
 
-# /FIN
+# Test

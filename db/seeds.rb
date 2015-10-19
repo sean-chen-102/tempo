@@ -7,8 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # SET UP USERS
-user_1 = User.create({ name: "Sally", email: "sally@mail.com", password: "password" })
-user_2 = User.create({ name: "Ben", email: "ben@mail.com", password: "password"})
+user_1 = User.create({ name: "Sally", username: "sillysally23", email: "sally@mail.com", password: "password" })
+user_2 = User.create({ name: "Ben", username: "trap_queen", email: "ben@mail.com", password: "password"})
 user_list = [user_1, user_2]
 
 

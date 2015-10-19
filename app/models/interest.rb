@@ -10,7 +10,7 @@
 
 class Interest < ActiveRecord::Base
 	# Associations
-	belongs_to :activity
+	has_and_belongs_to_many :activities
 
 	# Validations
 	validates :name, presence: true

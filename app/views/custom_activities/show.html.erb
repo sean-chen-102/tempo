@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @custom_activity.name %>
+</p>
+
+<p>
+  <strong>Completion time:</strong>
+  <%= @custom_activity.completion_time %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @custom_activity.link %>
+</p>
+
+<p>
+  <strong>Snippet:</strong>
+  <%= @custom_activity.snippet %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @custom_activity.content %>
+</p>
+
+<%= link_to 'Edit', edit_custom_activity_path(@custom_activity) %> |
+<%= link_to 'Back', custom_activities_path %>

@@ -6,11 +6,14 @@ Rails.application.routes.draw do
   resources :custom_activities
   resources :activities
 
+  resources :pages
+  get 'pages/index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'pages#home'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

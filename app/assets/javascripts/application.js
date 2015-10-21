@@ -23,76 +23,131 @@
 //= require_tree ./backbone/routers
 //= require_tree .
 
+//Test template
+
 $(document).ready(function(){
-	// To fetch one model
-	var Activity = Backbone.Model.extend({});
-	var activity = new Activity();
-	//Temporary Api
-	activity.url = "/pages";
-	activity.fetch({
-		success : function(){
-			view = new ActivityView({model : activity });
-			$('.testTable').append(view.render());
+
+	//-----------------Temporary Api data
+	var dummyActivities = [
+		{
+			"id": 1,
+			"title": "Reading Wikipedia",
+			"content": "he Treaties of the European Union are a set of international treaties between the European Union (EU) member states which sets out the EU's constitutional basis. They establish the various EU institutions together with their remit, procedures and objectives. The EU can only act within the competences granted to it through thes",
+			"completion_time": 2,
+			"content_type": "article"
+		},
+		{
+			"id": 2,
+			"title": "Fact of The Day",
+			"content": "The Minnesota Vikings and the Buffalo Bills, who have both been to four Super Bowls, have come away with zero championships. And then there's four franchises -- the Cleveland Browns, Detroit Lions, Houston Texans, and Jacksonville Jaguars -- who have never been to the Super Bowl.",
+			"completion_time": 1,
+			"content_type": "article"
 		}
-	});
-	//------------------
-	//To fetch multiple models
-	var Activities = Backbone.Collection.extend({
-		model: Activity
+	] 
+	//-----------------Temporary Api data
+
+	window.App = {
+	  Models: {},
+	  Collections: {},
+	  Views: {},
+	  Routers: {},
+	  initialize: function(data){
+		console.log('Initilizing the app');
+		
+		//Constructing View 
+		var activityView = new ActivityView();
+
+		//Start app router and history
+		new App.Router;
+		Backbone.history.start();	
+	  }
+	};
+
+	//App router  =================================
+	App.Router = Backbone.Router.extend({
+		routes: {
+			'': 'index',
+			"show/:id": "show"
+		},
+		index: function(){
+			console.log("Index router is called");
+		},
+		show: function(id){
+			console.log("The show router was called " + id);
+		}
 	});
 
-	var activities = new Activities();
-	activities.url = "/pages";
-	activities.fetch({
-		success : function() {
-			console.log("Success for collections");
-			_.each(activities.models, function(collection, model){
-				view = new ActivityView({model : model, myVar: "hello"});
-				$('.testTable').append(view.render());
-			})
+	//Models =================================
+	var Activity = Backbone.Model.extend({});
+	var Interest = Backbone.Model.extend({});
+
+	//Collections  =================================
+	var Activities = Backbone.Collection.extend({
+		model: Activity,
+		url: "/pages",
+		initialize: function(){
+			console.log("Created new collection");
 		}
-	})
-	
-	//------------------
+	});
+
+
+	//Views  =================================
 	var ActivityView = Backbone.View.extend({
+		el: ".testDiv",
 		tagName : 'li',
 		options: null,
 		initialize: function(options){
 			this.options = options;
+			this.render();
 		},
 		render : function (options){
-			return($(this.el).text(activity.attributes[this.options.model].title + activity.attributes[this.options.model].content));
+			var html = "<br> Activity List </br> <br>"
+						+ "<table> <thead> <tr> <th>Title</th> <th>Content</th> <th>Completion Time</th> <th>Content type</th> <th>Content</th> "
+						+ "<th colspan='3'></th> </tr> </thead>" 
+						+ " <tbody> ";
+
+			//TODO: Create and import EJS for templating
+			//Iterate throught he collections of Activities and create a template
+			activities.each(function(model){
+				console.log(model.get('content'));
+				html += "<tr>" 
+						+ "<td> " +  model.get('title') + " </td>"
+						+ "<td> " +  model.get('content') + " </td>"
+						+ "<td> " +  model.get('completion_time') + " </td>"
+						+ "<td> " +  model.get('content_type') + " </td>"
+					+ "</tr>";	
+			});
+
+			html += " </tbody> </table> </br> ";
+			this.$el.html(html);	
 		}
 	});
 
-});
-
-window.App = {
-  Models: {},
-  Collections: {},
-  Views: {},
-  Routers: {},
-  initialize: function(data){
-	console.log('Initilizing the app');
-	new App.Router;
-	Backbone.history.start();	
-  }
-};
-
-//Setting up app router
-App.Router = Backbone.Router.extend({
-	routes: {
-		'': 'index',
-		"show/:id": "show"
-	},
-	index: function(){
-		console.log("Index router is called");
-	},
-	show: function(id){
-		console.log("The show router was called " + id);
+	//Initialize ArtistsArray
+	var activityArray = []
+	for (var i in dummyActivities){
+		activityArray.push(new Activity(dummyActivities[i]));
 	}
+	
+	//Initialize Collection of Artst
+	var activities = new Activities(activityArray);
+
+	//TODO: Fetch JSON Data from backend
+	//Get request to JSON data from backend
+	//activities.fetch({
+	//	success : function(data) {
+	//		_.each(activities.models, function(collection, model){
+	//			view = new ActivityView({model : model, myVar: "hello"});
+	//			$('.testTable').append(view.render());
+	//		})
+	//	}
+	//})
+	//------------------
+
+	//Initialize Activity view
+	
+	App.initialize();
 });
 
-//Initialization of app
-App.initialize();
+
 

@@ -22,7 +22,10 @@ class Interest < ActiveRecord::Base
   def self.get_interests
     interests = Interest.all
 
-    interests = interests.to_json
+    interests.each do |interest|
+      interest = interest.to_json
+    end
+    
     return interests
   end
 

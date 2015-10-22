@@ -36,8 +36,20 @@ class InterestsController < ApplicationController
   # Return a JSON response with a list of all interests
   # GET /api/interests
   def get_interests
-    interests = Interest.all
-    json_response = { status: 1, data: interests }
+<<<<<<< HEAD
+    status = -1
+    interests = Interest.get_interests()
+    json_response = {}
+
+    if interests.length > 0
+      status = 1
+      json_response["interests"] = interests
+    else
+      json_response["errors"] = "Error: no interests found."
+    end
+
+    json_response["status"] = status
+    json_response = json_response.to_json
 
     respond_to do |format|
       # format.html # show.html.erb

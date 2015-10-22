@@ -76,11 +76,38 @@ class UsersController < ApplicationController
     end
   end
 
-  # Gets all Users from the database
+  # Returns a JSON response with all Users from the database
   # GET '/api/users'
   def get_users
-    json_response = User.all
+    status = -1
+    json_response = {}
+    error_list = []
+    user_id = params[:id]
+    @users = User.all
+    user_list = []
+
+    if not @users.empty? # if there are Users
+      status = 1
+      @users.each do |user|
+        user_data = { "id": user.id, "name": user.name, "username": user.username, "email": user.email }
+        user_data = user_data.as_json
+        user_list.append(user_data)
+      end
+
+      json_response["users"] = user_list
+    else
+      error_list.append("Error: there are no users.")
+    end
+
+    if status == -1
+      json_response["errors"] = error_list
+    end
+
+    json_response["status"] = status
+    json_response = json_response.to_json
+
     respond_to do |format|
+      # format.html # show.html.erb
       format.json { render json: json_response }
     end
   end

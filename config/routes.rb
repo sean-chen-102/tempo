@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :interests
   resources :custom_activities
   resources :activities
+  resources :pages
+
+  get 'pages/index'
 
   # API Routing
   get '/api/activities', to: 'api#get_activities', defaults: { format: 'json' }
@@ -13,7 +16,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'pages#home'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

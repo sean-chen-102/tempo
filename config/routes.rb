@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
   # resources :users
   resources :interests
   resources :custom_activities
@@ -8,7 +10,7 @@ Rails.application.routes.draw do
   get 'pages/index'
 
   ### Custom Routing ###
-  match '*path', to: 'application#catch', via: [:get, :post, :put, :patch, :delete]
+  # match '*path', to: 'application#catch', via: [:get, :post, :put, :patch, :delete]
 
   # Users routing
   get '/api/users/:id', to: 'users#get_user', defaults: { format: 'json' }
@@ -22,10 +24,14 @@ Rails.application.routes.draw do
   # Interests routing 
   get '/api/interests', to: 'interests#get_interests', defaults: { format: 'json' }
 
-  # Activities roouting
+  # Activities routing
   get '/api/activities', to: 'activities#get_activities', defaults: { format: 'json' }
 
   # Custom Activities routing
+
+  # User Sessions routing
+  post 'api/login', to: 'sessions#create', defaults: { format: 'json' }
+  delete 'api/logout', to: 'sessions#destroy', defaults: { format: 'json' }
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

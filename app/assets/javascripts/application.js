@@ -29,55 +29,6 @@
 
 // TODO: Move to tempo.js 
 $(document).ready(function(){
-	//-----------------Temporary Api dummy data
-	// var dummyActivities = [
-	// 	{
-	// 		"id": 1,
-	// 		"title": "Reading Wikipedia",
-	// 		"content": "he Treaties of the European Union are a set of international treaties between the European Union (EU) member states which sets out the EU's constitutional basis. They establish the various EU institutions together with their remit, procedures and objectives. The EU can only act within the competences granted to it through thes",
-	// 		"completion_time": 2,
-	// 		"content_type": "article"
-	// 	},
-	// 	{
-	// 		"id": 2,
-	// 		"title": "Fact of The Day",
-	// 		"content": "The Minnesota Vikings and the Buffalo Bills, who have both been to four Super Bowls, have come away with zero championships. And then there's four franchises -- the Cleveland Browns, Detroit Lions, Houston Texans, and Jacksonville Jaguars -- who have never been to the Super Bowl.",
-	// 		"completion_time": 1,
-	// 		"content_type": "article"
-	// 	},
-	// 	{
-	// 		"id": 3,
-	// 		"title": "What is Wedding Soup",
-	// 		"content": "The term 'wedding soup' is a mistranslation of the Italian language phrase 'minestra maritata' ('married soup','' which is a reference to the fact that green vegetables and meats go well together. The minestra maritata recipe is also prepared by the families of Lazio and Campania during the Christmas season (a tradition",
-	// 		"completion_time": 3,
-	// 		"content_type": "article"
-	// 	},
-	// 	{
-	// 		"id": 4,
-	// 		"title": "Another soup thing",
-	// 		"content": "guage phrase 'minestra maritata' ('married soup','' which is a reference to the fact that green vegetables and meats go well together. The minestra maritata recipe is also prepared by the families of Lazio and Campania during the Christmas season (a tradition",
-	// 		"completion_time": 3,
-	// 		"content_type": "article"
-	// 	}					
-	// ] 
-
-	var dummyInterests = [
-		{
-			"id": 1,
-			"title": "Reading Wikipedia",
-			"content": "he Treaties of the European Union are a set of international treaties between the European Union (EU) member states which sets out the EU's constitutional basis. They establish the various EU institutions together with their remit, procedures and objectives. The EU can only act within the competences granted to it through thes",
-			"completion_time": 2,
-			"content_type": "article"
-		},
-		{
-			"id": 2,
-			"title": "Fact of The Day",
-			"content": "The Minnesota Vikings and the Buffalo Bills, who have both been to four Super Bowls, have come away with zero championships. And then there's four franchises -- the Cleveland Browns, Detroit Lions, Houston Texans, and Jacksonville Jaguars -- who have never been to the Super Bowl.",
-			"completion_time": 1,
-			"content_type": "article"
-		}]
-	//-----------------Temporary Api data
-
 	window.App = {
 	  Models: {},
 	  Collections: {},
@@ -134,7 +85,11 @@ $(document).ready(function(){
 	//Activities Collection
 	var Activities = Backbone.Collection.extend({
 		model: Activity,
-		url: "/api/activities"
+		url: "/api/activities",
+		parse: function(data){
+			//TODO: change json key
+			return data.data
+		}		
 	});
 
 	//Interests Collection
@@ -142,7 +97,10 @@ $(document).ready(function(){
 		model: Interest,
 		jsonData: null,		
 		//TODO: Api endpoint to retrieve JSON data
-		url: "/api/interests"
+		url: "/api/interests",
+		parse: function(data){
+			return data.interests
+		}
 	});	
 
 	//Views  =================================
@@ -183,7 +141,6 @@ $(document).ready(function(){
 			var activities = new Activities();	
 			activities.fetch({
 				success: function(data){
-					// this.models = data['activities'];
 					renderData(data);
 				}
 			});

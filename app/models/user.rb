@@ -31,7 +31,11 @@ class User < ActiveRecord::Base
   # Returns a JSON list of all custom_activities of the User with id = user_id
   def self.get_custom_activities(user_id)
     custom_activities = User.find(user_id).custom_activities
-    custom_activities = custom_activities.to_json
+
+    custom_activities.each do |custom_activity|
+      custom_activity = custom_activity.to_json
+    end
+
     return custom_activities
   end
 
@@ -39,7 +43,10 @@ class User < ActiveRecord::Base
   def self.get_interests(user_id)
     interests = Interest.where(user_id: user_id)
 
-    interests = interests.to_json
+    interests.each do |interest|
+      interest = interest.to_json
+    end
+
     return interests
   end
 

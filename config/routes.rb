@@ -4,9 +4,8 @@ Rails.application.routes.draw do
   # resources :interests
   #resources :custom_activities
   #resources :activities
-  resources :pages
+  #resources :pages
 
-  get 'pages/index'
 
   ### Custom Routing ###
 

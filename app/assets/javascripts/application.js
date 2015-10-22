@@ -128,7 +128,7 @@ $(document).ready(function(){
 		model: Activity,
 		jsonData: null,		
 		//TODO: Api endpoint to retrieve JSON data
-		url: "/pages",
+		url: "/api/activites",
 		setData: function(){
 			this.fetch({
 				success: function(data){
@@ -169,6 +169,7 @@ $(document).ready(function(){
 		initialize: function(options){
 			this.options = options;
 			this.render();
+
 		},
 		render : function (options){
 

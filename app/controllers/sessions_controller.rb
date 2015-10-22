@@ -39,11 +39,11 @@ class SessionsController < ApplicationController
     if not email.nil?
       # using email to login
       puts "WE HAVE AN EMAIL"
-      user = User.find_by(email: email)
+      @user = User.find_by(email: email)
     elsif not username.nil?
       # using username to login
       puts "WE HAVE A USERNAME"
-      user = User.find_by(username: username)
+      @user = User.find_by(username: username)
     else
       # append missing username or email error
       error_list.append(@session_errors[:missing_username_or_email])
@@ -51,7 +51,7 @@ class SessionsController < ApplicationController
 
     if error_list.length == 0
       # we have no errors, proceed with authentication
-      if user && user.authenticate(password) # if the user exists and the password is correct
+      if @user && @user.authenticate(password) # if the user exists and the password is correct
         # send successful authentication message
         authentication_successful = true
         status = 1
@@ -65,7 +65,7 @@ class SessionsController < ApplicationController
 
     if authentication_successful
       # no errors produced, login successful
-      user_data = { "id": user.id, "name": user.name, "username": user.username, "email": user.email }
+      user_data = { "id": @user.id, "name": @user.name, "username": @user.username, "email": @user.email }
       json_response["user"] = user_data
     else
       # send error messages
@@ -76,9 +76,8 @@ class SessionsController < ApplicationController
     respond_to do |format|
       format.json { render json: json_response }
     end
-
-
   end
+
 
   # DELETE 'api/logout'
   # Delete the User Session (aka logout)

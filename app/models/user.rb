@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   has_many :custom_activities
 
   # Validations
-  validates :name, :username, :email, :password_digest, presence: true
+  validates :name, :username, :email, presence: true
   validates :name, :username, length: { maximum: 20 }
   validates :username, :email, uniqueness: true
   # TODO: Need to check this validation

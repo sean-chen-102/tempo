@@ -23,4 +23,17 @@ class Activity < ActiveRecord::Base
 	validates :completion_time, numericality: { greater_than: 0,
 											    less_than_or_equal_to: 60 }
 
+  # Returns a JSON list of all activities that have interest_name as their Interest.name.
+  # If interest_name is nil, it returns a JSON list of all Activities in the database.
+  def self.get_activities(interest_name)
+    if interest_name.nil?
+      activities = Activity.all
+    else
+      activities = Activity.joins(:interests).where(interests: {name: interest_name})
+    end
+
+    activities = activities.to_json
+    return activities
+  end
+
 end

@@ -24,9 +24,9 @@ class Interest < ActiveRecord::Base
     if user_id.nil?
       interests = Interest.all
     else
-      interests = Interest.joins(:users).where(users: {id: user_id})
+      interests = Interest.where(user_id: user_id)
     end
-    
+
     interests = interests.to_json
     return interests
   end

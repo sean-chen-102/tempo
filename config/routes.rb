@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :users
   resources :users
   resources :interests
   resources :custom_activities
@@ -7,6 +6,9 @@ Rails.application.routes.draw do
   resources :pages
 
   get 'pages/index'
+
+  # Devise routing
+
 
   # API Routing
   get '/api/activities', to: 'activities#get_activities', defaults: { format: 'json' }

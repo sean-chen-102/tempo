@@ -20,23 +20,21 @@
 #
 
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  attr_accessor :login
 
   # Associations
   has_many :interests
   has_many :custom_activities
 
   # Validations
-  validates :name, :username, :email, :encrypted_password, presence: true
+  validates :name, :username, :email, :password_digest, presence: true
   validates :name, :username, length: { maximum: 20 }
   validates :username, :email, uniqueness: true
   # TODO: Need to check this validation
-  validates :password, length: { minimum: 8 }, unless: "password.nil?"
+  # validates :password, length: { minimum: 8 }, unless: "password.nil?"
   
-  validates_format_of :email,:with => Devise::email_regexp
+  validates_format_of :username, with: /\A[a-zA-Z0-9_\.]*\z/
+  #validates_format_of :email,:with => Devise::email_regexp
 
   # Returns a JSON list of all custom_activities of the User with id = user_id
   def self.get_custom_activities(user_id)

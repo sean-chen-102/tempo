@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   get 'pages/index'
 
   ### Custom Routing ###
+
+  # Routes for the frontend
+  get 'activities', to: 'activities#index'
+
   # match '*path', to: 'application#catch', via: [:get, :post, :put, :patch, :delete]
 
   # Users routing

@@ -3,6 +3,10 @@ class ActivitiesController < ApplicationController
 
 	# CUSTOM CODE
 
+	# for backbone routing
+	def index
+	end
+
 	# Create an Activity in the database for the given params
 	# POST /api/activities
 	def create_activity

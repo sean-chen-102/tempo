@@ -1,5 +1,7 @@
 class PagesController < ActionController::Base
+
 	respond_to :json
+
 	def index 
 		@data = [
 				{:title => "Title One ", :content => "Content One "},
@@ -8,12 +10,11 @@ class PagesController < ActionController::Base
 			];
 		render :json => @data 
 	end
+
+  # for home page routing - test
+  def home
+  end
 	
 end
 
-# for home page routing - test
 
-
-def home
-end
-# for testing views before pushing them to Backbone.js

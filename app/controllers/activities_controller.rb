@@ -33,10 +33,10 @@ class ActivitiesController < ApplicationController
 
 	  respond_to do |format|
 	    if @activity.save
-	      format.html { redirect_to @activity, notice: 'Activity was successfully created.' }
+	      #format.html { redirect_to @activity, notice: 'Activity was successfully created.' }
 	      format.json { render :show, status: :created, location: @activity }
 	    else
-	      format.html { render :new }
+	      #format.html { render :new }
 	      format.json { render json: @activity.errors, status: :unprocessable_entity }
 	    end
 	  end
@@ -47,10 +47,10 @@ class ActivitiesController < ApplicationController
 	def update
 	  respond_to do |format|
 	    if @activity.update(activity_params)
-	      format.html { redirect_to @activity, notice: 'Activity was successfully updated.' }
+	      #format.html { redirect_to @activity, notice: 'Activity was successfully updated.' }
 	      format.json { render :show, status: :ok, location: @activity }
 	    else
-	      format.html { render :edit }
+	      #format.html { render :edit }
 	      format.json { render json: @activity.errors, status: :unprocessable_entity }
 	    end
 	  end
@@ -61,8 +61,25 @@ class ActivitiesController < ApplicationController
 	def destroy
 	  @activity.destroy
 	  respond_to do |format|
-	    format.html { redirect_to activities_url, notice: 'Activity was successfully destroyed.' }
+	    #format.html { redirect_to activities_url, notice: 'Activity was successfully destroyed.' }
 	    format.json { head :no_content }
+	  end
+	end
+
+	# CUSTOM CODE
+	
+	# Return a JSON response with a list of given activities based on the param: interest
+	# GET /api/activities
+	# URL format: '/api/activities?interest:<interest_name>'
+	def get_activities
+	  interest_key = "interest"
+	  interest = params[interest_key]
+	  activities = Activity.get_activities(interest)
+	  json_response = activities
+
+	  respond_to do |format|
+	    # format.html # show.html.erb
+	    format.json { render json: json_response }
 	  end
 	end
 

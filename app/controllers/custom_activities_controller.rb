@@ -28,10 +28,10 @@ class CustomActivitiesController < ApplicationController
 	
 	  respond_to do |format|
 	    if @custom_activity.save
-	      format.html { redirect_to @custom_activity, notice: 'Custom activity was successfully created.' }
+	      # format.html { redirect_to @custom_activity, notice: 'Custom activity was successfully created.' }
 	      format.json { render :show, status: :created, location: @custom_activity }
 	    else
-	      format.html { render :new }
+	      # format.html { render :new }
 	      format.json { render json: @custom_activity.errors, status: :unprocessable_entity }
 	    end
 	  end
@@ -42,10 +42,10 @@ class CustomActivitiesController < ApplicationController
 	def update
 	  respond_to do |format|
 	    if @custom_activity.update(custom_activity_params)
-	      format.html { redirect_to @custom_activity, notice: 'Custom activity was successfully updated.' }
+	      # format.html { redirect_to @custom_activity, notice: 'Custom activity was successfully updated.' }
 	      format.json { render :show, status: :ok, location: @custom_activity }
 	    else
-	      format.html { render :edit }
+	      # format.html { render :edit }
 	      format.json { render json: @custom_activity.errors, status: :unprocessable_entity }
 	    end
 	  end
@@ -56,7 +56,7 @@ class CustomActivitiesController < ApplicationController
 	def destroy
 	  @custom_activity.destroy
 	  respond_to do |format|
-	    format.html { redirect_to custom_activities_url, notice: 'Custom activity was successfully destroyed.' }
+	    # format.html { redirect_to custom_activities_url, notice: 'Custom activity was successfully destroyed.' }
 	    format.json { head :no_content }
 	  end
 	end

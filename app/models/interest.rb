@@ -12,8 +12,18 @@
 class Interest < ActiveRecord::Base
 	# Associations
 	has_and_belongs_to_many :activities
+  belongs_to :users
 
 	# Validations
 	validates :name, presence: true
 	validates :name, length: { maximum: 30 }
+
+  # Returns a JSON list of all Interests in the database.
+  def self.get_interests
+    interests = Interest.all
+
+    interests = interests.to_json
+    return interests
+  end
+
 end

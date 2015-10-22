@@ -20,13 +20,6 @@
 #
 
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
-         :authentication_keys => [:login]
-
-
   attr_accessor :login
 
   # Associations
@@ -34,14 +27,14 @@ class User < ActiveRecord::Base
   has_many :custom_activities
 
   # Validations
-  validates :name, :username, :email, :encrypted_password, presence: true
+  validates :name, :username, :email, :password_digest, presence: true
   validates :name, :username, length: { maximum: 20 }
   validates :username, :email, uniqueness: true
   # TODO: Need to check this validation
-  validates :password, length: { minimum: 8 }, unless: "password.nil?"
+  # validates :password, length: { minimum: 8 }, unless: "password.nil?"
   
   validates_format_of :username, with: /\A[a-zA-Z0-9_\.]*\z/
-  validates_format_of :email,:with => Devise::email_regexp
+  #validates_format_of :email,:with => Devise::email_regexp
 
   # Returns a JSON list of all custom_activities of the User with id = user_id
   def self.get_custom_activities(user_id)
@@ -57,14 +50,5 @@ class User < ActiveRecord::Base
     interests = interests.to_json
     return interests
   end
-
-  def self.find_for_database_authentication(warden_conditions)
-      conditions = warden_conditions.dup
-      if login = conditions.delete(:login)
-        where(conditions.to_hash).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
-      else
-        where(conditions.to_hash).first
-      end
-    end
 
 end

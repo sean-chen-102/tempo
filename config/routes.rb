@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
   # resources :users
-  resources :interests
-  resources :custom_activities
-  resources :activities
+  # resources :interests
+  #resources :custom_activities
+  #resources :activities
   resources :pages
 
   get 'pages/index'
@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   # match '*path', to: 'application#catch', via: [:get, :post, :put, :patch, :delete]
 
   # Users routing
-  get '/api/users/:id', to: 'users#get_user', defaults: { format: 'json' }
   get '/api/users', to: 'users#get_users', defaults: { format: 'json' }
+  get '/api/users/:id', to: 'users#get_user', defaults: { format: 'json' }
   get '/api/users/:id/interests', to: 'users#get_user_interests', defaults: { format: 'json' }
   get '/api/users/:id/custom_activities', to: 'users#get_user_custom_activities', defaults: { format: 'json' }
   post '/api/users/', to: 'users#create_user', defaults: { format: 'json' }
@@ -22,11 +22,23 @@ Rails.application.routes.draw do
 
   # Interests routing 
   get '/api/interests', to: 'interests#get_interests', defaults: { format: 'json' }
+  post '/api/interests', to: 'interests#create_interest', defaults: { format: 'json' }
+  post '/api/interests/:id', to: 'interests#edit_interest', defaults: { format: 'json' }
+  delete '/api/interests/:id', to: 'interests#destroy_interest', defaults: { format: 'json' }
 
   # Activities routing
   get '/api/activities', to: 'activities#get_activities', defaults: { format: 'json' }
+  get '/api/activities', to: 'activities#get_activities_for_interest', defaults: { format: 'json' }
+  post '/api/activities', to: 'activities#create_activity', defaults: { format: 'json' }
+  post '/api/activities/:id', to: 'activities#edit_activity', defaults: { format: 'json ' }
+  delete '/api/activities/:id', to: 'activities#destroy_activity', defaults: { format: 'json' }
 
   # Custom Activities routing
+  get '/api/custom_activities', to: 'custom_activities#get_custom_activities', defaults: { format: 'json' }
+  post '/api/custom_activities', to: 'custom_activities#create_custom_activity', defaults: { format: 'json' }
+  post '/api/custom_activities/:id', to: 'custom_activities#edit_custom_activity', defaults: { format: 'json ' }
+  delete '/api/custom_activities/:id', to: 'custom_activities#destroy_custom_activity', defaults: { format: 'json' }
+
 
   # User Sessions routing
   post 'api/login', to: 'sessions#create', defaults: { format: 'json' }

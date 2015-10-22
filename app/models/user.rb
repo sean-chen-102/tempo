@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   # TODO: Need to check this validation
   # validates :password, length: { minimum: 8 }, unless: "password.nil?"
   validates_format_of :username, with: /\A[a-zA-Z0-9_\.]*\z/
-  #validates_format_of :email,:with => Devise::email_regexp
+  validates_format_of :email, with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
   # Authentication
   has_secure_password

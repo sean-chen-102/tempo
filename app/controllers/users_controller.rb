@@ -15,18 +15,20 @@ class UsersController < ApplicationController
     name_key = "name"
     password_key = "password"
     password_confirmation_key = "password_confirmation"
+
     username = params[user_key][username_key]
     email = params[user_key][email_key]
     name = params[user_key][name_key]
     password = params[user_key][password]
     password_confirmation = params[user_key][password_confirmation_key]
+
     json_response = {}
     status = -1
 
     @user = User.new(user_params)
-    puts "Tried to create user: #{@user}"
+    # puts "Tried to create user: #{@user}"
     if @user.save 
-      puts "in @user.save"
+      # puts "in @user.save"
       status = 1
       user_data = { "id": @user.id, "name": @user.name, "username": @user.username, "email": @user.email }
       json_response["user"] = user_data
@@ -46,7 +48,11 @@ class UsersController < ApplicationController
   # Returns a JSON response with a specified User's information
   # GET '/api/users/:id'
   def get_user
-    json_response = @user
+    if @user.nil? 
+      json_response = { status: -1, errors: "User does not exist!"}.to_json
+    else
+      json_response = @user
+    end
 
     respond_to do |format|
       format.json { render json: json_response }
@@ -62,7 +68,7 @@ class UsersController < ApplicationController
     end
   end
 
-  # Edit the fields of a specified user
+  # Edit the fields of a specified User
   # PUT /api/users/:id
   def edit_user
     respond_to do |format|
@@ -76,13 +82,18 @@ class UsersController < ApplicationController
     end
   end
 
-  # Deletes User from database 
+  # Deletes specified User from database 
   # DELETE /api/users/:id
   def destroy_user
-    @user.destroy
+    if @user.nil?
+      json_response = { status: -1, errors: "User does not exist!"}.to_json
+    else
+      @user.destroy
+      json_response = { status: 1 }.to_json
+    end
     respond_to do |format|
       # format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
+      format.json { render json: json_response }
     end
   end
 
@@ -131,7 +142,6 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      puts "TESTING CALLING"
       if not params[:id].nil?
         @user = User.find(params[:id])
       end

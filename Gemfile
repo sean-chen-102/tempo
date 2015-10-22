@@ -13,8 +13,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-# devise for Users
-gem 'devise'
 # For annotating models
 gem 'annotate'
 
@@ -52,5 +50,6 @@ group :development, :test do
   gem 'rails-backbone'
   gem 'ruby-haml-js'
   gem 'rails_12factor'
+  gem 'responders', '~> 2.0'
 
 end

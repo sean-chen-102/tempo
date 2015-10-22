@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
-  resources :users
+  # resources :users
   resources :interests
   resources :custom_activities
   resources :activities
@@ -8,11 +7,26 @@ Rails.application.routes.draw do
 
   get 'pages/index'
 
-  # API Routing
-  get '/api/activities', to: 'activities#get_activities', defaults: { format: 'json' }
-  get '/api/interests', to: 'interests#get_interests', defaults: { format: 'json' }
+  ### Custom Routing ###
+
+  match '*path', to: 'application#catch', via: [:get, :post, :put, :patch, :delete]
+
+  # Users routing
+  get '/api/users/:id', to: 'users#get_user', defaults: { format: 'json' }
+  get '/api/users', to: 'users#get_users', defaults: { format: 'json' }
   get '/api/users/:id/interests', to: 'users#get_user_interests', defaults: { format: 'json' }
   get '/api/users/:id/custom_activities', to: 'users#get_user_custom_activities', defaults: { format: 'json' }
+  post '/api/users/', to: 'users#create_user', defaults: { format: 'json' }
+  post '/api/users/:id', to: 'users#edit_user', defaults: { format: 'json' }
+  delete '/api/users/:id', to: 'users#destroy_user', defaults: { format: 'json' }
+
+  # Interests routing 
+  get '/api/interests', to: 'interests#get_interests', defaults: { format: 'json' }
+
+  # Activities roouting
+  get '/api/activities', to: 'activities#get_activities', defaults: { format: 'json' }
+
+  # Custom Activities routing
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

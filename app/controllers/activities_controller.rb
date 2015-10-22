@@ -58,10 +58,28 @@ class ActivitiesController < ApplicationController
 	# GET /api/activities
 	# URL format: '/api/activities?interest:<interest_name>'
 	def get_activities_for_interest
+		status = -1
 	  interest_key = "interest"
 	  interest = params[interest_key]
 	  activities = Activity.get_activities(interest)
-	  json_response = activities
+	  json_response = {}
+	  error_list = []
+
+	  if activities.length > 0
+	    status = 1
+	    json_response["activities"] = activities
+	  elsif not interest.nil?
+	  	error_list.append("Error: no activities found with the given interest.")
+	  else
+	  	error_list.append("Error: no activities found.")
+	  end
+
+	  if status == -1
+	  	json_response["errors"] = error_list
+	  end
+
+	  json_response["status"] = status
+	  json_response = json_response.to_json
 
 	  respond_to do |format|
 	    # format.html # show.html.erb

@@ -32,6 +32,10 @@ class Activity < ActiveRecord::Base
       activities = Activity.joins(:interests).where(interests: {name: interest_name})
     end
 
+    activities.each do |activity|
+      activity = activity.to_json
+    end
+
     activities = activities.to_json
     return activities
   end

@@ -28,10 +28,10 @@ class InterestsController < ApplicationController
 
     respond_to do |format|
       if @interest.save
-        format.html { redirect_to @interest, notice: 'Interest was successfully created.' }
+        # format.html { redirect_to @interest, notice: 'Interest was successfully created.' }
         format.json { render :show, status: :created, location: @interest }
       else
-        format.html { render :new }
+        # format.html { render :new }
         format.json { render json: @interest.errors, status: :unprocessable_entity }
       end
     end
@@ -42,10 +42,10 @@ class InterestsController < ApplicationController
   def update
     respond_to do |format|
       if @interest.update(interest_params)
-        format.html { redirect_to @interest, notice: 'Interest was successfully updated.' }
+        # format.html { redirect_to @interest, notice: 'Interest was successfully updated.' }
         format.json { render :show, status: :ok, location: @interest }
       else
-        format.html { render :edit }
+        # format.html { render :edit }
         format.json { render json: @interest.errors, status: :unprocessable_entity }
       end
     end
@@ -56,7 +56,7 @@ class InterestsController < ApplicationController
   def destroy
     @interest.destroy
     respond_to do |format|
-      format.html { redirect_to interests_url, notice: 'Interest was successfully destroyed.' }
+      # format.html { redirect_to interests_url, notice: 'Interest was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

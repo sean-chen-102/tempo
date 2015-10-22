@@ -6,9 +6,6 @@ class ApplicationController < ActionController::Base
 
   protected 
   def configure_devise_permitted_parameters
-    puts "LOOK HERE *****************"
-    puts params[:action]
-
     devise_parameter_sanitizer.for(:account_update) { 
       |u| u.permit(:email, :name, :username, :current_password, :password, :password_confirmation)
     }
@@ -16,7 +13,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) { 
       |u| u.permit(:email, :name, :username, :password, :password_confirmation) 
     }
-    
+
     devise_parameter_sanitizer.for(:sign_in) { 
       |u| u.permit(:email, :username, :password) 
     }

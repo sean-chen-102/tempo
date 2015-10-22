@@ -15,18 +15,20 @@ class UsersController < ApplicationController
     name_key = "name"
     password_key = "password"
     password_confirmation_key = "password_confirmation"
+
     username = params[user_key][username_key]
     email = params[user_key][email_key]
     name = params[user_key][name_key]
     password = params[user_key][password]
     password_confirmation = params[user_key][password_confirmation_key]
+
     json_response = {}
     status = -1
 
     @user = User.new(user_params)
-    puts "Tried to create user: #{@user}"
+    # puts "Tried to create user: #{@user}"
     if @user.save 
-      puts "in @user.save"
+      # puts "in @user.save"
       status = 1
       user_data = { "id": @user.id, "name": @user.name, "username": @user.username, "email": @user.email }
       json_response["user"] = user_data

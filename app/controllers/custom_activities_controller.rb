@@ -1,29 +1,9 @@
 class CustomActivitiesController < ApplicationController
-	before_action :set_custom_activity, only: [:show, :edit, :update, :destroy]
+	before_action :set_custom_activity, only: [:edit_custom_activity, :destroy_custom_activity]
 	
-	# GET /custom_activities
-	# GET /custom_activities.json
-	def index
-	  @custom_activities = CustomActivity.all
-	end
-	
-	# GET /custom_activities/1
-	# GET /custom_activities/1.json
-	def show
-	end
-	
-	# GET /custom_activities/new
-	def new
-	  @custom_activity = CustomActivity.new
-	end
-	
-	# GET /custom_activities/1/edit
-	def edit
-	end
-	
-	# POST /custom_activities
-	# POST /custom_activities.json
-	def create
+	# Create a CustomInterest in the database for the given params
+	# POST /api/custom_activities
+	def create_custom_activity 
 	  @custom_activity = CustomActivity.new(custom_activity_params)
 	
 	  respond_to do |format|
@@ -37,9 +17,9 @@ class CustomActivitiesController < ApplicationController
 	  end
 	end
 	
-	# PATCH/PUT /custom_activities/1
-	# PATCH/PUT /custom_activities/1.json
-	def update
+	# Edit the fields of a specified CustomActivity
+	# PUT /api/custom_activities/:id
+	def edit_custom_activity
 	  respond_to do |format|
 	    if @custom_activity.update(custom_activity_params)
 	      # format.html { redirect_to @custom_activity, notice: 'Custom activity was successfully updated.' }
@@ -50,10 +30,22 @@ class CustomActivitiesController < ApplicationController
 	    end
 	  end
 	end
+
+	# Return a JSON response with a list of all CustomActivities
+	# GET /api/custom_activities
+	def get_custom_activities
+	  activities = CustomActivity.all
+	  json_response = { status: 1, data: activities }
+
+	  respond_to do |format|
+	    # format.html # show.html.erb
+	    format.json { render json: json_response }
+	  end
+	end
 	
-	# DELETE /custom_activities/1
-	# DELETE /custom_activities/1.json
-	def destroy
+	# Deletes specified CustomActivity from database
+	# DELETE /api/custom_activities/:id
+	def destroy_custom_activity
 	  @custom_activity.destroy
 	  respond_to do |format|
 	    # format.html { redirect_to custom_activities_url, notice: 'Custom activity was successfully destroyed.' }

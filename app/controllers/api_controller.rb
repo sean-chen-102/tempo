@@ -30,4 +30,23 @@ def get_interests
   end
 end
 
+# Return a JSON response with a list of a User's Custom Activities
+# WHICH ROUTE?
+# GET /api/custom_activities?user:<user_id>
+# GET /api/users/:id/custom_activities
+# GET /api/users/:username/custom_activities
+#
+# URL format: '/api/interests?user:<user_id>'
+def get_user_custom_activities
+  user_id_key = "user" # TODO: change based on url
+  user_id = params[user_id_key] # TODO: change based on url
+  custom_activities = User.get_custom_activities(user_id)
+  custom_activities = interests
+
+  respond_to do |format|
+    # format.html # show.html.erb
+    format.json { render json: json_response }
+  end
+end
+
 end

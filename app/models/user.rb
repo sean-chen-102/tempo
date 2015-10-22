@@ -38,4 +38,11 @@ class User < ActiveRecord::Base
   
   validates_format_of :email,:with => Devise::email_regexp
 
+  # Returns a JSON list of all custom_activities of the User with id = user_id
+  def self.get_custom_activities(user_id)
+    custom_activities = User.find(user_id).custom_activities
+    custom_activities = custom_activities.to_json
+    return custom_activities
+  end
+
 end

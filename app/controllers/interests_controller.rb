@@ -1,29 +1,11 @@
 class InterestsController < ApplicationController
-  before_action :set_interest, only: [:show, :edit, :update, :destroy]
+  before_action :set_interest, only: [:edit_interest, :destroy_interest]
 
-  # GET /interests
-  # GET /interests.json
-  def index
-    @interests = Interest.all
-  end
+  # CUSTOM CODE
 
-  # GET /interests/1
-  # GET /interests/1.json
-  def show
-  end
-
-  # GET /interests/new
-  def new
-    @interest = Interest.new
-  end
-
-  # GET /interests/1/edit
-  def edit
-  end
-
-  # POST /interests
-  # POST /interests.json
-  def create
+  # Create an Interest in the database for the given params
+  # POST /api/interests
+  def create_interest
     @interest = Interest.new(interest_params)
 
     respond_to do |format|
@@ -37,9 +19,9 @@ class InterestsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /interests/1
-  # PATCH/PUT /interests/1.json
-  def update
+  # Edit the fields of a specified Interest
+  # PUT /api/interests/:id
+  def edit_interest
     respond_to do |format|
       if @interest.update(interest_params)
         # format.html { redirect_to @interest, notice: 'Interest was successfully updated.' }
@@ -51,28 +33,25 @@ class InterestsController < ApplicationController
     end
   end
 
-  # DELETE /interests/1
-  # DELETE /interests/1.json
-  def destroy
-    @interest.destroy
-    respond_to do |format|
-      # format.html { redirect_to interests_url, notice: 'Interest was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
-  # CUSTOM CODE
-
-  # Return a JSON response with a list of given interests
+  # Return a JSON response with a list of all interests
   # GET /api/interests
-  # URL format: '/api/interests'
   def get_interests
-    interests = Interest.get_interests()
-    json_response = interests
+    interests = Interest.all
+    json_response = { status: 1, data: interests }
 
     respond_to do |format|
       # format.html # show.html.erb
       format.json { render json: json_response }
+    end
+  end
+
+  # Deletes specified Interest from database
+  # DELETE /api/interests/:id
+  def destroy_interest
+    @interest.destroy
+    respond_to do |format|
+      # format.html { redirect_to interests_url, notice: 'Interest was successfully destroyed.' }
+      format.json { head :no_content }
     end
   end
 

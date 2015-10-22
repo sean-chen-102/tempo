@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 
   get 'pages/index'
 
+  # Devise routing
+
+
   # API Routing
   get '/api/activities', to: 'activities#get_activities', defaults: { format: 'json' }
   get '/api/interests', to: 'interests#get_interests', defaults: { format: 'json' }

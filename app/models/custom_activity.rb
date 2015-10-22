@@ -21,4 +21,5 @@ class CustomActivity < ActiveRecord::Base
 
 	validates :completion_time, numericality: { greater_than: 0,
 											    less_than_or_equal_to: 60 }
+
 end

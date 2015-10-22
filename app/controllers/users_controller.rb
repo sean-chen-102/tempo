@@ -48,13 +48,30 @@ class UsersController < ApplicationController
   # Returns a JSON response with a specified User's information
   # GET '/api/users/:id'
   def get_user
-    if @user.nil? 
-      json_response = { status: -1, errors: "User does not exist!"}.to_json
+    status = -1
+    json_response = {}
+    error_list = []
+    user_id = params[:id]
+    @user = User.where(id: user_id)
+
+    if not @user.empty? # if the User exists
+      status = 1
+      @user = @user.first # get the User from the ActiveRecord Relation
+      user_data = { "id": @user.id, "name": @user.name, "username": @user.username, "email": @user.email }
+      json_response["user"] = user_data
     else
-      json_response = @user
+      error_list.append("Error: user ##{params[:id]} does not exist.")
     end
 
+    if status == -1
+      json_response["errors"] = error_list
+    end
+
+    json_response["status"] = status
+    json_response = json_response.to_json
+
     respond_to do |format|
+      # format.html # show.html.erb
       format.json { render json: json_response }
     end
   end

@@ -1,0 +1,2 @@
+(function() { this.JST || (this.JST = {}); this.JST["backbone/templates/activities/show"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<p>\n  <b>Title:</b>\n  ',  title ,'\n</p>\n\n<p>\n  <b>Content:</b>\n  ',  content ,'\n</p>\n\n<p>\n  <b>Completion time:</b>\n  ',  completion_time ,'\n</p>\n\n<p>\n  <b>Content type:</b>\n  ',  content_type ,'\n</p>\n\n<p>\n  <b>Link:</b>\n  ',  link ,'\n</p>\n\n\n<a href="#/index">Back</a>\n');}return __p.join('');};
+}).call(this);

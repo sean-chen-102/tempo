@@ -105,7 +105,7 @@ class UsersController < ApplicationController
     error_list = []
     user_id = params[:id]
 
-    if User.where(id: user_id).nil? # if the User exists
+    if not User.where(id: user_id).empty? # if the User exists
       interests = User.get_interests(user_id)
 
       if interests.length > 0
@@ -134,8 +134,30 @@ class UsersController < ApplicationController
   # Return a JSON response with a list of a User's Custom Activities
   # GET /api/users/:id/custom_activities
   def get_user_custom_activities
-    custom_activities = User.get_custom_activities(@user.id)
-    json_response = custom_activities
+    status = -1
+    json_response = {}
+    error_list = []
+    user_id = params[:id]
+
+    if not User.where(id: user_id).empty? # if the User exists
+      custom_activities = User.get_custom_activities(user_id)
+
+      if custom_activities.length > 0
+        status = 1
+        json_response["custom_activities"] = custom_activities
+      else
+        error_list.append("Error: user ##{user_id} does not have any custom activities.")
+      end
+    else
+      error_list.append("Error: user ##{params[:id]} does not exist.")
+    end
+
+    if status == -1
+      json_response["errors"] = error_list
+    end
+
+    json_response["status"] = status
+    json_response = json_response.to_json
 
     respond_to do |format|
       # format.html # show.html.erb

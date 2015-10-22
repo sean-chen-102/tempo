@@ -27,7 +27,6 @@
 
 //Test template
 
-
 // TODO: Move to tempo.js 
 $(document).ready(function(){
 	//-----------------Temporary Api dummy data
@@ -99,7 +98,8 @@ $(document).ready(function(){
 			'': 'index',
 			'home': 'index',
 			"interests": "interests",
-			"activities": "activities"
+			"activities": "activities",
+			"show": "show"
 		},
 		index: function(){
 			console.log("Index router is called");
@@ -114,7 +114,17 @@ $(document).ready(function(){
 			console.log("The interests router was called ");
 			//Constructing View 
 			App.Views['interestView'] = new InterestView()			
-		}
+		},
+		show: function(){
+			//This route doesn't do anything yet
+			console.log("The show router was called ");
+			document.getElementById('add').style.color = 'green';
+			var newNode = document.createElement("p");
+			newNode.appendChild(document.createTextNode("This hasn't been implemented yet"));
+			var refNode = document.getElementById("add");
+			refNode.parentNode.insertBefore(newNode, refNode.nextSibling);			
+
+		}		
 	});
 
 	//Models =================================
@@ -198,7 +208,7 @@ $(document).ready(function(){
 
 			html += " </tbody> </table> </br> ";
 			//Adding activity link
-			html += " <a href='/activities#show'> Add activity </a>";
+			html += " <a href='/activities#show' id='add'> Add activity </a>";
 			this.$el.html(html);	
 		}
 	});
@@ -241,7 +251,7 @@ $(document).ready(function(){
 
 			html += " </tbody> </table> </br> ";
 			//Adding activity link
-			html += " <a href='/activities#show'> Add interest </a>";
+			html += " <a href='/activities#show' id='add'> Add interest </a>";
 			this.$el.html(html);	
 		}
 	});

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
   # resources :users
   # resources :interests
   #resources :custom_activities
@@ -8,8 +10,7 @@ Rails.application.routes.draw do
   get 'pages/index'
 
   ### Custom Routing ###
-
-  match '*path', to: 'application#catch', via: [:get, :post, :put, :patch, :delete]
+  # match '*path', to: 'application#catch', via: [:get, :post, :put, :patch, :delete]
 
   # Users routing
   get '/api/users', to: 'users#get_users', defaults: { format: 'json' }
@@ -26,7 +27,7 @@ Rails.application.routes.draw do
   post '/api/interests/:id', to: 'interests#edit_interest', defaults: { format: 'json' }
   delete '/api/interests/:id', to: 'interests#destroy_interest', defaults: { format: 'json' }
 
-  # Activities roouting
+  # Activities routing
   get '/api/activities', to: 'activities#get_activities', defaults: { format: 'json' }
   get '/api/activities', to: 'activities#get_activities_for_interest', defaults: { format: 'json' }
   post '/api/activities', to: 'activities#create_activity', defaults: { format: 'json' }
@@ -39,6 +40,10 @@ Rails.application.routes.draw do
   post '/api/custom_activities/:id', to: 'custom_activities#edit_custom_activity', defaults: { format: 'json ' }
   delete '/api/custom_activities/:id', to: 'custom_activities#destroy_custom_activity', defaults: { format: 'json' }
 
+
+  # User Sessions routing
+  post 'api/login', to: 'sessions#create', defaults: { format: 'json' }
+  delete 'api/logout', to: 'sessions#destroy', defaults: { format: 'json' }
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

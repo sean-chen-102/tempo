@@ -7,16 +7,16 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # SET UP USERS
-user_1 = User.create({ name: "Sally", username: "sillysally23", email: "sally@mail.com", password_digest: "password" })
-user_2 = User.create({ name: "Ben", username: "trap_queen", email: "ben@mail.com", password_digest: "password"})
+user_1 = User.create({ name: "Sally", username: "sillysally23", email: "sally@mail.com", password: "password", password_confirmation: "password" })
+user_2 = User.create({ name: "Ben", username: "trap_queen", email: "ben@mail.com", password_digest: "password", password_confirmation: "password"})
 user_list = [user_1, user_2]
 
 
 # SET UP INTERESTS
-news_interest = Interest.create({ name: "News" })
-fitness_interest = Interest.create({ name: "Fitness" })
-science_interest = Interest.create({ name: "Science" })
-technology_interest = Interest.create({ name: "Technology" })
+news_interest = Interest.create({ name: "news" })
+fitness_interest = Interest.create({ name: "fitness" })
+science_interest = Interest.create({ name: "science" })
+technology_interest = Interest.create({ name: "technology" })
 
 user1_interests = [news_interest, fitness_interest]
 user2_interests = [science_interest, technology_interest]

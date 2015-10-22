@@ -1,8 +1,25 @@
 
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Activities</h1>
-<ul class="testTable"> </ul>
+<!-- Todo: Move to css file -->
+<style>
+  .menuSelection{
+    list-style-type: none;
+  }
+
+  .menuSelection li{
+    display: inline;
+    margin: 10px;
+  }
+</style>
+
+
+<h1>Listing Activities or Interests</h1>
+<ul class="menuSelection"> 
+  <li><a href="/activities#home"> Home </a></li>
+  <li><a href="/activities#activities"> Activities </a></li>
+  <li><a href="/activities#interests"> Interests </a></li>
+</ul>
 <div class="testDiv"> </div>
 
 <!-- <table>
@@ -35,4 +52,4 @@
 
 <br>
 
-<%= link_to 'New Activity', new_activity_path %>
+<!-- <%= link_to 'New Activity', new_activity_path %> -->

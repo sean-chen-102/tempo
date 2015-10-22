@@ -50,5 +50,6 @@ group :development, :test do
   gem 'rails-backbone'
   gem 'ruby-haml-js'
   gem 'rails_12factor'
+  gem 'responders', '~> 2.0'
 
 end

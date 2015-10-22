@@ -100,8 +100,30 @@ class UsersController < ApplicationController
   # Return a JSON response with a list of given Interests of a specified User
   # GET '/api/users/:id/interests'
   def get_user_interests
-    interests = User.get_interests(@user.id)
-    json_response = interests
+    status = -1
+    json_response = {}
+    error_list = []
+    user_id = params[:id]
+
+    if User.where(id: user_id).nil? # if the User exists
+      interests = User.get_interests(user_id)
+
+      if interests.length > 0
+        status = 1
+        json_response["interests"] = interests
+      else
+        error_list.append("Error: user ##{user_id} does not have any interests.")
+      end
+    else
+      error_list.append("Error: user ##{params[:id]} does not exist.")
+    end
+
+    if status == -1
+      json_response["errors"] = error_list
+    end
+
+    json_response["status"] = status
+    json_response = json_response.to_json
 
     respond_to do |format|
       # format.html # show.html.erb
@@ -142,7 +164,7 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      if not params[:id].nil?
+      if not params[:id].nil? and params[:id].is_a? Integer
         @user = User.find(params[:id])
       end
     end

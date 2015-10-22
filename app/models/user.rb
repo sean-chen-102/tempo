@@ -45,4 +45,12 @@ class User < ActiveRecord::Base
     return custom_activities
   end
 
+  # Returns a JSON list of all interests that have user_id as their User.id.
+  def self.get_interests(user_id)
+    interests = Interest.where(user_id: user_id)
+
+    interests = interests.to_json
+    return interests
+  end
+
 end

@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :get_user_interests, :get_user_custom_activities]
+
+  # user authentication token idea: https://gist.github.com/josevalim/fb706b1e933ef01e4fb6
 
   # GET /users
   # GET /users.json
@@ -61,9 +63,37 @@ class UsersController < ApplicationController
     end
   end
 
+  # CUSTOM CODE
+
+  # Return a JSON response with a list of given Interests of a specified User
+  # GET /api/interests
+  # URL format: '/api/users/:id/interests'
+  def get_user_interests
+    interests = User.get_interests(@user.id)
+    json_response = interests
+
+    respond_to do |format|
+      # format.html # show.html.erb
+      format.json { render json: json_response }
+    end
+  end
+
+  # Return a JSON response with a list of a User's Custom Activities
+  # GET /api/users/:id/custom_activities
+  def get_user_custom_activities
+    custom_activities = User.get_custom_activities(@user.id)
+    json_response = custom_activities
+
+    respond_to do |format|
+      # format.html # show.html.erb
+      format.json { render json: json_response }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
+      puts "TESTING CALLING"
       @user = User.find(params[:id])
     end
 

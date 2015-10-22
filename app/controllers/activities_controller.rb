@@ -66,6 +66,23 @@ class ActivitiesController < ApplicationController
 	  end
 	end
 
+	# CUSTOM CODE
+	
+	# Return a JSON response with a list of given activities based on the param: interest
+	# GET /api/activities
+	# URL format: '/api/activities?interest:<interest_name>'
+	def get_activities
+	  interest_key = "interest"
+	  interest = params[interest_key]
+	  activities = Activity.get_activities(interest)
+	  json_response = activities
+
+	  respond_to do |format|
+	    # format.html # show.html.erb
+	    format.json { render json: json_response }
+	  end
+	end
+
 	private
 	  # Use callbacks to share common setup or constraints between actions.
 	  def set_activity

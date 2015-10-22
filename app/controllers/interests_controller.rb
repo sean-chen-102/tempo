@@ -61,6 +61,21 @@ class InterestsController < ApplicationController
     end
   end
 
+  # CUSTOM CODE
+
+  # Return a JSON response with a list of given interests
+  # GET /api/interests
+  # URL format: '/api/interests'
+  def get_interests
+    interests = Interest.get_interests()
+    json_response = interests
+
+    respond_to do |format|
+      # format.html # show.html.erb
+      format.json { render json: json_response }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_interest

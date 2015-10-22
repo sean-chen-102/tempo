@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   get 'pages/index'
 
-  # Devise routing
+  get '*not_found', to: 'errors#error_404'
 
 
   # API Routing

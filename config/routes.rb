@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   resources :custom_activities
   resources :activities
 
+  # API Routing
+  get '/api/activities', to: 'api#get_activities', defaults: { format: 'json' }
+  get '/api/interests', to: 'api#get_interests', defaults: { format: 'json' }
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -17,7 +17,7 @@ class UserTest < ActiveSupport::TestCase
 
   def setup
     @user = User.new(name: "Example User", username: "example_user",
-                     email: "user@example.com", password: "password")
+                     email: "user@example.com", password_digest: "password")
   end
 
   test "user should be valid" do
@@ -40,7 +40,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "user encrypted_password should be present" do
-    @user.encrypted_password = ""
+    @user.password_digest = ""
     assert @user.invalid?
   end
 

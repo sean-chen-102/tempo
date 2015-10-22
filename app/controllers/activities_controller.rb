@@ -1,34 +1,15 @@
 class ActivitiesController < ApplicationController
-	before_action :set_activity, only: [:show, :edit, :update, :destroy]
+	before_action :set_activity, only: [:edit_activity, :destroy_activity]
 
-	# GET /activities
-	# GET /activities.json
+	# CUSTOM CODE
+
+	# for backbone routing
 	def index
-	  @activities = Activity.all
-
-		#render :json => {
-	#		:title => "test",
-#			:content => "testing 2"
-#		}
 	end
 
-	# GET /activities/1
-	# GET /activities/1.json
-	def show
-	end
-
-	# GET /activities/new
-	def new
-	  @activity = Activity.new
-	end
-
-	# GET /activities/1/edit
-	def edit
-	end
-
-	# POST /activities
-	# POST /activities.json
-	def create
+	# Create an Activity in the database for the given params
+	# POST /api/activities
+	def create_activity
 	  @activity = Activity.new(activity_params)
 
 	  respond_to do |format|
@@ -42,9 +23,9 @@ class ActivitiesController < ApplicationController
 	  end
 	end
 
-	# PATCH/PUT /activities/1
-	# PATCH/PUT /activities/1.json
-	def update
+  	# Edit the fields of a specified Activity 
+	# PUT /api/activities/:id
+	def edit_activity
 	  respond_to do |format|
 	    if @activity.update(activity_params)
 	      #format.html { redirect_to @activity, notice: 'Activity was successfully updated.' }
@@ -56,9 +37,20 @@ class ActivitiesController < ApplicationController
 	  end
 	end
 
-	# DELETE /activities/1
-	# DELETE /activities/1.json
-	def destroy
+	# Return a JSON response with a list of all activities
+	# GET /api/activities
+	def get_activities
+		activities = Activity.all
+		json_response = { status: 1, data: activities }
+
+		respond_to do |format|
+			format.json { render json: json_response }
+		end
+	end
+
+	# Deletes specified Activity from database
+	# DELETE /activities/:id
+	def destroy_activity
 	  @activity.destroy
 	  respond_to do |format|
 	    #format.html { redirect_to activities_url, notice: 'Activity was successfully destroyed.' }
@@ -66,16 +58,32 @@ class ActivitiesController < ApplicationController
 	  end
 	end
 
-	# CUSTOM CODE
-	
 	# Return a JSON response with a list of given activities based on the param: interest
 	# GET /api/activities
 	# URL format: '/api/activities?interest:<interest_name>'
-	def get_activities
+	def get_activities_for_interest
+		status = -1
 	  interest_key = "interest"
 	  interest = params[interest_key]
 	  activities = Activity.get_activities(interest)
-	  json_response = activities
+	  json_response = {}
+	  error_list = []
+
+	  if activities.length > 0
+	    status = 1
+	    json_response["activities"] = activities
+	  elsif not interest.nil?
+	  	error_list.append("Error: no activities found with the given interest.")
+	  else
+	  	error_list.append("Error: no activities found.")
+	  end
+
+	  if status == -1
+	  	json_response["errors"] = error_list
+	  end
+
+	  json_response["status"] = status
+	  json_response = json_response.to_json
 
 	  respond_to do |format|
 	    # format.html # show.html.erb

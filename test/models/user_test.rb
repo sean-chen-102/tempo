@@ -25,7 +25,7 @@ class UserTest < ActiveSupport::TestCase
 
   def setup
     @user = User.new(name: "Example User", username: "example_user",
-                     email: "user@example.com", password: "password")
+                     email: "user@example.com", encrypted_password: "password")
   end
 
   test "user should be valid" do

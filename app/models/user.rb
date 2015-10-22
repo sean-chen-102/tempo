@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   # validates :password, length: { minimum: 8 }, unless: "password.nil?"
   
   validates_format_of :username, with: /\A[a-zA-Z0-9_\.]*\z/
-  #validates_format_of :email,:with => Devise::email_regexp
+  validates_format_of :email, with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
   # Returns a JSON list of all custom_activities of the User with id = user_id
   def self.get_custom_activities(user_id)

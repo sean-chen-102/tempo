@@ -114,6 +114,7 @@ class UsersController < ApplicationController
 
   # Edit the fields of a specified User
   # PUT /api/users/:id
+  # TODO: update this API request
   def edit_user
     respond_to do |format|
       if @user.update(user_params)
@@ -128,15 +129,30 @@ class UsersController < ApplicationController
 
   # Deletes specified User from database 
   # DELETE /api/users/:id
+  # TODO: update this API request
   def destroy_user
-    if @user.nil?
-      json_response = { status: -1, errors: "User does not exist!"}.to_json
+    status = -1
+    json_response = {}
+    error_list = []
+    user_id = params[:id]
+    @user = User.where(id: user_id)
+
+    if not @user.empty? # if the User exists
+      @user = @user.first # get the User from the ActiveRecord Relation
+      @user.destroy # delete the User from the database
+      status = 1
     else
-      @user.destroy
-      json_response = { status: 1 }.to_json
+      error_list.append("Error: user ##{params[:id]} does not exist.")
     end
+
+    if status == -1
+      json_response["errors"] = error_list
+    end
+
+    json_response["status"] = status
+    json_response = json_response.to_json
+
     respond_to do |format|
-      # format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { render json: json_response }
     end
   end

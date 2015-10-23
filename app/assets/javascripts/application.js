@@ -79,6 +79,9 @@ $(document).ready(function(){
 	//Models =================================
 	var Activity = Backbone.Model.extend({});
 	var Interest = Backbone.Model.extend({});
+	var Time = Backbone.Model.extend({
+			    duration: null
+				});
 
 	//Collections  =================================
 	
@@ -102,6 +105,11 @@ $(document).ready(function(){
 			return data.interests
 		}
 	});	
+
+	//Time Collection	
+	Times = Backbone.Collection.extend({
+	    initialize: function(model, options) {}
+	});
 
 	//Views  =================================
 	var ActivityView = Backbone.View.extend({
@@ -233,24 +241,57 @@ $(document).ready(function(){
 		el: ".testDiv",
 		tagName : 'li',
 		options: null,
+
 		initialize: function(options){
 			this.options = options;
+
+			this.times = new Times(null, {
+	            view: this
+	        });
+
+	        this.times.add(new Time({
+	            duration: "5"
+	        }));
+	        this.times.add(new Time({
+	            duration: "15"
+	        }));
+	        this.times.add(new Time({
+	            duration: "30"
+	        }));
+	        this.times.add(new Time({
+	            duration: "1"
+	        }));
+
 			this.render();
 		},
 		render : function (options){
+			var that = this;
 
-			html = "<h3 style='color: #e74c3c;'> Welcome Home Owen </h3>";
-			html += "<select id='activity_time'>" +
-					  "<option value='5_min'>5 min</option>" +
-					  "<option value='15_min'>15 min</option>" +
-					  "<option value='30_min'>30 min</option>" +
-					  "<option value='1_hr'>1 hr</option>" +
-					"</select> <br>";
-			//Go button
+			var template = "<h3 style='color: #e74c3c;'> Welcome Home Owen </h3>" +
+							    "<select id='time-selector'>" +
+							        "<% _(times).each(function(time) { %>" +
+							            "<option value='<%= time.duration %>'><%= time.duration %></option>" +
+							        "<% }); %>" +
+							    "</select>";
+
+			var home_template = _.template(template)({
+            	times: that.times.toJSON(),
+            	labelValue: 'Times'
+    	    });
+        	this.$el.html(home_template);
+    
+			// html = "<h3 style='color: #e74c3c;'> Welcome Home Owen </h3>";
+			// html += "<select id='activity_time'>" +
+			// 		  "<option value='5_min'>5 min</option>" +
+			// 		  "<option value='15_min'>15 min</option>" +
+			// 		  "<option value='30_min'>30 min</option>" +
+			// 		  "<option value='1_hr'>1 hr</option>" +
+			// 		"</select> <br>";
+			// //Go button
 			
-			html += "<a href='activities#activities'> GO </a> <br>";
-			html += "<a href='activities#interests'> See your interests </a> ";
-			this.$el.html(html);	
+			// html += "<a href='activities#activities'> GO </a> <br>";
+			// html += "<a href='activities#interests'> See your interests </a> ";
+			// this.$el.html(html);	
 		}
 	});
 

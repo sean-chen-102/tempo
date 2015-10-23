@@ -241,7 +241,9 @@ $(document).ready(function(){
 		el: ".testDiv",
 		tagName : 'li',
 		options: null,
-
+		events:{
+        	"click .go-btn":"makeGoRequest"
+    	},
 		initialize: function(options){
 			this.options = options;
 
@@ -272,26 +274,20 @@ $(document).ready(function(){
 							        "<% _(times).each(function(time) { %>" +
 							            "<option value='<%= time.duration %>'><%= time.duration %></option>" +
 							        "<% }); %>" +
-							    "</select>";
+							    "</select>" + 
+							    "<button class='go-btn'>GO</button>" + 
+							    "<a href='activities#interests'> See your interests </a>";
 
 			var home_template = _.template(template)({
             	times: that.times.toJSON(),
             	labelValue: 'Times'
     	    });
         	this.$el.html(home_template);
-    
-			// html = "<h3 style='color: #e74c3c;'> Welcome Home Owen </h3>";
-			// html += "<select id='activity_time'>" +
-			// 		  "<option value='5_min'>5 min</option>" +
-			// 		  "<option value='15_min'>15 min</option>" +
-			// 		  "<option value='30_min'>30 min</option>" +
-			// 		  "<option value='1_hr'>1 hr</option>" +
-			// 		"</select> <br>";
-			// //Go button
-			
-			// html += "<a href='activities#activities'> GO </a> <br>";
-			// html += "<a href='activities#interests'> See your interests </a> ";
-			// this.$el.html(html);	
+		},
+		makeGoRequest : function(options){
+			var index = $('#time-selector')[0].selectedIndex;
+			var duration = this.times.models[index].get('duration');
+			console.log(duration);
 		}
 	});
 

@@ -85,19 +85,10 @@ $(document).ready(function(){
 	//Activities Collection
 	var Activities = Backbone.Collection.extend({
 		model: Activity,
-		jsonData: null,		
-		//TODO: Api endpoint to retrieve JSON data
-		url: "/api/activites",
-		setData: function(){
-			this.fetch({
-				success: function(data){
-					this.jsonData = data;
-				}
-			});
-		},
-		initialize: function(){
-			console.log("Created new collection");
-			this.setData();
+		url: "/api/activities",
+		parse: function(data){
+			//TODO: change json key
+			return data.data
 		}
 	});
 

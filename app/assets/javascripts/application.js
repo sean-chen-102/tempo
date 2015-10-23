@@ -51,19 +51,24 @@ $(document).ready(function(){
 			"activities": "activities",
 			"show": "show"
 		},
+		initialize: function() {
+			App.Views['homeView'] = new HomeView();
+			App.Views['activityView'] = new ActivityView()
+			App.Views['interestView'] = new InterestView()
+		},
 		index: function(){
 			console.log("Index router is called");
-			App.Views['homeView'] = new HomeView();
+			App.Views['homeView'].render();
 		},
 		activities: function(){
-			console.log("The interests router was called ");
+			console.log("The activities router was called ");
 			//Constructing View 
-			App.Views['activityView'] = new ActivityView()		
+			App.Views['activityView'].render()		
 		},		
 		interests: function(){
 			console.log("The interests router was called ");
 			//Constructing View 
-			App.Views['interestView'] = new InterestView()			
+			App.Views['interestView'].render()			
 		},
 		show: function(){
 			//This route doesn't do anything yet
@@ -79,6 +84,9 @@ $(document).ready(function(){
 	//Models =================================
 	var Activity = Backbone.Model.extend({});
 	var Interest = Backbone.Model.extend({});
+	var Time = Backbone.Model.extend({
+			    duration: null
+				});
 
 	//Collections  =================================
 	
@@ -88,7 +96,7 @@ $(document).ready(function(){
 		url: "/api/activities",
 		parse: function(data){
 			//TODO: change json key
-			return data.data
+			return data.activities
 		}
 	});
 
@@ -103,15 +111,22 @@ $(document).ready(function(){
 		}
 	});	
 
+	//Time Collection	
+	Times = Backbone.Collection.extend({
+	    initialize: function(model, options) {}
+	});
+
 	//Views  =================================
 	var ActivityView = Backbone.View.extend({
 		el: ".testDiv",
 		tagName : 'li',
 		options: null,
+		time: null,
+		interests: [],
+		activities : null,
 		initialize: function(options){
 			this.options = options;
-			this.render();
-
+			this.activities = new Activities();
 		},
 		render : function (options){
 			// Set scope, construct new activity collection, call fetch, render data on callback function
@@ -124,7 +139,7 @@ $(document).ready(function(){
 							+ " <tbody> ";
 
 				//Iterate throught he collections of Activities and create a template
-				activities.each(function(model){
+				that.activities.each(function(model){
 					html += "<tr>" 
 							+ "<td> " +  model.get('title') + " </td>"
 							+ "<td> " +  model.get('content') + " </td>"
@@ -139,12 +154,38 @@ $(document).ready(function(){
 				$(that.el).html(html);	
 		    };
 
-			var activities = new Activities();	
-			activities.fetch({
+		    //TODO: Find better way to do this
+		    if(this.interests && this.time){
+		    	this.activities.fetch({
 				success: function(data){
-					renderData(data);
-				}
-			});
+						renderData(data);
+					},
+					dataType: "json",
+					data: {"interests": this.interests, "time": this.time}
+				});
+		    } else if (this.interests){
+		    	this.activities.fetch({
+				success: function(data){
+						renderData(data);
+					},
+					dataType: "json",
+					data: {"interests": this.interests}
+				});
+		    } else if (this.time){
+		    	this.activities.fetch({
+					success: function(data){
+						renderData(data);
+					},
+					dataType: "json",
+					data: {"time": this.time}
+				});
+		    } else {
+				this.activities.fetch({
+					success: function(data){
+						renderData(data);
+					}
+				});
+		    }
 		}
 	});
 
@@ -156,7 +197,6 @@ $(document).ready(function(){
 		options: null,
 		initialize: function(options){
 			this.options = options;
-			this.render();
 		},
 		render : function (options){
 			// Set scope, construct new activity collection, call fetch, render data on callback function
@@ -186,46 +226,10 @@ $(document).ready(function(){
 			var interests = new Interests();	
 			interests.fetch({
 				success: function(data){
-					console.log(data + "interests data");
 					renderData(data);
 				}
 			});
 		}
-
-		// render : function (options){
-
-
-
-
-		// 	//Initialize ArtistsArray
-		// 	var interestArray = []
-		// 	for (var i in dummyInterests){
-		// 		interestArray.push(new Interest(dummyInterests[i]));
-		// 	}
-			
-		// 	//Initialize Collection of Artst
-		// 	var interests = new Interests(interestArray);			
-			
-		// 	//TODO: Create and import handlebars for templating			
-		// 	var html = "<h4 style='color: #1abc9c;'> Interest List </h4> <br>"
-		// 				+ "<table> <thead> <tr> <th>Title</th> <th>Content</th> <th>Completion Time</th> <th>Content type</th> <th>Content</th> "
-		// 				+ "<th colspan='3'></th> </tr> </thead>" 
-		// 				+ " <tbody> ";
-		// 	//Iterate throught he collections of Activities and create a template
-		// 	interests.each(function(model){
-		// 		html += "<tr>" 
-		// 				+ "<td> " +  model.get('title') + " </td>"
-		// 				+ "<td> " +  model.get('content') + " </td>"
-		// 				+ "<td> " +  model.get('completion_time') + " </td>"
-		// 				+ "<td> " +  model.get('content_type') + " </td>"
-		// 			+ "</tr>";	
-		// 	});
-
-		// 	html += " </tbody> </table> </br> ";
-		// 	//Adding activity link
-		// 	html += " <a href='/activities#show' id='add'> Add interest </a>";
-		// 	this.$el.html(html);	
-		// }
 	});
 
 	// Creating View for Home
@@ -233,22 +237,55 @@ $(document).ready(function(){
 		el: ".testDiv",
 		tagName : 'li',
 		options: null,
+		events:{
+        	"click .go-btn":"makeGoRequest"
+    	},
 		initialize: function(options){
 			this.options = options;
-			this.render();
+
+			this.times = new Times(null, {
+	            view: this
+	        });
+			//TODO: Find better way to do this
+			//add all the times we want the user to  be able to select
+	        this.times.add(new Time({duration: "5"}));
+	        this.times.add(new Time({duration: "15"}));
+	        this.times.add(new Time({duration: "30"}));
+	        this.times.add(new Time({duration: "60"}));
 		},
 		render : function (options){
+			var that = this;
+			//TODO: Move template to separate page, custom welcome name
+			var template = "<h3 style='color: #e74c3c;'> Welcome Home Owen </h3>" +
+							    "<select id='time-selector'>" +
+							        "<% _(times).each(function(time) { %>" +
+							            "<option value='<%= time.duration %>'><%= time.duration %></option>" +
+							        "<% }); %>" +
+							    "</select>" + 
+							    "<button class='go-btn'>GO</button>" + 
+							    "<a href='activities#interests'> See your interests </a>";
 
-			html = "<h3 style='color: #e74c3c;'> Welcome Home Owen </h3>";
-			//Go button
-			html += "<a href='activities#activities'> GO </a> <br>";
-			html += "<a href='activities#interests'> See your interests </a> ";
-			this.$el.html(html);	
+			//populate the home_template with times collection
+			var home_template = _.template(template)({
+            	times: that.times.toJSON(),
+            	labelValue: 'Times'
+    	    });
+        	this.$el.html(home_template);
+		},
+		makeGoRequest : function(options){
+			//called when the go button is clicked
+			var index = $('#time-selector')[0].selectedIndex;
+			var duration = this.times.models[index].get('duration');
+			//save duration to activity view object
+			App.Views['activityView'].time = duration;
+			//switch view to activities view
+			window.location = '/activities#activities';
 		}
 	});
 
 	//Initialize Activity view
 	App.initialize();
+
 });
 
 

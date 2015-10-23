@@ -118,7 +118,8 @@ $(document).ready(function(){
 			// Set scope, construct new activity collection, call fetch, render data on callback function
 			var that = this; // To fix callback scoping error
 
-		    var renderData = function(data){	    	
+			var renderData = function(data) {
+				console.log(data);
 				//TODO: Create and import handlebars for templating			
 				var html = "<h4 style='color: #9b59b6;'> Activity List </h4> <br>"
 							+ "<table> <thead> <tr> <th>Title</th> <th>Content</th> <th>Completion Time</th> <th>Content type</th> <th>Id</th> "

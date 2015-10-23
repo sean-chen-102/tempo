@@ -8,8 +8,6 @@ class InterestsController < ApplicationController
   # Testing via curl: curl -H "Content-Type: application/json" -X POST -d '{"interest": {"name": "interest1"} }' http://localhost:3000/api/interests
   def create_interest
     interest_key = "interest"
-    name_key = "name"
-    name = params[interest_key][name_key]
     json_response = {}
     status = -1
 
@@ -76,7 +74,7 @@ class InterestsController < ApplicationController
 
   # Deletes specified Interest from database
   # DELETE /api/interests/:id
-  # Testing via curl: curl -H "Content-Type: application/json" -X DELETE http://localhost:3000/api/interests
+  # Testing via curl: curl -H "Content-Type: application/json" -X DELETE http://localhost:3000/api/interests/8
   def destroy_interest
     status = -1
     json_response = {}

@@ -51,19 +51,24 @@ $(document).ready(function(){
 			"activities": "activities",
 			"show": "show"
 		},
+		initialize: function() {
+			App.Views['homeView'] = new HomeView();
+			App.Views['activityView'] = new ActivityView()
+			App.Views['interestView'] = new InterestView()
+		},
 		index: function(){
 			console.log("Index router is called");
-			App.Views['homeView'] = new HomeView();
+			App.Views['homeView'].render();
 		},
 		activities: function(){
-			console.log("The interests router was called ");
+			console.log("The activities router was called ");
 			//Constructing View 
-			App.Views['activityView'] = new ActivityView()		
+			App.Views['activityView'].render()		
 		},		
 		interests: function(){
 			console.log("The interests router was called ");
 			//Constructing View 
-			App.Views['interestView'] = new InterestView()			
+			App.Views['interestView'].render()			
 		},
 		show: function(){
 			//This route doesn't do anything yet
@@ -91,7 +96,7 @@ $(document).ready(function(){
 		url: "/api/activities",
 		parse: function(data){
 			//TODO: change json key
-			return data.data
+			return data.activities
 		}
 	});
 
@@ -116,10 +121,12 @@ $(document).ready(function(){
 		el: ".testDiv",
 		tagName : 'li',
 		options: null,
+		time: null,
+		interests: [],
+		activities : null,
 		initialize: function(options){
 			this.options = options;
-			this.render();
-
+			this.activities = new Activities();
 		},
 		render : function (options){
 			// Set scope, construct new activity collection, call fetch, render data on callback function
@@ -132,7 +139,7 @@ $(document).ready(function(){
 							+ " <tbody> ";
 
 				//Iterate throught he collections of Activities and create a template
-				activities.each(function(model){
+				that.activities.each(function(model){
 					html += "<tr>" 
 							+ "<td> " +  model.get('title') + " </td>"
 							+ "<td> " +  model.get('content') + " </td>"
@@ -147,12 +154,38 @@ $(document).ready(function(){
 				$(that.el).html(html);	
 		    };
 
-			var activities = new Activities();	
-			activities.fetch({
+		    //TODO: Find better way to do this
+		    if(this.interests && this.time){
+		    	this.activities.fetch({
 				success: function(data){
-					renderData(data);
-				}
-			});
+						renderData(data);
+					},
+					dataType: "json",
+					data: {"interests": this.interests, "time": this.time}
+				});
+		    } else if (this.interests){
+		    	this.activities.fetch({
+				success: function(data){
+						renderData(data);
+					},
+					dataType: "json",
+					data: {"interests": this.interests}
+				});
+		    } else if (this.time){
+		    	this.activities.fetch({
+					success: function(data){
+						renderData(data);
+					},
+					dataType: "json",
+					data: {"time": this.time}
+				});
+		    } else {
+				this.activities.fetch({
+					success: function(data){
+						renderData(data);
+					}
+				});
+		    }
 		}
 	});
 
@@ -164,7 +197,6 @@ $(document).ready(function(){
 		options: null,
 		initialize: function(options){
 			this.options = options;
-			this.render();
 		},
 		render : function (options){
 			// Set scope, construct new activity collection, call fetch, render data on callback function
@@ -261,10 +293,8 @@ $(document).ready(function(){
 	            duration: "30"
 	        }));
 	        this.times.add(new Time({
-	            duration: "1"
+	            duration: "60"
 	        }));
-
-			this.render();
 		},
 		render : function (options){
 			var that = this;
@@ -288,6 +318,8 @@ $(document).ready(function(){
 			var index = $('#time-selector')[0].selectedIndex;
 			var duration = this.times.models[index].get('duration');
 			console.log(duration);
+			App.Views['activityView'].time = duration;
+			window.location = '/activities#activities';
 		}
 	});
 

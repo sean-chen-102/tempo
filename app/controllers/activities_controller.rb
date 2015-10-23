@@ -48,34 +48,6 @@ class ActivitiesController < ApplicationController
 	  end
 	end
 
-	# Return a JSON response with a list of all activities
-	# GET /api/activities
-	# Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/activities
-	def get_activities
-		status = -1
-		activities = Activity.get_activities(nil)
-		error_list = []
-		json_response = {}
-
-		if activities.length > 0
-		  status = 1
-		  json_response["activities"] = activities
-		else
-		  error_list.append("Error: no activites found.")
-		end
-
-		if status == -1
-		  json_response["errors"] = error_list
-		end
-
-		json_response["status"] = status
-		json_response = json_response.to_json
-
-		respond_to do |format|
-		  format.json { render json: json_response }
-		end
-	end
-
 	# Deletes specified Activity from database
 	# DELETE /activities/:id
 	# Testing via curl: curl -H "Content-Type: application/json" -X DELETE http://localhost:3000/api/activities/8
@@ -106,11 +78,11 @@ class ActivitiesController < ApplicationController
 	  end
 	end
 
-	# Return a JSON response with a list of given activities based on the param: interest
+	# Return a JSON response with a list of given activities based on the params: interest and time
 	# GET /api/activities
 	# URL format: '/api/activities?interest:<interest_name>'
 	# Testing via curl: curl -H "Content-Type: application/json" -X GET -d '{"interest": "science" }' http://localhost:3000/api/activities
-	def get_activities_for_interest
+	def get_activities
 		status = -1
 	  interest_key = "interest"
 	  interest = params[interest_key]

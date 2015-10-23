@@ -23,6 +23,7 @@
 //= require_tree ./backbone/collections
 //= require_tree ./backbone/views
 //= require_tree ./backbone/routers
+//= require_tree ./backbone/templates
 //= require_tree .
 
 //Test template
@@ -46,7 +47,7 @@ $(document).ready(function(){
 	App.Router = Backbone.Router.extend({
 		routes: {
 			'': 'index',
-			'home': 'index',
+			'home': 'home',
 			"interests": "interests",
 			"activities": "activities",
 			"show": "show"
@@ -116,6 +117,7 @@ $(document).ready(function(){
 		render : function (options){
 			// Set scope, construct new activity collection, call fetch, render data on callback function
 			var that = this; // To fix callback scoping error
+
 		    var renderData = function(data){	    	
 				//TODO: Create and import handlebars for templating			
 				var html = "<h4 style='color: #9b59b6;'> Activity List </h4> <br>"
@@ -231,19 +233,20 @@ $(document).ready(function(){
 	// Creating View for Home
 	var HomeView = Backbone.View.extend({
 		el: ".testDiv",
-		tagName : 'li',
+		tagName : 'div',
 		options: null,
 		initialize: function(options){
 			this.options = options;
 			this.render();
 		},
 		render : function (options){
-
-			html = "<h3 style='color: #e74c3c;'> Welcome Home Owen </h3>";
-			//Go button
-			html += "<a href='activities#activities'> GO </a> <br>";
-			html += "<a href='activities#interests'> See your interests </a> ";
-			this.$el.html(html);	
+      var html;
+      // we will render a different template
+      // based on if the user is logged in or not
+      html = JST['backbone/templates/activities/home'];
+      console.log(html);
+      console.log("yo");
+      this.$el.html(html);
 		}
 	});
 

@@ -64,10 +64,29 @@ class InterestsController < ApplicationController
   # Deletes specified Interest from database
   # DELETE /api/interests/:id
   def destroy_interest
-    @interest.destroy
+    status = -1
+    json_response = {}
+    error_list = []
+    interest_id = params[:id]
+    @interest = Interest.where(id: interest_id)
+
+    if not @interest.empty? # if the Interest exists
+      @interest = @interest.first # get the Interest from the ActiveRecord Relation
+      @interest.destroy # delete the Interest from the database
+      status = 1
+    else
+      error_list.append("Error: interest ##{params[:id]} does not exist.")
+    end
+
+    if status == -1
+      json_response["errors"] = error_list
+    end
+
+    json_response["status"] = status
+    json_response = json_response.to_json
+
     respond_to do |format|
-      # format.html { redirect_to interests_url, notice: 'Interest was successfully destroyed.' }
-      format.json { head :no_content }
+      format.json { render json: json_response }
     end
   end
 

@@ -80,13 +80,18 @@ class ActivitiesController < ApplicationController
 
 	# Return a JSON response with a list of given activities based on the params: interest and time
 	# GET /api/activities
-	# URL format: '/api/activities?interest:<interest_name>'
-	# Testing via curl: curl -H "Content-Type: application/json" -X GET -d '{"interest": "science" }' http://localhost:3000/api/activities
+	# URL format: '/api/activities?interest=<interest_name>&time=<time>'
+	# Testing via curl: curl -H "Content-Type: application/json" -X GET -d '{"interest": "science"}' http://localhost:3000/api/activities
+	# Testing via curl: curl -H "Content-Type: application/json" -X GET -d '{"interest": "science", "time":10}' http://localhost:3000/api/activities
+	# Testing via curl: curl -H "Content-Type: application/json" -X GET -d '{"time":5}' http://localhost:3000/api/activities
+	# Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/activities
 	def get_activities
 		status = -1
 	  interest_key = "interest"
+	  time_key = "time"
 	  interest = params[interest_key]
-	  activities = Activity.get_activities(interest)
+	  time = params[time_key]
+	  activities = Activity.get_activities(interest, time)
 	  json_response = {}
 	  error_list = []
 

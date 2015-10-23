@@ -25,11 +25,15 @@ class Activity < ActiveRecord::Base
 
   # Returns a JSON list of all activities that have interest_name as their Interest.name.
   # If interest_name is nil, it returns a JSON list of all Activities in the database.
-  def self.get_activities(interest_name)
+  def self.get_activities(interest_name, time)
     if interest_name.nil?
       activities = Activity.all
     else
       activities = Activity.joins(:interests).where(interests: {name: interest_name})
+    end
+
+    if not time.nil?
+      activities = activities.where("completion_time <= ?", time)
     end
 
     activities.each do |activity|

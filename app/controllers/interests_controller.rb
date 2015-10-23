@@ -5,11 +5,9 @@ class InterestsController < ApplicationController
 
   # Create an Interest in the database for the given params
   # POST /api/interests
+  # Testing via curl: curl -H "Content-Type: application/json" -X POST -d '{"interest": {"name": "interest1"} }' http://localhost:3000/api/interests
   def create_interest
     interest_key = "interest"
-    name_key = "name"
-    name = params[interest_key][name_key]
-    password = params[user_key][password]
     json_response = {}
     status = -1
 
@@ -17,7 +15,7 @@ class InterestsController < ApplicationController
     if @interest.save 
       status = 1
       interest_data = { "id": @interest.id, "name": @interest.name }
-      json_response["interest"] = user_data
+      json_response["interest"] = interest_data
     else
       error_list = process_save_errors(@interest.errors)
       json_response["errors"] = error_list
@@ -47,6 +45,7 @@ class InterestsController < ApplicationController
 
   # Return a JSON response with a list of all interests
   # GET /api/interests
+  # Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/interests
   def get_interests
     status = -1
     interests = Interest.get_interests()
@@ -75,6 +74,7 @@ class InterestsController < ApplicationController
 
   # Deletes specified Interest from database
   # DELETE /api/interests/:id
+  # Testing via curl: curl -H "Content-Type: application/json" -X DELETE http://localhost:3000/api/interests/8
   def destroy_interest
     status = -1
     json_response = {}
@@ -102,28 +102,12 @@ class InterestsController < ApplicationController
     end
   end
 
-  # Takes in an error hash of the form: { "username": ["has already been taken", "error 2"], "name": ["is too long"] }
-  # and converts it to a list of readable errors, e.g. ["Error: username has already been taken.", "Error: username error 2.", 
-  # "Error: name is too long."] and returns it.
-  def process_save_errors(error_hash)
-    error_list = []
-
-    error_hash.each do |key|
-      key_errors = error_hash[key]
-
-      key_errors.each do |error|
-        new_error = "Error: #{key} #{error}."
-        error_list.append(new_error)
-      end
-    end
-
-    return error_list
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_interest
-      @interest = Interest.find(params[:id])
+      if not params[:id].nil? and params[:id].is_a? Integer
+        @interest = Interest.find(params[:id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

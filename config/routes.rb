@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   # resources :users
   # resources :interests
   #resources :custom_activities
-  #resources :activitiess
-  resources :pages
+  #resources :activities
+  #resources :pages
+
 
   ### Custom Routing ###
 

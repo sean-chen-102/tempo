@@ -85,11 +85,20 @@ $(document).ready(function(){
 	//Activities Collection
 	var Activities = Backbone.Collection.extend({
 		model: Activity,
-		url: "/api/activities",
-		parse: function(data){
-			//TODO: change json key
-			return data.data
-		}		
+		jsonData: null,		
+		//TODO: Api endpoint to retrieve JSON data
+		url: "/api/activites",
+		setData: function(){
+			this.fetch({
+				success: function(data){
+					this.jsonData = data;
+				}
+			});
+		},
+		initialize: function(){
+			console.log("Created new collection");
+			this.setData();
+		}
 	});
 
 	//Interests Collection
@@ -111,6 +120,7 @@ $(document).ready(function(){
 		initialize: function(options){
 			this.options = options;
 			this.render();
+
 		},
 		render : function (options){
 			// Set scope, construct new activity collection, call fetch, render data on callback function

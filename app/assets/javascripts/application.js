@@ -226,46 +226,10 @@ $(document).ready(function(){
 			var interests = new Interests();	
 			interests.fetch({
 				success: function(data){
-					console.log(data + "interests data");
 					renderData(data);
 				}
 			});
 		}
-
-		// render : function (options){
-
-
-
-
-		// 	//Initialize ArtistsArray
-		// 	var interestArray = []
-		// 	for (var i in dummyInterests){
-		// 		interestArray.push(new Interest(dummyInterests[i]));
-		// 	}
-			
-		// 	//Initialize Collection of Artst
-		// 	var interests = new Interests(interestArray);			
-			
-		// 	//TODO: Create and import handlebars for templating			
-		// 	var html = "<h4 style='color: #1abc9c;'> Interest List </h4> <br>"
-		// 				+ "<table> <thead> <tr> <th>Title</th> <th>Content</th> <th>Completion Time</th> <th>Content type</th> <th>Content</th> "
-		// 				+ "<th colspan='3'></th> </tr> </thead>" 
-		// 				+ " <tbody> ";
-		// 	//Iterate throught he collections of Activities and create a template
-		// 	interests.each(function(model){
-		// 		html += "<tr>" 
-		// 				+ "<td> " +  model.get('title') + " </td>"
-		// 				+ "<td> " +  model.get('content') + " </td>"
-		// 				+ "<td> " +  model.get('completion_time') + " </td>"
-		// 				+ "<td> " +  model.get('content_type') + " </td>"
-		// 			+ "</tr>";	
-		// 	});
-
-		// 	html += " </tbody> </table> </br> ";
-		// 	//Adding activity link
-		// 	html += " <a href='/activities#show' id='add'> Add interest </a>";
-		// 	this.$el.html(html);	
-		// }
 	});
 
 	// Creating View for Home
@@ -282,23 +246,16 @@ $(document).ready(function(){
 			this.times = new Times(null, {
 	            view: this
 	        });
-
-	        this.times.add(new Time({
-	            duration: "5"
-	        }));
-	        this.times.add(new Time({
-	            duration: "15"
-	        }));
-	        this.times.add(new Time({
-	            duration: "30"
-	        }));
-	        this.times.add(new Time({
-	            duration: "60"
-	        }));
+			//TODO: Find better way to do this
+			//add all the times we want the user to  be able to select
+	        this.times.add(new Time({duration: "5"}));
+	        this.times.add(new Time({duration: "15"}));
+	        this.times.add(new Time({duration: "30"}));
+	        this.times.add(new Time({duration: "60"}));
 		},
 		render : function (options){
 			var that = this;
-
+			//TODO: Move template to separate page, custom welcome name
 			var template = "<h3 style='color: #e74c3c;'> Welcome Home Owen </h3>" +
 							    "<select id='time-selector'>" +
 							        "<% _(times).each(function(time) { %>" +
@@ -308,6 +265,7 @@ $(document).ready(function(){
 							    "<button class='go-btn'>GO</button>" + 
 							    "<a href='activities#interests'> See your interests </a>";
 
+			//populate the home_template with times collection
 			var home_template = _.template(template)({
             	times: that.times.toJSON(),
             	labelValue: 'Times'
@@ -315,10 +273,12 @@ $(document).ready(function(){
         	this.$el.html(home_template);
 		},
 		makeGoRequest : function(options){
+			//called when the go button is clicked
 			var index = $('#time-selector')[0].selectedIndex;
 			var duration = this.times.models[index].get('duration');
-			console.log(duration);
+			//save duration to activity view object
 			App.Views['activityView'].time = duration;
+			//switch view to activities view
 			window.location = '/activities#activities';
 		}
 	});

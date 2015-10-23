@@ -225,24 +225,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # Takes in an error hash of the form: { "username": ["has already been taken", "error 2"], "name": ["is too long"] }
-  # and converts it to a list of readable errors, e.g. ["Error: username has already been taken.", "Error: username error 2.", 
-  # "Error: name is too long."] and returns it.
-  def process_save_errors(error_hash)
-    error_list = []
-
-    error_hash.each do |key|
-      key_errors = error_hash[key]
-
-      key_errors.each do |error|
-        new_error = "Error: #{key} #{error}."
-        error_list.append(new_error)
-      end
-    end
-
-    return error_list
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

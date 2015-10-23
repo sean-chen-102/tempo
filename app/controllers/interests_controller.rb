@@ -47,6 +47,7 @@ class InterestsController < ApplicationController
 
   # Return a JSON response with a list of all interests
   # GET /api/interests
+  # Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/interests
   def get_interests
     status = -1
     interests = Interest.get_interests()

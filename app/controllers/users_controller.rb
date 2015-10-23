@@ -47,6 +47,7 @@ class UsersController < ApplicationController
 
   # Returns a JSON response with a specified User's information
   # GET '/api/users/:id'
+  # Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/users/1
   def get_user
     status = -1
     json_response = {}
@@ -78,6 +79,7 @@ class UsersController < ApplicationController
 
   # Returns a JSON response with all Users from the database
   # GET '/api/users'
+  # Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/users
   def get_users
     status = -1
     json_response = {}
@@ -129,7 +131,7 @@ class UsersController < ApplicationController
 
   # Deletes specified User from database 
   # DELETE /api/users/:id
-  # TODO: update this API request
+  # Testing via curl: curl -H "Content-Type: application/json" -X DELETE http://localhost:3000/api/users/13
   def destroy_user
     status = -1
     json_response = {}
@@ -159,6 +161,7 @@ class UsersController < ApplicationController
 
   # Return a JSON response with a list of given Interests of a specified User
   # GET '/api/users/:id/interests'
+  # Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/users/2/interests
   def get_user_interests
     status = -1
     json_response = {}
@@ -193,6 +196,7 @@ class UsersController < ApplicationController
 
   # Return a JSON response with a list of a User's Custom Activities
   # GET /api/users/:id/custom_activities
+  # Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/users/2/custom_activities
   def get_user_custom_activities
     status = -1
     json_response = {}

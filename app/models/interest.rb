@@ -15,7 +15,7 @@ class Interest < ActiveRecord::Base
   belongs_to :users
 
 	# Validations
-	validates :name, presence: true
+	validates :name, presence: true, uniqueness: true
 	validates :name, length: { maximum: 30 }
 
   # Returns a JSON list of all Interests in the database.

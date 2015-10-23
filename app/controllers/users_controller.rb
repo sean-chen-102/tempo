@@ -48,28 +48,73 @@ class UsersController < ApplicationController
   # Returns a JSON response with a specified User's information
   # GET '/api/users/:id'
   def get_user
-    if @user.nil? 
-      json_response = { status: -1, errors: "User does not exist!"}.to_json
+    status = -1
+    json_response = {}
+    error_list = []
+    user_id = params[:id]
+    @user = User.where(id: user_id)
+
+    if not @user.empty? # if the User exists
+      status = 1
+      @user = @user.first # get the User from the ActiveRecord Relation
+      user_data = { "id": @user.id, "name": @user.name, "username": @user.username, "email": @user.email }
+      json_response["user"] = user_data
     else
-      json_response = @user
+      error_list.append("Error: user ##{params[:id]} does not exist.")
     end
 
+    if status == -1
+      json_response["errors"] = error_list
+    end
+
+    json_response["status"] = status
+    json_response = json_response.to_json
+
     respond_to do |format|
+      # format.html # show.html.erb
       format.json { render json: json_response }
     end
   end
 
-  # Gets all Users from the database
+  # Returns a JSON response with all Users from the database
   # GET '/api/users'
   def get_users
-    json_response = User.all
+    status = -1
+    json_response = {}
+    error_list = []
+    user_id = params[:id]
+    @users = User.all
+    user_list = []
+
+    if not @users.empty? # if there are Users
+      status = 1
+      @users.each do |user|
+        user_data = { "id": user.id, "name": user.name, "username": user.username, "email": user.email }
+        user_data = user_data.as_json
+        user_list.append(user_data)
+      end
+
+      json_response["users"] = user_list
+    else
+      error_list.append("Error: there are no users.")
+    end
+
+    if status == -1
+      json_response["errors"] = error_list
+    end
+
+    json_response["status"] = status
+    json_response = json_response.to_json
+
     respond_to do |format|
+      # format.html # show.html.erb
       format.json { render json: json_response }
     end
   end
 
   # Edit the fields of a specified User
   # PUT /api/users/:id
+  # TODO: update this API request
   def edit_user
     respond_to do |format|
       if @user.update(user_params)
@@ -84,15 +129,30 @@ class UsersController < ApplicationController
 
   # Deletes specified User from database 
   # DELETE /api/users/:id
+  # TODO: update this API request
   def destroy_user
-    if @user.nil?
-      json_response = { status: -1, errors: "User does not exist!"}.to_json
+    status = -1
+    json_response = {}
+    error_list = []
+    user_id = params[:id]
+    @user = User.where(id: user_id)
+
+    if not @user.empty? # if the User exists
+      @user = @user.first # get the User from the ActiveRecord Relation
+      @user.destroy # delete the User from the database
+      status = 1
     else
-      @user.destroy
-      json_response = { status: 1 }.to_json
+      error_list.append("Error: user ##{params[:id]} does not exist.")
     end
+
+    if status == -1
+      json_response["errors"] = error_list
+    end
+
+    json_response["status"] = status
+    json_response = json_response.to_json
+
     respond_to do |format|
-      # format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { render json: json_response }
     end
   end
@@ -100,8 +160,30 @@ class UsersController < ApplicationController
   # Return a JSON response with a list of given Interests of a specified User
   # GET '/api/users/:id/interests'
   def get_user_interests
-    interests = User.get_interests(@user.id)
-    json_response = interests
+    status = -1
+    json_response = {}
+    error_list = []
+    user_id = params[:id]
+
+    if not User.where(id: user_id).empty? # if the User exists
+      interests = User.get_interests(user_id)
+
+      if interests.length > 0
+        status = 1
+        json_response["interests"] = interests
+      else
+        error_list.append("Error: user ##{user_id} does not have any interests.")
+      end
+    else
+      error_list.append("Error: user ##{params[:id]} does not exist.")
+    end
+
+    if status == -1
+      json_response["errors"] = error_list
+    end
+
+    json_response["status"] = status
+    json_response = json_response.to_json
 
     respond_to do |format|
       # format.html # show.html.erb
@@ -112,8 +194,30 @@ class UsersController < ApplicationController
   # Return a JSON response with a list of a User's Custom Activities
   # GET /api/users/:id/custom_activities
   def get_user_custom_activities
-    custom_activities = User.get_custom_activities(@user.id)
-    json_response = custom_activities
+    status = -1
+    json_response = {}
+    error_list = []
+    user_id = params[:id]
+
+    if not User.where(id: user_id).empty? # if the User exists
+      custom_activities = User.get_custom_activities(user_id)
+
+      if custom_activities.length > 0
+        status = 1
+        json_response["custom_activities"] = custom_activities
+      else
+        error_list.append("Error: user ##{user_id} does not have any custom activities.")
+      end
+    else
+      error_list.append("Error: user ##{params[:id]} does not exist.")
+    end
+
+    if status == -1
+      json_response["errors"] = error_list
+    end
+
+    json_response["status"] = status
+    json_response = json_response.to_json
 
     respond_to do |format|
       # format.html # show.html.erb
@@ -142,7 +246,7 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      if not params[:id].nil?
+      if not params[:id].nil? and params[:id].is_a? Integer
         @user = User.find(params[:id])
       end
     end

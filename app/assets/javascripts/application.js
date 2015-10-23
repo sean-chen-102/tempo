@@ -27,58 +27,8 @@
 
 //Test template
 
-
 // TODO: Move to tempo.js 
 $(document).ready(function(){
-	//-----------------Temporary Api dummy data
-	var dummyActivities = [
-		{
-			"id": 1,
-			"title": "Reading Wikipedia",
-			"content": "he Treaties of the European Union are a set of international treaties between the European Union (EU) member states which sets out the EU's constitutional basis. They establish the various EU institutions together with their remit, procedures and objectives. The EU can only act within the competences granted to it through thes",
-			"completion_time": 2,
-			"content_type": "article"
-		},
-		{
-			"id": 2,
-			"title": "Fact of The Day",
-			"content": "The Minnesota Vikings and the Buffalo Bills, who have both been to four Super Bowls, have come away with zero championships. And then there's four franchises -- the Cleveland Browns, Detroit Lions, Houston Texans, and Jacksonville Jaguars -- who have never been to the Super Bowl.",
-			"completion_time": 1,
-			"content_type": "article"
-		},
-		{
-			"id": 3,
-			"title": "What is Wedding Soup",
-			"content": "The term 'wedding soup' is a mistranslation of the Italian language phrase 'minestra maritata' ('married soup','' which is a reference to the fact that green vegetables and meats go well together. The minestra maritata recipe is also prepared by the families of Lazio and Campania during the Christmas season (a tradition",
-			"completion_time": 3,
-			"content_type": "article"
-		},
-		{
-			"id": 4,
-			"title": "Another soup thing",
-			"content": "guage phrase 'minestra maritata' ('married soup','' which is a reference to the fact that green vegetables and meats go well together. The minestra maritata recipe is also prepared by the families of Lazio and Campania during the Christmas season (a tradition",
-			"completion_time": 3,
-			"content_type": "article"
-		}					
-	] 
-
-	var dummyInterests = [
-		{
-			"id": 1,
-			"title": "Reading Wikipedia",
-			"content": "he Treaties of the European Union are a set of international treaties between the European Union (EU) member states which sets out the EU's constitutional basis. They establish the various EU institutions together with their remit, procedures and objectives. The EU can only act within the competences granted to it through thes",
-			"completion_time": 2,
-			"content_type": "article"
-		},
-		{
-			"id": 2,
-			"title": "Fact of The Day",
-			"content": "The Minnesota Vikings and the Buffalo Bills, who have both been to four Super Bowls, have come away with zero championships. And then there's four franchises -- the Cleveland Browns, Detroit Lions, Houston Texans, and Jacksonville Jaguars -- who have never been to the Super Bowl.",
-			"completion_time": 1,
-			"content_type": "article"
-		}]
-	//-----------------Temporary Api data
-
 	window.App = {
 	  Models: {},
 	  Collections: {},
@@ -86,7 +36,6 @@ $(document).ready(function(){
 	  Routers: {},
 	  initialize: function(data){
 		console.log('Initilizing the app');
-		
 		//Start app router and history
 		new App.Router;
 		Backbone.history.start();	
@@ -99,7 +48,8 @@ $(document).ready(function(){
 			'': 'index',
 			'home': 'index',
 			"interests": "interests",
-			"activities": "activities"
+			"activities": "activities",
+			"show": "show"
 		},
 		index: function(){
 			console.log("Index router is called");
@@ -114,7 +64,16 @@ $(document).ready(function(){
 			console.log("The interests router was called ");
 			//Constructing View 
 			App.Views['interestView'] = new InterestView()			
-		}
+		},
+		show: function(){
+			//This route doesn't do anything yet
+			console.log("The show router was called ");
+			document.getElementById('add').style.color = 'green';
+			var newNode = document.createElement("p");
+			newNode.appendChild(document.createTextNode("This hasn't been implemented yet"));
+			var refNode = document.getElementById("add");
+			refNode.parentNode.insertBefore(newNode, refNode.nextSibling);			
+		}		
 	});
 
 	//Models =================================
@@ -147,17 +106,9 @@ $(document).ready(function(){
 		model: Interest,
 		jsonData: null,		
 		//TODO: Api endpoint to retrieve JSON data
-		url: "/pages",
-		setData: function(){
-			this.fetch({
-				success: function(data){
-					this.jsonData = data;
-				}
-			});
-		},
-		initialize: function(){
-			console.log("Created new collection");
-			this.setData();
+		url: "/api/interests",
+		parse: function(data){
+			return data.interests
 		}
 	});	
 
@@ -172,35 +123,37 @@ $(document).ready(function(){
 
 		},
 		render : function (options){
+			// Set scope, construct new activity collection, call fetch, render data on callback function
+			var that = this; // To fix callback scoping error
+		    var renderData = function(data){	    	
+				//TODO: Create and import handlebars for templating			
+				var html = "<h4 style='color: #9b59b6;'> Activity List </h4> <br>"
+							+ "<table> <thead> <tr> <th>Title</th> <th>Content</th> <th>Completion Time</th> <th>Content type</th> <th>Id</th> "
+							+ "<th colspan='3'></th> </tr> </thead>" 
+							+ " <tbody> ";
 
-			//Initialize ArtistsArray
-			var activityArray = []
-			for (var i in dummyActivities){
-				activityArray.push(new Activity(dummyActivities[i]));
-			}
-			
-			//Initialize Collection of Artst
-			var activities = new Activities(activityArray);			
-			
-			//TODO: Create and import handlebars for templating			
-			var html = "<h4 style='color: #9b59b6;'> Activity List </h4> <br>"
-						+ "<table> <thead> <tr> <th>Title</th> <th>Content</th> <th>Completion Time</th> <th>Content type</th> <th>Content</th> "
-						+ "<th colspan='3'></th> </tr> </thead>" 
-						+ " <tbody> ";
-			//Iterate throught he collections of Activities and create a template
-			activities.each(function(model){
-				html += "<tr>" 
-						+ "<td> " +  model.get('title') + " </td>"
-						+ "<td> " +  model.get('content') + " </td>"
-						+ "<td> " +  model.get('completion_time') + " </td>"
-						+ "<td> " +  model.get('content_type') + " </td>"
-					+ "</tr>";	
+				//Iterate throught he collections of Activities and create a template
+				activities.each(function(model){
+					html += "<tr>" 
+							+ "<td> " +  model.get('title') + " </td>"
+							+ "<td> " +  model.get('content') + " </td>"
+							+ "<td> " +  model.get('completion_time') + " </td>"
+							+ "<td> " +  model.get('content_type') + " </td>"
+							+ "<td> " +  model.get('id') + " </td>"
+						+ "</tr>";	
+				});
+				html += " </tbody> </table> </br> ";
+				//Adding activity link
+				html += " <a href='/activities#show' id='add'> Add activity </a>";
+				$(that.el).html(html);	
+		    };
+
+			var activities = new Activities();	
+			activities.fetch({
+				success: function(data){
+					renderData(data);
+				}
 			});
-
-			html += " </tbody> </table> </br> ";
-			//Adding activity link
-			html += " <a href='/activities#show'> Add activity </a>";
-			this.$el.html(html);	
 		}
 	});
 
@@ -215,36 +168,73 @@ $(document).ready(function(){
 			this.render();
 		},
 		render : function (options){
+			// Set scope, construct new activity collection, call fetch, render data on callback function
+			var that = this; // To fix callback scoping error
+		    var renderData = function(data){	    	
+		
+				//TODO: Create and import handlebars for templating			
+				var html = "<h4 style='color: #1abc9c;'> Interest List </h4> <br>"
+							+ "<table> <thead> <tr> <th>Name</th> <th>Created at</th> <th>Updated At</th> <th>User Id</th> <th>Content</th> "
+							+ "<th colspan='3'></th> </tr> </thead>" 
+							+ " <tbody> ";
+				//Iterate throught he collections of Activities and create a template
+				interests.each(function(model){
+					html += "<tr>" 
+							+ "<td> " +  model.get('name') + " </td>"
+							+ "<td> " +  model.get('created_at') + " </td>"
+							+ "<td> " +  model.get('updated_at') + " </td>"
+							+ "<td> " +  model.get('user_id') + " </td>"
+						+ "</tr>";	
+				});
+				html += " </tbody> </table> </br> ";
+				//Adding activity link
+				html += " <a href='/activities#show' id='add'> Add interest </a>";
+				$(that.el).html(html);	
+		    };
 
-			//Initialize ArtistsArray
-			var interestArray = []
-			for (var i in dummyInterests){
-				interestArray.push(new Interest(dummyInterests[i]));
-			}
-			
-			//Initialize Collection of Artst
-			var interests = new Interests(interestArray);			
-			
-			//TODO: Create and import handlebars for templating			
-			var html = "<h4 style='color: #1abc9c;'> Interest List </h4> <br>"
-						+ "<table> <thead> <tr> <th>Title</th> <th>Content</th> <th>Completion Time</th> <th>Content type</th> <th>Content</th> "
-						+ "<th colspan='3'></th> </tr> </thead>" 
-						+ " <tbody> ";
-			//Iterate throught he collections of Activities and create a template
-			interests.each(function(model){
-				html += "<tr>" 
-						+ "<td> " +  model.get('title') + " </td>"
-						+ "<td> " +  model.get('content') + " </td>"
-						+ "<td> " +  model.get('completion_time') + " </td>"
-						+ "<td> " +  model.get('content_type') + " </td>"
-					+ "</tr>";	
+			var interests = new Interests();	
+			interests.fetch({
+				success: function(data){
+					console.log(data + "interests data");
+					renderData(data);
+				}
 			});
-
-			html += " </tbody> </table> </br> ";
-			//Adding activity link
-			html += " <a href='/activities#show'> Add interest </a>";
-			this.$el.html(html);	
 		}
+
+		// render : function (options){
+
+
+
+
+		// 	//Initialize ArtistsArray
+		// 	var interestArray = []
+		// 	for (var i in dummyInterests){
+		// 		interestArray.push(new Interest(dummyInterests[i]));
+		// 	}
+			
+		// 	//Initialize Collection of Artst
+		// 	var interests = new Interests(interestArray);			
+			
+		// 	//TODO: Create and import handlebars for templating			
+		// 	var html = "<h4 style='color: #1abc9c;'> Interest List </h4> <br>"
+		// 				+ "<table> <thead> <tr> <th>Title</th> <th>Content</th> <th>Completion Time</th> <th>Content type</th> <th>Content</th> "
+		// 				+ "<th colspan='3'></th> </tr> </thead>" 
+		// 				+ " <tbody> ";
+		// 	//Iterate throught he collections of Activities and create a template
+		// 	interests.each(function(model){
+		// 		html += "<tr>" 
+		// 				+ "<td> " +  model.get('title') + " </td>"
+		// 				+ "<td> " +  model.get('content') + " </td>"
+		// 				+ "<td> " +  model.get('completion_time') + " </td>"
+		// 				+ "<td> " +  model.get('content_type') + " </td>"
+		// 			+ "</tr>";	
+		// 	});
+
+		// 	html += " </tbody> </table> </br> ";
+		// 	//Adding activity link
+		// 	html += " <a href='/activities#show' id='add'> Add interest </a>";
+		// 	this.$el.html(html);	
+		// }
 	});
 
 	// Creating View for Home

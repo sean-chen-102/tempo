@@ -240,7 +240,14 @@ $(document).ready(function(){
 		render : function (options){
 
 			html = "<h3 style='color: #e74c3c;'> Welcome Home Owen </h3>";
+			html += "<select id='activity_time'>" +
+					  "<option value='5_min'>5 min</option>" +
+					  "<option value='15_min'>15 min</option>" +
+					  "<option value='30_min'>30 min</option>" +
+					  "<option value='1_hr'>1 hr</option>" +
+					"</select> <br>";
 			//Go button
+			
 			html += "<a href='activities#activities'> GO </a> <br>";
 			html += "<a href='activities#interests'> See your interests </a> ";
 			this.$el.html(html);	
@@ -249,6 +256,7 @@ $(document).ready(function(){
 
 	//Initialize Activity view
 	App.initialize();
+
 });
 
 

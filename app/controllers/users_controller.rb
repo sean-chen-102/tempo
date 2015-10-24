@@ -26,9 +26,7 @@ class UsersController < ApplicationController
     status = -1
 
     @user = User.new(user_params)
-    # puts "Tried to create user: #{@user}"
     if @user.save 
-      # puts "in @user.save"
       status = 1
       user_data = { "id": @user.id, "name": @user.name, "username": @user.username, "email": @user.email }
       json_response["user"] = user_data
@@ -52,12 +50,9 @@ class UsersController < ApplicationController
     status = -1
     json_response = {}
     error_list = []
-    user_id = params[:id]
-    @user = User.where(id: user_id)
 
-    if not @user.empty? # if the User exists
+    if not @user.nil? # if the User exists
       status = 1
-      @user = @user.first # get the User from the ActiveRecord Relation
       user_data = { "id": @user.id, "name": @user.name, "username": @user.username, "email": @user.email }
       json_response["user"] = user_data
     else
@@ -136,11 +131,8 @@ class UsersController < ApplicationController
     status = -1
     json_response = {}
     error_list = []
-    user_id = params[:id]
-    @user = User.where(id: user_id)
 
-    if not @user.empty? # if the User exists
-      @user = @user.first # get the User from the ActiveRecord Relation
+    if not @user.nil? # if the User exists
       @user.destroy # delete the User from the database
       status = 1
     else
@@ -166,10 +158,9 @@ class UsersController < ApplicationController
     status = -1
     json_response = {}
     error_list = []
-    user_id = params[:id]
 
-    if not User.where(id: user_id).empty? # if the User exists
-      interests = User.get_interests(user_id)
+    if not @user.nil? # if the User exists
+      interests = User.get_interests(params[:id])
 
       if interests.length > 0
         status = 1
@@ -201,10 +192,9 @@ class UsersController < ApplicationController
     status = -1
     json_response = {}
     error_list = []
-    user_id = params[:id]
 
-    if not User.where(id: user_id).empty? # if the User exists
-      custom_activities = User.get_custom_activities(user_id)
+    if not @user.nil? # if the User exists
+      custom_activities = User.get_custom_activities(params[:id])
 
       if custom_activities.length > 0
         status = 1
@@ -232,14 +222,17 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      if not params[:id].nil? and params[:id].is_a? Integer
-        @user = User.find(params[:id])
+      if not params[:id].nil? and params[:id].respond_to?(:to_i)
+        begin
+          @user = User.find(params[:id])
+        rescue ActiveRecord::RecordNotFound
+          @user = nil
+        end
       end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      puts "SETTING USER_PARAMS"
       params.require(:user).permit(:name, :username, :email, :password, :password_confirmation)
     end
 end

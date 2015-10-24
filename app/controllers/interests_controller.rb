@@ -79,11 +79,8 @@ class InterestsController < ApplicationController
     status = -1
     json_response = {}
     error_list = []
-    interest_id = params[:id]
-    @interest = Interest.where(id: interest_id)
 
-    if not @interest.empty? # if the Interest exists
-      @interest = @interest.first # get the Interest from the ActiveRecord Relation
+    if not @interest.nil? # if the Interest exists
       @interest.destroy # delete the Interest from the database
       status = 1
     else
@@ -105,8 +102,12 @@ class InterestsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_interest
-      if not params[:id].nil? and params[:id].is_a? Integer
-        @interest = Interest.find(params[:id])
+      if not params[:id].nil? and params[:id].respond_to?(:to_i)
+        begin
+          @interest = Interest.find(params[:id])
+        rescue ActiveRecord::RecordNotFound
+          @user = nil
+        end
       end
     end
 

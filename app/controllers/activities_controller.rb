@@ -33,7 +33,7 @@ class ActivitiesController < ApplicationController
 	  end
 	end
 
-  # Edit the fields of a specified Activity 
+  	# Edit the fields of a specified Activity 
 	# PUT /api/activities/:id
 	# TODO: update this API request
 	def edit_activity
@@ -55,11 +55,8 @@ class ActivitiesController < ApplicationController
 	  status = -1
 	  json_response = {}
 	  error_list = []
-	  activity_id = params[:id]
-	  @activity = Activity.where(id: activity_id)
 
-	  if not @activity.empty? # if the Activity exists
-	    @activity = @activity.first # get the Activity from the ActiveRecord Relation
+	  if not @activity.nil? # if the Activity exists
 	    @activity.destroy # delete the Activity from the database
 	    status = 1
 	  else
@@ -86,7 +83,7 @@ class ActivitiesController < ApplicationController
 	# Testing via curl: curl -H "Content-Type: application/json" -X GET -d '{"interests": ["news","fitness"]}' http://localhost:3000/api/activities
 	# Testing via curl: curl -H "Content-Type: application/json" -X GET -d '{"interests": ["news","fitness"], "time": 5}' http://localhost:3000/api/activities
 	def get_activities
-		status = -1
+	  status = -1
 	  interests_key = "interests"
 	  time_key = "time"
 	  interests_list = params[interests_key]
@@ -120,8 +117,12 @@ class ActivitiesController < ApplicationController
 	private
 	  # Use callbacks to share common setup or constraints between actions.
 	  def set_activity
-	  	if not params[:id].nil? and params[:id].is_a? Integer
-	    	@activity = Activity.find(params[:id])
+	  	if not params[:id].nil? and params[:id].respond_to?(:to_i)
+	  		begin
+		    	@activity = Activity.find(params[:id])
+		    rescue ActiveRecord::RecordNotFound
+          		@user = nil
+        	end
 	    end
 	  end
 

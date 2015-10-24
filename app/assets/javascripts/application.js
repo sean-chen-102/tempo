@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require underscore
 //= require backbone
 //= require tempo
@@ -54,6 +53,7 @@ $(document).ready(function(){
 			"show": "show"
 		},
 		initialize: function() {
+			console.log("HEY");
 			App.Views['homeView'] = new HomeView();
 			App.Views['activityView'] = new ActivityView()
 			App.Views['interestView'] = new InterestView()
@@ -91,6 +91,7 @@ $(document).ready(function(){
 			//Constructing View 
 			App.Views['SignupView'].render()			
 
+
 		},
 
 	});
@@ -107,13 +108,26 @@ $(document).ready(function(){
     	paramRoot: 'user',
 
     	defaults: {
-    	"name": "",
-      	"email": "",
-      	"username": "",
-      	"password": "",
-      	"password_confirmation": ""
+    		"user" : {
+    			"name": "",
+      			"email": "",
+      			"username": "",
+      			"password": "",
+      			"password_confirmation": ""
+    		}
     	}
   	});
+  	var UserLogin = Backbone.Model.extend({
+  		url: '/users/sign_in.json',
+  		paramRoot: 'user',
+  		defaults: {
+  			"user" : {
+    			"email": "",
+    			"password": ""
+    		}
+  		}
+	});
+
   	var UserSession = Backbone.Model.extend({
   		url: '/users/sign_in.json',
   		paramRoot: 'user',
@@ -275,7 +289,8 @@ $(document).ready(function(){
 		tagName : 'div',
 		options: null,
 		events:{
-        	"click .go-btn":"makeGoRequest"
+        	"click .go-btn":"makeGoRequest",
+        	"click #login": "login"
     	},
 		initialize: function(options){
 			this.options = options;
@@ -311,6 +326,11 @@ $(document).ready(function(){
 			App.Views['activityView'].time = duration;
 			//switch view to activities view
 			window.location = '/activities#activities';
+		},
+		login : function(options){
+			//called when the go button is clicked
+			var username = $('#username-login').val();
+			var password = $('#password-login').val();
 		}
 	});
 
@@ -346,12 +366,12 @@ $(document).ready(function(){
 
 	    el.find('input.btn-primary').prop('value', 'loading');
 
-	    this.model.attributes.username = $('#username').val();
-	    this.model.attributes.name = $('#name').val();
-	    this.model.attributes.email = $('#email').val();
+	    this.model.attributes.user.username = $('#username').val();
+	    this.model.attributes.user.name = $('#name').val();
+	    this.model.attributes.user.email = $('#email').val();
 	  	//TODO validation for form on the front end
-	    this.model.attributes.password = $('#password').val();
-	    this.model.attributes.password_confirmation = $('#password').val();
+	    this.model.attributes.user.password = $('#password').val();
+	    this.model.attributes.user.password_confirmation = $('#password').val();
 	    console.log(this.model.attributes);
 	    this.model.save(this.model.attributes, {
 	      success: function(userSession, response) {

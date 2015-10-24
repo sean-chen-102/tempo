@@ -98,7 +98,7 @@ class ActivitiesController < ApplicationController
 	  if activities.length > 0
 	    status = 1
 	    json_response["activities"] = activities
-	  elsif not interest.nil?
+	  elsif not interests_list.nil?
 	  	error_list.append("Error: no activities found with the given interest.")
 	  else
 	  	error_list.append("Error: no activities found.")

@@ -38,11 +38,11 @@ class SessionsController < ApplicationController
       error_list.append(@session_errors[:missing_password])
     end
 
-    if not email.nil?
+    if not email.empty?
       # using email to login
       puts "WE HAVE AN EMAIL"
       @user = User.find_by(email: email)
-    elsif not username.nil?
+    elsif not username.empty?
       # using username to login
       puts "WE HAVE A USERNAME"
       @user = User.find_by(username: username)

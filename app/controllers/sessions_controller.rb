@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   before_filter :set_constants
+  require 'jwt' # for JSON Web Tokens
 
   # Defines constants for SessionsController use
   def set_constants
@@ -29,6 +30,7 @@ class SessionsController < ApplicationController
     error_list = []
     authentication_successful = false
     status = -1
+    session_token = -1
     json_response = {}
 
     if password.nil?
@@ -54,6 +56,7 @@ class SessionsController < ApplicationController
       if @user && @user.authenticate(password) # if the user exists and the password is correct
         # send successful authentication message
         authentication_successful = true
+        session_token = get_secure_token(username, email, password)
         status = 1
       else
         # append bad credentials error
@@ -67,6 +70,7 @@ class SessionsController < ApplicationController
       # no errors produced, login successful
       user_data = { "id": @user.id, "name": @user.name, "username": @user.username, "email": @user.email }
       json_response["user"] = user_data
+      json_response["token"] = session_token
     else
       # send error messages
       json_response["errors"] = error_list
@@ -76,6 +80,34 @@ class SessionsController < ApplicationController
     respond_to do |format|
       format.json { render json: json_response }
     end
+  end
+
+  def get_secure_token(username, email, password)
+    if username.nil?
+      username = User.find_by(email: email)
+    elsif email.nil?
+      email = User.find_by(username: username).email
+    end
+
+    payload = { username: username, email: email, password: password }
+
+    # IMPORTANT: set nil as password parameter
+    token = JWT.encode(payload, nil, 'none')
+
+    # eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJ0ZXN0IjoiZGF0YSJ9.
+    puts token
+
+    # Set password to nil and validation to false otherwise this won't work
+    decoded_token = JWT.decode token, nil, false
+
+    # Array
+    # [
+    #   {"username": "<username>", "email": "<email>", "password": "<password"}, # payload
+    #   {"typ"=>"JWT", "alg"=>"none"} # header
+    # ]
+    puts decoded_token
+
+    return token
   end
 
 

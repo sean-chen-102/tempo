@@ -17,6 +17,8 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'annotate'
 # For user password encryption
 gem 'bcrypt'
+# For JSON Web Token encryption
+gem 'jwt'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

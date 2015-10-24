@@ -46,8 +46,8 @@ $(document).ready(function(){
 	App.Router = Backbone.Router.extend({
 		routes: {
 			'': 'index',
-			'signup': 'signup',
 			'home': 'home',
+			'signup': 'signup',
 			"interests": "interests",
 			"activities": "activities",
 			"show": "show"
@@ -57,7 +57,6 @@ $(document).ready(function(){
 			App.Views['homeView'] = new HomeView();
 			App.Views['activityView'] = new ActivityView()
 			App.Views['interestView'] = new InterestView()
-			App.Views['SignupView'] = new SignupView()
 		},
 		index: function(){
 			console.log("Index router is called");
@@ -89,6 +88,7 @@ $(document).ready(function(){
 		signup: function(){
 			console.log("The signup router was called ");
 			//Constructing View 
+			App.Views['SignupView'] = new SignupView()
 			App.Views['SignupView'].render()			
 
 
@@ -118,13 +118,11 @@ $(document).ready(function(){
     	}
   	});
   	var UserLogin = Backbone.Model.extend({
-  		url: '/users/sign_in.json',
+  		url: '/api/login/',
   		paramRoot: 'user',
   		defaults: {
-  			"user" : {
-    			"email": "",
-    			"password": ""
-    		}
+			"email": "",
+			"password": ""
   		}
 	});
 
@@ -294,7 +292,7 @@ $(document).ready(function(){
 		options: null,
 		events:{
         	"click .go-btn":"makeGoRequest",
-        	"click #login": "login"
+        	"click .login-submit":"login"
     	},
 		initialize: function(options){
 			this.options = options;
@@ -302,6 +300,8 @@ $(document).ready(function(){
 			this.times = new Times(null, {
 	            view: this
 	        });
+
+	        this.model = new UserLogin();
 			//TODO: Find better way to do this
 			//add all the times we want the user to  be able to select
 	        this.times.add(new Time({duration: "5"}));
@@ -332,9 +332,23 @@ $(document).ready(function(){
 			window.location = '/activities#activities';
 		},
 		login : function(options){
+			console.log("hi");
 			//called when the go button is clicked
 			var username = $('#username-login').val();
 			var password = $('#password-login').val();
+			this.model.attributes.username = username;
+			this.model.attributes.password = password
+			console.log(this.model.attributes);
+		    this.model.save(this.model.attributes, {
+	      		success: function(userSession, response) {
+	      			console.log("success!");
+	      			console.log(userSession);
+	      			console.log(response);
+	      },
+	      error: function(userSession, response) {
+	      	console.log("failure!");
+	      }
+	    });
 		}
 	});
 
@@ -349,6 +363,7 @@ $(document).ready(function(){
 	  },
 
 	  initialize: function() {
+	  	console.log("signup init");
 	    this.model = new UserRegistration();
 	  },
 

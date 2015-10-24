@@ -39,7 +39,7 @@ $(document).ready(function(){
 		console.log('Initilizing the app');
 		//Start app router and history
 		new App.Router;
-		Backbone.history.start();	
+		Backbone.history.start();
 	  }
 	};
 
@@ -47,6 +47,7 @@ $(document).ready(function(){
 	App.Router = Backbone.Router.extend({
 		routes: {
 			'': 'index',
+			'signup': 'signup',
 			'home': 'home',
 			"interests": "interests",
 			"activities": "activities",
@@ -56,9 +57,14 @@ $(document).ready(function(){
 			App.Views['homeView'] = new HomeView();
 			App.Views['activityView'] = new ActivityView()
 			App.Views['interestView'] = new InterestView()
+			App.Views['SignupView'] = new SignupView()
 		},
 		index: function(){
 			console.log("Index router is called");
+			App.Views['homeView'].render();
+		},
+		home: function() {
+			console.log("Home router is called");
 			App.Views['homeView'].render();
 		},
 		activities: function(){
@@ -79,15 +85,43 @@ $(document).ready(function(){
 			newNode.appendChild(document.createTextNode("This hasn't been implemented yet"));
 			var refNode = document.getElementById("add");
 			refNode.parentNode.insertBefore(newNode, refNode.nextSibling);			
-		}		
+		},
+		signup: function(){
+			console.log("The signup router was called ");
+			//Constructing View 
+			App.Views['SignupView'].render()			
+
+		},
+
 	});
 
 	//Models =================================
 	var Activity = Backbone.Model.extend({});
 	var Interest = Backbone.Model.extend({});
+	var User = Backbone.Model.extend({});
 	var Time = Backbone.Model.extend({
 			    duration: null
 				});
+	var UserRegistration = Backbone.Model.extend({
+    	url: '/api/users/',
+    	paramRoot: 'user',
+
+    	defaults: {
+    	"name": "",
+      	"email": "",
+      	"username": "",
+      	"password": "",
+      	"password_confirmation": ""
+    	}
+  	});
+  	var UserSession = Backbone.Model.extend({
+  		url: '/users/sign_in.json',
+  		paramRoot: 'user',
+  		defaults: {
+    		"email": "",
+    		"password": ""
+  		}
+	});
 
 	//Collections  =================================
 	
@@ -257,22 +291,16 @@ $(document).ready(function(){
 	        this.times.add(new Time({duration: "60"}));
 		},
 		render : function (options){
+			console.log("render home");
 			var that = this;
 			//TODO: Move template to separate page, custom welcome name
-			var template = "<h3 style='color: #e74c3c;'> Welcome Home Owen </h3>" +
-							    "<select id='time-selector'>" +
-							        "<% _(times).each(function(time) { %>" +
-							            "<option value='<%= time.duration %>'><%= time.duration %></option>" +
-							        "<% }); %>" +
-							    "</select>" + 
-							    "<button class='go-btn'>GO</button>" + 
-							    "<a href='activities#interests'> See your interests </a>";
-
 			//populate the home_template with times collection
-			var home_template = _.template(template)({
+			var home_template = JST["backbone/templates/activities/home"]({
             	times: that.times.toJSON(),
             	labelValue: 'Times'
     	    });
+    	    console.log(home_template);
+    	    console.log(this.$el);
         	this.$el.html(home_template);
 		},
 		makeGoRequest : function(options){
@@ -284,6 +312,69 @@ $(document).ready(function(){
 			//switch view to activities view
 			window.location = '/activities#activities';
 		}
+	});
+
+	
+
+	var SignupView = Backbone.View.extend({
+		el: ".testDiv",
+		tagName : 'div',
+
+	  events: {
+	    'submit form': 'signup'
+	  },
+
+	  initialize: function() {
+	    this.model = new UserRegistration();
+	  },
+
+	  render: function() {
+	    console.log("render signup");
+			var that = this;
+			var signup_template = JST["backbone/templates/unauthenticated/signup"];
+    	    console.log(signup_template);
+        	this.$el.html(signup_template);
+		},
+
+	  signup: function(e) {
+
+	    var self = this,
+	        el = $(this.el);
+
+	    e.preventDefault();
+
+
+	    el.find('input.btn-primary').prop('value', 'loading');
+
+	    this.model.attributes.username = $('#username').val();
+	    this.model.attributes.name = $('#name').val();
+	    this.model.attributes.email = $('#email').val();
+	  	//TODO validation for form on the front end
+	    this.model.attributes.password = $('#password').val();
+	    this.model.attributes.password_confirmation = $('#password').val();
+	    console.log(this.model.attributes);
+	    this.model.save(this.model.attributes, {
+	      success: function(userSession, response) {
+	      	console.log("success!");
+	      	console.log(userSession);
+	      	console.log(response);
+	        el.find('input.btn-primary').prop('value', 'reset');
+	        currentUser = new User(response);
+	      },
+	      error: function(userSession, response) {
+	      	console.log("failure!");
+	        var result = $.parseJSON(response.responseText);
+	        el.find('form').prepend(BD.Helpers.Notifications.error("Unable to complete signup."));
+	        _(result.errors).each(function(errors,field) {
+	          $('#'+field+'_group').addClass('error');
+	          _(errors).each(function(error, i) {
+	            $('#'+field+'_group .controls').append(BD.Helpers.FormHelpers.fieldHelp(error));
+	          });
+	        });
+	        el.find('input.btn-primary').button('reset');
+	      }
+	    });
+	  }
 	});
 
 	//Initialize Activity view

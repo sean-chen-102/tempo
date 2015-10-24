@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require js.cookie
 //= require underscore
 //= require backbone
 //= require tempo
@@ -246,6 +247,9 @@ $(document).ready(function(){
 		options: null,
 		initialize: function(options){
 			this.options = options;
+			Backbone.Events.on("user-interests", function(interests) {
+       			console.log("interests, hi");
+   			});
 		},
 		render : function (options){
 			// Set scope, construct new activity collection, call fetch, render data on callback function
@@ -344,6 +348,9 @@ $(document).ready(function(){
 	      			console.log("success!");
 	      			console.log(userSession);
 	      			console.log(response);
+	      			Cookies.set("login-token", response.token);
+	      			Backbone.Events.trigger("user-interests", "hi there");
+	      			alert("you successfully logged in!");
 	      },
 	      error: function(userSession, response) {
 	      	console.log("failure!");

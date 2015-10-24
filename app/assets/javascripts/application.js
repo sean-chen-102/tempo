@@ -127,11 +127,14 @@ $(document).ready(function(){
   		}
 	});
 
-  	var UserSession = Backbone.Model.extend({
-  		url: '/users/sign_in.json',
+  	var User = Backbone.Model.extend({
+  		url: '/users/',
   		paramRoot: 'user',
   		defaults: {
     		"email": "",
+    		"username": "",
+    		"id": "",
+    		"interests": "",
     		"password": ""
   		}
 	});
@@ -245,11 +248,52 @@ $(document).ready(function(){
 		el: ".testDiv",
 		tagName : 'li',
 		options: null,
+		events:{
+        	"click #submit-interests":"saveInterests",
+    	},
 		initialize: function(options){
+			this.userInterests = [];
+			this.id = -500;
 			this.options = options;
+			this.numIntersts = 0;
 			Backbone.Events.on("user-interests", function(interests) {
-       			console.log("interests, hi");
+				console.log(interests[1]);
+       			this.userInterests = interests[0];
+       			this.id = interests[1];
+       			console.log(this.id);
+
    			});
+   			this.model = new User();
+
+		},
+		saveInterests : function(options) {
+			var that = this;
+			var newInterests = []
+			for (var j = 0; j < that.numIntersts; j++) {
+				var currInterest = $('interest-' + j);
+				var name = currInterest.attr('name')
+				if (currInterest.is(":checked") && that.userInterests.indexOf(name) > -1) {
+					newInterests.append(name);
+				}
+			}
+			this.model.url = "/api/users/" + this.id + "/interests";
+			this.model.attributes.interests = newInterests;
+
+			this.model.save(this.model.attributes, {
+	      		success: function(userSession, response) {
+	      			console.log("success!");
+	      			console.log(userSession);
+	      			console.log(response);
+	      			Cookies.set("login-token", response.token);
+	      			Backbone.Events.trigger("user-interests", [response.user.interests, response.user.id]);
+	      			alert("you successfully logged in!");
+	      },
+	      		error: function(userSession, response) {
+	      			console.log("failure!");
+	      		}
+	    });
+
+
 		},
 		render : function (options){
 			// Set scope, construct new activity collection, call fetch, render data on callback function
@@ -262,16 +306,20 @@ $(document).ready(function(){
 							+ "<th colspan='3'></th> </tr> </thead>" 
 							+ " <tbody> ";
 				//Iterate throught he collections of Activities and create a template
-				var i = 0
 				interests.each(function(model){
+					var checked = "";
+					console.log(this.interests);
+					if (that.userInterests.indexOf(model.get('name')) > -1) { 
+						checked = "checked";
+					}
 					html += "<tr>" 
-							+   " <td> <input type=checkbox name=" + model.get('name') +  " id=interest-" + i + " >  </td>"
+							+   " <td> <input type=checkbox name=" + model.get('name') +  " id=interest-" + that.numIntersts + " " + checked + " >  </td>"
 							+ "<td> " +  model.get('name') + " </td>"
 							+ "<td> " +  model.get('created_at') + " </td>"
 							+ "<td> " +  model.get('updated_at') + " </td>"
 							+ "<td> " +  model.get('user_id') + " </td>"
 						+ "</tr>";	
-					i += 1
+					that.numIntersts += 1
 				});
 				html += " </tbody> </table> </br> ";
 				html += "<button id=submit-interests> save </button> <br>"; 
@@ -349,7 +397,7 @@ $(document).ready(function(){
 	      			console.log(userSession);
 	      			console.log(response);
 	      			Cookies.set("login-token", response.token);
-	      			Backbone.Events.trigger("user-interests", "hi there");
+	      			Backbone.Events.trigger("user-interests", [response.user.interests, response.user.id]);
 	      			alert("you successfully logged in!");
 	      },
 	      error: function(userSession, response) {

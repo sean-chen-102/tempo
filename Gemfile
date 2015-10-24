@@ -63,5 +63,6 @@ end
 group :production do
   # For use on Heroku
   gem 'rails_12factor'
+  ruby "2.2.0"
 end
 

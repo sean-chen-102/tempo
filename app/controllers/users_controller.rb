@@ -16,7 +16,8 @@ class UsersController < ApplicationController
     if @user.save 
       # puts "in @user.save"
       status = 1
-      user_data = { "id": @user.id, "name": @user.name, "username": @user.username, "email": @user.email }
+      user_data = build_user_data(@user.username)
+      token = get_secure_token(@user.username, @user.email, @user.password)
       json_response["user"] = user_data
     else
       error_list = process_save_errors(@user.errors)

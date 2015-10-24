@@ -9,26 +9,14 @@ class UsersController < ApplicationController
   # POST /api/users/
   # Testing via curl: curl -H "Content-Type: application/json" -X POST -d '{"user": {"name": "Jack Daniels", "email": "jack6@mail.com", "username": "jackD6", "password": "password", "password_confirmation": "password"}}' http://localhost:3000/api/users
   def create_user
-    user_key = "user"
-    username_key = "username"
-    email_key = "email"
-    name_key = "name"
-    password_key = "password"
-    password_confirmation_key = "password_confirmation"
-
-    username = params[user_key][username_key]
-    email = params[user_key][email_key]
-    name = params[user_key][name_key]
-    password = params[user_key][password]
-    password_confirmation = params[user_key][password_confirmation_key]
-
     json_response = {}
     status = -1
 
     @user = User.new(user_params)
     if @user.save 
       status = 1
-      user_data = { "id": @user.id, "name": @user.name, "username": @user.username, "email": @user.email }
+      user_data = build_user_data(@user.username)
+      token = get_secure_token(@user.username, @user.email, @user.password)
       json_response["user"] = user_data
     else
       error_list = process_save_errors(@user.errors)

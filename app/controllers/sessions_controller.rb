@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   before_filter :set_constants
+  require 'jwt' # for JSON Web Tokens
 
   # Defines constants for SessionsController use
   def set_constants
@@ -29,6 +30,7 @@ class SessionsController < ApplicationController
     error_list = []
     authentication_successful = false
     status = -1
+    session_token = -1
     json_response = {}
 
     if password.nil?
@@ -36,11 +38,11 @@ class SessionsController < ApplicationController
       error_list.append(@session_errors[:missing_password])
     end
 
-    if not email.nil?
+    if not email.empty?
       # using email to login
       puts "WE HAVE AN EMAIL"
       @user = User.find_by(email: email)
-    elsif not username.nil?
+    elsif not username.empty?
       # using username to login
       puts "WE HAVE A USERNAME"
       @user = User.find_by(username: username)
@@ -54,6 +56,7 @@ class SessionsController < ApplicationController
       if @user && @user.authenticate(password) # if the user exists and the password is correct
         # send successful authentication message
         authentication_successful = true
+        session_token = get_secure_token(username, email, password)
         status = 1
       else
         # append bad credentials error
@@ -65,8 +68,9 @@ class SessionsController < ApplicationController
 
     if authentication_successful
       # no errors produced, login successful
-      user_data = { "id": @user.id, "name": @user.name, "username": @user.username, "email": @user.email }
+      user_data = build_user_data(@user.username)
       json_response["user"] = user_data
+      json_response["token"] = session_token
     else
       # send error messages
       json_response["errors"] = error_list

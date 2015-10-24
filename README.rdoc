@@ -1,28 +1,5 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To view this application, please go to: https://tempo169.herokuapp.com/activities#home
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+To run it locally, have Ruby on Rails installed with Ruby version 2.2.0 and Rails version 4.2.4. Run 'rails s' in the folder to run the server on localhost:3000.

@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require underscore
 //= require backbone
 //= require tempo
@@ -47,17 +46,17 @@ $(document).ready(function(){
 	App.Router = Backbone.Router.extend({
 		routes: {
 			'': 'index',
-			'signup': 'signup',
 			'home': 'home',
+			'signup': 'signup',
 			"interests": "interests",
 			"activities": "activities",
 			"show": "show"
 		},
 		initialize: function() {
+			console.log("HEY");
 			App.Views['homeView'] = new HomeView();
 			App.Views['activityView'] = new ActivityView()
 			App.Views['interestView'] = new InterestView()
-			App.Views['SignupView'] = new SignupView()
 		},
 		index: function(){
 			console.log("Index router is called");
@@ -89,7 +88,9 @@ $(document).ready(function(){
 		signup: function(){
 			console.log("The signup router was called ");
 			//Constructing View 
+			App.Views['SignupView'] = new SignupView()
 			App.Views['SignupView'].render()			
+
 
 		},
 
@@ -107,13 +108,24 @@ $(document).ready(function(){
     	paramRoot: 'user',
 
     	defaults: {
-    	"name": "",
-      	"email": "",
-      	"username": "",
-      	"password": "",
-      	"password_confirmation": ""
+    		"user" : {
+    			"name": "",
+      			"email": "",
+      			"username": "",
+      			"password": "",
+      			"password_confirmation": ""
+    		}
     	}
   	});
+  	var UserLogin = Backbone.Model.extend({
+  		url: '/api/login/',
+  		paramRoot: 'user',
+  		defaults: {
+			"email": "",
+			"password": ""
+  		}
+	});
+
   	var UserSession = Backbone.Model.extend({
   		url: '/users/sign_in.json',
   		paramRoot: 'user',
@@ -242,19 +254,23 @@ $(document).ready(function(){
 		
 				//TODO: Create and import handlebars for templating			
 				var html = "<h4 style='color: #1abc9c;'> Interest List </h4> <br>"
-							+ "<table> <thead> <tr> <th>Name</th> <th>Created at</th> <th>Updated At</th> <th>User Id</th> <th>Content</th> "
+							+ "<table> <thead> <tr> <th> </th><th>Name</th> <th>Created at</th> <th>Updated At</th> <th>User Id</th> <th>Content</th> "
 							+ "<th colspan='3'></th> </tr> </thead>" 
 							+ " <tbody> ";
 				//Iterate throught he collections of Activities and create a template
+				var i = 0
 				interests.each(function(model){
 					html += "<tr>" 
+							+   " <td> <input type=checkbox name=" + model.get('name') +  " id=interest-" + i + " >  </td>"
 							+ "<td> " +  model.get('name') + " </td>"
 							+ "<td> " +  model.get('created_at') + " </td>"
 							+ "<td> " +  model.get('updated_at') + " </td>"
 							+ "<td> " +  model.get('user_id') + " </td>"
 						+ "</tr>";	
+					i += 1
 				});
 				html += " </tbody> </table> </br> ";
+				html += "<button id=submit-interests> save </button> <br>"; 
 				//Adding activity link
 				html += " <a href='/activities#show' id='add'> Add interest </a>";
 				$(that.el).html(html);	
@@ -275,7 +291,8 @@ $(document).ready(function(){
 		tagName : 'div',
 		options: null,
 		events:{
-        	"click .go-btn":"makeGoRequest"
+        	"click .go-btn":"makeGoRequest",
+        	"click .login-submit":"login"
     	},
 		initialize: function(options){
 			this.options = options;
@@ -283,6 +300,8 @@ $(document).ready(function(){
 			this.times = new Times(null, {
 	            view: this
 	        });
+
+	        this.model = new UserLogin();
 			//TODO: Find better way to do this
 			//add all the times we want the user to  be able to select
 	        this.times.add(new Time({duration: "5"}));
@@ -311,6 +330,25 @@ $(document).ready(function(){
 			App.Views['activityView'].time = duration;
 			//switch view to activities view
 			window.location = '/activities#activities';
+		},
+		login : function(options){
+			console.log("hi");
+			//called when the go button is clicked
+			var username = $('#username-login').val();
+			var password = $('#password-login').val();
+			this.model.attributes.username = username;
+			this.model.attributes.password = password
+			console.log(this.model.attributes);
+		    this.model.save(this.model.attributes, {
+	      		success: function(userSession, response) {
+	      			console.log("success!");
+	      			console.log(userSession);
+	      			console.log(response);
+	      },
+	      error: function(userSession, response) {
+	      	console.log("failure!");
+	      }
+	    });
 		}
 	});
 
@@ -325,6 +363,7 @@ $(document).ready(function(){
 	  },
 
 	  initialize: function() {
+	  	console.log("signup init");
 	    this.model = new UserRegistration();
 	  },
 
@@ -346,12 +385,12 @@ $(document).ready(function(){
 
 	    el.find('input.btn-primary').prop('value', 'loading');
 
-	    this.model.attributes.username = $('#username').val();
-	    this.model.attributes.name = $('#name').val();
-	    this.model.attributes.email = $('#email').val();
+	    this.model.attributes.user.username = $('#username').val();
+	    this.model.attributes.user.name = $('#name').val();
+	    this.model.attributes.user.email = $('#email').val();
 	  	//TODO validation for form on the front end
-	    this.model.attributes.password = $('#password').val();
-	    this.model.attributes.password_confirmation = $('#password').val();
+	    this.model.attributes.user.password = $('#password').val();
+	    this.model.attributes.user.password_confirmation = $('#password').val();
 	    console.log(this.model.attributes);
 	    this.model.save(this.model.attributes, {
 	      success: function(userSession, response) {

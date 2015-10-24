@@ -1,3 +1,5 @@
 == README
 
 To view this application, please go to: https://tempo169.herokuapp.com/activities#home
+
+To run it locally, have Ruby on Rails installed with Ruby version 2.2.0 and Rails version 4.2.4. Run 'rails s' in the folder to run the server on localhost:3000.

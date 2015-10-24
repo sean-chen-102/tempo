@@ -68,7 +68,7 @@ class SessionsController < ApplicationController
 
     if authentication_successful
       # no errors produced, login successful
-      user_data = { "id": @user.id, "name": @user.name, "username": @user.username, "email": @user.email }
+      user_data = build_user_data(@user.username)
       json_response["user"] = user_data
       json_response["token"] = session_token
     else
@@ -80,34 +80,6 @@ class SessionsController < ApplicationController
     respond_to do |format|
       format.json { render json: json_response }
     end
-  end
-
-  def get_secure_token(username, email, password)
-    if username.nil?
-      username = User.find_by(email: email)
-    elsif email.nil?
-      email = User.find_by(username: username).email
-    end
-
-    payload = { username: username, email: email, password: password }
-
-    # IMPORTANT: set nil as password parameter
-    token = JWT.encode(payload, nil, 'none')
-
-    # eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJ0ZXN0IjoiZGF0YSJ9.
-    puts token
-
-    # Set password to nil and validation to false otherwise this won't work
-    decoded_token = JWT.decode token, nil, false
-
-    # Array
-    # [
-    #   {"username": "<username>", "email": "<email>", "password": "<password"}, # payload
-    #   {"typ"=>"JWT", "alg"=>"none"} # header
-    # ]
-    puts decoded_token
-
-    return token
   end
 
 

@@ -256,19 +256,23 @@ $(document).ready(function(){
 		
 				//TODO: Create and import handlebars for templating			
 				var html = "<h4 style='color: #1abc9c;'> Interest List </h4> <br>"
-							+ "<table> <thead> <tr> <th>Name</th> <th>Created at</th> <th>Updated At</th> <th>User Id</th> <th>Content</th> "
+							+ "<table> <thead> <tr> <th> </th><th>Name</th> <th>Created at</th> <th>Updated At</th> <th>User Id</th> <th>Content</th> "
 							+ "<th colspan='3'></th> </tr> </thead>" 
 							+ " <tbody> ";
 				//Iterate throught he collections of Activities and create a template
+				var i = 0
 				interests.each(function(model){
 					html += "<tr>" 
+							+   " <td> <input type=checkbox name=" + model.get('name') +  " id=interest-" + i + " >  </td>"
 							+ "<td> " +  model.get('name') + " </td>"
 							+ "<td> " +  model.get('created_at') + " </td>"
 							+ "<td> " +  model.get('updated_at') + " </td>"
 							+ "<td> " +  model.get('user_id') + " </td>"
 						+ "</tr>";	
+					i += 1
 				});
 				html += " </tbody> </table> </br> ";
+				html += "<button id=submit-interests> save </button> <br>"; 
 				//Adding activity link
 				html += " <a href='/activities#show' id='add'> Add interest </a>";
 				$(that.el).html(html);	

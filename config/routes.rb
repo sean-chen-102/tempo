@@ -44,8 +44,8 @@ Rails.application.routes.draw do
 
 
   # User Sessions routing
-  post 'api/login', to: 'sessions#create', defaults: { format: 'json' }
-  delete 'api/logout', to: 'sessions#destroy', defaults: { format: 'json' }
+  post 'api/login', to: 'sessions#login', defaults: { format: 'json' }
+  delete 'api/logout', to: 'sessions#logout', defaults: { format: 'json' }
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

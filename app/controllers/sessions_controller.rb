@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
   # Create a new User Session (aka login)
   # Testing: curl -H "Content-Type: application/json" -X POST -d '{"username":"sillysally23","password":"password"}' http://localhost:3000/api/login
   # Testing: curl -H "Content-Type: application/json" -X POST -d '{"email":"sally@mail.com","password":"password"}' http://localhost:3000/api/login
-  def create
+  def login
     password_key = "password"
     email_key = "email"
     username_key = "username"
@@ -56,7 +56,7 @@ class SessionsController < ApplicationController
       if @user && @user.authenticate(password) # if the user exists and the password is correct
         # send successful authentication message
         authentication_successful = true
-        session_token = get_secure_token(username, email, password)
+        session_token = get_signed_token(@user.id)
         status = 1
       else
         # append bad credentials error
@@ -85,6 +85,6 @@ class SessionsController < ApplicationController
 
   # DELETE 'api/logout'
   # Delete the User Session (aka logout)
-  def destroy
+  def logout
   end
 end

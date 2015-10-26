@@ -5,6 +5,11 @@ class ApplicationController < ActionController::Base
 	# TODO: this is probably not secure
 	protect_from_forgery with: :null_session, only: Proc.new { |c| c.request.format.json? }
 
+	# Define hard-coded error messages
+	class ErrorMessages
+	  AUTHORIZATION_ERROR = "Error: you aren't authorized to perform this action."
+	end
+
 	# Catch any undefined routes
 	def catch
 		json_response = { "status": -1, "message": "Route not found" }.to_json
@@ -50,7 +55,8 @@ class ApplicationController < ActionController::Base
 	  return token
 	end
 
-	# Returns true if the passed in hash token contains a valid user session
+	# Returns a User if the passed in hash token contains a valid user session,
+	# and nil otherwise
 	def authenticate_token(token)
 		# Set password to nil and validation to false otherwise this won't work
 		decoded_token = JWT.decode token, nil, false
@@ -60,6 +66,16 @@ class ApplicationController < ActionController::Base
 		@user = User.find_by(username: username)
 
 		if @user && @user.authenticate(password)
+			return @user
+		else
+			return nil
+		end
+	end
+
+	# Returns true if the given client_user has permission to perform the given action
+	# on the User's data with the given id=user_id_to_modify
+	def user_has_permission(client_user, user_id_to_modify)
+		if client_user.id == user_id_to_modify # user's can modify their own data
 			return true
 		else
 			return false

@@ -100,6 +100,7 @@ class UsersController < ApplicationController
   # Edit the fields of a specified User
   # PUT /api/users/:id
   # TODO: update this API request
+  # TODO: Requires authentication
   def edit_user
     respond_to do |format|
       if @user.update(user_params)
@@ -115,14 +116,21 @@ class UsersController < ApplicationController
   # Deletes specified User from database 
   # DELETE /api/users/:id
   # Testing via curl: curl -H "Content-Type: application/json" -X DELETE http://localhost:3000/api/users/13
+  # TODO: Make this secure so only admins can destroy users
+  # Requires authentication
   def destroy_user
     status = -1
     json_response = {}
     error_list = []
+    token = params[:token]
 
     if not @user.nil? # if the User exists
-      @user.destroy # delete the User from the database
-      status = 1
+      if not token.nil? and user_has_permission(authenticate_token(token), @user.id) # if the token was provided and is valid and the user has permission
+        @user.destroy # delete the User from the database
+        status = 1
+      else
+        error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
+      end
     else
       error_list.append("Error: user ##{params[:id]} does not exist.")
     end
@@ -142,19 +150,25 @@ class UsersController < ApplicationController
   # Return a JSON response with a list of given Interests of a specified User
   # GET '/api/users/:id/interests'
   # Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/users/2/interests
+  # Requires authentication
   def get_user_interests
     status = -1
     json_response = {}
     error_list = []
+    token = params[:token]
 
     if not @user.nil? # if the User exists
-      interests = User.get_interests(params[:id])
+      if not token.nil? and user_has_permission(authenticate_token(token), @user.id) # if the token was provided and is valid and the user has permission
+        interests = User.get_interests(params[:id])
 
-      if interests.length > 0
-        status = 1
-        json_response["interests"] = interests
+        if interests.length > 0
+          status = 1
+          json_response["interests"] = interests
+        else
+          error_list.append("Error: user ##{user_id} does not have any interests.")
+        end
       else
-        error_list.append("Error: user ##{user_id} does not have any interests.")
+        error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
       end
     else
       error_list.append("Error: user ##{params[:id]} does not exist.")
@@ -176,19 +190,25 @@ class UsersController < ApplicationController
   # Return a JSON response with a list of a User's Custom Activities
   # GET /api/users/:id/custom_activities
   # Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/users/2/custom_activities
+  # Requires authentication
   def get_user_custom_activities
     status = -1
     json_response = {}
     error_list = []
+    token = params[:token]
 
     if not @user.nil? # if the User exists
-      custom_activities = User.get_custom_activities(params[:id])
+      if not token.nil? and user_has_permission(authenticate_token(token), @user.id) # if the token was provided and is valid and the user has permission
+        custom_activities = User.get_custom_activities(params[:id])
 
-      if custom_activities.length > 0
-        status = 1
-        json_response["custom_activities"] = custom_activities
+        if custom_activities.length > 0
+          status = 1
+          json_response["custom_activities"] = custom_activities
+        else
+          error_list.append("Error: user ##{user_id} does not have any custom activities.")
+        end
       else
-        error_list.append("Error: user ##{user_id} does not have any custom activities.")
+        error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
       end
     else
       error_list.append("Error: user ##{params[:id]} does not exist.")
@@ -207,11 +227,11 @@ class UsersController < ApplicationController
     end
   end
 
-  # Create a User Interests in the database for the given params
+  # Create a User Interests in the database for the given params. Note: will replace the User's previous interests.
   # POST /api/users/:id/interests
   # Testing via curl: curl -H "Content-Type: application/json" -X POST -d '{"interests":["science", "tech"]}' http://localhost:3000/api/users/1/interests
+  # Requires authentication
   def set_interests_for_user
-    puts "HIT HERE"
     interests_key = "interests"
     json_response = {}
     status = -1
@@ -219,31 +239,31 @@ class UsersController < ApplicationController
     user_id = params[:id]
     error_list = []
     successful_interests = []
+    token = params[:token]
 
-    puts "id: #{user_id}"
+    if not user_id.nil?
+      if not token.nil? and user_has_permission(authenticate_token(token), user_id) # if the token was provided and is valid and the user has permission
+        user = User.where(id: user_id)
+        if not user.empty?
+          status = 1
+          user = user.first
+          user.interests = []
+          user.save
 
-
-    if not user_id.nil? and user_id.to_i != 0
-      user = User.where(id: user_id)
-      puts "user: #{user}"
-      if not user.empty?
-        puts "success"
-        status = 1
-        user = user.first
-        user.interests = []
-        user.save
-
-        interests.each do |interest_name|
-          interest_object = Interest.where(name: interest_name)
-          if not interest_object.empty?
-            interest_object = interest_object.first
-            user.interests << interest_object
-            user.save
-            successful_interests << interest_name
+          interests.each do |interest_name|
+            interest_object = Interest.where(name: interest_name)
+            if not interest_object.empty?
+              interest_object = interest_object.first
+              user.interests << interest_object
+              user.save
+              successful_interests << interest_name
+            end
           end
+        else
+          error_list.append("Error: user ##{user_id} doesn't exist.")
         end
       else
-        error_list.append("Error: user ##{user_id} doesn't exist.")
+        error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
       end
     end
 

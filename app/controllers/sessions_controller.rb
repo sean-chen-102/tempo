@@ -56,7 +56,7 @@ class SessionsController < ApplicationController
       if @user && @user.authenticate(password) # if the user exists and the password is correct
         # send successful authentication message
         authentication_successful = true
-        session_token = get_signed_token(@user.id)
+        session_token = @user.get_signed_token()
         status = 1
       else
         # append bad credentials error

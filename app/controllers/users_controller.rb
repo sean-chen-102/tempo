@@ -16,7 +16,8 @@ class UsersController < ApplicationController
     if @user.save 
       status = 1
       user_data = build_user_data(@user.username)
-      token = get_secure_token(@user.username, @user.email, @user.password)
+      token = @user.get_signed_token()
+      user_data["token"] = token
       json_response["user"] = user_data
     else
       error_list = process_save_errors(@user.errors)
@@ -125,7 +126,7 @@ class UsersController < ApplicationController
     token = params[:token]
 
     if not @user.nil? # if the User exists
-      if not token.nil? and user_has_permission(authenticate_token(token), @user.id) # if the token was provided and is valid and the user has permission
+      if not token.nil? and user_has_permission(User.authenticate_token(token), @user.id) # if the token was provided and is valid and the user has permission
         @user.destroy # delete the User from the database
         status = 1
       else
@@ -158,7 +159,7 @@ class UsersController < ApplicationController
     token = params[:token]
 
     if not @user.nil? # if the User exists
-      if not token.nil? and user_has_permission(authenticate_token(token), @user.id) # if the token was provided and is valid and the user has permission
+      if not token.nil? and user_has_permission(User.authenticate_token(token), @user.id) # if the token was provided and is valid and the user has permission
         interests = User.get_interests(params[:id])
 
         if interests.length > 0
@@ -198,7 +199,7 @@ class UsersController < ApplicationController
     token = params[:token]
 
     if not @user.nil? # if the User exists
-      if not token.nil? and user_has_permission(authenticate_token(token), @user.id) # if the token was provided and is valid and the user has permission
+      if not token.nil? and user_has_permission(User.authenticate_token(token), @user.id) # if the token was provided and is valid and the user has permission
         custom_activities = User.get_custom_activities(params[:id])
 
         if custom_activities.length > 0
@@ -242,7 +243,7 @@ class UsersController < ApplicationController
     token = params[:token]
 
     if not user_id.nil?
-      if not token.nil? and user_has_permission(authenticate_token(token), user_id) # if the token was provided and is valid and the user has permission
+      if not token.nil? and user_has_permission(User.authenticate_token(token), user_id) # if the token was provided and is valid and the user has permission
         user = User.where(id: user_id)
         if not user.empty?
           status = 1

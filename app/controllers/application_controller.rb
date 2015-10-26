@@ -10,37 +10,6 @@ class ApplicationController < ActionController::Base
 	  AUTHORIZATION_ERROR = "Error: you aren't authorized to perform this action."
 	end
 
-	# An AuthToken class for encoding and decoding JWT authorization tokens.
-	class AuthToken
-		# grab our application's secret code
-		@hmac_secret = Rails.application.secrets.secret_key_base
-		@algorithm = 'HS256'
-
-		# Returns an encoded JWT token.
-		def self.encode(payload, exp=7.days.from_now)
-			# set our expiration time
-			exp = exp.to_i
-			payload[:exp] = exp
-
-			# encode and return our token
-			return JWT.encode(payload, @hmac_secret, @algorithm)
-		end
-
-		# Returns the payload of the given JWT token. If the token can't be validated, 
-		# it returns nil.
-		def self.decode(token)
-			begin
-				# try to decode the token
-			  decoded_token = JWT.decode(token, @hmac_secret, true, { algorithm: @algorithm })
-			rescue JWT::ExpiredSignature
-			  # the token has expired, they should be logged out and asked to log back in
-			  decoded_token = nil
-			end
-
-			return decoded_token
-		end
-	end
-
 	# Catch any undefined routes
 	def catch
 		json_response = { "status": -1, "message": "Route not found" }.to_json
@@ -68,38 +37,6 @@ class ApplicationController < ActionController::Base
 	  end
 
 	  return error_list
-	end
-
-	# Generates and returns a signed hash token based on the user_id and a 
-	# randomly generated string.
-	def get_signed_token(user_id)
-		random_string = SecureRandom.hex
-	  payload = { user_id: user_id, random_string: random_string }
-
-	  # generate the signed token
-	  token = AuthToken.encode(payload)
-
-	  return token
-	end
-
-	# Returns an authenticated User if the passed in hash token contains a valid user session,
-	# and nil otherwise.
-	def authenticate_token(token)
-		# Set password to nil and validation to false otherwise this won't work
-		decoded_token =  AuthToken.decode(token)
-
-		if decoded_token.nil? # the token was not valid
-			return nil
-		end
-
-		user_id = decoded_token[:user_id]
-		@user = User.find_by(id: user_id)
-
-		if not @user.nil?
-			return @user
-		else
-			return nil
-		end
 	end
 
 	# Returns true if the given client_user has permission to perform the given action

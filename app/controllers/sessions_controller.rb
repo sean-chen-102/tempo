@@ -84,7 +84,11 @@ class SessionsController < ApplicationController
 
 
   # DELETE 'api/logout'
-  # Delete the User Session (aka logout)
+  # Delete the User Session (aka logout). Note that this relies on the client-side front-end
+  # to delete the stored JWT token in the browser.
   def logout
+    status = 1
+    message = "Success: please remove the JWT token from the client side."
+    json_response = { message: message, status: status }
   end
 end

@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   # POST /api/users/
   # Testing via curl: curl -H "Content-Type: application/json" -X POST -d '{"user": {"name": "Jack Daniels", "email": "jack6@mail.com", "username": "jackD6", "password": "password", "password_confirmation": "password"}}' http://localhost:3000/api/users
   def create_user
-    json_response = {}
+    json_response = JsonResponse.new
     status = -1
 
     @user = User.new(user_params)
@@ -18,14 +18,14 @@ class UsersController < ApplicationController
       user_data = build_user_data(@user.username)
       token = @user.get_signed_token()
       user_data["token"] = token
-      json_response["user"] = user_data
+      json_response.set_data("user", user_data)
     else
       error_list = process_save_errors(@user.errors)
-      json_response["errors"] = error_list
+      json_response.set_errors(error_list)
     end
 
-    json_response["status"] = status
-    json_response = json_response.to_json
+    json_response.set_status(status)
+    json_response = json_response.get_json()
 
     respond_to do |format|
       format.json { render json: json_response }
@@ -37,23 +37,23 @@ class UsersController < ApplicationController
   # Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/users/1
   def get_user
     status = -1
-    json_response = {}
+    json_response = JsonResponse.new
     error_list = []
 
     if not @user.nil? # if the User exists
       status = 1
       user_data = { "id": @user.id, "name": @user.name, "username": @user.username, "email": @user.email }
-      json_response["user"] = user_data
+      json_response.set_data("user", user_data)
     else
       error_list.append("Error: user ##{params[:id]} does not exist.")
     end
 
     if status == -1
-      json_response["errors"] = error_list
+      json_response.set_errors(error_list)
     end
 
-    json_response["status"] = status
-    json_response = json_response.to_json
+    json_response.set_status(status)
+    json_response = json_response.get_json()
 
     respond_to do |format|
       # format.html # show.html.erb
@@ -66,7 +66,7 @@ class UsersController < ApplicationController
   # Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/users
   def get_users
     status = -1
-    json_response = {}
+    json_response = JsonResponse.new
     error_list = []
     user_id = params[:id]
     @users = User.all
@@ -80,17 +80,17 @@ class UsersController < ApplicationController
         user_list.append(user_data)
       end
 
-      json_response["users"] = user_list
+      json_response.set_data("users", user_list)
     else
       error_list.append("Error: there are no users.")
     end
 
     if status == -1
-      json_response["errors"] = error_list
+      json_response.set_errors(error_list)
     end
 
-    json_response["status"] = status
-    json_response = json_response.to_json
+    json_response.set_status(status)
+    json_response = json_response.get_json
 
     respond_to do |format|
       # format.html # show.html.erb
@@ -121,7 +121,7 @@ class UsersController < ApplicationController
   # Requires authentication
   def destroy_user
     status = -1
-    json_response = {}
+    json_response = JsonResponse.new
     error_list = []
     token = params[:token]
 
@@ -137,11 +137,11 @@ class UsersController < ApplicationController
     end
 
     if status == -1
-      json_response["errors"] = error_list
+      json_response.set_errors(error_list)
     end
 
-    json_response["status"] = status
-    json_response = json_response.to_json
+    json_response.set_status(status)
+    json_response = json_response.get_json
 
     respond_to do |format|
       format.json { render json: json_response }
@@ -154,7 +154,7 @@ class UsersController < ApplicationController
   # Requires authentication
   def get_user_interests
     status = -1
-    json_response = {}
+    json_response = JsonResponse.new
     error_list = []
     token = params[:token]
 
@@ -164,7 +164,7 @@ class UsersController < ApplicationController
 
         if interests.length > 0
           status = 1
-          json_response["interests"] = interests
+          json_response.set_data("interests", interests)
         else
           error_list.append("Error: user ##{user_id} does not have any interests.")
         end
@@ -176,11 +176,11 @@ class UsersController < ApplicationController
     end
 
     if status == -1
-      json_response["errors"] = error_list
+      json_response.set_errors(error_list)
     end
 
-    json_response["status"] = status
-    json_response = json_response.to_json
+    json_response.set_status(status)
+    json_response = json_response.get_json
 
     respond_to do |format|
       # format.html # show.html.erb
@@ -194,7 +194,7 @@ class UsersController < ApplicationController
   # Requires authentication
   def get_user_custom_activities
     status = -1
-    json_response = {}
+    json_response = JsonResponse.new
     error_list = []
     token = params[:token]
 
@@ -204,7 +204,7 @@ class UsersController < ApplicationController
 
         if custom_activities.length > 0
           status = 1
-          json_response["custom_activities"] = custom_activities
+          json_response.set_data("custom_activities", custom_activities)
         else
           error_list.append("Error: user ##{user_id} does not have any custom activities.")
         end
@@ -216,11 +216,11 @@ class UsersController < ApplicationController
     end
 
     if status == -1
-      json_response["errors"] = error_list
+      json_response.set_errors(error_list)
     end
 
-    json_response["status"] = status
-    json_response = json_response.to_json
+    json_response.set_status(status)
+    json_response = json_response.get_json
 
     respond_to do |format|
       # format.html # show.html.erb
@@ -234,7 +234,7 @@ class UsersController < ApplicationController
   # Requires authentication
   def set_interests_for_user
     interests_key = "interests"
-    json_response = {}
+    json_response = JsonResponse.new
     status = -1
     interests = params[interests_key]
     user_id = params[:id]
@@ -269,13 +269,13 @@ class UsersController < ApplicationController
     end
 
     if status == 1
-      json_response["interests_added"] = successful_interests
+      json_response.set_data("interests_added", successful_interests)
     else
-      json_response["errors"] = error_list
+      json_response.set_errors(error_list)
     end
 
-    json_response["status"] = status
-    json_response = json_response.to_json
+    json_response.set_status(status)
+    json_response = json_response.get_json
 
     respond_to do |format|
       format.json { render json: json_response }

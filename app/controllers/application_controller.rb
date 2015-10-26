@@ -10,6 +10,33 @@ class ApplicationController < ActionController::Base
 	  AUTHORIZATION_ERROR = "Error: you aren't authorized to perform this action."
 	end
 
+	# For constructing consistent JSON responses
+	class JsonResponse
+		def initialize(response_hash={})
+			@response_hash = response_hash
+		end
+
+		def set_status(code)
+			@response_hash["status"] = code
+		end
+
+		def set_data(key, value)
+			@response_hash[key] = value
+		end
+
+		def set_errors(error_list)
+			@response_hash["errors"] = error_list
+		end
+
+		def replace_hash(new_hash)
+			@response_hash = new_hash
+		end
+
+		def get_json
+			return @response_hash.to_json
+		end
+	end
+
 	# Catch any undefined routes
 	def catch
 		json_response = { "status": -1, "message": "Route not found" }.to_json

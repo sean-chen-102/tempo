@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
 
   # Returns a JSON list of all custom_activities of the User with id = user_id
   def self.get_custom_activities(user_id)
-    custom_activities = User.find(user_id).custom_activities
+    custom_activities = User.find(id: user_id).custom_activities
 
     custom_activities.each do |custom_activity|
       custom_activity = custom_activity.to_json
@@ -44,13 +44,29 @@ class User < ActiveRecord::Base
 
   # Returns a JSON list of all interests that have user_id as their User.id.
   def self.get_interests(user_id)
-    interests = Interest.where(user_id: user_id)
+    interests = User.find(id: user_id).interests
 
     interests.each do |interest|
       interest = interest.to_json
     end
 
     return interests
+  end
+
+  # Returns a hash of basic user info.
+  # NOTE: This info is not secure - it is visible by everyone.
+  def get_basic_info
+    user_data = { "id": self.id, "name": self.name, "username": self.username, "email": self.email, "created_at": self.created_at, "updated_at": self.updated_at }
+    return user_data
+  end
+
+  # Returns a hash of advanced user info.
+  # NOTE: This info should only be viewed by an authorized and authenticated user.
+  def get_advanced_info
+    user_data = self.get_basic_info()
+    user_data["interests"] = self.interests
+    user_data["custom_activities"] = self.custom_activities
+    return user_data
   end
 
   # Generates and returns a signed hash token based on the user_id and a 

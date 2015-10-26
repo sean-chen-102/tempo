@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save 
       status = 1
-      user_data = build_user_data(@user.username)
+      user_data = @user.get_advanced_info()
       token = @user.get_signed_token()
       user_data["token"] = token
       json_response.set_data("user", user_data)
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
 
     if not @user.nil? # if the User exists
       status = 1
-      user_data = { "id": @user.id, "name": @user.name, "username": @user.username, "email": @user.email }
+      user_data = @user.get_basic_info()
       json_response.set_data("user", user_data)
     else
       error_list.append("Error: user ##{params[:id]} does not exist.")
@@ -75,7 +75,7 @@ class UsersController < ApplicationController
     if not @users.empty? # if there are Users
       status = 1
       @users.each do |user|
-        user_data = { "id": user.id, "name": user.name, "username": user.username, "email": user.email }
+        user_data = user.get_basic_info()
         user_data = user_data.as_json
         user_list.append(user_data)
       end

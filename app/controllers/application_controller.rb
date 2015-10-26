@@ -76,22 +76,4 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
-	# Returns a structured dictionary of User data
-	def build_user_data(username)
-	  user_data = {}
-	  if not username.nil?
-	    user = User.find_by(username: username)
-	    user_data = { "id": user.id, "name": user.name, "username": user.username, "email": user.email }
-	    interests = user.interests
-	    interest_list = []
-
-	    interests.each do |interest|
-	      interest_list.append(interest.name)
-	    end
-
-	    user_data["interests"] = interest_list
-	  end
-
-	  return user_data
-	end
 end

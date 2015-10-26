@@ -68,7 +68,7 @@ class SessionsController < ApplicationController
 
     if authentication_successful
       # no errors produced, login successful
-      user_data = build_user_data(@user.username)
+      user_data = @user.get_advanced_info()
       json_response["user"] = user_data
       json_response["token"] = session_token
     else

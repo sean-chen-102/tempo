@@ -28,6 +28,9 @@ class User < ActiveRecord::Base
   # Authentication
   has_secure_password
 
+  # Define User Roles
+  enum role: { user: 0, admin: 1 }
+
   # Returns a JSON list of all custom_activities of the User with id = user_id
   def self.get_custom_activities(user_id)
     custom_activities = User.find(user_id).custom_activities

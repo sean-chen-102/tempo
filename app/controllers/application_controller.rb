@@ -39,15 +39,19 @@ class ApplicationController < ActionController::Base
 	  return error_list
 	end
 
-	# Generates and returns a secure hash token based on username, email, and password
+	# Generates and returns a secure hash token based on username, email, password, and 
+	# a randomly generated string
 	def get_secure_token(username, email, password)
+		random_string = SecureRandom.hex
+		exp = Time.now.to_i + (24 * 7 * 3600) # expire 7 days from now
+
 	  if username.nil?
 	    username = User.find_by(email: email)
 	  elsif email.nil?
 	    email = User.find_by(username: username).email
 	  end
 
-	  payload = { username: username, email: email, password: password }
+	  payload = { username: username, email: email, password: password, random_string: SecureRandom.hex, exp: exp }
 
 	  # IMPORTANT: set nil as password parameter
 	  token = JWT.encode(payload, nil, 'none')

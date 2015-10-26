@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get '/api/users/:id/custom_activities', to: 'users#get_user_custom_activities', defaults: { format: 'json' }
   post '/api/users/', to: 'users#create_user', defaults: { format: 'json' }
   post '/api/users/:id', to: 'users#edit_user', defaults: { format: 'json' }
-  post 'api/users/:id/interests', to: 'users#set_interests_for_user', defaults: { format: 'json' }
+  put 'api/users/:id/interests', to: 'users#set_interests_for_user', defaults: { format: 'json' }
   delete '/api/users/:id', to: 'users#destroy_user', defaults: { format: 'json' }
 
   # Interests routing 

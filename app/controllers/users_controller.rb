@@ -229,8 +229,8 @@ class UsersController < ApplicationController
   end
 
   # Create a User Interests in the database for the given params. Note: will replace the User's previous interests.
-  # POST /api/users/:id/interests
-  # Testing via curl: curl -H "Content-Type: application/json" -X POST -d '{"interests":["science", "tech"]}' http://localhost:3000/api/users/1/interests
+  # PUT /api/users/:id/interests
+  # Testing via curl: curl -H "Content-Type: application/json" -X PUT -d '{"interests":["science", "tech"]}' http://localhost:3000/api/users/1/interests
   # Requires authentication
   def set_interests_for_user
     interests_key = "interests"

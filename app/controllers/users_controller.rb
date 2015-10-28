@@ -207,6 +207,60 @@ class UsersController < ApplicationController
     end
   end
 
+  # Create a User Interests in the database for the given params
+  # POST /api/users/:id/interests
+  # Testing via curl: curl -H "Content-Type: application/json" -X POST -d '{"interests":["science", "tech"]}' http://localhost:3000/api/users/1/interests
+  def set_interests_for_user
+    puts "HIT HERE"
+    interests_key = "interests"
+    json_response = {}
+    status = -1
+    interests = params[interests_key]
+    user_id = params[:id]
+    error_list = []
+    successful_interests = []
+
+    puts "id: #{user_id}"
+
+
+    if not user_id.nil? and user_id.to_i != 0
+      user = User.where(id: user_id)
+      puts "user: #{user}"
+      if not user.empty?
+        puts "success"
+        status = 1
+        user = user.first
+        user.interests = []
+        user.save
+
+        interests.each do |interest_name|
+          interest_object = Interest.where(name: interest_name)
+          if not interest_object.empty?
+            interest_object = interest_object.first
+            user.interests << interest_object
+            user.save
+            successful_interests << interest_name
+          end
+        end
+      else
+        error_list.append("Error: user ##{user_id} doesn't exist.")
+      end
+    end
+
+    if status == 1
+      json_response["interests_added"] = successful_interests
+    else
+      json_response["errors"] = error_list
+    end
+
+    json_response["status"] = status
+    json_response = json_response.to_json
+
+    respond_to do |format|
+      format.json { render json: json_response }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

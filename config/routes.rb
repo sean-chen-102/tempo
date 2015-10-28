@@ -31,7 +31,9 @@ Rails.application.routes.draw do
   delete '/api/interests/:id', to: 'interests#destroy_interest', defaults: { format: 'json' }
 
   # Activities routing
+  get '/api/activities/:id', to: 'activities#get_activity', defaults: { format: 'json' }
   get '/api/activities', to: 'activities#get_activities', defaults: { format: 'json' }
+  get '/api/activities/:id/interests', to: 'activities#get_interests', defaults: { format: 'json' }
   post '/api/activities', to: 'activities#create_activity', defaults: { format: 'json' }
   post '/api/activities/:id', to: 'activities#edit_activity', defaults: { format: 'json ' }
   delete '/api/activities/:id', to: 'activities#destroy_activity', defaults: { format: 'json' }

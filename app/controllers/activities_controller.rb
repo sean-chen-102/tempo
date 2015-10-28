@@ -1,5 +1,5 @@
 class ActivitiesController < ApplicationController
-	before_action :set_activity, only: [:edit_activity, :destroy_activity]
+	before_action :set_activity, only: [:edit_activity, :destroy_activity, :get_activity, :get_interests]
 
 	# CUSTOM CODE
 
@@ -75,6 +75,34 @@ class ActivitiesController < ApplicationController
 	  end
 	end
 
+	# Returns a JSON response with the fields of a specified activity 
+	# GET /api/activities/:id
+	# URL format: '/api/activities/:id'
+	# Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/activities/1
+	def get_activity
+		status = -1
+		json_response = {} 
+
+		if !@activity.nil?
+			status = 1
+			json_response["activity"] = @activity.as_json
+		else
+			error_list.append("Error: activity does not exist.")
+		end
+
+		if status == -1
+	  		json_response["errors"] = error_list
+	  	end
+
+	  	json_response["status"] = status
+	  	json_response = json_response.to_json
+
+	  	respond_to do |format|
+	    	format.json { render json: json_response }
+	  	end
+
+	end
+
 	# Return a JSON response with a list of given activities based on the params: interest and time
 	# GET /api/activities
 	# URL format: '/api/activities?interest=<interest_name>&time=<time>'
@@ -109,10 +137,41 @@ class ActivitiesController < ApplicationController
 	  json_response = json_response.to_json
 
 	  respond_to do |format|
-	    # format.html # show.html.erb
 	    format.json { render json: json_response }
 	  end
 	end
+
+	# Return a JSON responses with a list of interests that the specified activity belongs to
+	# GET api/activities/:id/interests
+	# URL format: '/api/activities/:id/interests'
+	# Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/activities/1/interests
+	def get_interests
+		status = -1
+		json_response = {}
+		error_list = []
+
+		interests = Interest.joins(:activities).where(activities: {id: @activity.id})
+
+		if !@activity.nil? and !interests.empty?
+			status = 1
+			json_response['data'] = interests.as_json
+		else
+			error_list.append("Error: activity does not exist")
+		end
+
+		if status == -1
+	  		json_response["errors"] = error_list
+	  	end
+
+	  	json_response["status"] = status
+	  	json_response = json_response.to_json
+
+		respond_to do |format|
+			format.json { render json: json_response }
+		end
+
+	end
+
 
 	private
 	  # Use callbacks to share common setup or constraints between actions.

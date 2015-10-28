@@ -24,7 +24,6 @@ class CustomActivitiesController < ApplicationController
 		respond_to do |format|
 			format.json { render json: json_response }
 		end
-
 	end
 
 	# Edit the fields of a specified CustomActivity
@@ -77,7 +76,6 @@ class CustomActivitiesController < ApplicationController
 			# format.html # show.html.erb
 			format.json { render json: json_response }
 		end
-
 	end
 
 	# Deletes specified CustomActivity from database
@@ -105,7 +103,6 @@ class CustomActivitiesController < ApplicationController
 		respond_to do |format|
 			format.json { render json: json_response }
 		end
-
 	end
 
 	private

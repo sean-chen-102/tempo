@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get '/api/users/:id/custom_activities', to: 'users#get_user_custom_activities', defaults: { format: 'json' }
   post '/api/users/', to: 'users#create_user', defaults: { format: 'json' }
   post '/api/users/:id', to: 'users#edit_user', defaults: { format: 'json' }
-  post 'api/users/:id/interests', to: 'users#set_interests_for_user', defaults: { format: 'json' }
+  put 'api/users/:id/interests', to: 'users#set_interests_for_user', defaults: { format: 'json' }
   delete '/api/users/:id', to: 'users#destroy_user', defaults: { format: 'json' }
 
   # Interests routing 
@@ -44,10 +44,9 @@ Rails.application.routes.draw do
   post '/api/custom_activities/:id', to: 'custom_activities#edit_custom_activity', defaults: { format: 'json ' }
   delete '/api/custom_activities/:id', to: 'custom_activities#destroy_custom_activity', defaults: { format: 'json' }
 
-
   # User Sessions routing
-  post 'api/login', to: 'sessions#create', defaults: { format: 'json' }
-  delete 'api/logout', to: 'sessions#destroy', defaults: { format: 'json' }
+  post 'api/login', to: 'sessions#login', defaults: { format: 'json' }
+  delete 'api/logout', to: 'sessions#logout', defaults: { format: 'json' }
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
   # Create a new User Session (aka login)
   # Testing: curl -H "Content-Type: application/json" -X POST -d '{"username":"sillysally23","password":"password"}' http://localhost:3000/api/login
   # Testing: curl -H "Content-Type: application/json" -X POST -d '{"email":"sally@mail.com","password":"password"}' http://localhost:3000/api/login
-  def create
+  def login
     password_key = "password"
     email_key = "email"
     username_key = "username"
@@ -56,7 +56,7 @@ class SessionsController < ApplicationController
       if @user && @user.authenticate(password) # if the user exists and the password is correct
         # send successful authentication message
         authentication_successful = true
-        session_token = get_secure_token(username, email, password)
+        session_token = @user.get_signed_token()
         status = 1
       else
         # append bad credentials error
@@ -68,7 +68,7 @@ class SessionsController < ApplicationController
 
     if authentication_successful
       # no errors produced, login successful
-      user_data = build_user_data(@user.username)
+      user_data = @user.get_advanced_info()
       json_response["user"] = user_data
       json_response["token"] = session_token
     else
@@ -84,7 +84,11 @@ class SessionsController < ApplicationController
 
 
   # DELETE 'api/logout'
-  # Delete the User Session (aka logout)
-  def destroy
+  # Delete the User Session (aka logout). Note that this relies on the client-side front-end
+  # to delete the stored JWT token in the browser.
+  def logout
+    status = 1
+    message = "Success: please remove the JWT token from the client side."
+    json_response = { message: message, status: status }
   end
 end

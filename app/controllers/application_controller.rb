@@ -5,6 +5,38 @@ class ApplicationController < ActionController::Base
 	# TODO: this is probably not secure
 	protect_from_forgery with: :null_session, only: Proc.new { |c| c.request.format.json? }
 
+	# Define hard-coded error messages
+	class ErrorMessages
+	  AUTHORIZATION_ERROR = "Error: you aren't authorized to perform this action."
+	end
+
+	# For constructing consistent JSON responses
+	class JsonResponse
+		def initialize(response_hash={})
+			@response_hash = response_hash
+		end
+
+		def set_status(code)
+			@response_hash["status"] = code
+		end
+
+		def set_data(key, value)
+			@response_hash[key] = value
+		end
+
+		def set_errors(error_list)
+			@response_hash["errors"] = error_list
+		end
+
+		def replace_hash(new_hash)
+			@response_hash = new_hash
+		end
+
+		def get_json
+			return @response_hash.to_json
+		end
+	end
+
 	# Catch any undefined routes
 	def catch
 		json_response = { "status": -1, "message": "Route not found" }.to_json
@@ -34,54 +66,14 @@ class ApplicationController < ActionController::Base
 	  return error_list
 	end
 
-	# Generates and returns a secure hash token based on username, email, and password
-	def get_secure_token(username, email, password)
-	  if username.nil?
-	    username = User.find_by(email: email)
-	  elsif email.nil?
-	    email = User.find_by(username: username).email
-	  end
-
-	  payload = { username: username, email: email, password: password }
-
-	  # IMPORTANT: set nil as password parameter
-	  token = JWT.encode(payload, nil, 'none')
-
-	  return token
-	end
-
-	# Returns true if the passed in hash token contains a valid user session
-	def authenticate_token(token)
-		# Set password to nil and validation to false otherwise this won't work
-		decoded_token = JWT.decode token, nil, false
-		username = decoded_token[:username]
-		email = decoded_token[:email]
-		password = decoded_token[:password]
-		@user = User.find_by(username: username)
-
-		if @user && @user.authenticate(password)
+	# Returns true if the given client_user has permission to perform the given action
+	# on the User's data with the given id=user_id_to_modify
+	def user_has_permission(client_user, user_id_to_modify)
+		if client_user.id == user_id_to_modify # user's can modify their own data
 			return true
 		else
 			return false
 		end
 	end
 
-	# Returns a structured dictionary of User data
-	def build_user_data(username)
-	  user_data = {}
-	  if not username.nil?
-	    user = User.find_by(username: username)
-	    user_data = { "id": user.id, "name": user.name, "username": user.username, "email": user.email }
-	    interests = user.interests
-	    interest_list = []
-
-	    interests.each do |interest|
-	      interest_list.append(interest.name)
-	    end
-
-	    user_data["interests"] = interest_list
-	  end
-
-	  return user_data
-	end
 end

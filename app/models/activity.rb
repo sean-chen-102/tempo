@@ -43,17 +43,4 @@ class Activity < ActiveRecord::Base
     return activities
   end
 
-  # Returns a string of the form: "name = <name1> or name = <name2>"...
-  # Takes in a list of Interest names
-  def convert_names_to_sql_arg_string(interest_names)
-    arg_string = ""
-
-    interest_names.each do |name|
-      arg_string = arg_string + "name = #{name} or "
-    end
-
-    arg_string.chomp(" or ")
-    return arg_string
-  end
-
 end

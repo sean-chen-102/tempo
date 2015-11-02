@@ -150,11 +150,11 @@ class ActivitiesController < ApplicationController
 		json_response = {}
 		error_list = []
 
-		interests = Interest.joins(:activities).where(activities: {id: @activity.id})
-
-		if !@activity.nil? and !interests.empty?
+		if !@activity.nil?
+			interests = Interest.joins(:activities).where(activities: {id: @activity.id})
+    
 			status = 1
-			json_response['data'] = interests.as_json
+			json_response['interests'] = interests.as_json
 		else
 			error_list.append("Error: activity does not exist")
 		end

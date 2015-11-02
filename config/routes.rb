@@ -25,7 +25,9 @@ Rails.application.routes.draw do
   delete '/api/users/:id', to: 'users#destroy_user', defaults: { format: 'json' }
 
   # Interests routing 
+  get '/api/interests/:id', to: 'interests#get_interest', defaults: { format: 'json' }
   get '/api/interests', to: 'interests#get_interests', defaults: { format: 'json' }
+  get '/api/interests/:id/users', to: 'interests#get_users', defaults: { format: 'json' }
   post '/api/interests', to: 'interests#create_interest', defaults: { format: 'json' }
   post '/api/interests/:id', to: 'interests#edit_interest', defaults: { format: 'json' }
   delete '/api/interests/:id', to: 'interests#destroy_interest', defaults: { format: 'json' }

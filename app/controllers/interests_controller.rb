@@ -1,5 +1,5 @@
 class InterestsController < ApplicationController
-  before_action :set_interest, only: [:edit_interest, :destroy_interest]
+  before_action :set_interest, only: [:edit_interest, :destroy_interest, :get_users, :get_interest]
 
   # CUSTOM CODE
 
@@ -43,6 +43,33 @@ class InterestsController < ApplicationController
     end
   end
 
+  # Return a JSON response of the specified interest
+  # GET /api/interests/:id
+  # Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/interests/1
+  def get_interest
+    status = -1
+    error_list = []
+    json_response = {}
+
+    if not @interest.nil?
+      status = 1
+      json_response["interest"] = @interest.as_json
+    else
+      error_list.append("Error: interest ##{params[:id]} does not exist.")
+    end
+
+    if status == -1 
+      json_response["errors"] = error_list
+    end
+
+    json_response["status"] = status
+    json_response = json_response.to_json
+
+    respond_to do |format|
+      format.json { render json: json_response }
+    end
+  end
+
   # Return a JSON response with a list of all interests
   # GET /api/interests
   # Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/interests
@@ -83,6 +110,38 @@ class InterestsController < ApplicationController
     if not @interest.nil? # if the Interest exists
       @interest.destroy # delete the Interest from the database
       status = 1
+    else
+      error_list.append("Error: interest ##{params[:id]} does not exist.")
+    end
+
+    if status == -1
+      json_response["errors"] = error_list
+    end
+
+    json_response["status"] = status
+    json_response = json_response.to_json
+
+    respond_to do |format|
+      format.json { render json: json_response }
+    end
+  end
+
+  # Finds all users that have selected the specified interest
+  # GET /api/interests/:id/users
+  # Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/interests/1/users
+  def get_users
+    status = -1
+    json_response = {}
+    error_list = []
+
+
+    if not @interest.nil?
+      users = User.joins(:interests).where(interests: {id: @interest.id})
+      if !users.empty?
+        status = 1
+        json_response["users"] = users.as_json
+      end
+      error_list.append("Error: no users have interest ##{params[:id]}.")
     else
       error_list.append("Error: interest ##{params[:id]} does not exist.")
     end

@@ -43,4 +43,9 @@ class Activity < ActiveRecord::Base
     return activities
   end
 
+  # Returns a list of all interests that the specified activity belongs to
+  def self.get_interests(activity_id)
+    return interests = Interest.joins(:activities).where(activities: {id: activity_id})\
+  end
+
 end

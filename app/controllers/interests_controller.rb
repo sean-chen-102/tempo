@@ -136,7 +136,7 @@ class InterestsController < ApplicationController
 
 
     if not @interest.nil?
-      users = User.joins(:interests).where(interests: {id: @interest.id})
+      users = Interest.get_users(@interest.id)
       if !users.empty?
         status = 1
         json_response["users"] = users.as_json

@@ -29,4 +29,9 @@ class Interest < ActiveRecord::Base
     return interests
   end
 
+  # Returns a list of all Users who have the specified interest
+  def self.get_users(interest_id)
+    return User.joins(:interests).where(interests: {id: interest_id})
+  end
+
 end

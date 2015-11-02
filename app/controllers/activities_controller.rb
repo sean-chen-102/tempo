@@ -151,8 +151,7 @@ class ActivitiesController < ApplicationController
 		error_list = []
 
 		if !@activity.nil?
-			interests = Interest.joins(:activities).where(activities: {id: @activity.id})
-    
+			interests = Activity.get_interests(@activity.id)    
 			status = 1
 			json_response['interests'] = interests.as_json
 		else

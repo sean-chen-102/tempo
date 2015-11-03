@@ -14,11 +14,13 @@ var ActivityModalView = Backbone.View.extend({
 
     show: function() {
       console.log("in show for modal");
+      // TODO: Modal isn't being displayed as a modal, check bootstrap?
       this.$el.modal('show');
     },
 
     teardown: function() {
       this.$el.data('modal', null);
+      // TODO; This.remove isn't working?
       this.remove();
     },
 

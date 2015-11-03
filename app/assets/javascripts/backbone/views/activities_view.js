@@ -21,6 +21,7 @@ var ActivitiesView = Backbone.View.extend({
 
       var renderData = function(data) {
         console.log(data);
+        $(that.el).html("<h4 style='color: #9b59b6;'> Activity List </h4> <br>");
         that.activities.each(that.renderItem);
         //TODO: Create and import handlebars for templating     
         // var html = "<h4 style='color: #9b59b6;'> Activity List </h4> <br>"

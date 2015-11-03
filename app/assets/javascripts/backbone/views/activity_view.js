@@ -2,7 +2,7 @@ var ActivityView = Backbone.View.extend({
     tagName: "li",
     options: null,
     events: {
-        "click button": "clicked"
+        "click a": "clicked"
     },
     initialize: function(options){
       this.options = options;

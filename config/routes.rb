@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   ### Custom Routing ###
 
   # Routes for the frontend
-  get 'activities', to: 'activities#index'
+  get 'tempo', to: 'tempo#index'
 
   # match '*path', to: 'application#catch', via: [:get, :post, :put, :patch, :delete]
 
@@ -25,13 +25,17 @@ Rails.application.routes.draw do
   delete '/api/users/:id', to: 'users#destroy_user', defaults: { format: 'json' }
 
   # Interests routing 
+  get '/api/interests/:id', to: 'interests#get_interest', defaults: { format: 'json' }
   get '/api/interests', to: 'interests#get_interests', defaults: { format: 'json' }
+  get '/api/interests/:id/users', to: 'interests#get_users', defaults: { format: 'json' }
   post '/api/interests', to: 'interests#create_interest', defaults: { format: 'json' }
   post '/api/interests/:id', to: 'interests#edit_interest', defaults: { format: 'json' }
   delete '/api/interests/:id', to: 'interests#destroy_interest', defaults: { format: 'json' }
 
   # Activities routing
+  get '/api/activities/:id', to: 'activities#get_activity', defaults: { format: 'json' }
   get '/api/activities', to: 'activities#get_activities', defaults: { format: 'json' }
+  get '/api/activities/:id/interests', to: 'activities#get_interests', defaults: { format: 'json' }
   post '/api/activities', to: 'activities#create_activity', defaults: { format: 'json' }
   post '/api/activities/:id', to: 'activities#edit_activity', defaults: { format: 'json ' }
   delete '/api/activities/:id', to: 'activities#destroy_activity', defaults: { format: 'json' }
@@ -50,7 +54,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'pages#home'
+  root 'tempo#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

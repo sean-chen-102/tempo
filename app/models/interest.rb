@@ -12,7 +12,7 @@
 class Interest < ActiveRecord::Base
 	# Associations
 	has_and_belongs_to_many :activities
-  belongs_to :users
+  has_and_belongs_to_many :users
 
 	# Validations
 	validates :name, presence: true, uniqueness: true
@@ -27,6 +27,11 @@ class Interest < ActiveRecord::Base
     end
     
     return interests
+  end
+
+  # Returns a list of all Users who have the specified interest
+  def self.get_users(interest_id)
+    return User.joins(:interests).where(interests: {id: interest_id})
   end
 
 end

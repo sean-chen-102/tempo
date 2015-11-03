@@ -35,19 +35,11 @@ var CustomActivityView = Backbone.View.extend({
 	            + "</tr>";  
 	        });
 
-	        // //Iterate throught he collections of Activities and create a template
-	        // that.activities.each(function(model){
-	        //   html += "<tr>" 
-	        //       + "<td> " +  model.get('title') + " </td>"
-	        //       + "<td> " +  model.get('content') + " </td>"
-	        //       + "<td> " +  model.get('completion_time') + " </td>"
-	        //       + "<td> " +  model.get('content_type') + " </td>"
-	        //       + "<td> " +  model.get('id') + " </td>"
-	        //     + "</tr>";  
-	        // });
 	        html += " </tbody> </table> </br> ";
-	        //Adding activity link
-	        html += " <a href='/tempo#show' id='add'> Create Custom Activity </a>";
+	        
+          //Adding activity link
+	        html += " <a href='/tempo#createCustomActivity' id='add'> Create a Custom Activity </a>";
+          html += " <div class='createCustomActivity'> </div> ";
 	        $(that.el).html(html);  
        	};
 
@@ -58,8 +50,6 @@ var CustomActivityView = Backbone.View.extend({
           	dataType: "json",
           	data: {"interests": this.interests, "time": this.time}       		
        	});
-
-        renderData();
 
         //TODO: Find better way to do this
         // if(this.interests && this.time){

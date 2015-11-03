@@ -41,7 +41,7 @@ var HomeView = Backbone.View.extend({
 			//save duration to activity view object
 			App.Views['activityView'].time = duration;
 			//switch view to activities view
-			window.location = '/activities#activities';
+			window.location = '/tempo#activities';
 		},
 		login : function(options){
 			console.log("hi");

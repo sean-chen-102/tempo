@@ -75,7 +75,7 @@ class ActivitiesController < ApplicationController
 	  end
 	end
 
-	# Return a JSON response with a list of given activities based on the params: interest and time
+	# Return a JSON response with a list of given activities based on the params: interests and time
 	# GET /api/activities
 	# URL format: '/api/activities?interest=<interest_name>&time=<time>'
 	# Testing via curl: curl -H "Content-Type: application/json" -X GET -d '{"time":5}' http://localhost:3000/api/activities

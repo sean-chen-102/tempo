@@ -5,6 +5,8 @@ class UsersController < ApplicationController
 
   # CUSTOM CODE
 
+  # TODO: change password API call
+
   # Create a User in the database for the given params
   # POST /api/users/
   # Testing via curl: curl -H "Content-Type: application/json" -X POST -d '{"user": {"name": "Jack Daniels", "email": "jack6@mail.com", "username": "jackD6", "password": "password", "password_confirmation": "password"}}' http://localhost:3000/api/users

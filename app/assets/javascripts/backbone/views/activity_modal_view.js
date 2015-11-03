@@ -26,10 +26,12 @@ var ActivityModalView = Backbone.View.extend({
       var that = this;
       var home_template = JST[this.template]({
               title: that.model.get('title'),
-              body: that.model.get('content')
-
+              body: that.model.get('content'),
+              completion_time: that.model.get('completion_time'),
+              content_type: that.model.get('content_type')
           });
       this.$el.html(home_template);
+      this.$el.modal({show:false});
       //this.getTemplate(this.template, this.renderView);
       return this;
     },

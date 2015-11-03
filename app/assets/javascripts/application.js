@@ -15,6 +15,7 @@
 //= require js.cookie
 //= require underscore
 //= require bootstrap-sprockets
+//= require bootstrap
 //= require backbone
 //= require tempo
 //= require handlebars.runtime

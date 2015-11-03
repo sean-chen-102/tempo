@@ -53,6 +53,13 @@ class User < ActiveRecord::Base
     return interests
   end
 
+  # Adds the custom_activity to the User's list of CustomActivities.
+  def add_custom_activity(custom_activity)
+    user = self
+    user.custom_activities << custom_activity
+    user.save
+  end
+
   # Returns a hash of basic user info.
   # NOTE: This info is not secure - it is visible by everyone.
   def get_basic_info

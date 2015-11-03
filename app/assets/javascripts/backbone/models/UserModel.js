@@ -1,5 +1,5 @@
 var User = Backbone.Model.extend({
-  		url: '/users/',
+  		url: '/api/users/',
   		paramRoot: 'user',
   		defaults: {
     		"email": "",

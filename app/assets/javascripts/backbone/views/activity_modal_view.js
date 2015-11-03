@@ -1,0 +1,41 @@
+var ActivityModalView = Backbone.View.extend({
+    id: 'base-modal',
+    className: 'modal fade hide',
+    template: 'backbone/templates/activities/modal',
+    
+    events: {
+      'hidden': 'teardown'
+    },
+    
+    initialize: function() {
+       _.bindAll(this, 'show', 'teardown', 'render', 'renderView');
+       this.render();
+    },
+
+    show: function() {
+      console.log("in show for modal");
+      this.$el.modal('show');
+    },
+
+    teardown: function() {
+      this.$el.data('modal', null);
+      this.remove();
+    },
+
+    render: function() {
+      var that = this;
+      var home_template = JST[this.template]({
+              title: that.model.get('title'),
+              body: that.model.get('content')
+
+          });
+      this.$el.html(home_template);
+      //this.getTemplate(this.template, this.renderView);
+      return this;
+    },
+    
+    renderView: function(template) {
+      this.$el.html(template());
+      this.$el.modal({show:false}); // dont show modal on instantiation
+    }
+});

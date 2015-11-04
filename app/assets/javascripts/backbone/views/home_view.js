@@ -38,8 +38,9 @@ var HomeView = Backbone.View.extend({
 			//called when the go button is clicked
 			var index = $('#time-selector')[0].selectedIndex;
 			var duration = this.times.models[index].get('duration');
+			console.log("iutiyou")
 			//save duration to activity view object
-			App.Views['activityView'].time = duration;
+			App.Views['activitiesView'].time = duration;
 			//switch view to activities view
 			window.location = '/tempo#activities';
 		},

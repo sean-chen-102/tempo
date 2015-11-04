@@ -1,10 +1,13 @@
 
 <h3 style='color: #e74c3c;'> Welcome Home <%= name %></h3>
+<p>Activity duration</p>
 <select id='time-selector'>
     <% _(times).each(function(time) { %> 
         <option value='<%= time.duration %>'><%= time.duration %></option>
     <% }); %>
 </select> 
 <button class='go-btn'>GO</button>
-<a href='tempo#interests'> See your interests </a>
-
+<br>
+<a href='tempo#interests'> Change interests </a>
+<br>
+<a href='tempo#settings'> See your settings</a>

@@ -1,5 +1,5 @@
 // Creating View for Interests
-var InterestView = Backbone.View.extend({
+var SettingsView = Backbone.View.extend({
 	el: ".testDiv",
 	tagName : 'li',
 	options: null,
@@ -59,14 +59,14 @@ var InterestView = Backbone.View.extend({
 	render : function (options){
 		// Set scope, construct new activity collection, call fetch, render data on callback function
 		var that = this; // To fix callback scoping error
-		var template = JST["backbone/templates/activities/interest"]({
+		var template = JST["backbone/templates/activities/settings"]({
     	    });
         this.$el.html(template);
 
 	    var renderData = function(data){	    	
 			//TODO: Create and import handlebars for templating			
 			var html = "<h4 style='color: #1abc9c;'> Interest List </h4> <br>"
-						+ "<table> <thead> <tr> <th> </th><th>Name</th> <th>Created at</th> <th>Updated At</th> <th>User Id</th> <th>Content</th> "
+						+ "<table> <thead> <tr> <th> </th>"
 						+ "<th colspan='3'></th> </tr> </thead>" 
 						+ " <tbody> ";
 			//Iterate throught he collections of Activities and create a template
@@ -79,17 +79,12 @@ var InterestView = Backbone.View.extend({
 				html += "<tr>" 
 						+   " <td> <input type=checkbox name=" + model.get('name') +  " id=interest-" + that.numInterests + " " + checked + " >  </td>"
 						+ "<td> " +  model.get('name') + " </td>"
-						+ "<td> " +  model.get('created_at') + " </td>"
-						+ "<td> " +  model.get('updated_at') + " </td>"
-						+ "<td> " +  model.get('user_id') + " </td>"
 					+ "</tr>";	
 				that.numInterests += 1
 			});
 			html += " </tbody> </table> </br> ";
 			html += "<button id=submit-interests> save </button> <br>"; 
-			//Adding activity link
-			html += " <a href='/activities#show' id='add'> Add interest </a>";
-			$(that.el).append(html);	
+			$(that.el).append(html);
 	    };
 
 		var interests = new Interests();

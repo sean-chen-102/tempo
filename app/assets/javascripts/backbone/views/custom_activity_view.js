@@ -25,7 +25,6 @@ var CustomActivityView = Backbone.View.extend({
 	              + "<th colspan='3'></th> </tr> </thead>" 
 	              + " <tbody> ";
 
-
 	        that.customActivities.each(function(model){
 	          html += "<tr>" 
 	              + "<td> " +  model.get('title') + " </td>"
@@ -39,7 +38,7 @@ var CustomActivityView = Backbone.View.extend({
 	        
           //Adding activity link
 	        html += " <a href='/tempo#createCustomActivity' id='add'> Create a Custom Activity </a>";
-          html += " <div class='createCustomActivity'> </div> ";
+          // html += " <div class='createCustomActivity'> </div> ";
 	        $(that.el).html(html);  
        	};
 

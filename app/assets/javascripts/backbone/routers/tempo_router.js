@@ -18,7 +18,6 @@ var TempoRouter = Backbone.Router.extend({
       App.Views['customActivity'] = new CustomActivityView()
       App.Views['createCustomActivity'] = new CreateCustomActivityView()
       App.Views['activitiesView'] = new ActivitiesView();
-      //App.Views['activityModalView'] = new ActivityModalView();
     },
     index: function(){
       console.log("Index router is called");

@@ -37,6 +37,7 @@ var LoginView = Backbone.View.extend({
 	      		success: function(userSession, response) {
 	      			console.log("success!");
 	      			Cookies.set("login-token", response.token);
+	      			console.log(response);
 	      			Backbone.Events.trigger("user-interests", [response.user.interests, response.user.id]);
 	      			Backbone.history.navigate('home', {trigger: true});  
 	      },

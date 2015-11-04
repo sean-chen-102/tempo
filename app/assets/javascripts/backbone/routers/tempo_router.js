@@ -22,20 +22,20 @@ var TempoRouter = Backbone.Router.extend({
     },
     home: function() {
       var cookie = Cookies.get("login-token");
-      this.token = new Token();
-      this.token.attributes.token = cookie;
-      console.log(this.token);
+      var token = new Token();
+      token.url += cookie;
+      console.log("hi");
+      console.log(token);
       if (cookie === "undefined" || cookie === undefined) {
           console.log('undefined cookie');
           Backbone.history.navigate('login');  
           App.Views['loginView'].render();
       } else {
-
-        this.token.fetch({
+        token.fetch({
             success: function(data){
-              console.log("Home router is called");
+              console.log(data);
               App.Views['homeView'].render({
-                "name" : "name"
+                "name" : data.attributes.user.name
               });
           }, failure: function(data) {
             console.log('invalid cookie');

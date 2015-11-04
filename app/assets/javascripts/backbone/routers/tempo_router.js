@@ -12,7 +12,6 @@ var TempoRouter = Backbone.Router.extend({
       "show": "show"
     },
     initialize: function() {
-      console.log("HEY");
       App.Views['homeView'] = new HomeView();
       App.Views['activityView'] = new ActivityView()
       App.Views['interestView'] = new InterestView()
@@ -23,15 +22,27 @@ var TempoRouter = Backbone.Router.extend({
     },
     home: function() {
       var cookie = Cookies.get("login-token");
-      console.log("cooke");
-      console.log(cookie);
-      if (cookie === undefined) {
-        console.log('undefined cookie');
-        Backbone.history.navigate('login');  
-        App.Views['loginView'].render();
+      var token = new Token();
+      token.url += cookie;
+      console.log("hi");
+      console.log(token);
+      if (cookie === "undefined" || cookie === undefined) {
+          console.log('undefined cookie');
+          Backbone.history.navigate('login');  
+          App.Views['loginView'].render();
       } else {
-        console.log("Home router is called");
-        App.Views['homeView'].render();
+        token.fetch({
+            success: function(data){
+              console.log(data);
+              App.Views['homeView'].render({
+                "name" : data.attributes.user.name
+              });
+          }, failure: function(data) {
+            console.log('invalid cookie');
+            Backbone.history.navigate('login');  
+            App.Views['loginView'].render();
+          } 
+        });
       }
     },
     activities: function(){

@@ -146,7 +146,7 @@ class ActivitiesController < ApplicationController
 	# GET api/activities/:id/interests
 	# URL format: '/api/activities/:id/interests'
 	# Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/activities/1/interests
-	def get_interests
+	def get_interests_for_activity
 		status = -1
 		json_response = {}
 		error_list = []
@@ -180,8 +180,8 @@ class ActivitiesController < ApplicationController
 	  		begin
 		    	@activity = Activity.find(params[:id])
 		    rescue ActiveRecord::RecordNotFound
-          		@user = nil
-        	end
+      		@activity = nil
+      	end
 	    end
 	  end
 

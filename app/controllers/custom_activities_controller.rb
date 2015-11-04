@@ -4,6 +4,7 @@ class CustomActivitiesController < ApplicationController
 	# Create a CustomInterest in the database for the given params
 	# POST /api/users/:id/custom_activities
 	# Testing via curl: curl -H "Content-Type: application/json" -X POST -d '{"custom_activity": {"title": "Title", "completion_time": 10, "content": "Lorem ipsum content here!"}, "token":"<token"}' http://localhost:3000/api/users/1/custom_activities
+	# Requires token authentication
 	def create_custom_activity 
 		json_response = {}
 		status = -1
@@ -47,6 +48,7 @@ class CustomActivitiesController < ApplicationController
 	# Edit the fields of a specified CustomActivity
 	# PUT /api/users/:id/custom_activities/:cid
 	# Testing via curl: curl -H "Content-Type: application/json" -X PUT -d '{"custom_activity": {"title": "TITLE", "completion_time": 10, "content": "LOREM IPSUM CONTENT HERE!"}, "token":"<token>"}' http://localhost:3000/api/users/1/custom_activities/3
+	# Requires token authentication
 	def edit_custom_activity
 		json_response = {}
 		status = -1

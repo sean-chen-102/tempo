@@ -104,6 +104,7 @@ class UsersController < ApplicationController
   # PUT /api/users/:id
   # TODO: update this API request
   # TODO: Requires authentication
+  # Requires token authentication
   def edit_user
     respond_to do |format|
       if @user.update(user_params)
@@ -120,7 +121,7 @@ class UsersController < ApplicationController
   # DELETE /api/users/:id
   # Testing via curl: curl -H "Content-Type: application/json" -X DELETE -d '{"token": "<token>"}' http://localhost:3000/api/users/13
   # TODO: Make this secure so only admins can destroy users
-  # Requires authentication
+  # Requires token authentication
   def destroy_user
     status = -1
     json_response = JsonResponse.new
@@ -154,7 +155,7 @@ class UsersController < ApplicationController
   # Return a JSON response with a list of given Interests of a specified User
   # GET '/api/users/:id/interests'
   # Testing via curl: curl -H "Content-Type: application/json" -X GET -d '{"token":"<token>"}' http://localhost:3000/api/users/1/interests
-  # Requires authentication
+  # Requires token authentication
   def get_user_interests
     status = -1
     json_response = JsonResponse.new
@@ -195,7 +196,7 @@ class UsersController < ApplicationController
   # Return a JSON response with a list of a User's Custom Activities
   # GET /api/users/:id/custom_activities
   # Testing via curl: curl -H "Content-Type: application/json" -X GET -d '{"token":"<token>"}' http://localhost:3000/api/users/1/custom_activities
-  # Requires authentication
+  # Requires token authentication
   def get_user_custom_activities
     status = -1
     json_response = JsonResponse.new
@@ -236,7 +237,7 @@ class UsersController < ApplicationController
   # Create a User Interests in the database for the given params. Note: will replace the User's previous interests.
   # PUT /api/users/:id/interests
   # Testing via curl: curl -H "Content-Type: application/json" -X PUT -d '{"interests":["science", "technology"], "token":"<token>"}' http://localhost:3000/api/users/1/interests
-  # Requires authentication
+  # Requires token authentication
   def set_interests_for_user
     interests_key = "interests"
     json_response = JsonResponse.new

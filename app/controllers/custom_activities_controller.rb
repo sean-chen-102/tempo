@@ -102,7 +102,6 @@ class CustomActivitiesController < ApplicationController
 		json_response = {}
 		activities_list = []
 		error_list = []
-
 		status = -1
 		@activities = CustomActivity.all
 
@@ -134,19 +133,36 @@ class CustomActivitiesController < ApplicationController
 
 	# Deletes specified CustomActivity from database
 	# DELETE /api/users/:id/custom_activities/:cid
-	# Testing via curl: curl -H "Content-Type: application/json" -X DELETE http://localhost:3000/api/custom_activities/1
+	# Testing via curl: curl -H "Content-Type: application/json" -X DELETE -d '{"token":"<token>"}' http://localhost:3000/api/users/1/custom_activities/5
+	# Requires token authentication
 	def destroy_custom_activity
 		json_response = {}
 		error_list = []
 		status = -1
 		token = params["token"]
+		user_id = params[:id]
+		custom_activity_id = params[:cid]
+		@user = User.find_by(id: user_id)
+		@custom_activity = CustomActivity.find_by(id: custom_activity_id)
 
-
-		if not @custom_activity.nil?
-			@custom_activity.destroy
-			status = 1
+		if not @user.nil? # If the User exists
+			if not token.nil? and user_has_permission(User.authenticate_token(token), @user.id) # if the token was provided and is valid and the user has permission
+				if not @custom_activity.nil? # If the CustomActivity exists
+					if @custom_activity.belongs_to_user(@user) # If this User has permision to delete the CustomActivity
+						status = 1
+						@custom_activity.destroy
+					else
+						error_list.append("Error: custom activity ##{custom_activity_id} doesn't belong to user ##{user_id}.")
+					end
+				else
+					error_list.append("Error: custom activity ##{custom_activity_id} doesn't exists.")
+				end
+			else
+				error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
+        status = -2
+			end
 		else
-			error_list.append("Error: custom_activity ##{params[:id]} does not exist.")
+			error_list.append("Error: user ##{user_id} doesn't exist.")
 		end
 
 		if status != 1

@@ -5,13 +5,16 @@ var TempoRouter = Backbone.Router.extend({
       'signup': 'signup',
       "interests": "interests",
       "activities": "activities",
+      "activities/:activity":"activity",
       "show": "show"
     },
     initialize: function() {
       console.log("HEY");
       App.Views['homeView'] = new HomeView();
-      App.Views['activityView'] = new ActivityView()
-      App.Views['interestView'] = new InterestView()
+      App.Views['activitiesView'] = new ActivitiesView();
+      App.Views['interestView'] = new InterestView();
+      App.Views['activityView'] = new ActivityView();
+      //App.Views['activityModalView'] = new ActivityModalView();
     },
     index: function(){
       console.log("Index router is called");
@@ -24,8 +27,13 @@ var TempoRouter = Backbone.Router.extend({
     activities: function(){
       console.log("The activities router was called ");
       //Constructing View 
-      App.Views['activityView'].render()    
-    },    
+      App.Views['activitiesView'].render()    
+    },
+    activity: function(options) {
+      console.log("The activity router was called");
+      console.log(options);
+      // App.Views[''].render();
+    },
     interests: function(){
       console.log("The interests router was called ");
       //Constructing View 

@@ -10,12 +10,6 @@ class SessionsController < ApplicationController
                      }
   end
 
-  # GET 'api/login' 
-  # For displaying a login form
-  # TODO: probably delete this, we don't deal with forms on the backend
-  def new
-  end
-
   # POST 'api/login'
   # Create a new User Session (aka login)
   # Testing: curl -H "Content-Type: application/json" -X POST -d '{"username":"sillysally23","password":"password"}' http://localhost:3000/api/login
@@ -82,10 +76,46 @@ class SessionsController < ApplicationController
     end
   end
 
+  # Verify whether or not the client is serving a valid JWT token
+  # GET 'api/verify_token'
+  # Testing: curl -H "Content-Type: application/json" -X GET -d '{"token":"<token>"}' http://localhost:3000/api/verify_token
+  def verify_token
+    error_list = []
+    status = -1
+    json_response = {}
+    token = params["token"]
+
+    if not token.nil?
+      user = User.authenticate_token(token)
+      if not user.nil?
+        status = 1
+        user_info = user.get_advanced_info()
+        json_response["user"] = user_info
+      else
+        error_list.append("Error: invalid token.")
+      end
+    else
+      error_list.append("Error: you must include the token.")
+    end
+
+    json_response["status"] = status # set the response status to -1 or 1
+
+    if status != 1
+      # send error messages
+      json_response["errors"] = error_list
+    end
+
+    json_response = json_response.to_json
+    respond_to do |format|
+      format.json { render json: json_response }
+    end
+  end
+
 
   # DELETE 'api/logout'
   # Delete the User Session (aka logout). Note that this relies on the client-side front-end
   # to delete the stored JWT token in the browser.
+  # TODO: implement this
   def logout
     status = 1
     message = "Success: please remove the JWT token from the client side."

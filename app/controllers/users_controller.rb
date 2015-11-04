@@ -16,24 +16,18 @@ class UsersController < ApplicationController
 
     @user = User.new(user_params)
     if @user.save 
-      puts "successfully saved"
       status = 1
       user_data = @user.get_advanced_info()
-      puts "got advanced info: #{user_data}"
       token = @user.get_signed_token()
-      puts "got signed token"
       user_data["token"] = token
       json_response.set_data("user", user_data)
-      puts "set json_response data"
     else
       error_list = process_save_errors(@user.errors)
       json_response.set_errors(error_list)
     end
 
     json_response.set_status(status)
-    puts "set json_response"
     json_response = json_response.get_json()
-    puts "got json response"
 
     respond_to do |format|
       format.json { render json: json_response }
@@ -120,6 +114,51 @@ class UsersController < ApplicationController
         # format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  # Change the User's password
+  # PUT /api/users/:id/change_password
+  # Testing via curl: curl -H "Content-Type: application/json" -X PUT -d '{"token":"<token", "old_password":"password", "new_password":"password2"}' http://localhost:3000/api/users/2/change_password
+  # Requires token authentication AND relogin
+  def change_password
+    status = -1
+    json_response = JsonResponse.new
+    error_list = []
+    token = params[:token]
+    old_password = params["old_password"]
+    new_password = params["new_password"]
+    user_id = params[:id]
+    @user = User.find_by(id: user_id)
+
+    if not @user.nil? # if the User exists
+      if not token.nil? and user_has_permission(User.authenticate_token(token), @user.id) # if the token was provided and is valid and the user has permission
+        if @user.authenticate(old_password) # if the old_password matches the one in the database
+          if @user.change_password(new_password)
+            status = 1
+          else
+            error_list << @user.errors
+          end
+        else
+          error_list.append("Error: the old password is not correct.")
+        end
+      else
+        error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
+        status = -2
+      end
+    else
+      error_list.append("Error: user ##{params[:id]} does not exist.")
+    end
+
+    if status != 1
+      json_response.set_errors(error_list)
+    end
+
+    json_response.set_status(status)
+    json_response = json_response.get_json
+
+    respond_to do |format|
+      format.json { render json: json_response }
     end
   end
 

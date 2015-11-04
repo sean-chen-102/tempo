@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   post '/api/users/:id', to: 'users#edit_user', defaults: { format: 'json' }
   put 'api/users/:id/interests', to: 'users#set_interests_for_user', defaults: { format: 'json' }
   delete '/api/users/:id', to: 'users#destroy_user', defaults: { format: 'json' }
+  put '/api/users/:id/change_password', to: 'users#change_password', defaults: { format: 'json' }
 
   # Interests routing 
   get '/api/interests/:id', to: 'interests#get_interest', defaults: { format: 'json' }
@@ -49,6 +50,7 @@ Rails.application.routes.draw do
   # User Sessions routing
   post 'api/login', to: 'sessions#login', defaults: { format: 'json' }
   delete 'api/logout', to: 'sessions#logout', defaults: { format: 'json' }
+  get 'api/verify_token', to: 'sessions#verify_token', defaults: { format: 'json' }
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -8,7 +8,7 @@
 
 # SET UP USERS
 user_1 = User.create({ name: "Sally", username: "sillysally23", email: "sally@mail.com", password: "password", password_confirmation: "password" })
-user_2 = User.create({ name: "Ben", username: "trap_queen", email: "ben@mail.com", password_digest: "password", password_confirmation: "password"})
+user_2 = User.create({ name: "Ben", username: "trap_queen", email: "ben@mail.com", password: "password", password_confirmation: "password"})
 user_list = [user_1, user_2]
 
 

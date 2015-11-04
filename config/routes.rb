@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   # match '*path', to: 'application#catch', via: [:get, :post, :put, :patch, :delete]
 
   # Users routing
-  get '/api/users', to: 'users#get_users', defaults: { format: 'json' }
+  get '/api/users', to: 'users#get_all_users', defaults: { format: 'json' }
   get '/api/users/:id', to: 'users#get_user', defaults: { format: 'json' }
   get '/api/users/:id/interests', to: 'users#get_user_interests', defaults: { format: 'json' }
   get '/api/users/:id/custom_activities', to: 'users#get_user_custom_activities', defaults: { format: 'json' }
@@ -51,6 +51,9 @@ Rails.application.routes.draw do
   post 'api/login', to: 'sessions#login', defaults: { format: 'json' }
   delete 'api/logout', to: 'sessions#logout', defaults: { format: 'json' }
   get 'api/verify_token', to: 'sessions#verify_token', defaults: { format: 'json' }
+
+  # Account Activations routing
+  get 'api/users/:id/activate', to: 'account_activations#activate_account', defaults: { format: 'json' }
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

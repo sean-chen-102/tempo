@@ -66,7 +66,7 @@ class UsersController < ApplicationController
   # Returns a JSON response with all Users from the database
   # GET '/api/users'
   # Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/users
-  def get_users
+  def get_all_users
     status = -1
     json_response = JsonResponse.new
     error_list = []
@@ -102,7 +102,7 @@ class UsersController < ApplicationController
 
   # Edit the fields of a specified User
   # PUT /api/users/:id
-  # TODO: update this API request
+  # TODO: update this API request - do we even need this?
   # TODO: Requires authentication
   # Requires token authentication
   def edit_user

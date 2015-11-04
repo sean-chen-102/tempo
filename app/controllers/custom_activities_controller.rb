@@ -45,8 +45,8 @@ class CustomActivitiesController < ApplicationController
 	end
 
 	# Edit the fields of a specified CustomActivity
-	# PUT /api/custom_activities/:id
-	# Testing via curl: curl -H "Content-Type: application/json" -X POST -d '{"custom_activity": {"title": "Title", "completion_time": 10, "content_type": "text", "link": "https://www.google.com", "content": "Lorem ipsum content here!"} }' http://localhost:3000/api/custom_activities/1
+	# PUT /api/users/:id/custom_activities/:cid
+	# Testing via curl: curl -H "Content-Type: application/json" -X PUT -d '{"custom_activity": {"title": "Title", "completion_time": 10, "content_type": "text", "link": "https://www.google.com", "content": "Lorem ipsum content here!"} }' http://localhost:3000/api/users/1/custom_activities/1
 	def edit_custom_activity
 		respond_to do |format|
 			if @custom_activity.update(custom_activity_params)

@@ -6,8 +6,6 @@ var LoginView = Backbone.View.extend({
         	"click .login-submit":"login"
     	},
 		initialize: function(options){
-			this.model = new UserLogin();
-
 		},
 		render : function (options){
 			console.log("render login");
@@ -19,19 +17,21 @@ var LoginView = Backbone.View.extend({
         	this.$el.html(home_template);
 		},
 		login : function(options){
-			console.log("attempting login");
+			console.log("hi");
 			//called when the go button is clicked
-			var email = $('#email').val();
-			var password = $('#password').val();
-			this.model.attributes.email = email;
+			var username = $('#username-login').val();
+			var password = $('#password-login').val();
+			this.model.attributes.username = username;
 			this.model.attributes.password = password
 			console.log(this.model.attributes);
 		    this.model.save(this.model.attributes, {
 	      		success: function(userSession, response) {
 	      			console.log("success!");
+	      			console.log(userSession);
+	      			console.log(response);
 	      			Cookies.set("login-token", response.token);
 	      			Backbone.Events.trigger("user-interests", [response.user.interests, response.user.id]);
-	      			Backbone.history.navigate('home', {trigger: true});  
+	      			alert("you successfully logged in!");
 	      },
 	      error: function(userSession, response) {
 	      	console.log("failure!");

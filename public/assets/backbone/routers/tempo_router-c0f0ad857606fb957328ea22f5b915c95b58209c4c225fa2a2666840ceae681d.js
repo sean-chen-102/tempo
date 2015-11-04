@@ -3,7 +3,6 @@ var TempoRouter = Backbone.Router.extend({
       '': 'index',
       'home': 'home',
       'signup': 'signup',
-      'login': 'login',
       "interests": "interests",
       "activities": "activities",
       "customActivities": "customActivities",
@@ -76,11 +75,6 @@ var TempoRouter = Backbone.Router.extend({
       //Constructing View 
       App.Views['SignupView'] = new SignupView()
       App.Views['SignupView'].render()      
-    },
-    login: function(){
-      console.log("The login router was called ");
-      //Constructing View 
-      App.Views['loginView'].render()      
     },
 
   });

@@ -1,0 +1,2 @@
+(function() { this.JST || (this.JST = {}); this.JST["backbone/templates/login"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<span>\n<form>\n  username:<br>\n  <input type="text" name="username" id="username-login">\n  <br>\n  password:<br>\n  <input type="password" name="password" id="password-login">\n</form>\n  <button class="login-submit"> login</button>\n\n</span>\n');}return __p.join('');};
+}).call(this);

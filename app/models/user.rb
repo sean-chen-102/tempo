@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   # Before actions
   before_create :create_activation_digest
   before_save   :downcase_email
+  attr_accessor :activation_token, :reset_token
 
   # Associations
   has_many :interests
@@ -160,7 +161,7 @@ class User < ActiveRecord::Base
   # Returns the hash digest of the given string. Uses a minimal cost for computing 
   # the hash while in testing mode, and a high-security hash while in production
   # mode.
-  def digest(string)
+  def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
     hash = BCrypt::Password.create(string, cost: cost)
@@ -168,7 +169,7 @@ class User < ActiveRecord::Base
   end
 
   # Returns a random token for use with digests and hashes.
-  def new_token
+  def self.new_token
     return SecureRandom.urlsafe_base64
   end
 

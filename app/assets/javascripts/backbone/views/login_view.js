@@ -22,9 +22,15 @@ var LoginView = Backbone.View.extend({
 		login : function(options){
 			console.log("attempting login");
 			//called when the go button is clicked
-			var email = $('#email').val();
+
+			var usernameOrEmail = $('#username-or-email').val();
+
 			var password = $('#password').val();
-			this.model.attributes.email = email;
+			if(usernameOrEmail.indexOf('@') === -1) {
+				this.model.attributes.username = usernameOrEmail;
+			} else {
+				this.model.attributes.email = usernameOrEmail;
+			}
 			this.model.attributes.password = password
 			console.log(this.model.attributes);
 		    this.model.save(this.model.attributes, {

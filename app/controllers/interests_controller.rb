@@ -6,6 +6,7 @@ class InterestsController < ApplicationController
   # Create an Interest in the database for the given params
   # POST /api/interests
   # Testing via curl: curl -H "Content-Type: application/json" -X POST -d '{"interest": {"name": "interest1"} }' http://localhost:3000/api/interests
+  # TODO: only allow admins to do this
   def create_interest
     interest_key = "interest"
     json_response = {}
@@ -31,6 +32,7 @@ class InterestsController < ApplicationController
 
   # Edit the fields of a specified Interest
   # PUT /api/interests/:id
+  # TODO: only allow admins to do this
   def edit_interest
     respond_to do |format|
       if @interest.update(interest_params)
@@ -73,7 +75,7 @@ class InterestsController < ApplicationController
   # Return a JSON response with a list of all interests
   # GET /api/interests
   # Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/interests
-  def get_interests
+  def get_all_interests
     status = -1
     interests = Interest.get_interests()
     error_list = []
@@ -102,6 +104,7 @@ class InterestsController < ApplicationController
   # Deletes specified Interest from database
   # DELETE /api/interests/:id
   # Testing via curl: curl -H "Content-Type: application/json" -X DELETE http://localhost:3000/api/interests/8
+  # TODO: only allow admins to do this
   def destroy_interest
     status = -1
     json_response = {}
@@ -129,11 +132,11 @@ class InterestsController < ApplicationController
   # Finds all users that have selected the specified interest
   # GET /api/interests/:id/users
   # Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/interests/1/users
-  def get_users
+  # TODO: only allow admins to do this
+  def get_users_with_interest
     status = -1
     json_response = {}
     error_list = []
-
 
     if not @interest.nil?
       users = Interest.get_users(@interest.id)
@@ -165,7 +168,7 @@ class InterestsController < ApplicationController
         begin
           @interest = Interest.find(params[:id])
         rescue ActiveRecord::RecordNotFound
-          @user = nil
+          @interest = nil
         end
       end
     end

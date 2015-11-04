@@ -9,6 +9,7 @@
 #  password_digest :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  role            :integer          default(0)
 #
 
 class User < ActiveRecord::Base
@@ -61,6 +62,12 @@ class User < ActiveRecord::Base
     user.save
   end
 
+  # Update the User's password to new_password
+  def change_password(new_password)
+    self.password = new_password
+    return self.save
+  end
+
   # Returns a hash of basic user info.
   # NOTE: This info is not secure - it is visible by everyone.
   def get_basic_info
@@ -103,7 +110,6 @@ class User < ActiveRecord::Base
     user = User.find_by(id: user_id)
 
     if not user.nil?
-      puts "returning user"
       return user
     else
       return nil

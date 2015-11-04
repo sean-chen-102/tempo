@@ -1,8 +1,9 @@
 var TempoRouter = Backbone.Router.extend({
     routes: {
-      '': 'index',
+      '': 'home',
       'home': 'home',
       'signup': 'signup',
+      'login': 'login',
       "interests": "interests",
       "activities": "activities",
       "settings":"settings",
@@ -12,7 +13,6 @@ var TempoRouter = Backbone.Router.extend({
       "show": "show"
     },
     initialize: function() {
-      console.log("HEY");
       App.Views['homeView'] = new HomeView();
       App.Views['activityView'] = new ActivityView()
       App.Views['interestView'] = new InterestView()
@@ -20,14 +20,32 @@ var TempoRouter = Backbone.Router.extend({
       App.Views['createCustomActivity'] = new CreateCustomActivityView()
       App.Views['activitiesView'] = new ActivitiesView();
       App.Views['settingsView'] = new SettingsView();
-    },
-    index: function(){
-      console.log("Index router is called");
-      App.Views['homeView'].render();
+      App.Views['loginView'] = new LoginView();
     },
     home: function() {
-      console.log("Home router is called");
-      App.Views['homeView'].render();
+      var cookie = Cookies.get("login-token");
+      var token = new Token();
+      token.url += cookie;
+      console.log("hi");
+      console.log(token);
+      if (cookie === "undefined" || cookie === undefined) {
+          console.log('undefined cookie');
+          Backbone.history.navigate('login');  
+          App.Views['loginView'].render();
+      } else {
+        token.fetch({
+            success: function(data){
+              console.log(data);
+              App.Views['homeView'].render({
+                "name" : data.attributes.user.name
+              });
+          }, failure: function(data) {
+            console.log('invalid cookie');
+            Backbone.history.navigate('login');  
+            App.Views['loginView'].render();
+          } 
+        });
+      }
     },
     activities: function(){
       console.log("The activities router was called ");
@@ -72,6 +90,11 @@ var TempoRouter = Backbone.Router.extend({
       //Constructing View 
       App.Views['SignupView'] = new SignupView()
       App.Views['SignupView'].render()      
+    },
+    login: function(){
+      console.log("The login router was called ");
+      //Constructing View 
+      App.Views['loginView'].render()      
     },
 
   });

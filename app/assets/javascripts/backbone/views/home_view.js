@@ -13,7 +13,6 @@ var HomeView = Backbone.View.extend({
 	            view: this
 	        });
 
-	        this.model = new UserLogin();
 			//TODO: Find better way to do this
 			//add all the times we want the user to  be able to select
 	        this.times.add(new Time({duration: "5"}));
@@ -24,11 +23,14 @@ var HomeView = Backbone.View.extend({
 		render : function (options){
 			console.log("render home");
 			var that = this;
+			console.log(options);
+	        this.name = options.name;
 			//TODO: Move template to separate page, custom welcome name
 			//populate the home_template with times collection
 			var home_template = JST["backbone/templates/activities/home"]({
             	times: that.times.toJSON(),
-            	labelValue: 'Times'
+            	labelValue: 'Times',
+            	name: this.name
     	    });
         	this.$el.html(home_template);
 		},
@@ -42,26 +44,4 @@ var HomeView = Backbone.View.extend({
 			//switch view to activities view
 			window.location = '/tempo#activities';
 		},
-		login : function(options){
-			console.log("hi");
-			//called when the go button is clicked
-			var username = $('#username-login').val();
-			var password = $('#password-login').val();
-			this.model.attributes.username = username;
-			this.model.attributes.password = password
-			console.log(this.model.attributes);
-		    this.model.save(this.model.attributes, {
-	      		success: function(userSession, response) {
-	      			console.log("success!");
-	      			console.log(userSession);
-	      			console.log(response);
-	      			Cookies.set("login-token", response.token);
-	      			Backbone.Events.trigger("user-interests", [response.user.interests, response.user.id]);
-	      			alert("you successfully logged in!");
-	      },
-	      error: function(userSession, response) {
-	      	console.log("failure!");
-	      }
-	    });
-		}
 	});

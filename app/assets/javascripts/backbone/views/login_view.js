@@ -3,7 +3,8 @@ var LoginView = Backbone.View.extend({
 		tagName : 'div',
 		options: null,
 		events:{
-        	"click .login-submit":"login"
+        	"click .login-submit":"login",
+        	"click .create": "create"
     	},
 		initialize: function(options){
 			this.model = new UserLogin();
@@ -37,5 +38,8 @@ var LoginView = Backbone.View.extend({
 	      	console.log("failure!");
 	      }
 	    });
+		},
+		create : function(options) {
+			Backbone.history.navigate('signup', {trigger: true}); 
 		}
 	});

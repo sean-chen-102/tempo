@@ -59,6 +59,10 @@ var InterestView = Backbone.View.extend({
 	render : function (options){
 		// Set scope, construct new activity collection, call fetch, render data on callback function
 		var that = this; // To fix callback scoping error
+		var template = JST["backbone/templates/activities/interest"]({
+    	    });
+        this.$el.html(template);
+
 	    var renderData = function(data){	    	
 			//TODO: Create and import handlebars for templating			
 			var html = "<h4 style='color: #1abc9c;'> Interest List </h4> <br>"
@@ -85,7 +89,7 @@ var InterestView = Backbone.View.extend({
 			html += "<button id=submit-interests> save </button> <br>"; 
 			//Adding activity link
 			html += " <a href='/activities#show' id='add'> Add interest </a>";
-			$(that.el).html(html);	
+			$(that.el).append(html);	
 	    };
 
 		var interests = new Interests();

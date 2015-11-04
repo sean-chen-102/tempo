@@ -5,6 +5,8 @@ class UsersController < ApplicationController
 
   # CUSTOM CODE
 
+  # TODO: change password API call
+
   # Create a User in the database for the given params
   # POST /api/users/
   # Testing via curl: curl -H "Content-Type: application/json" -X POST -d '{"user": {"name": "Jack Daniels", "email": "jack6@mail.com", "username": "jackD6", "password": "password", "password_confirmation": "password"}}' http://localhost:3000/api/users
@@ -116,7 +118,8 @@ class UsersController < ApplicationController
 
   # Deletes specified User from database 
   # DELETE /api/users/:id
-  # Testing via curl: curl -H "Content-Type: application/json" -X DELETE http://localhost:3000/api/users/13
+  # Testing via curl: curl -H "Content-Type: application/json" -X DELETE -d '{"token": "<token>"}' http://localhost:3000/api/users/13
+  # curl -H "Content-Type: application/json" -X POST -d '{"user": {"name": "Jack Daniels", "email": "jack6@mail.com", "username": "jackD6", "password": "password", "password_confirmation": "password"}}' http://localhost:3000/api/users
   # TODO: Make this secure so only admins can destroy users
   # Requires authentication
   def destroy_user
@@ -131,12 +134,13 @@ class UsersController < ApplicationController
         status = 1
       else
         error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
+        status = -2
       end
     else
       error_list.append("Error: user ##{params[:id]} does not exist.")
     end
 
-    if status == -1
+    if status != 1
       json_response.set_errors(error_list)
     end
 
@@ -170,12 +174,13 @@ class UsersController < ApplicationController
         end
       else
         error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
+        status = -2
       end
     else
       error_list.append("Error: user ##{params[:id]} does not exist.")
     end
 
-    if status == -1
+    if status != 1
       json_response.set_errors(error_list)
     end
 
@@ -210,12 +215,13 @@ class UsersController < ApplicationController
         end
       else
         error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
+        status = -2
       end
     else
       error_list.append("Error: user ##{params[:id]} does not exist.")
     end
 
-    if status == -1
+    if status != 1
       json_response.set_errors(error_list)
     end
 
@@ -265,6 +271,7 @@ class UsersController < ApplicationController
         end
       else
         error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
+        status = -2
       end
     end
 

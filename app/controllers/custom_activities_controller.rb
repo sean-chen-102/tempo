@@ -2,20 +2,27 @@ class CustomActivitiesController < ApplicationController
 	before_action :set_custom_activity, only: [:edit_custom_activity, :destroy_custom_activity]
 
 	# Create a CustomInterest in the database for the given params
-	# POST /api/custom_activities
-	# Testing via curl: curl -H "Content-Type: application/json" -X POST -d '{"custom_activity": {"title": "Title", "completion_time": 10, "content": "Lorem ipsum content here!", "user_id": 1} }' http://localhost:3000/api/custom_activities
+	# POST /api/users/:id/custom_activities
+	# Testing via curl: curl -H "Content-Type: application/json" -X POST -d '{"custom_activity": {"title": "Title", "completion_time": 10, "content": "Lorem ipsum content here!"}}' http://localhost:3000/api/users/1/custom_activities
 	def create_custom_activity 
 		json_response = {}
 		status = -1
+		user_id = params[:id]
+		user = User.find_by(id: user_id)
 		@custom_activity = CustomActivity.new(custom_activity_params)
 
-		if @custom_activity.save
-			status = 1
-			activity_data = @custom_activity.as_json
-			json_response["custom_activity"] = activity_data
+		if user.nil?
+			json_response["errors"] = ["Error: user ##{user_id} doesn't exist."]
 		else
-			error_list = process_save_errors(@custom_activity.errors)
-			json_response["errors"] = error_list
+			if @custom_activity.save
+					user.add_custom_activity(@custom_activity)
+					status = 1
+					activity_data = @custom_activity.as_json
+					json_response["custom_activity"] = activity_data
+			else
+				error_list = process_save_errors(@custom_activity.errors)
+				json_response["errors"] = error_list
+			end
 		end
 
 		json_response["status"] = status
@@ -119,6 +126,6 @@ class CustomActivitiesController < ApplicationController
 
 	# Never trust parameters from the scary internet, only allow the white list through.
 	def custom_activity_params
-		params.require(:custom_activity).permit(:title, :completion_time, :content, :user_id)
+		params.require(:custom_activity).permit(:title, :completion_time, :content)
 	end
 end

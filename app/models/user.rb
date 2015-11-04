@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
 
   # Returns a JSON list of all custom_activities of the User with id = user_id
   def self.get_custom_activities(user_id)
-    custom_activities = User.find(id: user_id).custom_activities
+    custom_activities = User.find_by(id: user_id).custom_activities
 
     custom_activities.each do |custom_activity|
       custom_activity = custom_activity.to_json
@@ -44,13 +44,21 @@ class User < ActiveRecord::Base
 
   # Returns a JSON list of all interests that have user_id as their User.id.
   def self.get_interests(user_id)
-    interests = User.find(id: user_id).interests
+    puts "In User.self.get_interests: user_id= #{user_id}"
+    interests = User.find_by(id: user_id).interests
 
     interests.each do |interest|
       interest = interest.to_json
     end
 
     return interests
+  end
+
+  # Adds the custom_activity to the User's list of CustomActivities.
+  def add_custom_activity(custom_activity)
+    user = self
+    user.custom_activities << custom_activity
+    user.save
   end
 
   # Returns a hash of basic user info.
@@ -91,11 +99,12 @@ class User < ActiveRecord::Base
       return nil
     end
 
-    user_id = decoded_token[:user_id]
-    @user = User.find_by(id: user_id)
+    user_id = decoded_token[0]["user_id"]
+    user = User.find_by(id: user_id)
 
-    if not @user.nil?
-      return @user
+    if not user.nil?
+      puts "returning user"
+      return user
     else
       return nil
     end
@@ -125,6 +134,12 @@ class User < ActiveRecord::Base
         decoded_token = JWT.decode(token, @hmac_secret, true, { algorithm: @algorithm })
       rescue JWT::ExpiredSignature
         # the token has expired, they should be logged out and asked to log back in
+        decoded_token = nil
+      rescue JWT::VerificationError
+        # the token was not valid
+        decoded_token = nil
+      rescue JWT::DecodeError
+        # the token was formatted incorrectly
         decoded_token = nil
       end
 

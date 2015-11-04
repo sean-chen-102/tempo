@@ -16,7 +16,7 @@ class CustomActivity < ActiveRecord::Base
 	belongs_to :user
 
 	# Validations
-	validates :title, :user_id, presence: true
+	validates :title, presence: true
 	validates :title, length: { maximum: 128 }
 
 	validates :completion_time, numericality: { greater_than: 0,

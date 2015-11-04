@@ -100,7 +100,6 @@ class ActivitiesController < ApplicationController
 	  	respond_to do |format|
 	    	format.json { render json: json_response }
 	  	end
-
 	end
 
 	# Return a JSON response with a list of given activities based on the params: interest and time

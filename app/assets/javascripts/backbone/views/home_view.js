@@ -30,8 +30,6 @@ var HomeView = Backbone.View.extend({
             	times: that.times.toJSON(),
             	labelValue: 'Times'
     	    });
-    	    console.log(home_template);
-    	    console.log(this.$el);
         	this.$el.html(home_template);
 		},
 		makeGoRequest : function(options){
@@ -41,7 +39,7 @@ var HomeView = Backbone.View.extend({
 			//save duration to activity view object
 			App.Views['activityView'].time = duration;
 			//switch view to activities view
-			window.location = '/activities#activities';
+			window.location = '/tempo#activities';
 		},
 		login : function(options){
 			console.log("hi");

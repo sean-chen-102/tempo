@@ -133,12 +133,14 @@ class CustomActivitiesController < ApplicationController
 	end
 
 	# Deletes specified CustomActivity from database
-	# DELETE /api/custom_activities/:id
+	# DELETE /api/users/:id/custom_activities/:cid
 	# Testing via curl: curl -H "Content-Type: application/json" -X DELETE http://localhost:3000/api/custom_activities/1
 	def destroy_custom_activity
 		json_response = {}
 		error_list = []
-		status = -1 
+		status = -1
+		token = params["token"]
+
 
 		if not @custom_activity.nil?
 			@custom_activity.destroy
@@ -147,7 +149,7 @@ class CustomActivitiesController < ApplicationController
 			error_list.append("Error: custom_activity ##{params[:id]} does not exist.")
 		end
 
-		if status == -1
+		if status != 1
 			json_response["errors"] = error_list
 		end
 

@@ -10,6 +10,7 @@
 #  link            :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  like_meter      :integer
 #
 
 require 'test_helper'
@@ -19,7 +20,7 @@ class ActivityTest < ActiveSupport::TestCase
   def setup
     @activity = Activity.new(title: "Example Activity", content: "dummy content",
     						 completion_time: 15, content_type: "video",
-    						 link: "www.example.com")
+    						 link: "www.example.com", like_count: 0)
   end
 
   test "activity should be valid" do
@@ -42,6 +43,14 @@ class ActivityTest < ActiveSupport::TestCase
   	assert @activity.invalid?, "negative completion_time test failed"
   	@activity.completion_time = 61
   	assert @activity.invalid?, "completion_time > 60 test failed"
+  end
+
+  test "activity like_count must be within range" do
+    assert @activity.valid?
+    @activity.like_count = -2
+    assert @activity.invalid?, "like_count = -2 test failed"
+    @activity.like_count = 2
+    assert @activity.invalid?, "like_count = 2 test failed"
   end
 
 end

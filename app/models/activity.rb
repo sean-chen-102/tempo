@@ -10,6 +10,7 @@
 #  link            :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  like_meter      :integer
 #
 
 class Activity < ActiveRecord::Base
@@ -19,6 +20,9 @@ class Activity < ActiveRecord::Base
 	# Validations
 	validates :title, presence: true
 	validates :title, length: { maximum: 128 }
+  validates :like_meter, presence: true
+  validates :like_meter, numericality: { greater_than_or_equal_to: -1, 
+                          less_than_or_equal_to: 1}
 
 	validates :completion_time, numericality: { greater_than: 0,
 											    less_than_or_equal_to: 60 }

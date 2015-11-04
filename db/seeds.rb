@@ -27,7 +27,7 @@ interests = user1_interests + user2_interests
 # template: { title: "", content_type: "", completion_time: 0, link: "", content: "" }
 
 # FITNESS ACTIVITIES
-fitness_1 = { title: "10 Minute Abs", content_type: "video", completion_time: 10, link: "https://www.youtube.com/watch?v=1919eTCoESo" }
+fitness_1 = { title: "10 Minute Abs", content_type: "video", completion_time: 10, link: "https://www.youtube.com/watch?v=1919eTCoESo", like_meter: 0}
 
 
 fitness_2 = { title: "The Supp That Can Amp Muscle Stamina", content_type: "text", completion_time: 43, link: "http://www.mensfitness.com/nutrition/what-to-eat/supp-can-amp-muscle-stamina", content: "Lorem ipsum dolor sit amet, mea et omnis pertinacia. Suavitate explicari aliquando has te. Est ea docendi repudiandae, essent numquam vocibus at duo, minim putant nam te. Erant nostrum similique no eam, quod malis utroque te vel, usu recusabo corrumpit eu.
@@ -38,10 +38,10 @@ Idque minim percipitur te est. Vero ullum legere te vel, cum an modus nonumes. G
 
 Sed cu vivendo concludaturque. An est appellantur adversarium, qui graece ocurreret an, quando fastidii salutandi vix ne. Vis falli elitr appellantur ut, has at dicta dissentiet interpretaris. Te pro novum libris evertitur, vide tritani te vis. An adipisci partiendo pri. Ne per verear commodo accommodare, rebum possit nec ei, cum id maiorum expetendis reprimique. Tale splendide vis id, no vim audire definitiones.
 
-Duo eu viris laudem, quo in appetere expetenda. Quidam voluptatum eos te, dolorem suscipit no sed, et vel iudico corpora. His cotidieque voluptatibus et, ut sed patrioque vulputate. Id vis nostrud constituam, no eum enim atqui, sit ad vero reque." }
+Duo eu viris laudem, quo in appetere expetenda. Quidam voluptatum eos te, dolorem suscipit no sed, et vel iudico corpora. His cotidieque voluptatibus et, ut sed patrioque vulputate. Id vis nostrud constituam, no eum enim atqui, sit ad vero reque.", like_meter: 0 }
 
 
-fitness_3 = { title: "The Best Kept Secrets In Fitness", content_type: "video", completion_time: 9, link: "https://www.youtube.com/watch?v=aE05bn786gE" }
+fitness_3 = { title: "The Best Kept Secrets In Fitness", content_type: "video", completion_time: 9, link: "https://www.youtube.com/watch?v=aE05bn786gE", like_meter: 0 }
 
 
 fitness_4 = { title: "Get Fit, Fast: Your 30-Minute Workout Plan!", content_type: "text", completion_time: 30, link: "http://www.bodybuilding.com/fun/get-fit-fast-your-30-minute-workout-plan.html", content: "Lorem ipsum dolor sit amet, mea et omnis pertinacia. Suavitate explicari aliquando has te. Est ea docendi repudiandae, essent numquam vocibus at duo, minim putant nam te. Erant nostrum similique no eam, quod malis utroque te vel, usu recusabo corrumpit eu.
@@ -52,7 +52,7 @@ Idque minim percipitur te est. Vero ullum legere te vel, cum an modus nonumes. G
 
 Sed cu vivendo concludaturque. An est appellantur adversarium, qui graece ocurreret an, quando fastidii salutandi vix ne. Vis falli elitr appellantur ut, has at dicta dissentiet interpretaris. Te pro novum libris evertitur, vide tritani te vis. An adipisci partiendo pri. Ne per verear commodo accommodare, rebum possit nec ei, cum id maiorum expetendis reprimique. Tale splendide vis id, no vim audire definitiones.
 
-Duo eu viris laudem, quo in appetere expetenda. Quidam voluptatum eos te, dolorem suscipit no sed, et vel iudico corpora. His cotidieque voluptatibus et, ut sed patrioque vulputate. Id vis nostrud constituam, no eum enim atqui, sit ad vero reque." }
+Duo eu viris laudem, quo in appetere expetenda. Quidam voluptatum eos te, dolorem suscipit no sed, et vel iudico corpora. His cotidieque voluptatibus et, ut sed patrioque vulputate. Id vis nostrud constituam, no eum enim atqui, sit ad vero reque.", like_meter: 0 }
 
 
 fitness_5 = { title: "45-Minute Printable Cardio-and-Tonight Workout", content_type: "text", completion_time: 45, link: "http://www.popsugar.com/fitness/45-Minute-Gym-Plan-Treadmill-26564524", content: "Lorem ipsum dolor sit amet, mea et omnis pertinacia. Suavitate explicari aliquando has te. Est ea docendi repudiandae, essent numquam vocibus at duo, minim putant nam te. Erant nostrum similique no eam, quod malis utroque te vel, usu recusabo corrumpit eu.
@@ -63,7 +63,7 @@ Idque minim percipitur te est. Vero ullum legere te vel, cum an modus nonumes. G
 
 Sed cu vivendo concludaturque. An est appellantur adversarium, qui graece ocurreret an, quando fastidii salutandi vix ne. Vis falli elitr appellantur ut, has at dicta dissentiet interpretaris. Te pro novum libris evertitur, vide tritani te vis. An adipisci partiendo pri. Ne per verear commodo accommodare, rebum possit nec ei, cum id maiorum expetendis reprimique. Tale splendide vis id, no vim audire definitiones.
 
-Duo eu viris laudem, quo in appetere expetenda. Quidam voluptatum eos te, dolorem suscipit no sed, et vel iudico corpora. His cotidieque voluptatibus et, ut sed patrioque vulputate. Id vis nostrud constituam, no eum enim atqui, sit ad vero reque." }
+Duo eu viris laudem, quo in appetere expetenda. Quidam voluptatum eos te, dolorem suscipit no sed, et vel iudico corpora. His cotidieque voluptatibus et, ut sed patrioque vulputate. Id vis nostrud constituam, no eum enim atqui, sit ad vero reque.", like_meter: 0 }
 
 
 fitness_list = [fitness_1, fitness_2, fitness_3, fitness_4, fitness_5]
@@ -78,7 +78,7 @@ Idque minim percipitur te est. Vero ullum legere te vel, cum an modus nonumes. G
 
 Sed cu vivendo concludaturque. An est appellantur adversarium, qui graece ocurreret an, quando fastidii salutandi vix ne. Vis falli elitr appellantur ut, has at dicta dissentiet interpretaris. Te pro novum libris evertitur, vide tritani te vis. An adipisci partiendo pri. Ne per verear commodo accommodare, rebum possit nec ei, cum id maiorum expetendis reprimique. Tale splendide vis id, no vim audire definitiones.
 
-Duo eu viris laudem, quo in appetere expetenda. Quidam voluptatum eos te, dolorem suscipit no sed, et vel iudico corpora. His cotidieque voluptatibus et, ut sed patrioque vulputate. Id vis nostrud constituam, no eum enim atqui, sit ad vero reque." }
+Duo eu viris laudem, quo in appetere expetenda. Quidam voluptatum eos te, dolorem suscipit no sed, et vel iudico corpora. His cotidieque voluptatibus et, ut sed patrioque vulputate. Id vis nostrud constituam, no eum enim atqui, sit ad vero reque.", like_meter: 0 }
 
 
 news_2 = {title: "Article: Ethiopia, a Nation of Farmers, Strains Under Severe Drought", content_type: "text", completion_time: 55, link: "http://www.nytimes.com/2015/10/19/world/africa/ethiopia-a-nation-of-farmers-strains-under-severe-drought.html", content: "Lorem ipsum dolor sit amet, mea et omnis pertinacia. Suavitate explicari aliquando has te. Est ea docendi repudiandae, essent numquam vocibus at duo, minim putant nam te. Erant nostrum similique no eam, quod malis utroque te vel, usu recusabo corrumpit eu.
@@ -89,7 +89,7 @@ Idque minim percipitur te est. Vero ullum legere te vel, cum an modus nonumes. G
 
 Sed cu vivendo concludaturque. An est appellantur adversarium, qui graece ocurreret an, quando fastidii salutandi vix ne. Vis falli elitr appellantur ut, has at dicta dissentiet interpretaris. Te pro novum libris evertitur, vide tritani te vis. An adipisci partiendo pri. Ne per verear commodo accommodare, rebum possit nec ei, cum id maiorum expetendis reprimique. Tale splendide vis id, no vim audire definitiones.
 
-Duo eu viris laudem, quo in appetere expetenda. Quidam voluptatum eos te, dolorem suscipit no sed, et vel iudico corpora. His cotidieque voluptatibus et, ut sed patrioque vulputate. Id vis nostrud constituam, no eum enim atqui, sit ad vero reque." }
+Duo eu viris laudem, quo in appetere expetenda. Quidam voluptatum eos te, dolorem suscipit no sed, et vel iudico corpora. His cotidieque voluptatibus et, ut sed patrioque vulputate. Id vis nostrud constituam, no eum enim atqui, sit ad vero reque.", like_meter: 0 }
 
 
 news_3 = {title: "Article: Guinea's President Is Re-elected" , content_type: "text", completion_time: 28, link: "http://www.nytimes.com/2015/10/18/world/africa/guineas-president-is-re-elected.html", content: "Lorem ipsum dolor sit amet, mea et omnis pertinacia. Suavitate explicari aliquando has te. Est ea docendi repudiandae, essent numquam vocibus at duo, minim putant nam te. Erant nostrum similique no eam, quod malis utroque te vel, usu recusabo corrumpit eu.
@@ -100,7 +100,7 @@ Idque minim percipitur te est. Vero ullum legere te vel, cum an modus nonumes. G
 
 Sed cu vivendo concludaturque. An est appellantur adversarium, qui graece ocurreret an, quando fastidii salutandi vix ne. Vis falli elitr appellantur ut, has at dicta dissentiet interpretaris. Te pro novum libris evertitur, vide tritani te vis. An adipisci partiendo pri. Ne per verear commodo accommodare, rebum possit nec ei, cum id maiorum expetendis reprimique. Tale splendide vis id, no vim audire definitiones.
 
-Duo eu viris laudem, quo in appetere expetenda. Quidam voluptatum eos te, dolorem suscipit no sed, et vel iudico corpora. His cotidieque voluptatibus et, ut sed patrioque vulputate. Id vis nostrud constituam, no eum enim atqui, sit ad vero reque." }
+Duo eu viris laudem, quo in appetere expetenda. Quidam voluptatum eos te, dolorem suscipit no sed, et vel iudico corpora. His cotidieque voluptatibus et, ut sed patrioque vulputate. Id vis nostrud constituam, no eum enim atqui, sit ad vero reque.", like_meter: 0 }
 
 
 news_4 = { title: "Migrants Diverted to Slovenia After Hungary Closes Border", content_type: "text", completion_time: 16, link: "http://www.nytimes.com/2015/10/18/world/europe/hungary-closes-border-changing-refugees-path.html", content: "Lorem ipsum dolor sit amet, mea et omnis pertinacia. Suavitate explicari aliquando has te. Est ea docendi repudiandae, essent numquam vocibus at duo, minim putant nam te. Erant nostrum similique no eam, quod malis utroque te vel, usu recusabo corrumpit eu.
@@ -111,7 +111,7 @@ Idque minim percipitur te est. Vero ullum legere te vel, cum an modus nonumes. G
 
 Sed cu vivendo concludaturque. An est appellantur adversarium, qui graece ocurreret an, quando fastidii salutandi vix ne. Vis falli elitr appellantur ut, has at dicta dissentiet interpretaris. Te pro novum libris evertitur, vide tritani te vis. An adipisci partiendo pri. Ne per verear commodo accommodare, rebum possit nec ei, cum id maiorum expetendis reprimique. Tale splendide vis id, no vim audire definitiones.
 
-Duo eu viris laudem, quo in appetere expetenda. Quidam voluptatum eos te, dolorem suscipit no sed, et vel iudico corpora. His cotidieque voluptatibus et, ut sed patrioque vulputate. Id vis nostrud constituam, no eum enim atqui, sit ad vero reque." }
+Duo eu viris laudem, quo in appetere expetenda. Quidam voluptatum eos te, dolorem suscipit no sed, et vel iudico corpora. His cotidieque voluptatibus et, ut sed patrioque vulputate. Id vis nostrud constituam, no eum enim atqui, sit ad vero reque.", like_meter: 0 }
 
 
 news_5 = { title: "QuizUp Will Be Developed Into an NBC Game Show", content_type: "text", completion_time: 8, link: "http://www.nytimes.com/2015/10/19/business/media/quizup-will-be-developed-into-an-nbc-game-show.html", content: "Lorem ipsum dolor sit amet, mea et omnis pertinacia. Suavitate explicari aliquando has te. Est ea docendi repudiandae, essent numquam vocibus at duo, minim putant nam te. Erant nostrum similique no eam, quod malis utroque te vel, usu recusabo corrumpit eu.
@@ -122,17 +122,17 @@ Idque minim percipitur te est. Vero ullum legere te vel, cum an modus nonumes. G
 
 Sed cu vivendo concludaturque. An est appellantur adversarium, qui graece ocurreret an, quando fastidii salutandi vix ne. Vis falli elitr appellantur ut, has at dicta dissentiet interpretaris. Te pro novum libris evertitur, vide tritani te vis. An adipisci partiendo pri. Ne per verear commodo accommodare, rebum possit nec ei, cum id maiorum expetendis reprimique. Tale splendide vis id, no vim audire definitiones.
 
-Duo eu viris laudem, quo in appetere expetenda. Quidam voluptatum eos te, dolorem suscipit no sed, et vel iudico corpora. His cotidieque voluptatibus et, ut sed patrioque vulputate. Id vis nostrud constituam, no eum enim atqui, sit ad vero reque." }
+Duo eu viris laudem, quo in appetere expetenda. Quidam voluptatum eos te, dolorem suscipit no sed, et vel iudico corpora. His cotidieque voluptatibus et, ut sed patrioque vulputate. Id vis nostrud constituam, no eum enim atqui, sit ad vero reque.", like_meter: 0 }
 
 
-news_6 = { title: "Bear Killed After Escape From Russia Shopping Mall", content_type: "video", completion_time: 2, link: "https://www.youtube.com/watch?v=PM7h5Ptun28" }
+news_6 = { title: "Bear Killed After Escape From Russia Shopping Mall", content_type: "video", completion_time: 2, link: "https://www.youtube.com/watch?v=PM7h5Ptun28", like_meter: 0 }
 
 
 news_list = [news_1, news_2, news_3, news_4, news_5, news_6]
 
 
 # TECH ACTIVITIES
-tech_1 = { title: "Bill Gates: Can online classrooms educate the developing world?", completion_time: 3, link: "http://www.theverge.com/2015/2/11/8016647/bill-gates-online-classes-education-the-big-future", content_type: "video" }
+tech_1 = { title: "Bill Gates: Can online classrooms educate the developing world?", completion_time: 3, link: "http://www.theverge.com/2015/2/11/8016647/bill-gates-online-classes-education-the-big-future", content_type: "video", like_meter: 0 }
 
 
 tech_2 = { title: "A first look at the Google Play store redesign", completion_time: 1, link: "http://www.theverge.com/2015/10/16/9549121/google-play-redesign", content_type: "text", content: "Lorem ipsum dolor sit amet, mea et omnis pertinacia. Suavitate explicari aliquando has te. Est ea docendi repudiandae, essent numquam vocibus at duo, minim putant nam te. Erant nostrum similique no eam, quod malis utroque te vel, usu recusabo corrumpit eu.
@@ -143,7 +143,7 @@ Idque minim percipitur te est. Vero ullum legere te vel, cum an modus nonumes. G
 
 Sed cu vivendo concludaturque. An est appellantur adversarium, qui graece ocurreret an, quando fastidii salutandi vix ne. Vis falli elitr appellantur ut, has at dicta dissentiet interpretaris. Te pro novum libris evertitur, vide tritani te vis. An adipisci partiendo pri. Ne per verear commodo accommodare, rebum possit nec ei, cum id maiorum expetendis reprimique. Tale splendide vis id, no vim audire definitiones.
 
-Duo eu viris laudem, quo in appetere expetenda. Quidam voluptatum eos te, dolorem suscipit no sed, et vel iudico corpora. His cotidieque voluptatibus et, ut sed patrioque vulputate. Id vis nostrud constituam, no eum enim atqui, sit ad vero reque." }
+Duo eu viris laudem, quo in appetere expetenda. Quidam voluptatum eos te, dolorem suscipit no sed, et vel iudico corpora. His cotidieque voluptatibus et, ut sed patrioque vulputate. Id vis nostrud constituam, no eum enim atqui, sit ad vero reque.", like_meter: 0 }
 
 
 tech_3 = { title: "HAVANA'S HOTSPOTS: Cuba is coming online, but who will control its internet?", completion_time: 10, link: "http://www.theverge.com/2015/10/15/9534205/cuba-internet-access-google-huawei-government-censorship", content_type: "text", content: "Lorem ipsum dolor sit amet, mea et omnis pertinacia. Suavitate explicari aliquando has te. Est ea docendi repudiandae, essent numquam vocibus at duo, minim putant nam te. Erant nostrum similique no eam, quod malis utroque te vel, usu recusabo corrumpit eu.
@@ -154,10 +154,10 @@ Idque minim percipitur te est. Vero ullum legere te vel, cum an modus nonumes. G
 
 Sed cu vivendo concludaturque. An est appellantur adversarium, qui graece ocurreret an, quando fastidii salutandi vix ne. Vis falli elitr appellantur ut, has at dicta dissentiet interpretaris. Te pro novum libris evertitur, vide tritani te vis. An adipisci partiendo pri. Ne per verear commodo accommodare, rebum possit nec ei, cum id maiorum expetendis reprimique. Tale splendide vis id, no vim audire definitiones.
 
-Duo eu viris laudem, quo in appetere expetenda. Quidam voluptatum eos te, dolorem suscipit no sed, et vel iudico corpora. His cotidieque voluptatibus et, ut sed patrioque vulputate. Id vis nostrud constituam, no eum enim atqui, sit ad vero reque." }
+Duo eu viris laudem, quo in appetere expetenda. Quidam voluptatum eos te, dolorem suscipit no sed, et vel iudico corpora. His cotidieque voluptatibus et, ut sed patrioque vulputate. Id vis nostrud constituam, no eum enim atqui, sit ad vero reque.", like_meter: 0 }
 
 
-tech_4 = { title: "Golden State Warrior Harrison Barnes Talks Tech", completion_time: 8, link: "http://techcrunch.com/video/golden-state-warriors-harrison-barnes-talks-tech/519090478/", content_type: "video" }
+tech_4 = { title: "Golden State Warrior Harrison Barnes Talks Tech", completion_time: 8, link: "http://techcrunch.com/video/golden-state-warriors-harrison-barnes-talks-tech/519090478/", content_type: "video", like_meter: 0 }
 
 
 tech_5 = { title: "Tinder Owner Match Group Files To Go Public", completion_time: 8, link: "http://techcrunch.com/video/golden-state-warriors-harrison-barnes-talks-tech/519090478/", content_type: "video", content: "Lorem ipsum dolor sit amet, mea et omnis pertinacia. Suavitate explicari aliquando has te. Est ea docendi repudiandae, essent numquam vocibus at duo, minim putant nam te. Erant nostrum similique no eam, quod malis utroque te vel, usu recusabo corrumpit eu.
@@ -168,7 +168,7 @@ Idque minim percipitur te est. Vero ullum legere te vel, cum an modus nonumes. G
 
 Sed cu vivendo concludaturque. An est appellantur adversarium, qui graece ocurreret an, quando fastidii salutandi vix ne. Vis falli elitr appellantur ut, has at dicta dissentiet interpretaris. Te pro novum libris evertitur, vide tritani te vis. An adipisci partiendo pri. Ne per verear commodo accommodare, rebum possit nec ei, cum id maiorum expetendis reprimique. Tale splendide vis id, no vim audire definitiones.
 
-Duo eu viris laudem, quo in appetere expetenda. Quidam voluptatum eos te, dolorem suscipit no sed, et vel iudico corpora. His cotidieque voluptatibus et, ut sed patrioque vulputate. Id vis nostrud constituam, no eum enim atqui, sit ad vero reque." }
+Duo eu viris laudem, quo in appetere expetenda. Quidam voluptatum eos te, dolorem suscipit no sed, et vel iudico corpora. His cotidieque voluptatibus et, ut sed patrioque vulputate. Id vis nostrud constituam, no eum enim atqui, sit ad vero reque.", like_meter: 0 }
 
 
 tech_6 = { title: "Dropbox Announces Paper, A Google Docs Competitor", completion_time: 25, link: "http://techcrunch.com/2015/10/15/dropbox-announces-paper-a-google-docs-competitor/#.vxd9cs:iUbY", content_type: "text", content: "Lorem ipsum dolor sit amet, mea et omnis pertinacia. Suavitate explicari aliquando has te. Est ea docendi repudiandae, essent numquam vocibus at duo, minim putant nam te. Erant nostrum similique no eam, quod malis utroque te vel, usu recusabo corrumpit eu.
@@ -179,17 +179,17 @@ Idque minim percipitur te est. Vero ullum legere te vel, cum an modus nonumes. G
 
 Sed cu vivendo concludaturque. An est appellantur adversarium, qui graece ocurreret an, quando fastidii salutandi vix ne. Vis falli elitr appellantur ut, has at dicta dissentiet interpretaris. Te pro novum libris evertitur, vide tritani te vis. An adipisci partiendo pri. Ne per verear commodo accommodare, rebum possit nec ei, cum id maiorum expetendis reprimique. Tale splendide vis id, no vim audire definitiones.
 
-Duo eu viris laudem, quo in appetere expetenda. Quidam voluptatum eos te, dolorem suscipit no sed, et vel iudico corpora. His cotidieque voluptatibus et, ut sed patrioque vulputate. Id vis nostrud constituam, no eum enim atqui, sit ad vero reque." }
+Duo eu viris laudem, quo in appetere expetenda. Quidam voluptatum eos te, dolorem suscipit no sed, et vel iudico corpora. His cotidieque voluptatibus et, ut sed patrioque vulputate. Id vis nostrud constituam, no eum enim atqui, sit ad vero reque.", like_meter: 0 }
 
 
 tech_list = [tech_1, tech_2, tech_3, tech_4, tech_5, tech_6]
 
 
 # SCIENCE ACTIVITIES
-science_1 = { title: "10 Cool Science Experiments Compilation #9", completion_time: 5, link: "https://www.youtube.com/watch?v=TDMXs2hJv28", content_type: "video" }
+science_1 = { title: "10 Cool Science Experiments Compilation #9", completion_time: 5, link: "https://www.youtube.com/watch?v=TDMXs2hJv28", content_type: "video", like_meter: 0 }
 
 
-science_2 = { title: "These Huge Rats Can Sniff Out Land Mines", completion_time: 3, link: "http://video.nationalgeographic.com/video/news/151007-cambodia-rats-land-mines-sniff-vin?gc=%2Fvideo%2Fscience-space", content_type: "video" }
+science_2 = { title: "These Huge Rats Can Sniff Out Land Mines", completion_time: 3, link: "http://video.nationalgeographic.com/video/news/151007-cambodia-rats-land-mines-sniff-vin?gc=%2Fvideo%2Fscience-space", content_type: "video", like_meter: 0 }
 
 
 science_3 = { title: "A Magical Answer to an 80-Year-Old Puzzle", completion_time: 20, link: "http://www.wired.com/2015/10/a-magical-answer-to-an-80-year-old-puzzle/", content_type: "text", content: "Lorem ipsum dolor sit amet, mea et omnis pertinacia. Suavitate explicari aliquando has te. Est ea docendi repudiandae, essent numquam vocibus at duo, minim putant nam te. Erant nostrum similique no eam, quod malis utroque te vel, usu recusabo corrumpit eu.
@@ -200,7 +200,7 @@ Idque minim percipitur te est. Vero ullum legere te vel, cum an modus nonumes. G
 
 Sed cu vivendo concludaturque. An est appellantur adversarium, qui graece ocurreret an, quando fastidii salutandi vix ne. Vis falli elitr appellantur ut, has at dicta dissentiet interpretaris. Te pro novum libris evertitur, vide tritani te vis. An adipisci partiendo pri. Ne per verear commodo accommodare, rebum possit nec ei, cum id maiorum expetendis reprimique. Tale splendide vis id, no vim audire definitiones.
 
-Duo eu viris laudem, quo in appetere expetenda. Quidam voluptatum eos te, dolorem suscipit no sed, et vel iudico corpora. His cotidieque voluptatibus et, ut sed patrioque vulputate. Id vis nostrud constituam, no eum enim atqui, sit ad vero reque." }
+Duo eu viris laudem, quo in appetere expetenda. Quidam voluptatum eos te, dolorem suscipit no sed, et vel iudico corpora. His cotidieque voluptatibus et, ut sed patrioque vulputate. Id vis nostrud constituam, no eum enim atqui, sit ad vero reque.", like_meter: 0 }
 
 
 science_4 = { title: "An Epidemic of Fear: How Panicked Parents Skipping Shots Endanger Us All", completion_time: 25, link: "http://www.wired.com/2009/10/ff_waronscience/", content_type: "text", content: "Lorem ipsum dolor sit amet, mea et omnis pertinacia. Suavitate explicari aliquando has te. Est ea docendi repudiandae, essent numquam vocibus at duo, minim putant nam te. Erant nostrum similique no eam, quod malis utroque te vel, usu recusabo corrumpit eu.
@@ -211,7 +211,7 @@ Idque minim percipitur te est. Vero ullum legere te vel, cum an modus nonumes. G
 
 Sed cu vivendo concludaturque. An est appellantur adversarium, qui graece ocurreret an, quando fastidii salutandi vix ne. Vis falli elitr appellantur ut, has at dicta dissentiet interpretaris. Te pro novum libris evertitur, vide tritani te vis. An adipisci partiendo pri. Ne per verear commodo accommodare, rebum possit nec ei, cum id maiorum expetendis reprimique. Tale splendide vis id, no vim audire definitiones.
 
-Duo eu viris laudem, quo in appetere expetenda. Quidam voluptatum eos te, dolorem suscipit no sed, et vel iudico corpora. His cotidieque voluptatibus et, ut sed patrioque vulputate. Id vis nostrud constituam, no eum enim atqui, sit ad vero reque." }
+Duo eu viris laudem, quo in appetere expetenda. Quidam voluptatum eos te, dolorem suscipit no sed, et vel iudico corpora. His cotidieque voluptatibus et, ut sed patrioque vulputate. Id vis nostrud constituam, no eum enim atqui, sit ad vero reque.", like_meter: 0 }
 
 
 science_5 = { title: "New solar phenomenon discovered: large-scale waves accompanied by particles emissions rich in helium-3", completion_time: 12, link: "http://thewatchers.adorraeli.com/2015/10/16/new-solar-phenomenon-discovered-large-scale-waves-accompanied-by-particles-emissions-rich-in-helium-3/", content_type: "text", content: "Lorem ipsum dolor sit amet, mea et omnis pertinacia. Suavitate explicari aliquando has te. Est ea docendi repudiandae, essent numquam vocibus at duo, minim putant nam te. Erant nostrum similique no eam, quod malis utroque te vel, usu recusabo corrumpit eu.
@@ -222,7 +222,7 @@ Idque minim percipitur te est. Vero ullum legere te vel, cum an modus nonumes. G
 
 Sed cu vivendo concludaturque. An est appellantur adversarium, qui graece ocurreret an, quando fastidii salutandi vix ne. Vis falli elitr appellantur ut, has at dicta dissentiet interpretaris. Te pro novum libris evertitur, vide tritani te vis. An adipisci partiendo pri. Ne per verear commodo accommodare, rebum possit nec ei, cum id maiorum expetendis reprimique. Tale splendide vis id, no vim audire definitiones.
 
-Duo eu viris laudem, quo in appetere expetenda. Quidam voluptatum eos te, dolorem suscipit no sed, et vel iudico corpora. His cotidieque voluptatibus et, ut sed patrioque vulputate. Id vis nostrud constituam, no eum enim atqui, sit ad vero reque." }
+Duo eu viris laudem, quo in appetere expetenda. Quidam voluptatum eos te, dolorem suscipit no sed, et vel iudico corpora. His cotidieque voluptatibus et, ut sed patrioque vulputate. Id vis nostrud constituam, no eum enim atqui, sit ad vero reque.", like_meter: 0 }
 
 
 science_list = [science_1, science_2, science_3, science_4, science_5]

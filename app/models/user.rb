@@ -62,6 +62,12 @@ class User < ActiveRecord::Base
     user.save
   end
 
+  # Update the User's password to new_password
+  def change_password(new_password)
+    self.password = new_password
+    return self.save
+  end
+
   # Returns a hash of basic user info.
   # NOTE: This info is not secure - it is visible by everyone.
   def get_basic_info
@@ -73,9 +79,7 @@ class User < ActiveRecord::Base
   # NOTE: This info should only be viewed by an authorized and authenticated user.
   def get_advanced_info
     user_data = self.get_basic_info()
-    puts "basic info = #{user_data}"
     user_data["interests"] = self.interests
-    puts "added interests: #{user_data}"
     user_data["custom_activities"] = self.custom_activities
     return user_data
   end
@@ -106,7 +110,6 @@ class User < ActiveRecord::Base
     user = User.find_by(id: user_id)
 
     if not user.nil?
-      puts "returning user"
       return user
     else
       return nil

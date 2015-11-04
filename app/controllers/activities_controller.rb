@@ -10,6 +10,7 @@ class ActivitiesController < ApplicationController
 	# Create an Activity in the database for the given params
 	# POST /api/activities
 	# Testing via curl: curl -H "Content-Type: application/json" -X POST -d '{"activity": {"title": "Title", "completion_time": 10, "content_type": "text", "link": "https://www.google.com", "content": "Lorem ipsum content here!"} }' http://localhost:3000/api/activities
+	# TODO: only allow admins to do this
 	def create_activity
 	  activity_key = "activity"
 	  json_response = {}
@@ -33,9 +34,9 @@ class ActivitiesController < ApplicationController
 	  end
 	end
 
-  	# Edit the fields of a specified Activity 
+  # Edit the fields of a specified Activity 
 	# PUT /api/activities/:id
-	# TODO: update this API request
+	# TODO: update this API request to only allow admins to do this
 	def edit_activity
 	  respond_to do |format|
 	    if @activity.update(activity_params)
@@ -51,6 +52,7 @@ class ActivitiesController < ApplicationController
 	# Deletes specified Activity from database
 	# DELETE /activities/:id
 	# Testing via curl: curl -H "Content-Type: application/json" -X DELETE http://localhost:3000/api/activities/8
+	# TODO: only allow admins to do this
 	def destroy_activity
 	  status = -1
 	  json_response = {}
@@ -144,7 +146,7 @@ class ActivitiesController < ApplicationController
 	# GET api/activities/:id/interests
 	# URL format: '/api/activities/:id/interests'
 	# Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/activities/1/interests
-	def get_interests
+	def get_interests_for_activity
 		status = -1
 		json_response = {}
 		error_list = []
@@ -178,8 +180,8 @@ class ActivitiesController < ApplicationController
 	  		begin
 		    	@activity = Activity.find(params[:id])
 		    rescue ActiveRecord::RecordNotFound
-          		@user = nil
-        	end
+      		@activity = nil
+      	end
 	    end
 	  end
 

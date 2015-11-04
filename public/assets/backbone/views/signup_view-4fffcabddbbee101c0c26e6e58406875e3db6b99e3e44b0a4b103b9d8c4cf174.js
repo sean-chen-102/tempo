@@ -32,8 +32,7 @@ var SignupView = Backbone.View.extend({
 	    this.model.attributes.user.username = $('#username').val();
 	    this.model.attributes.user.name = $('#name').val();
 	    this.model.attributes.user.email = $('#email').val();
-	  	//TODO validation for form on the front end
-	    this.model.attributes.user.password = $('#password').val();
+ 	    this.model.attributes.user.password = $('#password').val();
 	    this.model.attributes.user.password_confirmation = $('#password').val();
 	    console.log(this.model.attributes);
 	    this.model.save(this.model.attributes, {
@@ -43,21 +42,9 @@ var SignupView = Backbone.View.extend({
 	      	console.log(response);
 	        el.find('input.btnprimary').prop('value', 'reset');
 	        currentUser = new User(response);
-  			Cookies.set("login-token", response.token);
-  			Backbone.history.navigate('home', {trigger: true});  
-
-
 	      },
 	      error: function(userSession, response) {
 	      	console.log("failure!");
-	        var result = $.parseJSON(response.responseText);
-	        el.find('form').prepend(BD.Helpers.Notifications.error("Unable to complete signup."));
-	        _(result.errors).each(function(errors,field) {
-	          $('#'+field+'_group').addClass('error');
-	          _(errors).each(function(error, i) {
-	            $('#'+field+'_group .controls').append(BD.Helpers.FormHelpers.fieldHelp(error));
-	          });
-	        });
 	        el.find('input.btnprimary').button('reset');
 	      }
 	    });

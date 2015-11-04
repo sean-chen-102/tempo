@@ -68,3 +68,7 @@ group :production do
   ruby "2.2.0"
 end
 
+group :development, :test do
+  gem 'jasmine'
+end
+

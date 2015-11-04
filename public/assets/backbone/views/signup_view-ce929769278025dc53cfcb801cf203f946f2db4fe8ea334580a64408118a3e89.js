@@ -43,10 +43,6 @@ var SignupView = Backbone.View.extend({
 	      	console.log(response);
 	        el.find('input.btnprimary').prop('value', 'reset');
 	        currentUser = new User(response);
-  			Cookies.set("login-token", response.token);
-  			Backbone.history.navigate('home', {trigger: true});  
-
-
 	      },
 	      error: function(userSession, response) {
 	      	console.log("failure!");

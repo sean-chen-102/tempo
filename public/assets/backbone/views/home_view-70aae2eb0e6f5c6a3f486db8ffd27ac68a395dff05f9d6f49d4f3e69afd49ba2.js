@@ -4,7 +4,6 @@ var HomeView = Backbone.View.extend({
 		options: null,
 		events:{
         	"click .go-btn":"makeGoRequest",
-        	"click .login-submit":"login"
     	},
 		initialize: function(options){
 			this.options = options;
@@ -13,6 +12,7 @@ var HomeView = Backbone.View.extend({
 	            view: this
 	        });
 
+	        this.model = new UserLogin();
 			//TODO: Find better way to do this
 			//add all the times we want the user to  be able to select
 	        this.times.add(new Time({duration: "5"}));

@@ -3,29 +3,40 @@ class CustomActivitiesController < ApplicationController
 
 	# Create a CustomInterest in the database for the given params
 	# POST /api/users/:id/custom_activities
-	# Testing via curl: curl -H "Content-Type: application/json" -X POST -d '{"custom_activity": {"title": "Title", "completion_time": 10, "content": "Lorem ipsum content here!"}}' http://localhost:3000/api/users/1/custom_activities
+	# Testing via curl: curl -H "Content-Type: application/json" -X POST -d '{"custom_activity": {"title": "Title", "completion_time": 10, "content": "Lorem ipsum content here!"}, "token":"<token"}' http://localhost:3000/api/users/1/custom_activities
 	def create_custom_activity 
 		json_response = {}
 		status = -1
 		user_id = params[:id]
-		user = User.find_by(id: user_id)
+		@user = User.find_by(id: user_id)
+		token = params["token"]
+		error_list = []
 		@custom_activity = CustomActivity.new(custom_activity_params)
 
-		if user.nil?
-			json_response["errors"] = ["Error: user ##{user_id} doesn't exist."]
-		else
-			if @custom_activity.save
-					user.add_custom_activity(@custom_activity)
-					status = 1
-					activity_data = @custom_activity.as_json
-					json_response["custom_activity"] = activity_data
+		if not @user.nil? # if the User exists
+			if not token.nil? and user_has_permission(User.authenticate_token(token), @user.id) # if the token was provided and is valid and the user has permission
+				if @custom_activity.save
+						@user.add_custom_activity(@custom_activity)
+						status = 1
+						activity_data = @custom_activity.as_json
+						json_response["custom_activity"] = activity_data
+				else
+					error_list = process_save_errors(@custom_activity.errors)
+				end
 			else
-				error_list = process_save_errors(@custom_activity.errors)
-				json_response["errors"] = error_list
+				error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
+        status = -2
 			end
+		else
+			error_list.append("Error: user ##{user_id} doesn't exist.")
 		end
 
 		json_response["status"] = status
+
+		if status != 1
+			json_response["errors"] = error_list
+		end
+
 		json_response = json_response.to_json
 
 		respond_to do |format|
@@ -51,6 +62,7 @@ class CustomActivitiesController < ApplicationController
 	# Return a JSON response with a list of all CustomActivities
 	# GET /api/custom_activities
 	# Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/custom_activities
+	# TODO: only allow admins to do this
 	def get_custom_activities
 		json_response = {}
 		activities_list = []

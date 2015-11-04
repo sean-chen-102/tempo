@@ -3,6 +3,7 @@ var TempoRouter = Backbone.Router.extend({
       '': 'index',
       'home': 'home',
       'signup': 'signup',
+      'login': 'login',
       "interests": "interests",
       "activities": "activities",
       "customActivities": "customActivities",
@@ -24,17 +25,8 @@ var TempoRouter = Backbone.Router.extend({
       App.Views['homeView'].render();
     },
     home: function() {
-      var cookie = Cookies.get("login-token");
-      console.log("cooke");
-      console.log(cookie);
-      if (cookie === undefined) {
-        router.navigate("login");
-        console.log("Home router is called");
-        App.Views['homeView'].render();
-      } else {
-        console.log("Home router is called");
-        App.Views['homeView'].render();
-      }
+      console.log("Home router is called");
+      App.Views['homeView'].render();
     },
     activities: function(){
       console.log("The activities router was called ");

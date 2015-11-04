@@ -33,6 +33,8 @@ class ApplicationController < ActionController::Base
 		end
 
 		def get_json
+			puts "in get_json in JsonResponse"
+			puts "response hash = #{@response_hash}"
 			return @response_hash.to_json
 		end
 	end

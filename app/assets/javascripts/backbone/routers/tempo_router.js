@@ -25,10 +25,12 @@ var TempoRouter = Backbone.Router.extend({
       var cookie = Cookies.get("login-token");
       console.log("cooke");
       console.log(cookie);
-      if (cookie === undefined) {
+      if (cookie === undefined || cookie === "undefined") {
         console.log('undefined cookie');
         Backbone.history.navigate('login');  
-        App.Views['loginView'].render();
+        App.Views['loginView'].render({
+          "name" : "name"
+        });
       } else {
         console.log("Home router is called");
         App.Views['homeView'].render();

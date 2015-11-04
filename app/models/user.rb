@@ -13,6 +13,11 @@
 #
 
 class User < ActiveRecord::Base
+  # Before actions
+  before_create :create_activation_digest
+  before_save   :downcase_email
+  attr_accessor :activation_token, :reset_token
+
   # Associations
   has_many :interests
   has_many :custom_activities
@@ -152,5 +157,33 @@ class User < ActiveRecord::Base
       return decoded_token
     end
   end
+
+  # Returns the hash digest of the given string. Uses a minimal cost for computing 
+  # the hash while in testing mode, and a high-security hash while in production
+  # mode.
+  def self.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    hash = BCrypt::Password.create(string, cost: cost)
+    return hash
+  end
+
+  # Returns a random token for use with digests and hashes.
+  def self.new_token
+    return SecureRandom.urlsafe_base64
+  end
+
+  private
+
+    # Create an activation token and digest for this User.
+    def create_activation_digest
+      self.activation_token  = User.new_token
+      self.activation_digest = User.digest(activation_token)
+    end
+
+    # Convert the User's email address to all lowercase.
+    def downcase_email
+      self.email = email.downcase
+    end
 
 end

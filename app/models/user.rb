@@ -73,9 +73,7 @@ class User < ActiveRecord::Base
   # NOTE: This info should only be viewed by an authorized and authenticated user.
   def get_advanced_info
     user_data = self.get_basic_info()
-    puts "basic info = #{user_data}"
     user_data["interests"] = self.interests
-    puts "added interests: #{user_data}"
     user_data["custom_activities"] = self.custom_activities
     return user_data
   end
@@ -106,7 +104,6 @@ class User < ActiveRecord::Base
     user = User.find_by(id: user_id)
 
     if not user.nil?
-      puts "returning user"
       return user
     else
       return nil

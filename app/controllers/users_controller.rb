@@ -16,24 +16,18 @@ class UsersController < ApplicationController
 
     @user = User.new(user_params)
     if @user.save 
-      puts "successfully saved"
       status = 1
       user_data = @user.get_advanced_info()
-      puts "got advanced info: #{user_data}"
       token = @user.get_signed_token()
-      puts "got signed token"
       user_data["token"] = token
       json_response.set_data("user", user_data)
-      puts "set json_response data"
     else
       error_list = process_save_errors(@user.errors)
       json_response.set_errors(error_list)
     end
 
     json_response.set_status(status)
-    puts "set json_response"
     json_response = json_response.get_json()
-    puts "got json response"
 
     respond_to do |format|
       format.json { render json: json_response }

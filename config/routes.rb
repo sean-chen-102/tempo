@@ -52,6 +52,9 @@ Rails.application.routes.draw do
   delete 'api/logout', to: 'sessions#logout', defaults: { format: 'json' }
   get 'api/verify_token', to: 'sessions#verify_token', defaults: { format: 'json' }
 
+  # Account Activations routing
+  get 'api/users/:id/activate', to: 'account_activations#activate_account', defaults: { format: 'json' }
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

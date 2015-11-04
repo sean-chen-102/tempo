@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   # match '*path', to: 'application#catch', via: [:get, :post, :put, :patch, :delete]
 
   # Users routing
-  get '/api/users', to: 'users#get_users', defaults: { format: 'json' }
+  get '/api/users', to: 'users#get_all_users', defaults: { format: 'json' }
   get '/api/users/:id', to: 'users#get_user', defaults: { format: 'json' }
   get '/api/users/:id/interests', to: 'users#get_user_interests', defaults: { format: 'json' }
   get '/api/users/:id/custom_activities', to: 'users#get_user_custom_activities', defaults: { format: 'json' }

@@ -98,7 +98,7 @@ class CustomActivitiesController < ApplicationController
 	# GET /api/custom_activities
 	# Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/custom_activities
 	# TODO: only allow admins to do this
-	def get_custom_activities
+	def get_all_custom_activities
 		json_response = {}
 		activities_list = []
 		error_list = []

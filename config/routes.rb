@@ -41,7 +41,7 @@ Rails.application.routes.draw do
   delete '/api/activities/:id', to: 'activities#destroy_activity', defaults: { format: 'json' }
 
   # Custom Activities routing
-  get '/api/custom_activities', to: 'custom_activities#get_custom_activities', defaults: { format: 'json' }
+  get '/api/custom_activities', to: 'custom_activities#get_all_custom_activities', defaults: { format: 'json' }
   post '/api/users/:id/custom_activities', to: 'custom_activities#create_custom_activity', defaults: { format: 'json' }
   put '/api/users/:id/custom_activities/:cid', to: 'custom_activities#edit_custom_activity', defaults: { format: 'json' }
   delete '/api/custom_activities/:id', to: 'custom_activities#destroy_custom_activity', defaults: { format: 'json' }

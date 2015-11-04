@@ -30,8 +30,6 @@ var HomeView = Backbone.View.extend({
             	times: that.times.toJSON(),
             	labelValue: 'Times'
     	    });
-    	    console.log(home_template);
-    	    console.log(this.$el);
         	this.$el.html(home_template);
 		},
 		makeGoRequest : function(options){

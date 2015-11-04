@@ -5,16 +5,19 @@ var TempoRouter = Backbone.Router.extend({
       'signup': 'signup',
       "interests": "interests",
       "activities": "activities",
+      "customActivities": "customActivities",
+      "createCustomActivity": "createCustomActivity",
       "activities/:activity":"activity",
       "show": "show"
     },
     initialize: function() {
       console.log("HEY");
       App.Views['homeView'] = new HomeView();
+      App.Views['activityView'] = new ActivityView()
+      App.Views['interestView'] = new InterestView()
+      App.Views['customActivity'] = new CustomActivityView()
+      App.Views['createCustomActivity'] = new CreateCustomActivityView()
       App.Views['activitiesView'] = new ActivitiesView();
-      App.Views['interestView'] = new InterestView();
-      App.Views['activityView'] = new ActivityView();
-      //App.Views['activityModalView'] = new ActivityModalView();
     },
     index: function(){
       console.log("Index router is called");
@@ -39,6 +42,15 @@ var TempoRouter = Backbone.Router.extend({
       //Constructing View 
       App.Views['interestView'].render()      
     },
+    customActivities: function(){
+      console.log("The custom Activities router was called ");
+      //Constructing View 
+      App.Views['customActivity'].render()      
+    },    
+    createCustomActivity: function(){
+      console.log("Creating a custom activity");
+      App.Views['createCustomActivity'].render();
+    },
     show: function(){
       //This route doesn't do anything yet
       console.log("The show router was called ");
@@ -53,8 +65,6 @@ var TempoRouter = Backbone.Router.extend({
       //Constructing View 
       App.Views['SignupView'] = new SignupView()
       App.Views['SignupView'].render()      
-
-
     },
 
   });

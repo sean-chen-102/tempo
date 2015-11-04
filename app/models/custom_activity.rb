@@ -16,10 +16,15 @@ class CustomActivity < ActiveRecord::Base
 	belongs_to :user
 
 	# Validations
-	validates :title, :user_id, presence: true
+	validates :title, presence: true
 	validates :title, length: { maximum: 128 }
 
 	validates :completion_time, numericality: { greater_than: 0,
 											    less_than_or_equal_to: 60 }
 
+  # Returns true if this CustomActivity belongs to the specified User
+  def belongs_to_user(user)
+    custom_activity = self
+    return user.custom_activities.include? custom_activity
+  end
 end

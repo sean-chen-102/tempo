@@ -119,7 +119,6 @@ class UsersController < ApplicationController
   # Deletes specified User from database 
   # DELETE /api/users/:id
   # Testing via curl: curl -H "Content-Type: application/json" -X DELETE -d '{"token": "<token>"}' http://localhost:3000/api/users/13
-  # curl -H "Content-Type: application/json" -X POST -d '{"user": {"name": "Jack Daniels", "email": "jack6@mail.com", "username": "jackD6", "password": "password", "password_confirmation": "password"}}' http://localhost:3000/api/users
   # TODO: Make this secure so only admins can destroy users
   # Requires authentication
   def destroy_user
@@ -154,7 +153,7 @@ class UsersController < ApplicationController
 
   # Return a JSON response with a list of given Interests of a specified User
   # GET '/api/users/:id/interests'
-  # Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/users/2/interests
+  # Testing via curl: curl -H "Content-Type: application/json" -X GET -d '{"token":"<token>"}' http://localhost:3000/api/users/1/interests
   # Requires authentication
   def get_user_interests
     status = -1
@@ -195,7 +194,7 @@ class UsersController < ApplicationController
 
   # Return a JSON response with a list of a User's Custom Activities
   # GET /api/users/:id/custom_activities
-  # Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/users/2/custom_activities
+  # Testing via curl: curl -H "Content-Type: application/json" -X GET -d '{"token":"<token>"}' http://localhost:3000/api/users/1/custom_activities
   # Requires authentication
   def get_user_custom_activities
     status = -1
@@ -236,7 +235,7 @@ class UsersController < ApplicationController
 
   # Create a User Interests in the database for the given params. Note: will replace the User's previous interests.
   # PUT /api/users/:id/interests
-  # Testing via curl: curl -H "Content-Type: application/json" -X PUT -d '{"interests":["science", "tech"]}' http://localhost:3000/api/users/1/interests
+  # Testing via curl: curl -H "Content-Type: application/json" -X PUT -d '{"interests":["science", "technology"], "token":"<token>"}' http://localhost:3000/api/users/1/interests
   # Requires authentication
   def set_interests_for_user
     interests_key = "interests"
@@ -250,17 +249,15 @@ class UsersController < ApplicationController
 
     if not user_id.nil?
       if not token.nil? and user_has_permission(User.authenticate_token(token), user_id) # if the token was provided and is valid and the user has permission
-        user = User.where(id: user_id)
-        if not user.empty?
+        user = User.find_by(id: user_id)
+        if not user.nil?
           status = 1
-          user = user.first
           user.interests = []
           user.save
 
           interests.each do |interest_name|
-            interest_object = Interest.where(name: interest_name)
-            if not interest_object.empty?
-              interest_object = interest_object.first
+            interest_object = Interest.find_by(name: interest_name)
+            if not interest_object.nil?
               user.interests << interest_object
               user.save
               successful_interests << interest_name

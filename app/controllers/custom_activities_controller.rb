@@ -46,16 +46,51 @@ class CustomActivitiesController < ApplicationController
 
 	# Edit the fields of a specified CustomActivity
 	# PUT /api/users/:id/custom_activities/:cid
-	# Testing via curl: curl -H "Content-Type: application/json" -X PUT -d '{"custom_activity": {"title": "Title", "completion_time": 10, "content_type": "text", "link": "https://www.google.com", "content": "Lorem ipsum content here!"} }' http://localhost:3000/api/users/1/custom_activities/1
+	# Testing via curl: curl -H "Content-Type: application/json" -X PUT -d '{"custom_activity": {"title": "TITLE", "completion_time": 10, "content": "LOREM IPSUM CONTENT HERE!"}, "token":"<token>"}' http://localhost:3000/api/users/1/custom_activities/3
 	def edit_custom_activity
-		respond_to do |format|
-			if @custom_activity.update(custom_activity_params)
-				# format.html { redirect_to @custom_activity, notice: 'Custom activity was successfully updated.' }
-				format.json { render :show, status: :ok, location: @custom_activity }
+		json_response = {}
+		status = -1
+		user_id = params[:id]
+		custom_activity_id = params[:cid]
+		token = params["token"]
+		error_list = []
+		@user = User.find_by(id: user_id)
+		@custom_activity = CustomActivity.find_by(id: custom_activity_id)
+
+		if not @user.nil? # If the User exists
+			if not token.nil? and user_has_permission(User.authenticate_token(token), @user.id) # if the token was provided and is valid and the user has permission
+				if not @custom_activity.nil? # If the CustomActivity exists
+					if @custom_activity.belongs_to_user(@user) # the CustomActivity is okay to edit
+						if @custom_activity.update(custom_activity_params) # if the update is successful
+							status = 1
+							json_response["custom_activity"] = @custom_activity.as_json
+						else
+							error_list << @custom_activity.errors
+						end
+					else
+						error_list.append("Error: custom activity ##{custom_activity_id} doesn't belong to user ##{user_id}.")
+					end
+				else
+					error_list.append("Error: custom activity ##{custom_activity_id} doesn't exists.")
+				end
 			else
-				# format.html { render :edit }
-				format.json { render json: @custom_activity.errors, status: :unprocessable_entity }
+				error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
+        status = -2
 			end
+		else
+			error_list.append("Error: user ##{user_id} doesn't exist.")
+		end
+
+		json_response["status"] = status
+
+		if status != 1
+			json_response["errors"] = error_list
+		end
+
+		json_response = json_response.to_json
+
+		respond_to do |format|
+			format.json { render json: json_response }
 		end
 	end
 
@@ -131,8 +166,8 @@ class CustomActivitiesController < ApplicationController
 			begin
 				@custom_activity = CustomActivity.find(params[:id])
 			rescue ActiveRecord::RecordNotFound
-          		@user = nil
-        	end
+    		@custom_activity = nil
+    	end
 		end
 	end
 

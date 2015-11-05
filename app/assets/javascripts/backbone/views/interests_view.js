@@ -79,7 +79,7 @@ var InterestView = Backbone.View.extend({
 		html += " </tbody> </table> </br> ";
 		html += "<button id=submit-temp-interests> save </button> <br>"; 
 		//Adding activity link
-		html += " <a href='/tempo#settings' id='add'> Add interest </a>";
+		html += " <a href='/tempo#settings' id='add'> Add interest </a> <br>";
 		html += " <a href='tempo#home'> Go Back</a>"
 		$(that.el).append(html);	
 	}

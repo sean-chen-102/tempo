@@ -64,6 +64,7 @@ var SettingsView = Backbone.View.extend({
 		interests.url += "?token=" + token;
 		interests.fetch({
 			success: function(data){
+				that.userInterests = [];
 				data.each(function(model){
 					that.userInterests.push(model.get('name'));
 				});

@@ -35,7 +35,8 @@ var TempoRouter = Backbone.Router.extend({
       } else {
         token.fetch({
             success: function(data){
-              console.log(data);
+              console.log(data.attributes.user);
+              
               App.Views['homeView'].render({
                 "name" : data.attributes.user.name
               });

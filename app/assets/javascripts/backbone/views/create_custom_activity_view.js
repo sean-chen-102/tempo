@@ -6,6 +6,7 @@ var CreateCustomActivityView = Backbone.View.extend({
       "click .submitCustomActivity": "createActivity"
     },
     time: null,
+    user_id: 1, //Set in user ID here
     interests: [],
     customActivities : null,
     activities : null,
@@ -18,7 +19,6 @@ var CreateCustomActivityView = Backbone.View.extend({
     render : function (options){
       // Set scope, construct new activity collection, call fetch, render data on callback function
       var that = this;
-
       var renderData = function(){
         // TODO: Move HTML into templates
         var customActTemplate = JST["backbone/templates/activities/customActivity"]();
@@ -40,10 +40,14 @@ var CreateCustomActivityView = Backbone.View.extend({
       var title = $('#title').val();
       var content = $('#content').val();
       var completion_time = $('#completion_time').val();
+
       this.model.attributes.title = title;
       this.model.attributes.content = content;
       this.model.attributes.completion_time = completion_time;
-      console.log(this.model.attributes);
+      console.log(typeof completion_time);
+      this.model.attributes.token = Cookies.get('login-token');
+
+      this.model.url = "/api/users/" + this.user_id + "/custom_activities";
 
       this.model.save(this.model.attributes, {
           success: function(userSession, response) {
@@ -56,9 +60,5 @@ var CreateCustomActivityView = Backbone.View.extend({
             alert("failure!");
           }
       });      
-
-
-      
-
     } 
   });

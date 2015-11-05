@@ -24,7 +24,7 @@ var HomeView = Backbone.View.extend({
 			console.log("render home");
 			var that = this;
 			console.log(options);
-	        this.name = options.name;
+	        this.name = options.user.name;
 			//TODO: Move template to separate page, custom welcome name
 			//populate the home_template with times collection
 			var home_template = JST["backbone/templates/activities/home"]({

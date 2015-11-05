@@ -1,21 +1,79 @@
-<form id="login-form" class="form-horizontal">
-  <fieldset>
-    <div id="email_group" class="control-group">
-      <label class="control-label" >username or email</label>
-      <div class="controls">
-        <input id="username-or-email" name="username-or-email" required="required" />
-      </div>
-    </div>
-    <div id="password_group" class="control-group">
-      <label class="control-label" for="password">Password</label>
-      <div class="controls">
-        <input id="password" name="password" type="password" required="required" />
-      </div>
-    </div>
-    <div class="form-actions">
-    </div>
-  </fieldset>
-</form>
-      <button  value="login" class="btn btn-primary login-submit"> Login </button>
+<!-- Temporary Styling -->
+<!-- Temporary styling -->
+<style>
+  #login-form {
+    width: 350px;
+    height: 350px;
+    border: 1px solid #dedede;
+    border-radius: 3px;
+    background-color: white;
+    box-shadow: .5px .5px .5px #888888;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 20px;
+  }
 
-      <a class="create"> create an account </a>
+  input {
+    width: 300px;
+    height: 30px;
+    margin-bottom: 15px;
+  }
+
+  label {
+    margin-bottom: 5px;
+  }
+
+  fieldset {
+    border: none;
+  }
+
+  #warning {
+  color: red;
+  text-align: center;
+  }
+
+  button {
+    width: 315px;
+    height: 35px;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    background-color: #66CC99;
+    border: 1px solid #2ABB9B;
+    border-radius: 3px;
+
+  }
+
+  button:hover {
+    opacity: .8;
+    cursor: pointer;
+  }
+</style>
+
+<h1 id="warning"> </h1> 
+<form id="login-form" class="form-horizontal">
+      <fieldset>
+        <div id="email_group" class="control-group">
+          <label class="control-label" >Username or Email</label>
+          <div class="controls">
+            <input id="username-or-email" name="username-or-email" required="required" />
+          </div>
+        </div>
+        <div id="password_group" class="control-group">
+          <label class="control-label" for="password">Password</label>
+          <div class="controls">
+            <input id="password" name="password" type="password" required="required" />
+          </div>
+        </div>
+        <div class="form-actions">
+        </div>
+      </fieldset>
+
+
+</form>
+
+      <button value="login" class="login-submit"> Login </button>
+
+      <button class="create"> Create an Account </button>
+

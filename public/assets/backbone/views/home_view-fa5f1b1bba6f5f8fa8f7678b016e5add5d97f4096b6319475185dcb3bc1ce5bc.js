@@ -24,7 +24,7 @@ var HomeView = Backbone.View.extend({
 			console.log("render home");
 			var that = this;
 			console.log(options);
-	        this.name = options.user.name;
+	        this.name = options.name;
 			//TODO: Move template to separate page, custom welcome name
 			//populate the home_template with times collection
 			var home_template = JST["backbone/templates/activities/home"]({
@@ -38,9 +38,8 @@ var HomeView = Backbone.View.extend({
 			//called when the go button is clicked
 			var index = $('#time-selector')[0].selectedIndex;
 			var duration = this.times.models[index].get('duration');
-			console.log("iutiyou")
 			//save duration to activity view object
-			App.Views['activitiesView'].time = duration;
+			App.Views['activityView'].time = duration;
 			//switch view to activities view
 			window.location = '/tempo#activities';
 		},

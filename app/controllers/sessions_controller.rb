@@ -79,6 +79,7 @@ class SessionsController < ApplicationController
   # Verify whether or not the client is serving a valid JWT token
   # GET 'api/verify_token'
   # Testing: curl -H "Content-Type: application/json" -X GET -d '{"token":"<token>"}' http://localhost:3000/api/verify_token
+  # Requires token
   def verify_token
     error_list = []
     status = -1

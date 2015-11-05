@@ -1,47 +1,3 @@
-var verifyUser = function(view) {
-  var cookie = Cookies.get("login-token");
-  var token = new Token();
-  token.url += cookie;
-  var response = {
-    "status": false,
-    "data": ""
-  };
-  if (cookie === "undefined" || cookie === undefined) {
-    console.log('undefined');
-    return renderView("login", "");
-  } else {
-    token.fetch({
-        success: function(data){
-          renderView(view, data)
-      }, 
-        failure: function(data) {
-        return renderView("login", "");
-      }
-  });
-  }
-};
-
-
-var renderView = function(view, data) {
-  if (view === "login") {
-    Backbone.history.navigate('login');  
-    App.Views['loginView'].render();
-  } else {
-        var userData = data.attributes.user;
-        var user = new User();
-        user.username = userData.username;
-        user.password = userData.password;
-        user.id = userData.id;
-        user.email = userData.email;
-        user.name = userData.name;
-        user.interests = userData.interests;
-        console.log(user);
-        App.Views[view].render({
-            "user" : user
-        });
-  }
-};
-
 var TempoRouter = Backbone.Router.extend({
     routes: {
       '': 'home',
@@ -50,7 +6,6 @@ var TempoRouter = Backbone.Router.extend({
       'login': 'login',
       "interests": "interests",
       "activities": "activities",
-      "settings":"settings",
       "customActivities": "customActivities",
       "createCustomActivity": "createCustomActivity",
       "activities/:activity":"activity",
@@ -60,20 +15,40 @@ var TempoRouter = Backbone.Router.extend({
       App.Views['homeView'] = new HomeView();
       App.Views['activityView'] = new ActivityView()
       App.Views['interestView'] = new InterestView()
-      App.Views['customActivityView'] = new CustomActivityView()
-      App.Views['createCustomActivityView'] = new CreateCustomActivityView()
+      App.Views['customActivity'] = new CustomActivityView()
+      App.Views['createCustomActivity'] = new CreateCustomActivityView()
       App.Views['activitiesView'] = new ActivitiesView();
-      App.Views['settingsView'] = new SettingsView();
       App.Views['loginView'] = new LoginView();
     },
     home: function() {
-      verifyUser("homeView");
-
+      var cookie = Cookies.get("login-token");
+      var token = new Token();
+      token.url += cookie;
+      console.log("hi");
+      console.log(token);
+      if (cookie === "undefined" || cookie === undefined) {
+          console.log('undefined cookie');
+          Backbone.history.navigate('login');  
+          App.Views['loginView'].render();
+      } else {
+        token.fetch({
+            success: function(data){
+              console.log(data);
+              App.Views['homeView'].render({
+                "name" : data.attributes.user.name
+              });
+          }, failure: function(data) {
+            console.log('invalid cookie');
+            Backbone.history.navigate('login');  
+            App.Views['loginView'].render();
+          } 
+        });
+      }
     },
     activities: function(){
       console.log("The activities router was called ");
-      verifyUser("activitiesView");
-   
+      //Constructing View 
+      App.Views['activitiesView'].render()    
     },
     activity: function(options) {
       console.log("The activity router was called");
@@ -82,21 +57,17 @@ var TempoRouter = Backbone.Router.extend({
     },
     interests: function(){
       console.log("The interests router was called ");
-      verifyUser("interestView");
-     
-    },
-    settings: function(){
-      console.log("The settings router was called ");
-      verifyUser("settingsView");
-     
+      //Constructing View 
+      App.Views['interestView'].render()      
     },
     customActivities: function(){
       console.log("The custom Activities router was called ");
-      verifyUser("customActivityView");     
+      //Constructing View 
+      App.Views['customActivity'].render()      
     },    
     createCustomActivity: function(){
       console.log("Creating a custom activity");
-      verifyUser("createCustomActivityView");
+      App.Views['createCustomActivity'].render();
     },
     show: function(){
       //This route doesn't do anything yet
@@ -110,8 +81,8 @@ var TempoRouter = Backbone.Router.extend({
     signup: function(){
       console.log("The signup router was called ");
       //Constructing View 
-      App.Views['signupView'] = new SignupView()
-      App.Views['signupView'].render()      
+      App.Views['SignupView'] = new SignupView()
+      App.Views['SignupView'].render()      
     },
     login: function(){
       console.log("The login router was called ");

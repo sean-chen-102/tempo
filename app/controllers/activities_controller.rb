@@ -1,5 +1,5 @@
 class ActivitiesController < ApplicationController
-	before_action :set_activity, only: [:edit_activity, :destroy_activity, :get_activity, :get_interests, :like, :dislike]
+	before_action :set_activity, only: [:edit_activity, :destroy_activity, :get_activity, :get_interests, :like, :dislike, :get_like_count]
 
 	# CUSTOM CODE
 
@@ -172,6 +172,33 @@ class ActivitiesController < ApplicationController
 
 	end
 
+	# Returns the like_count of the specified activity
+	# GET /aip/activities/:id/like_count
+	# Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/activities/1/like_count
+	def get_like_count
+		status = -1
+		error_list = []
+		json_response = {}
+
+		if not @activity.nil?
+			status = 1
+			json_response["like_count"] = @activity.like_count
+		else
+			error_list.append("Error: activity does not exist")
+		end
+
+		if status == -1
+	  		json_response["errors"] = error_list
+	  	end
+
+	  	json_response["status"] = status
+	  	json_response = json_response.to_json
+
+		respond_to do |format|
+			format.json { render json: json_response }
+		end
+	end
+
 	# Returns a status code (1 = success, -1 = failure), updates the activity in the database
 	# POST /api/activities/:id/like
 	# Testing via curl: curl -H "Content-Type: application/json" -d '{ "user_id": 1 }' -X POST http://localhost:3000/api/activities/1/like
@@ -223,6 +250,7 @@ class ActivitiesController < ApplicationController
 		end
 
 		json_response["status"] = status
+		json_response = json_response.to_json
 
 		respond_to do |format|
 			format.json { render json: json_response }
@@ -278,6 +306,7 @@ class ActivitiesController < ApplicationController
 		end
 
 		json_response["status"] = status
+		json_response = json_response.to_json
 
 		respond_to do |format|
 			format.json { render json: json_response }

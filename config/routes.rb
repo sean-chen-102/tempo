@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   get '/api/activities/:id', to: 'activities#get_activity', defaults: { format: 'json' }
   get '/api/activities', to: 'activities#get_activities', defaults: { format: 'json' }
   get '/api/activities/:id/interests', to: 'activities#get_interests_for_activity', defaults: { format: 'json' }
+  get '/api/activities/:id/like_count', to: 'activities#get_like_count', defaults: { format: 'json' }
   post '/api/activities', to: 'activities#create_activity', defaults: { format: 'json' }
   post '/api/activities/:id', to: 'activities#edit_activity', defaults: { format: 'json' }
   post '/api/activities/:id/like', to: 'activities#like', defaults: { format: 'json' }

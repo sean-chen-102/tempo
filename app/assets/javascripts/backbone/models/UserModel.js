@@ -6,6 +6,7 @@ var User = Backbone.Model.extend({
     		"username": "",
     		"id": "",
     		"interests": "",
-    		"password": ""
+    		"password": "",
+    		"name" : ""
   		}
 });

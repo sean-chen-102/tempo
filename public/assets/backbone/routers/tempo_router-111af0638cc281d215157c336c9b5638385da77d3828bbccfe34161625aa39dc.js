@@ -67,6 +67,30 @@ var TempoRouter = Backbone.Router.extend({
       App.Views['loginView'] = new LoginView();
     },
     home: function() {
+      var cookie = Cookies.get("login-token");
+      var token = new Token();
+      token.url += cookie;
+      console.log("hi");
+      console.log(token);
+      if (cookie === "undefined" || cookie === undefined) {
+          console.log('undefined cookie');
+          Backbone.history.navigate('login');  
+          App.Views['loginView'].render();
+      } else {
+        token.fetch({
+            success: function(data){
+              console.log(data.attributes.user);
+              
+              App.Views['homeView'].render({
+                "name" : data.attributes.user.name
+              });
+          }, failure: function(data) {
+            console.log('invalid cookie');
+            Backbone.history.navigate('login');  
+            App.Views['loginView'].render();
+          } 
+        });
+      }
       verifyUser("homeView");
 
     },

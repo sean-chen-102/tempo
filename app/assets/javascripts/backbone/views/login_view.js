@@ -45,6 +45,11 @@ var LoginView = Backbone.View.extend({
 	      	console.log("failure!");
 	      }
 	    });
+		    if (this.model.validationError) {
+		    	console.log(this.model.validationError);
+		    	$("#warning").html(this.model.validationError);
+  // validate error(s) accessible in model.validationError
+			}
 		},
 		create : function(options) {
 			Backbone.history.navigate('signup', {trigger: true}); 

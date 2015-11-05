@@ -35,7 +35,6 @@ var renderView = function(view, data) {
         user.email = userData.email;
         user.name = userData.name;
         user.interests = userData.interests;
-        console.log(user);
         App.Views[view].render({
             "user" : user
         });
@@ -57,7 +56,6 @@ var TempoRouter = Backbone.Router.extend({
       "show": "show"
     },
     initialize: function() {
-      App.Views['homeView'] = new HomeView();
       App.Views['activityView'] = new ActivityView()
       App.Views['interestView'] = new InterestView()
       App.Views['customActivityView'] = new CustomActivityView()
@@ -65,6 +63,8 @@ var TempoRouter = Backbone.Router.extend({
       App.Views['activitiesView'] = new ActivitiesView();
       App.Views['settingsView'] = new SettingsView();
       App.Views['loginView'] = new LoginView();
+      App.Views['homeView'] = new HomeView({interestView: App.Views['interestView'],
+                                activitiesView: App.Views['activitiesView']});
     },
     home: function() {
       verifyUser("homeView");

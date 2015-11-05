@@ -20,8 +20,6 @@ var SettingsView = Backbone.View.extend({
   //  			console.log(this.id);
 
 		// 	});
-		this.model = new User();
-
 	},
 	saveInterests : function(options) {
 		var that = this;
@@ -33,8 +31,6 @@ var SettingsView = Backbone.View.extend({
 				newInterests.push(name);
 			}
 		}
-		this.model.url = "/api/users/" + this.user.id + "/interests";
-		this.model.attributes.interests = newInterests;
 		var interest = new Interest();
 		interest.url = "/api/users/" + this.user.id + "/interests";
 		var token = Cookies.get('login-token');
@@ -47,7 +43,7 @@ var SettingsView = Backbone.View.extend({
       			Cookies.set("login-token", response.token);
       			// Backbone.Events.trigger("user-interests", [response.user.interests, response.user.id]);
       			alert("you successfully logged in!");
-      },
+      		},
       		error: function(userSession, response) {
       			console.log("failure!");
       		}

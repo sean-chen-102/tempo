@@ -5,6 +5,8 @@ class UsersController < ApplicationController
 
   # CUSTOM CODE
 
+  # TODO: change password API call
+
   # Create a User in the database for the given params
   # POST /api/users/
   # Testing via curl: curl -H "Content-Type: application/json" -X POST -d '{"user": {"name": "Jack Daniels", "email": "jack6@mail.com", "username": "jackD6", "password": "password", "password_confirmation": "password"}}' http://localhost:3000/api/users
@@ -64,7 +66,7 @@ class UsersController < ApplicationController
   # Returns a JSON response with all Users from the database
   # GET '/api/users'
   # Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/users
-  def get_users
+  def get_all_users
     status = -1
     json_response = JsonResponse.new
     error_list = []
@@ -100,8 +102,9 @@ class UsersController < ApplicationController
 
   # Edit the fields of a specified User
   # PUT /api/users/:id
-  # TODO: update this API request
+  # TODO: update this API request - do we even need this?
   # TODO: Requires authentication
+  # Requires token authentication
   def edit_user
     respond_to do |format|
       if @user.update(user_params)
@@ -114,11 +117,56 @@ class UsersController < ApplicationController
     end
   end
 
+  # Change the User's password
+  # PUT /api/users/:id/change_password
+  # Testing via curl: curl -H "Content-Type: application/json" -X PUT -d '{"token":"<token", "old_password":"password", "new_password":"password2"}' http://localhost:3000/api/users/2/change_password
+  # Requires token authentication AND relogin
+  def change_password
+    status = -1
+    json_response = JsonResponse.new
+    error_list = []
+    token = params[:token]
+    old_password = params["old_password"]
+    new_password = params["new_password"]
+    user_id = params[:id]
+    @user = User.find_by(id: user_id)
+
+    if not @user.nil? # if the User exists
+      if not token.nil? and user_has_permission(User.authenticate_token(token), @user.id) # if the token was provided and is valid and the user has permission
+        if @user.authenticate(old_password) # if the old_password matches the one in the database
+          if @user.change_password(new_password)
+            status = 1
+          else
+            error_list << @user.errors
+          end
+        else
+          error_list.append("Error: the old password is not correct.")
+        end
+      else
+        error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
+        status = -2
+      end
+    else
+      error_list.append("Error: user ##{params[:id]} does not exist.")
+    end
+
+    if status != 1
+      json_response.set_errors(error_list)
+    end
+
+    json_response.set_status(status)
+    json_response = json_response.get_json
+
+    respond_to do |format|
+      format.json { render json: json_response }
+    end
+  end
+
   # Deletes specified User from database 
   # DELETE /api/users/:id
-  # Testing via curl: curl -H "Content-Type: application/json" -X DELETE http://localhost:3000/api/users/13
+  # Testing via curl: curl -H "Content-Type: application/json" -X DELETE -d '{"token": "<token>"}' http://localhost:3000/api/users/13
   # TODO: Make this secure so only admins can destroy users
-  # Requires authentication
+  # Requires token authentication
   def destroy_user
     status = -1
     json_response = JsonResponse.new
@@ -131,12 +179,13 @@ class UsersController < ApplicationController
         status = 1
       else
         error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
+        status = -2
       end
     else
       error_list.append("Error: user ##{params[:id]} does not exist.")
     end
 
-    if status == -1
+    if status != 1
       json_response.set_errors(error_list)
     end
 
@@ -150,8 +199,8 @@ class UsersController < ApplicationController
 
   # Return a JSON response with a list of given Interests of a specified User
   # GET '/api/users/:id/interests'
-  # Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/users/2/interests
-  # Requires authentication
+  # Testing via curl: curl -H "Content-Type: application/json" -X GET -d '{"token":"<token>"}' http://localhost:3000/api/users/1/interests
+  # Requires token authentication
   def get_user_interests
     status = -1
     json_response = JsonResponse.new
@@ -170,12 +219,13 @@ class UsersController < ApplicationController
         end
       else
         error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
+        status = -2
       end
     else
       error_list.append("Error: user ##{params[:id]} does not exist.")
     end
 
-    if status == -1
+    if status != 1
       json_response.set_errors(error_list)
     end
 
@@ -190,8 +240,8 @@ class UsersController < ApplicationController
 
   # Return a JSON response with a list of a User's Custom Activities
   # GET /api/users/:id/custom_activities
-  # Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/users/2/custom_activities
-  # Requires authentication
+  # Testing via curl: curl -H "Content-Type: application/json" -X GET -d '{"token":"<token>"}' http://localhost:3000/api/users/1/custom_activities
+  # Requires token authentication
   def get_user_custom_activities
     status = -1
     json_response = JsonResponse.new
@@ -210,12 +260,13 @@ class UsersController < ApplicationController
         end
       else
         error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
+        status = -2
       end
     else
       error_list.append("Error: user ##{params[:id]} does not exist.")
     end
 
-    if status == -1
+    if status != 1
       json_response.set_errors(error_list)
     end
 
@@ -230,8 +281,8 @@ class UsersController < ApplicationController
 
   # Create a User Interests in the database for the given params. Note: will replace the User's previous interests.
   # PUT /api/users/:id/interests
-  # Testing via curl: curl -H "Content-Type: application/json" -X PUT -d '{"interests":["science", "tech"]}' http://localhost:3000/api/users/1/interests
-  # Requires authentication
+  # Testing via curl: curl -H "Content-Type: application/json" -X PUT -d '{"interests":["science", "technology"], "token":"<token>"}' http://localhost:3000/api/users/1/interests
+  # Requires token authentication
   def set_interests_for_user
     interests_key = "interests"
     json_response = JsonResponse.new
@@ -244,17 +295,15 @@ class UsersController < ApplicationController
 
     if not user_id.nil?
       if not token.nil? and user_has_permission(User.authenticate_token(token), user_id) # if the token was provided and is valid and the user has permission
-        user = User.where(id: user_id)
-        if not user.empty?
+        user = User.find_by(id: user_id)
+        if not user.nil?
           status = 1
-          user = user.first
           user.interests = []
           user.save
 
           interests.each do |interest_name|
-            interest_object = Interest.where(name: interest_name)
-            if not interest_object.empty?
-              interest_object = interest_object.first
+            interest_object = Interest.find_by(name: interest_name)
+            if not interest_object.nil?
               user.interests << interest_object
               user.save
               successful_interests << interest_name
@@ -265,6 +314,7 @@ class UsersController < ApplicationController
         end
       else
         error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
+        status = -2
       end
     end
 

@@ -13,6 +13,11 @@
 #
 
 class User < ActiveRecord::Base
+  # Before actions
+  before_create :create_activation_digest
+  before_save   :downcase_email
+  attr_accessor :activation_token, :reset_token
+
   # Associations
   has_many :interests
   has_many :custom_activities
@@ -34,7 +39,7 @@ class User < ActiveRecord::Base
 
   # Returns a JSON list of all custom_activities of the User with id = user_id
   def self.get_custom_activities(user_id)
-    custom_activities = User.find(id: user_id).custom_activities
+    custom_activities = User.find_by(id: user_id).custom_activities
 
     custom_activities.each do |custom_activity|
       custom_activity = custom_activity.to_json
@@ -45,13 +50,27 @@ class User < ActiveRecord::Base
 
   # Returns a JSON list of all interests that have user_id as their User.id.
   def self.get_interests(user_id)
-    interests = User.find(id: user_id).interests
+    puts "In User.self.get_interests: user_id= #{user_id}"
+    interests = User.find_by(id: user_id).interests
 
     interests.each do |interest|
       interest = interest.to_json
     end
 
     return interests
+  end
+
+  # Adds the custom_activity to the User's list of CustomActivities.
+  def add_custom_activity(custom_activity)
+    user = self
+    user.custom_activities << custom_activity
+    user.save
+  end
+
+  # Update the User's password to new_password
+  def change_password(new_password)
+    self.password = new_password
+    return self.save
   end
 
   # Returns a hash of basic user info.
@@ -92,11 +111,11 @@ class User < ActiveRecord::Base
       return nil
     end
 
-    user_id = decoded_token[:user_id]
-    @user = User.find_by(id: user_id)
+    user_id = decoded_token[0]["user_id"]
+    user = User.find_by(id: user_id)
 
-    if not @user.nil?
-      return @user
+    if not user.nil?
+      return user
     else
       return nil
     end
@@ -127,10 +146,44 @@ class User < ActiveRecord::Base
       rescue JWT::ExpiredSignature
         # the token has expired, they should be logged out and asked to log back in
         decoded_token = nil
+      rescue JWT::VerificationError
+        # the token was not valid
+        decoded_token = nil
+      rescue JWT::DecodeError
+        # the token was formatted incorrectly
+        decoded_token = nil
       end
 
       return decoded_token
     end
   end
+
+  # Returns the hash digest of the given string. Uses a minimal cost for computing 
+  # the hash while in testing mode, and a high-security hash while in production
+  # mode.
+  def self.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    hash = BCrypt::Password.create(string, cost: cost)
+    return hash
+  end
+
+  # Returns a random token for use with digests and hashes.
+  def self.new_token
+    return SecureRandom.urlsafe_base64
+  end
+
+  private
+
+    # Create an activation token and digest for this User.
+    def create_activation_digest
+      self.activation_token  = User.new_token
+      self.activation_digest = User.digest(activation_token)
+    end
+
+    # Convert the User's email address to all lowercase.
+    def downcase_email
+      self.email = email.downcase
+    end
 
 end

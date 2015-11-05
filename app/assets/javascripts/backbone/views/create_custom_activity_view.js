@@ -57,8 +57,5 @@ var CreateCustomActivityView = Backbone.View.extend({
           }
       });      
 
-
-      
-
     } 
   });

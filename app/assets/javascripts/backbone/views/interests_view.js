@@ -25,31 +25,32 @@ var InterestView = Backbone.View.extend({
 
 	},
 	saveInterests : function(options) {
-		var that = this;
-		var newInterests = []
-		for (var j = 0; j < that.numInterests; j++) {
-			var currInterest = $('interest-' + j);
-			var name = currInterest.attr('name')
-			if (currInterest.is(":checked") && that.userInterests.indexOf(name) > -1) {
-				newInterests.append(name);
-			}
-		}
-		this.model.url = "/api/users/" + this.id + "/interests";
-		this.model.attributes.interests = newInterests;
+		//TODO; change so that it can be accessed in other view
+		// var that = this;
+		// var newInterests = []
+		// for (var j = 0; j < that.numInterests; j++) {
+		// 	var currInterest = $('interest-' + j);
+		// 	var name = currInterest.attr('name')
+		// 	if (currInterest.is(":checked") && that.userInterests.indexOf(name) > -1) {
+		// 		newInterests.append(name);
+		// 	}
+		// }
+		// this.model.url = "/api/users/" + this.id + "/interests";
+		// this.model.attributes.interests = newInterests;
 
-		this.model.save(this.model.attributes, {
-      		success: function(userSession, response) {
-      			console.log("success!");
-      			console.log(userSession);
-      			console.log(response);
-      			Cookies.set("login-token", response.token);
-      			// Backbone.Events.trigger("user-interests", [response.user.interests, response.user.id]);
-      			alert("you successfully logged in!");
-      		},
-      		error: function(userSession, response) {
-      			console.log("failure!");
-      		}
-    	});
+		// this.model.save(this.model.attributes, {
+  //     		success: function(userSession, response) {
+  //     			console.log("success!");
+  //     			console.log(userSession);
+  //     			console.log(response);
+  //     			Cookies.set("login-token", response.token);
+  //     			// Backbone.Events.trigger("user-interests", [response.user.interests, response.user.id]);
+  //     			alert("you successfully logged in!");
+  //     		},
+  //     		error: function(userSession, response) {
+  //     			console.log("failure!");
+  //     		}
+  //   	});
 
 	},
 	getInterests : function(options){
@@ -57,9 +58,9 @@ var InterestView = Backbone.View.extend({
 		// Fetches the user interests from the database
 		var interests = new Interests();
 		interests.url = "/api/users/" + this.user.id + "/interests";
-		console.log(interests.url);
+		var token = Cookies.get('login-token');
+		interests.url += "?token=" + token;
 		interests.fetch({
-			data: {token:that.model.attributes.user},
 			success: function(data){
 				that.renderData(data);
 				that.userInterests = data;

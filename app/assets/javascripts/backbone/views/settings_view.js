@@ -29,15 +29,17 @@ var SettingsView = Backbone.View.extend({
 		for (var j = 0; j < that.numInterests; j++) {
 			var currInterest = $('#interest-' + j);
 			var name = currInterest.attr('name')
-			if (currInterest.is(":checked") && that.userInterests.indexOf(name) > -1) {
-				newInterests.append(name);
+			if (currInterest.is(":checked")) {
+				newInterests.push(name);
 			}
 		}
 		this.model.url = "/api/users/" + this.user.id + "/interests";
 		this.model.attributes.interests = newInterests;
-		console.log(newInterests);
-		data = {interests:newInterests, token: this.model.attributes.token}
-		this.model.save(data, {
+		var interest = new Interest();
+		interest.url = "/api/users/" + this.user.id + "/interests";
+		var token = Cookies.get('login-token');
+		interest.attributes = {id:this.user.id, interests:newInterests, token:token};
+		interest.save({
       		success: function(userSession, response) {
       			console.log("success!");
       			console.log(userSession);
@@ -56,11 +58,15 @@ var SettingsView = Backbone.View.extend({
 	getUserInterests : function(callback, args){
 		// Fetches the user interests from the database
 		var that = this;
-		interests = new Interests();
+		var interests = new Interests();
 		interests.url = "/api/users/" + this.user.id + "/interests";
+		var token = Cookies.get('login-token');
+		interests.url += "?token=" + token;
 		interests.fetch({
 			success: function(data){
-				that.userInterests = data;
+				data.each(function(model){
+					that.userInterests.push(model.get('name'));
+				});
 				if (args){
 					callback(args);
 				} else {
@@ -94,13 +100,14 @@ var SettingsView = Backbone.View.extend({
 					+ " <tbody> ";
 		//Iterate throught he collections of Activities and create a template
 		var numInterests = 0;
+		console.log(that.userInterests);
 		data.each(function(model){
 			var checked = "";
 			if (that.userInterests.indexOf(model.get('name')) > -1) { 
 				checked = "checked";
 			}
 			html += "<tr>" 
-					+   " <td> <input type=checkbox name=" + model.get('name') +  " id=interest-" + that.numInterests + " " + checked + " >  </td>"
+					+   " <td> <input type=checkbox name=" + model.get('name') +  " id=interest-" + numInterests + " " + checked + " >  </td>"
 					+ "<td> " +  model.get('name') + " </td>"
 				+ "</tr>";	
 			numInterests += 1

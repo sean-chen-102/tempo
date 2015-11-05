@@ -20,7 +20,6 @@ var ActivitiesView = Backbone.View.extend({
       var that = this; // To fix callback scoping error
 
       var renderData = function(data) {
-        console.log("jhgfjhgfj");
         $(that.el).html("<h4 style='color: #9b59b6;'> Activity List </h4> <br>");
         that.activities.each(that.renderItem);
         //TODO: Create and import handlebars for templating     

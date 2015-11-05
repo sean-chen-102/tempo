@@ -47,6 +47,7 @@ var LoginView = Backbone.View.extend({
 	    });
 		    if (this.model.validationError) {
 		    	console.log(this.model.validationError);
+		    	$("#warning").html(this.model.validationError);
   // validate error(s) accessible in model.validationError
 			}
 		},

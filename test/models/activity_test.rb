@@ -2,15 +2,17 @@
 #
 # Table name: activities
 #
-#  id              :integer          not null, primary key
-#  title           :string
-#  content         :string
-#  completion_time :integer
-#  content_type    :string
-#  link            :string
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  like_meter      :integer
+#  id                 :integer          not null, primary key
+#  title              :string
+#  content            :string
+#  completion_time    :integer
+#  content_type       :string
+#  link               :string
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  like_count         :integer
+#  user_liked_list    :integer          default([]), is an Array
+#  user_disliked_list :integer          default([]), is an Array
 #
 
 require 'test_helper'
@@ -47,9 +49,9 @@ class ActivityTest < ActiveSupport::TestCase
 
   test "activity like_count must be within range" do
     assert @activity.valid?
-    @activity.like_count = -2
+    @activity.like_meter = -2
     assert @activity.invalid?, "like_count = -2 test failed"
-    @activity.like_count = 2
+    @activity.like_meter = 2
     assert @activity.invalid?, "like_count = 2 test failed"
   end
 

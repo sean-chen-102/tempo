@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151104102214) do
+ActiveRecord::Schema.define(version: 20151105230956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,9 +22,11 @@ ActiveRecord::Schema.define(version: 20151104102214) do
     t.integer  "completion_time"
     t.string   "content_type"
     t.string   "link"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.integer  "like_meter"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.integer  "like_count"
+    t.integer  "user_liked_list",    default: [],              array: true
+    t.integer  "user_disliked_list", default: [],              array: true
   end
 
   create_table "activities_interests", id: false, force: :cascade do |t|

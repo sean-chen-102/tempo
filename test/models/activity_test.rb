@@ -47,12 +47,4 @@ class ActivityTest < ActiveSupport::TestCase
   	assert @activity.invalid?, "completion_time > 60 test failed"
   end
 
-  test "activity like_count must be within range" do
-    assert @activity.valid?
-    @activity.like_meter = -2
-    assert @activity.invalid?, "like_count = -2 test failed"
-    @activity.like_meter = 2
-    assert @activity.invalid?, "like_count = 2 test failed"
-  end
-
 end

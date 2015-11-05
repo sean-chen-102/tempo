@@ -173,7 +173,7 @@ class ActivitiesController < ApplicationController
 	end
 
 	# Returns the like_count of the specified activity
-	# GET /aip/activities/:id/like_count
+	# GET /api/activities/:id/like_count
 	# Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/activities/1/like_count
 	def get_like_count
 		status = -1
@@ -212,12 +212,11 @@ class ActivitiesController < ApplicationController
 
 		if not user.nil?
 			if not @activity.nil?
-
 				# Check if user is in like list
 				if @activity.user_liked_list.include? user_id
 					error_list.append("Error: user has already liked this activity")
 				else 
-
+					
 					# If user has previously disliked post, we need to add two instead of one
 					if @activity.user_disliked_list.include? user_id
 						@activity.user_disliked_list.delete(user_id)
@@ -235,15 +234,12 @@ class ActivitiesController < ApplicationController
 					end
 
 				end
-
 			else
 				error_list.append("Error: activity does not exist")
 			end
 		else
 			error_list.append("Error: user_id is not valid")
 		end
-
-
 
 		if status == -1
 			json_response["errors"] = error_list
@@ -293,7 +289,6 @@ class ActivitiesController < ApplicationController
 					end
 
 				end
-
 			else
 				error_list.append("Error: activity does not exist")
 			end

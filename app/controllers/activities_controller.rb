@@ -227,37 +227,35 @@ class ActivitiesController < ApplicationController
 		json_response = {}
 		error_list = []
 		token = params["token"]
-		user = User.authenticate_token(token)
+		@user = User.authenticate_token(token)
+		activity_id = params["id"]
+		@activity = Activity.find_by(id: activity_id)
 
-		if not user.nil?
+		if not @user.nil?
 			if not @activity.nil?
-
 				# Check if activity is in user's liked_list
-				if user.liked_list.include? @activity.id
-					error_list.append("Error: user has already liked this activity")
+				if @user.liked_list.include? @activity.id
+					error_list.append("Error: user has already liked this activity.")
 				else 
-					
 					# If user has previously disliked post, we need to add two instead of one
-					if user.disliked_list.include? @activity.id
-						user.disliked_list.delete(@activity.id)
+					if @user.disliked_list.include? @activity.id
+						@user.disliked_list.delete(@activity.id)
 						@activity.like_count = @activity.like_count + 2
 					else
 						@activity.like_count = @activity.like_count + 1
 					end
 
-					user.liked_list.push(@activity.id)
+					@user.liked_list.push(@activity.id)
 
-					if @activity.save and user.save
+					if @activity.save and @user.save
 						status = 1
 						json_response["like_count"] = @activity.like_count
 					else
-						error_list.append("Error: could not save new like_count")
+						error_list.append("Error: could not save new like_count.")
 					end
-
 				end
-
 			else
-				error_list.append("Error: activity does not exist")
+				error_list.append("Error: activity ##{activity_id} does not exist.")
 			end
 		else
 			error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
@@ -278,14 +276,15 @@ class ActivitiesController < ApplicationController
 
 	# Returns a status code (1 = success, -1 = failure), updates the activity in the database
 	# POST /api/activities/:id/dislike
-	# Testing via curl: curl -H "Content-Type: application/json" -d '{ "user_id": 1 }' -X PUT http://localhost:3000/api/activities/1/dislike
+	# Testing via curl: curl -H "Content-Type: application/json" -d '{ "token": "<token>" }' -X PUT http://localhost:3000/api/activities/1/dislike
 	def dislike 
 		status = -1
 		json_response = {}
 		error_list = []
-
-		user_id = params["user_id"]
-		user = User.find_by(id: user_id)
+		token = params["token"]
+		@user = User.authenticate_token(token)
+		activity_id = params["id"]
+		@activity = Activity.find_by(id: activity_id)
 
 		if not user.nil?
 			if not token.nil? and user_has_permission(User.authenticate_token(token), user.id) # if the token was provided and is valid and the user has permission

@@ -2,14 +2,17 @@
 #
 # Table name: activities
 #
-#  id              :integer          not null, primary key
-#  title           :string
-#  content         :string
-#  completion_time :integer
-#  content_type    :string
-#  link            :string
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id                 :integer          not null, primary key
+#  title              :string
+#  content            :string
+#  completion_time    :integer
+#  content_type       :string
+#  link               :string
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  like_count         :integer
+#  user_liked_list    :integer          default([]), is an Array
+#  user_disliked_list :integer          default([]), is an Array
 #
 
 class Activity < ActiveRecord::Base
@@ -19,6 +22,7 @@ class Activity < ActiveRecord::Base
 	# Validations
 	validates :title, presence: true
 	validates :title, length: { maximum: 128 }
+  validates :like_count, presence: true
 
 	validates :completion_time, numericality: { greater_than: 0,
 											    less_than_or_equal_to: 60 }

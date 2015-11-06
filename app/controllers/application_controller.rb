@@ -70,7 +70,6 @@ class ApplicationController < ActionController::Base
 	# on the User's data with the given id=user_id_to_modify
 	def user_has_permission(client_user, user_id_to_modify)
 		if client_user.nil? or user_id_to_modify.nil?
-			puts "In ApplicationController.user_has_permission: the client user or user to modify is nil."
 			return false
 		end
 

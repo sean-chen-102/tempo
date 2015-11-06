@@ -106,14 +106,33 @@ class UsersController < ApplicationController
   # TODO: Requires authentication
   # Requires token authentication
   def edit_user
-    respond_to do |format|
+    status = -1
+    user_id = params["id"]
+    error_list = []
+    json_response = {}
+
+    if not User.find_by(id: user_id).nil?
       if @user.update(user_params)
-        # format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
+        status = 1
+        json_response["user"] = @user.get_advanced_info()
       else
-        # format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        error_list.append(@user.errors)
       end
+    else
+      error_list.append("Error: user##{user_id} doesn't exist.")
+    end
+
+    json_response["status"] = status
+
+    if status != 1
+      json_response["errors"] = error_list
+    end
+
+    json_response = json_response.to_json
+
+    respond_to do |format|
+      # format.html # show.html.erb
+      format.json { render json: json_response }
     end
   end
 
@@ -219,17 +238,18 @@ class UsersController < ApplicationController
     status = -1
     json_response = JsonResponse.new
     error_list = []
-    token = params[:token]
+    token = params["token"]
+    user_id = params["id"]
 
     if not @user.nil? # if the User exists
       if not token.nil? and user_has_permission(User.authenticate_token(token), @user.id) # if the token was provided and is valid and the user has permission
         interests = User.get_interests(params[:id])
+        status = 1
 
         if interests.length > 0
-          status = 1
           json_response.set_data("interests", interests)
         else
-          error_list.append("Error: user ##{user_id} does not have any interests.")
+          json_response.set_data("interests", [])
         end
       else
         error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
@@ -270,7 +290,8 @@ class UsersController < ApplicationController
           status = 1
           json_response.set_data("custom_activities", custom_activities)
         else
-          error_list.append("Error: user ##{user_id} does not have any custom activities.")
+          status = 1
+          json_response.set_data("custom_activities", [])
         end
       else
         error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
@@ -310,7 +331,7 @@ class UsersController < ApplicationController
     if not user_id.nil?
       if not token.nil? and user_has_permission(User.authenticate_token(token), user_id) # if the token was provided and is valid and the user has permission
         user = User.find_by(id: user_id)
-        if not user.nil?
+        if not interests.nil?
           status = 1
           user.interests = []
           user.save
@@ -324,7 +345,7 @@ class UsersController < ApplicationController
             end
           end
         else
-          error_list.append("Error: user ##{user_id} doesn't exist.")
+          error_list.append("Error: interests can't be missing.")
         end
       else
         error_list.append(ErrorMessages::AUTHORIZATION_ERROR)

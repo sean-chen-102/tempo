@@ -168,21 +168,23 @@ class ActivitiesController < ApplicationController
 		status = -1
 		json_response = {}
 		error_list = []
+		activity_id = params["id"]
+		activity = Activity.find_by(id: activity_id)
 
-		if !@activity.nil?
-			interests = Activity.get_interests(@activity.id)    
+		if not activity.nil?
+			interests = Activity.get_interests(activity.id)    
 			status = 1
 			json_response['interests'] = interests.as_json
 		else
-			error_list.append("Error: activity does not exist")
+			error_list.append("Error: activity ##{activity_id} does not exist.")
 		end
 
-		if status == -1
-	  		json_response["errors"] = error_list
-	  	end
+		if status != 1
+  		json_response["errors"] = error_list
+  	end
 
-	  	json_response["status"] = status
-	  	json_response = json_response.to_json
+  	json_response["status"] = status
+  	json_response = json_response.to_json
 
 		respond_to do |format|
 			format.json { render json: json_response }
@@ -206,11 +208,11 @@ class ActivitiesController < ApplicationController
 		end
 
 		if status == -1
-	  		json_response["errors"] = error_list
-	  	end
+  		json_response["errors"] = error_list
+  	end
 
-	  	json_response["status"] = status
-	  	json_response = json_response.to_json
+  	json_response["status"] = status
+  	json_response = json_response.to_json
 
 		respond_to do |format|
 			format.json { render json: json_response }
@@ -261,7 +263,7 @@ class ActivitiesController < ApplicationController
 				end
 			else
 				error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
-        		status = -2
+    		status = -2
 			end
 		else
 			error_list.append("Error: user_id is not valid")
@@ -321,7 +323,7 @@ class ActivitiesController < ApplicationController
 				end
 			else
 				error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
-        		status = -2
+        status = -2
 			end
 		else
 			error_list.append("Error: user_id is not valid")
@@ -362,7 +364,7 @@ class ActivitiesController < ApplicationController
 				end
 			else
 				error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
-        		status = -2
+    		status = -2
 			end	
 		else
 			error_list.append("Error: user_id is not valid")

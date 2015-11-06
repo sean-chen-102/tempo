@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "test basic interests functionality - ", :type => :request do
+RSpec.describe "test getting users with interest - ", :type => :request do
 
   ### GET USERS WITH THE INTEREST ###
-  it "creating a new interest" do
+  it "successfully get users" do
     # Create a new valid interest
     params = { "interest": { "name": "science" } }
     post "/api/interests", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
@@ -79,7 +79,6 @@ RSpec.describe "test basic interests functionality - ", :type => :request do
     status = data["status"]
     expect(status).to eq(1) # we should have a success
     users = data["users"]
-    puts "RESPONSE = #{data}"
 
     names_of_users = []
     users.each do |user|
@@ -87,5 +86,11 @@ RSpec.describe "test basic interests functionality - ", :type => :request do
     end
 
     expect(names_of_users).to include(user1_name, user2_name) # the first 2 users share the same interest
+
+    # Try to get the Users with an interest that doesn't exist - should fail
+    get "/api/interests/0/users", {}, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body) # grab the body of the server response
+    status = data["status"]
+    expect(status).to eq(-1) # we should have a success
   end
 end

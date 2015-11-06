@@ -22,9 +22,11 @@ ActiveRecord::Schema.define(version: 20151106201453) do
     t.integer  "completion_time"
     t.string   "content_type"
     t.string   "link"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.integer  "like_count",      default: 0
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.integer  "like_count"
+    t.integer  "user_liked_list",    default: [],              array: true
+    t.integer  "user_disliked_list", default: [],              array: true
   end
 
   create_table "activities_interests", id: false, force: :cascade do |t|
@@ -78,8 +80,6 @@ ActiveRecord::Schema.define(version: 20151106201453) do
     t.string   "activation_digest"
     t.boolean  "activated",                   default: false
     t.datetime "activated_at"
-    t.integer  "liked_list",                  default: [],                 array: true
-    t.integer  "disliked_list",               default: [],                 array: true
     t.integer  "completed_activities",        default: [],                 array: true
     t.integer  "completed_custom_activities", default: [],                 array: true
   end

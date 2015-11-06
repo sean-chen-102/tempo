@@ -14,7 +14,7 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-11-06T15:41:27-08:00">2015-11-06T15:41:27-08:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-11-06T15:51:47-08:00">2015-11-06T15:51:47-08:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -53,7 +53,7 @@
       <tr>
         <td class="strong"><a href="#e483fc17f78aa2572128beeb2ad62595603decd2" class="src_link" title="app/controllers/activities_controller.rb">app/controllers/activities_controller.rb</a></td>
         <td class="yellow strong">87.92 %</td>
-        <td>388</td>
+        <td>387</td>
         <td>207</td>
         <td>182</td>
         <td>25</td>
@@ -638,7 +638,7 @@
       <tr>
         <td class="strong"><a href="#e483fc17f78aa2572128beeb2ad62595603decd2" class="src_link" title="app/controllers/activities_controller.rb">app/controllers/activities_controller.rb</a></td>
         <td class="yellow strong">87.92 %</td>
-        <td>388</td>
+        <td>387</td>
         <td>207</td>
         <td>182</td>
         <td>25</td>
@@ -2607,853 +2607,847 @@
           <code class="ruby">					end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="247">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="248">
+        <li class="covered" data-hits="2" data-linenumber="247">
           <span class="hits">2</span>
           
           <code class="ruby">					@user.liked_list.push(@activity.id)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="249">
+        <li class="never" data-hits="" data-linenumber="248">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="250">
+        <li class="covered" data-hits="2" data-linenumber="249">
           <span class="hits">2</span>
           
           <code class="ruby">					if @activity.save and @user.save</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="251">
+        <li class="covered" data-hits="2" data-linenumber="250">
           <span class="hits">2</span>
           
           <code class="ruby">						status = 1</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="252">
+        <li class="covered" data-hits="2" data-linenumber="251">
           <span class="hits">2</span>
           
           <code class="ruby">						json_response[&quot;like_count&quot;] = @activity.like_count</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="253">
+        <li class="never" data-hits="" data-linenumber="252">
           
           
           <code class="ruby">					else</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="254">
+        <li class="missed" data-hits="0" data-linenumber="253">
           
           
           <code class="ruby">						error_list.append(&quot;Error: could not save new like_count.&quot;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="255">
+        <li class="never" data-hits="" data-linenumber="254">
           
           
           <code class="ruby">					end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="256">
+        <li class="never" data-hits="" data-linenumber="255">
           
           
           <code class="ruby">				end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="257">
+        <li class="never" data-hits="" data-linenumber="256">
           
           
           <code class="ruby">			else</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="258">
+        <li class="covered" data-hits="1" data-linenumber="257">
           <span class="hits">1</span>
           
           <code class="ruby">				error_list.append(&quot;Error: activity ##{activity_id} does not exist.&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="258">
+          
+          
+          <code class="ruby">			end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="259">
           
           
-          <code class="ruby">			end</code>
+          <code class="ruby">		else</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="260">
+        <li class="covered" data-hits="1" data-linenumber="260">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">		else</code>
+          <code class="ruby">			error_list.append(ErrorMessages::AUTHORIZATION_ERROR)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="261">
           <span class="hits">1</span>
           
-          <code class="ruby">			error_list.append(ErrorMessages::AUTHORIZATION_ERROR)</code>
+          <code class="ruby">  		status = -2</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="262">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="262">
           
-          <code class="ruby">  		status = -2</code>
+          
+          <code class="ruby">		end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="263">
           
           
-          <code class="ruby">		end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="264">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="265">
+        <li class="covered" data-hits="6" data-linenumber="264">
           <span class="hits">6</span>
           
           <code class="ruby">		if status != 1</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="266">
+        <li class="covered" data-hits="4" data-linenumber="265">
           <span class="hits">4</span>
           
           <code class="ruby">			json_response[&quot;errors&quot;] = error_list</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="266">
+          
+          
+          <code class="ruby">		end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="267">
           
           
-          <code class="ruby">		end</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="268">
+        <li class="covered" data-hits="6" data-linenumber="268">
+          <span class="hits">6</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">		json_response[&quot;status&quot;] = status</code>
         </li>
       
         <li class="covered" data-hits="6" data-linenumber="269">
           <span class="hits">6</span>
           
-          <code class="ruby">		json_response[&quot;status&quot;] = status</code>
-        </li>
-      
-        <li class="covered" data-hits="6" data-linenumber="270">
-          <span class="hits">6</span>
-          
           <code class="ruby">		json_response = json_response.to_json</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="271">
+        <li class="never" data-hits="" data-linenumber="270">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="272">
+        <li class="covered" data-hits="6" data-linenumber="271">
           <span class="hits">6</span>
           
           <code class="ruby">		respond_to do |format|</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="273">
+        <li class="covered" data-hits="12" data-linenumber="272">
           <span class="hits">12</span>
           
           <code class="ruby">			format.json { render json: json_response }</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="273">
+          
+          
+          <code class="ruby">		end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="274">
           
           
-          <code class="ruby">		end</code>
+          <code class="ruby">	end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="275">
           
           
-          <code class="ruby">	end</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="276">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">	# Returns a status code (1 = success, -1 = failure), updates the activity in the database</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="277">
           
           
-          <code class="ruby">	# Returns a status code (1 = success, -1 = failure), updates the activity in the database</code>
+          <code class="ruby">	# POST /api/activities/:id/dislike</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="278">
           
           
-          <code class="ruby">	# POST /api/activities/:id/dislike</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="279">
-          
-          
           <code class="ruby">	# Testing via curl: curl -H &quot;Content-Type: application/json&quot; -d &#39;{ &quot;token&quot;: &quot;&lt;token&gt;&quot; }&#39; -X PUT http://localhost:3000/api/activities/1/dislike</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="280">
+        <li class="covered" data-hits="1" data-linenumber="279">
           <span class="hits">1</span>
           
           <code class="ruby">	def dislike </code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="281">
+        <li class="covered" data-hits="6" data-linenumber="280">
           <span class="hits">6</span>
           
           <code class="ruby">		status = -1</code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="281">
+          <span class="hits">6</span>
+          
+          <code class="ruby">		json_response = {}</code>
         </li>
       
         <li class="covered" data-hits="6" data-linenumber="282">
           <span class="hits">6</span>
           
-          <code class="ruby">		json_response = {}</code>
+          <code class="ruby">		error_list = []</code>
         </li>
       
         <li class="covered" data-hits="6" data-linenumber="283">
           <span class="hits">6</span>
           
-          <code class="ruby">		error_list = []</code>
+          <code class="ruby">		token = params[&quot;token&quot;]</code>
         </li>
       
         <li class="covered" data-hits="6" data-linenumber="284">
           <span class="hits">6</span>
           
-          <code class="ruby">		token = params[&quot;token&quot;]</code>
+          <code class="ruby">		@user = User.authenticate_token(token)</code>
         </li>
       
         <li class="covered" data-hits="6" data-linenumber="285">
           <span class="hits">6</span>
           
-          <code class="ruby">		@user = User.authenticate_token(token)</code>
+          <code class="ruby">		activity_id = params[&quot;id&quot;]</code>
         </li>
       
         <li class="covered" data-hits="6" data-linenumber="286">
           <span class="hits">6</span>
           
-          <code class="ruby">		activity_id = params[&quot;id&quot;]</code>
-        </li>
-      
-        <li class="covered" data-hits="6" data-linenumber="287">
-          <span class="hits">6</span>
-          
           <code class="ruby">		@activity = Activity.find_by(id: activity_id)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="288">
+        <li class="never" data-hits="" data-linenumber="287">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="289">
+        <li class="covered" data-hits="6" data-linenumber="288">
           <span class="hits">6</span>
           
           <code class="ruby">		if not @user.nil?</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="290">
+        <li class="covered" data-hits="5" data-linenumber="289">
           <span class="hits">5</span>
           
           <code class="ruby">			if not @activity.nil?</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="291">
+        <li class="never" data-hits="" data-linenumber="290">
           
           
           <code class="ruby">				# Check if activity is in user&#39;s disliked_list</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="292">
+        <li class="covered" data-hits="4" data-linenumber="291">
           <span class="hits">4</span>
           
           <code class="ruby">				if @user.disliked_list.include? @activity.id</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="293">
+        <li class="covered" data-hits="1" data-linenumber="292">
           <span class="hits">1</span>
           
           <code class="ruby">				 	error_list.append(&quot;Error: user has already disliked this activity.&quot;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="294">
+        <li class="never" data-hits="" data-linenumber="293">
           
           
           <code class="ruby">				else </code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="295">
+        <li class="never" data-hits="" data-linenumber="294">
           
           
           <code class="ruby">					# If user has previously liked post, we need to subtract two instead of one</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="296">
+        <li class="covered" data-hits="3" data-linenumber="295">
           <span class="hits">3</span>
           
           <code class="ruby">				 	if @user.liked_list.include? @activity.id</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="297">
+        <li class="covered" data-hits="1" data-linenumber="296">
           <span class="hits">1</span>
           
           <code class="ruby">				 		@user.liked_list.delete(@activity.id)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="298">
+        <li class="covered" data-hits="1" data-linenumber="297">
           <span class="hits">1</span>
           
           <code class="ruby">				 		@activity.like_count = @activity.like_count - 2</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="299">
+        <li class="never" data-hits="" data-linenumber="298">
           
           
           <code class="ruby">				 	else</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="300">
+        <li class="covered" data-hits="2" data-linenumber="299">
           <span class="hits">2</span>
           
           <code class="ruby">				 		@activity.like_count = @activity.like_count - 1</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="301">
+        <li class="never" data-hits="" data-linenumber="300">
           
           
           <code class="ruby">				 	end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="302">
+        <li class="never" data-hits="" data-linenumber="301">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="303">
+        <li class="covered" data-hits="3" data-linenumber="302">
           <span class="hits">3</span>
           
           <code class="ruby">				 	@user.disliked_list.push(@activity.id)</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="304">
+        <li class="covered" data-hits="3" data-linenumber="303">
           <span class="hits">3</span>
           
           <code class="ruby">				 	if @activity.save and @user.save</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="305">
+        <li class="covered" data-hits="3" data-linenumber="304">
           <span class="hits">3</span>
           
           <code class="ruby">				 		status = 1</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="306">
+        <li class="covered" data-hits="3" data-linenumber="305">
           <span class="hits">3</span>
           
           <code class="ruby">				 		json_response[&quot;like_count&quot;] = @activity.like_count</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="307">
+        <li class="never" data-hits="" data-linenumber="306">
           
           
           <code class="ruby">				 	else</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="308">
+        <li class="missed" data-hits="0" data-linenumber="307">
           
           
           <code class="ruby">				 		error_list.append(&quot;Error: could not save new like_count.&quot;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="309">
+        <li class="never" data-hits="" data-linenumber="308">
           
           
           <code class="ruby">				 	end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="310">
+        <li class="never" data-hits="" data-linenumber="309">
           
           
           <code class="ruby">				end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="311">
+        <li class="never" data-hits="" data-linenumber="310">
           
           
           <code class="ruby">			else</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="312">
+        <li class="covered" data-hits="1" data-linenumber="311">
           <span class="hits">1</span>
           
           <code class="ruby">				error_list.append(&quot;Error: activity ##{activity_id} does not exist.&quot;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="313">
+        <li class="never" data-hits="" data-linenumber="312">
           
           
           <code class="ruby">			end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="314">
+        <li class="never" data-hits="" data-linenumber="313">
           
           
           <code class="ruby">		else</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="315">
+        <li class="covered" data-hits="1" data-linenumber="314">
           <span class="hits">1</span>
           
           <code class="ruby">			error_list.append(ErrorMessages::AUTHORIZATION_ERROR)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="316">
+        <li class="covered" data-hits="1" data-linenumber="315">
           <span class="hits">1</span>
           
           <code class="ruby">      status = -2</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="317">
+        <li class="never" data-hits="" data-linenumber="316">
           
           
           <code class="ruby">		end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="318">
+        <li class="never" data-hits="" data-linenumber="317">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="319">
+        <li class="covered" data-hits="6" data-linenumber="318">
           <span class="hits">6</span>
           
           <code class="ruby">		if status != 1</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="320">
+        <li class="covered" data-hits="3" data-linenumber="319">
           <span class="hits">3</span>
           
           <code class="ruby">			json_response[&quot;errors&quot;] = error_list</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="321">
+        <li class="never" data-hits="" data-linenumber="320">
           
           
           <code class="ruby">		end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="322">
+        <li class="never" data-hits="" data-linenumber="321">
           
           
           <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="322">
+          <span class="hits">6</span>
+          
+          <code class="ruby">		json_response[&quot;status&quot;] = status</code>
         </li>
       
         <li class="covered" data-hits="6" data-linenumber="323">
           <span class="hits">6</span>
           
-          <code class="ruby">		json_response[&quot;status&quot;] = status</code>
-        </li>
-      
-        <li class="covered" data-hits="6" data-linenumber="324">
-          <span class="hits">6</span>
-          
           <code class="ruby">		json_response = json_response.to_json</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="325">
+        <li class="never" data-hits="" data-linenumber="324">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="326">
+        <li class="covered" data-hits="6" data-linenumber="325">
           <span class="hits">6</span>
           
           <code class="ruby">		respond_to do |format|</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="327">
+        <li class="covered" data-hits="12" data-linenumber="326">
           <span class="hits">12</span>
           
           <code class="ruby">			format.json { render json: json_response }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="328">
+        <li class="never" data-hits="" data-linenumber="327">
           
           
           <code class="ruby">		end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="328">
+          
+          
+          <code class="ruby">	end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="329">
           
           
-          <code class="ruby">	end</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="330">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">	# Adds the Activity to the User&#39;s completed_activities list</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="331">
           
           
-          <code class="ruby">	# Adds the Activity to the User&#39;s completed_activities list</code>
+          <code class="ruby">	# PUT /api/activities/:id/complete</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="332">
           
           
-          <code class="ruby">	# PUT /api/activities/:id/complete</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="333">
-          
-          
           <code class="ruby">	# Testing via curl: curl -H &quot;Content-Type: application/json&quot; -d &#39;{ &quot;user_id&quot;: 1 }&#39; -X PUT http://localhost:3000/api/activities/1/complete</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="334">
+        <li class="covered" data-hits="1" data-linenumber="333">
           <span class="hits">1</span>
           
           <code class="ruby">	def complete_activity</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="335">
+        <li class="missed" data-hits="0" data-linenumber="334">
           
           
           <code class="ruby">		status = -1</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="336">
+        <li class="missed" data-hits="0" data-linenumber="335">
           
           
           <code class="ruby">		json_response = {}</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="337">
+        <li class="missed" data-hits="0" data-linenumber="336">
           
           
           <code class="ruby">		error_list = []</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="338">
+        <li class="missed" data-hits="0" data-linenumber="337">
           
           
           <code class="ruby">		token = params[:token]</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="339">
+        <li class="never" data-hits="" data-linenumber="338">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="340">
+        <li class="missed" data-hits="0" data-linenumber="339">
           
           
           <code class="ruby">		user_id = params[&quot;user_id&quot;]</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="341">
+        <li class="missed" data-hits="0" data-linenumber="340">
           
           
           <code class="ruby">		user = User.find_by(id: user_id)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="342">
+        <li class="never" data-hits="" data-linenumber="341">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="343">
+        <li class="missed" data-hits="0" data-linenumber="342">
           
           
           <code class="ruby">		if not user.nil?</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="344">
+        <li class="missed" data-hits="0" data-linenumber="343">
           
           
           <code class="ruby">			if not token.nil? and user_has_permission(User.authenticate_token(token), user.id) # if the token was provided and is valid and the user has permission</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="345">
+        <li class="missed" data-hits="0" data-linenumber="344">
           
           
           <code class="ruby">				if not @activity.nil?</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="346">
+        <li class="missed" data-hits="0" data-linenumber="345">
           
           
           <code class="ruby">					status = 1</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="347">
+        <li class="missed" data-hits="0" data-linenumber="346">
           
           
           <code class="ruby">					user.completed_activities.push(@activity.id)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="348">
+        <li class="missed" data-hits="0" data-linenumber="347">
           
           
           <code class="ruby">					user.save</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="349">
+        <li class="never" data-hits="" data-linenumber="348">
           
           
           <code class="ruby">				else</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="350">
+        <li class="missed" data-hits="0" data-linenumber="349">
           
           
           <code class="ruby">					error_list.append(&quot;Error: activity does not exist&quot;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="351">
+        <li class="never" data-hits="" data-linenumber="350">
           
           
           <code class="ruby">				end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="352">
+        <li class="never" data-hits="" data-linenumber="351">
           
           
           <code class="ruby">			else</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="353">
+        <li class="missed" data-hits="0" data-linenumber="352">
           
           
           <code class="ruby">				error_list.append(ErrorMessages::AUTHORIZATION_ERROR)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="354">
+        <li class="missed" data-hits="0" data-linenumber="353">
           
           
           <code class="ruby">    		status = -2</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="355">
+        <li class="never" data-hits="" data-linenumber="354">
           
           
           <code class="ruby">			end	</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="356">
+        <li class="never" data-hits="" data-linenumber="355">
           
           
           <code class="ruby">		else</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="357">
+        <li class="missed" data-hits="0" data-linenumber="356">
           
           
           <code class="ruby">			error_list.append(&quot;Error: user_id is not valid&quot;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="358">
+        <li class="never" data-hits="" data-linenumber="357">
           
           
           <code class="ruby">		end		</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="359">
+        <li class="never" data-hits="" data-linenumber="358">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="360">
+        <li class="missed" data-hits="0" data-linenumber="359">
           
           
           <code class="ruby">		if status != 1</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="361">
+        <li class="missed" data-hits="0" data-linenumber="360">
           
           
           <code class="ruby">			json_response[&quot;errors&quot;] = error_list</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="362">
+        <li class="never" data-hits="" data-linenumber="361">
           
           
           <code class="ruby">		end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="363">
+        <li class="never" data-hits="" data-linenumber="362">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="364">
+        <li class="missed" data-hits="0" data-linenumber="363">
           
           
           <code class="ruby">		json_response[&quot;status&quot;] = status</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="365">
+        <li class="missed" data-hits="0" data-linenumber="364">
           
           
           <code class="ruby">		json_response = json_response.to_json</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="366">
+        <li class="never" data-hits="" data-linenumber="365">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="367">
+        <li class="missed" data-hits="0" data-linenumber="366">
           
           
           <code class="ruby">		respond_to do |format|</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="368">
+        <li class="missed" data-hits="0" data-linenumber="367">
           
           
           <code class="ruby">			format.json { render json: json_response }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="369">
+        <li class="never" data-hits="" data-linenumber="368">
           
           
           <code class="ruby">		end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="370">
+        <li class="never" data-hits="" data-linenumber="369">
           
           
           <code class="ruby">	end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="371">
+        <li class="never" data-hits="" data-linenumber="370">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="372">
+        <li class="covered" data-hits="1" data-linenumber="371">
           <span class="hits">1</span>
           
           <code class="ruby">	private</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="373">
+        <li class="never" data-hits="" data-linenumber="372">
           
           
           <code class="ruby">	  # Use callbacks to share common setup or constraints between actions.</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="374">
+        <li class="covered" data-hits="1" data-linenumber="373">
           <span class="hits">1</span>
           
           <code class="ruby">	  def set_activity</code>
         </li>
       
-        <li class="covered" data-hits="23" data-linenumber="375">
+        <li class="covered" data-hits="23" data-linenumber="374">
           <span class="hits">23</span>
           
           <code class="ruby">	  	if not params[:id].nil? and params[:id].respond_to?(:to_i)</code>
         </li>
       
-        <li class="covered" data-hits="23" data-linenumber="376">
+        <li class="covered" data-hits="23" data-linenumber="375">
           <span class="hits">23</span>
           
           <code class="ruby">	  		begin</code>
         </li>
       
-        <li class="covered" data-hits="23" data-linenumber="377">
+        <li class="covered" data-hits="23" data-linenumber="376">
           <span class="hits">23</span>
           
           <code class="ruby">		    	@activity = Activity.find(params[:id])</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="378">
+        <li class="covered" data-hits="6" data-linenumber="377">
           <span class="hits">6</span>
           
           <code class="ruby">		    rescue ActiveRecord::RecordNotFound</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="379">
+        <li class="covered" data-hits="6" data-linenumber="378">
           <span class="hits">6</span>
           
           <code class="ruby">      		@activity = nil</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="380">
+        <li class="never" data-hits="" data-linenumber="379">
           
           
           <code class="ruby">      	end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="381">
+        <li class="never" data-hits="" data-linenumber="380">
           
           
           <code class="ruby">	    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="382">
+        <li class="never" data-hits="" data-linenumber="381">
           
           
           <code class="ruby">	  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="383">
+        <li class="never" data-hits="" data-linenumber="382">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="384">
+        <li class="never" data-hits="" data-linenumber="383">
           
           
           <code class="ruby">	  # Never trust parameters from the scary internet, only allow the white list through.</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="385">
+        <li class="covered" data-hits="1" data-linenumber="384">
           <span class="hits">1</span>
           
           <code class="ruby">	  def activity_params</code>
         </li>
       
-        <li class="covered" data-hits="18" data-linenumber="386">
+        <li class="covered" data-hits="18" data-linenumber="385">
           <span class="hits">18</span>
           
           <code class="ruby">	    params.require(:activity).permit(:title, :completion_time, :link, :content_type, :content)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="387">
+        <li class="never" data-hits="" data-linenumber="386">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="388">
+        <li class="never" data-hits="" data-linenumber="387">
           
           
           <code class="ruby">end</code>
@@ -27510,7 +27504,7 @@
         <li class="covered" data-hits="1" data-linenumber="161">
           <span class="hits">1</span>
           
-          <code class="ruby">  coverage.reports = [&#39;text&#39;, &#39;html&#39;, &#39;lcov&#39;]</code>
+          <code class="ruby">  coverage.reports = [&#39;text&#39;, &#39;html&#39;]</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="162">

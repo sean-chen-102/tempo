@@ -1,25 +1,15 @@
-
-describe("UserModel", function() {
-
+describe("AppRouter routes", function() {
   beforeEach(function() {
-    this.user = new User();
-    this.user.username = "AaronZ";
-    this.user.password = "AaronZ";
-
+    this.routeSpy = sinon.spy(TempoRouter.prototype, "home");
+    this.router = new TempoRouter;
+    try {
+      Backbone.history.start({silent:true, pushState:true});
+    } catch(e) {}
+    this.router.navigate("elsewhere");
   });
 
-  it("should expose an attribute", function() {
-    expect(this.user.username)
-      .toEqual("AaronZ");
+  it("The home view is fired when routing to the root", function() {
+    this.router.navigate("", true);
+    expect(this.routeSpy.calledOnce).toBeTruthy();
   });
-
-   it("should save successfully", function() {
-	   var eventSpy = sinon.spy();
-	   this.user.bind("success", eventSpy);
-     this.user.username = "";
-	   this.user.save();
-     console.log(this.user);
-	   expect(this.user.validationError).toEqual("hi")
-	 });
-
 });

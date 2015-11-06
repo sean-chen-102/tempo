@@ -244,7 +244,6 @@ class ActivitiesController < ApplicationController
 					else
 						@activity.like_count = @activity.like_count + 1
 					end
-
 					@user.liked_list.push(@activity.id)
 
 					if @activity.save and @user.save

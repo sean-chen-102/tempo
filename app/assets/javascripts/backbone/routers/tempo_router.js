@@ -1,45 +1,3 @@
-function verifyUser(view) {
-  var cookie = Cookies.get("login-token");
-  var token = new Token();
-  token.url += cookie;
-  var response = {
-    "status": false,
-    "data": ""
-  };
-  if (cookie === "undefined" || cookie === undefined) {
-    console.log('undefined');
-    return renderView("login", "");
-  } else {
-    token.fetch({
-        success: function(data){
-          renderView(view, data)
-      }, 
-        failure: function(data) {
-        return renderView("login", "");
-      }
-  });
-  }
-};
-
-
-function renderView(view, data) {
-  if (view === "login") {
-    Backbone.history.navigate('login');  
-    App.Views['loginView'].render();
-  } else {
-        var userData = data.attributes.user;
-        var user = new User();
-        user.username = userData.username;
-        user.password = userData.password;
-        user.id = userData.id;
-        user.email = userData.email;
-        user.name = userData.name;
-        user.interests = userData.interests;
-        App.Views[view].render({
-            "user" : user
-        });
-  }
-};
 
 var TempoRouter = Backbone.Router.extend({
     routes: {
@@ -55,6 +13,48 @@ var TempoRouter = Backbone.Router.extend({
       "activities/:activity":"activity",
       "show": "show"
     },
+    verifyUser: function(view) {
+      console.log("Verify USer Called");
+      var cookie = Cookies.get("login-token");
+      var token = new Token();
+      token.url += cookie;
+      var response = {
+        "status": false,
+        "data": ""
+      };
+      if (cookie === "undefined" || cookie === undefined) {
+        console.log('undefined');
+        return this.renderView("login", "");
+      } else {
+        var that = this;
+        token.fetch({
+            success: function(data){
+              that.renderView(view, data)
+          }, 
+            failure: function(data) {
+            return that.renderView("login", "");
+          }
+      });
+      }
+    },
+    renderView : function(view, data) {
+      if (view === "login") {
+        Backbone.history.navigate('login');  
+        App.Views['loginView'].render();
+      } else {
+        var userData = data.attributes.user;
+        var user = new User();
+        user.username = userData.username;
+        user.password = userData.password;
+        user.id = userData.id;
+        user.email = userData.email;
+        user.name = userData.name;
+        user.interests = userData.interests;
+        App.Views[view].render({
+            "user" : user
+        });
+      }
+    },
     initialize: function() {
       App.Views['interestView'] = new InterestView()
       App.Views['customActivityView'] = new CustomActivityView()
@@ -67,46 +67,38 @@ var TempoRouter = Backbone.Router.extend({
     },
     home: function() {
       console.log("The home router was called ");
-      verifyUser("homeView");
+      console.log(this.verifyUser("homeView"));
+      this.verifyUser("homeView");
 
     },
     activities: function(){
       console.log("The activities router was called ");
-      verifyUser("activitiesView");
+      this.verifyUser("activitiesView");
    
     },
     activity: function(activity_id) {
       console.log("The activity router was called");
       console.log(activity_id);
       App.Views['activityView']= new ActivityView({id:activity_id});
-      verifyUser("activityView");
+      this.verifyUser("activityView");
     },
     interests: function(){
       console.log("The interests router was called ");
-      verifyUser("interestView");
+      this.verifyUser("interestView");
      
     },
     settings: function(){
       console.log("The settings router was called ");
-      verifyUser("settingsView");
+      this.verifyUser("settingsView");
      
     },
     customActivities: function(){
       console.log("The custom Activities router was called ");
-      verifyUser("customActivityView");     
+      this.verifyUser("customActivityView");     
     },    
     createCustomActivity: function(){
       console.log("Creating a custom activity");
-      verifyUser("createCustomActivityView");
-    },
-    show: function(){
-      //This route doesn't do anything yet
-      console.log("The show router was called ");
-      document.getElementById('add').style.color = 'green';
-      var newNode = document.createElement("p");
-      newNode.appendChild(document.createTextNode("This hasn't been implemented yet"));
-      var refNode = document.getElementById("add");
-      refNode.parentNode.insertBefore(newNode, refNode.nextSibling);      
+      this.verifyUser("createCustomActivityView");
     },
     signup: function(){
       console.log("The signup router was called ");

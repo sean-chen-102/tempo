@@ -8,7 +8,8 @@ var HomeView = Backbone.View.extend({
     	},
 		initialize: function(options){
 			this.options = options;
-
+			this.interestView = options.interestView;
+			this.activitiesView = options.activitiesView;
 			this.times = new Times(null, {
 	            view: this
 	        });
@@ -22,9 +23,9 @@ var HomeView = Backbone.View.extend({
 		},
 		render : function (options){
 			console.log("render home");
+			this.interestView.user = options.user;
 			var that = this;
-			console.log(options);
-	        this.name = options.name;
+	        this.name = options.user.name;
 			//TODO: Move template to separate page, custom welcome name
 			//populate the home_template with times collection
 			var home_template = JST["backbone/templates/activities/home"]({
@@ -33,13 +34,31 @@ var HomeView = Backbone.View.extend({
             	name: this.name
     	    });
         	this.$el.html(home_template);
+        	//render interests on page
+        	this.interestView.render();
 		},
 		makeGoRequest : function(options){
 			//called when the go button is clicked
 			var index = $('#time-selector')[0].selectedIndex;
 			var duration = this.times.models[index].get('duration');
 			//save duration to activity view object
-			App.Views['activityView'].time = duration;
+			this.activitiesView.time = duration;
+			//save interests to activity view object
+			var interests = this.interestView.selectedInterests;
+			if (interests){
+				this.activitiesView.interests = interests;
+			} else {
+				var that = this;
+				App.Views['interestView'].getInterests({callback: function(data, that){
+					var userInterests = []
+					data.each(function(model){
+						userInterests.push(model.get('name'));
+					});
+					that.activitiesView.interests = userInterests;
+				}, scope: that});
+			}
+			//reset selectedInterests for the next go request
+			this.interestView.selectedInterests = null;
 			//switch view to activities view
 			window.location = '/tempo#activities';
 		},

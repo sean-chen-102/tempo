@@ -47,12 +47,13 @@ var InterestView = Backbone.View.extend({
 		});
 	},
 	render : function (options){
+		console.log('interest view rendering');
 		this.user = options["user"];
 		// Set scope, construct new activity collection, call fetch, render data on callback function
 		var that = this; // To fix callback scoping error
 		var template = JST["backbone/templates/activities/interest"]({
     	    });
-        this.$el.html(template);
+        // this.$el.html(template);
 
 		this.getInterests({callback:this.renderData, scope:this});
 	},

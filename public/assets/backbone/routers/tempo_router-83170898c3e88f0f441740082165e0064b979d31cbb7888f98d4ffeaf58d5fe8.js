@@ -35,7 +35,6 @@ var TempoRouter = Backbone.Router.extend({
       }
     },
     renderView : function(view, data) {
-      console.log(view, data);
       console.log("renderView called");
       if (view === "login") {
         Backbone.history.navigate('login');  
@@ -89,7 +88,7 @@ var TempoRouter = Backbone.Router.extend({
       console.log("The activity router was called");
       console.log(activity_id);
       App.Views['activityView']= new ActivityView({id:activity_id});
-      this.verifyUser("activityView");
+      verifyUser("activityView");
     },
     customActivities: function(){
       console.log("The custom Activities router was called ");

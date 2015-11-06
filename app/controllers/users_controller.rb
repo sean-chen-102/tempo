@@ -111,19 +111,15 @@ class UsersController < ApplicationController
     error_list = []
     json_response = {}
 
-    if not user_id.nil?
-      if not User.find_by(id: user_id).nil?
-        if @user.update(user_params)
-          status = 1
-          json_response["user"] = @user.get_advanced_info()
-        else
-          error_list.append(@user.errors)
-        end
+    if not User.find_by(id: user_id).nil?
+      if @user.update(user_params)
+        status = 1
+        json_response["user"] = @user.get_advanced_info()
       else
-        error_list.append("Error: user##{user_id} doesn't exist.")
+        error_list.append(@user.errors)
       end
     else
-      error_list.append("Error: user id missing.")
+      error_list.append("Error: user##{user_id} doesn't exist.")
     end
 
     json_response["status"] = status

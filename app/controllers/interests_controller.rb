@@ -85,7 +85,8 @@ class InterestsController < ApplicationController
       status = 1
       json_response["interests"] = interests
     else
-      error_list.append("Error: no interests found.")
+      status = 1
+      json_response["interests"] = []
     end
 
     if status == -1

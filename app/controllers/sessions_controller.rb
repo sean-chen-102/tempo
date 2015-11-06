@@ -34,11 +34,9 @@ class SessionsController < ApplicationController
 
     if not email.nil?
       # using email to login
-      puts "WE HAVE AN EMAIL"
       @user = User.find_by(email: email)
     elsif not username.nil?
       # using username to login
-      puts "WE HAVE A USERNAME"
       @user = User.find_by(username: username)
     else
       # append missing username or email error
@@ -121,5 +119,9 @@ class SessionsController < ApplicationController
     status = 1
     message = "Success: please remove the JWT token from the client side."
     json_response = { message: message, status: status }
+
+    respond_to do |format|
+      format.json { render json: json_response }
+    end
   end
 end

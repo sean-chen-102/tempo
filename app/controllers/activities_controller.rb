@@ -38,14 +38,32 @@ class ActivitiesController < ApplicationController
 	# PUT /api/activities/:id
 	# TODO: update this API request to only allow admins to do this
 	def edit_activity
+		status = -1
+		json_response = {}
+		error_list = []
+		id = params["id"]
+		activity = Activity.find_by(id: id)
+		
+		if not activity.nil?
+			if activity.update(activity_params)
+				status = 1
+				json_response["activity"] = activity
+			else
+				error_list << activity.errors
+			end
+		else
+			error_list.append("Error: activity ##{id} doesn't exist.")
+		end
+
+		if status != 1
+			json_response["errors"] = error_list
+		end
+
+		json_response["status"] = status
+		json_response = json_response.to_json
+
 	  respond_to do |format|
-	    if @activity.update(activity_params)
-	      #format.html { redirect_to @activity, notice: 'Activity was successfully updated.' }
-	      format.json { render :show, status: :ok, location: @activity }
-	    else
-	      #format.html { render :edit }
-	      format.json { render json: @activity.errors, status: :unprocessable_entity }
-	    end
+	    format.json { render json: json_response }
 	  end
 	end
 

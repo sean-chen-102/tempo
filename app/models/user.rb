@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   validates :name, :username, length: { maximum: 20 }
   validates :username, :email, uniqueness: true
   # TODO: Need to check this validation
-  # validates :password, length: { minimum: 8 }, unless: "password.nil?"
+  validates :password, presence: { on: :create }, length: { minimum: 8, allow_nil: true }
   validates_format_of :username, with: /\A[a-zA-Z0-9_\.]*\z/
   validates_format_of :email, with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
@@ -57,7 +57,6 @@ class User < ActiveRecord::Base
 
   # Returns a JSON list of all interests that have user_id as their User.id.
   def self.get_interests(user_id)
-    puts "In User.self.get_interests: user_id= #{user_id}"
     interests = User.find_by(id: user_id).interests
 
     interests.each do |interest|
@@ -76,8 +75,12 @@ class User < ActiveRecord::Base
 
   # Update the User's password to new_password
   def change_password(new_password)
-    self.password = new_password
-    return self.save
+    if not new_password.blank? and new_password.length >= 8
+      self.password = new_password
+      return self.save
+    else
+      return false
+    end
   end
 
   # Returns a hash of basic user info.

@@ -3,9 +3,10 @@ require 'rails_helper'
 RSpec.describe "test basic users functionality - ", :type => :request do
 
 	### USER CREATION ###
+  # currently in user_account_creation_spec.rb
 
 	### EDIT USER ###
-  it "succeeds with using email address" do
+  it "editing a user" do
     # Create an account
     params = { "user": { "name": "Bob", "email": "bob@mail.com", "username": "bob", "password": "password", "password_confirmation": "password" }}
     post "/api/users", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
@@ -52,7 +53,6 @@ RSpec.describe "test basic users functionality - ", :type => :request do
   end
 
 	### GET USER ###
-
   it "getting a single user" do
     # Create an account
     params = { "user": { "name": "Bob", "email": "bob@mail.com", "username": "bob", "password": "password", "password_confirmation": "password" }}
@@ -81,23 +81,96 @@ RSpec.describe "test basic users functionality - ", :type => :request do
     get "/api/users/hah", {}, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
     data = JSON.parse(response.body) # grab the body of the server response
     status = data["status"]
-    expect(status).to eq(-1) # we should have a success
+    expect(status).to eq(-1) # we should have a failure
 
     # Try and get a user that doesn't exist
     get "/api/users/-1", {}, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
     data = JSON.parse(response.body) # grab the body of the server response
     status = data["status"]
-    expect(status).to eq(-1) # we should have a success
+    expect(status).to eq(-1) # we should have a failure
 
     # Try and get a user that doesn't exist
     get "/api/users/0", {}, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
     data = JSON.parse(response.body) # grab the body of the server response
     status = data["status"]
-    expect(status).to eq(-1) # we should have a success
+    expect(status).to eq(-1) # we should have a failure
   end
 
 	### GET ALL USERS ###
+  it "getting all users" do
+    NUM_USERS_IN_SEEDS = 0
+
+    # Get all default users
+    get "/api/users", {}, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body) # grab the body of the server response
+    status = data["status"]
+    expect(status).to eq(-1) # we should have a failure
+
+    # Create an account
+    params = { "user": { "name": "Bob", "email": "bob@mail.com", "username": "bob", "password": "password", "password_confirmation": "password" }}
+    post "/api/users", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body) # grab the body of the server response
+    status = data["status"]
+    expect(status).to eq(1) # we should have a success
+
+    # Get all users
+    get "/api/users", {}, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body) # grab the body of the server response
+    status = data["status"]
+    expect(status).to eq(1) # we should have a success
+
+    # Make sure our newly created user is included in all users
+    users = data["users"]
+    expect(users.length).to eq(NUM_USERS_IN_SEEDS + 1)
+  end
 
 	### DESTROY USER ###
+  it "user deletion" do
+    # Create a new User
+    params = { "user": { "name": "Bob", "email": "bob@mail.com", "username": "bob", "password": "password", "password_confirmation": "password" }}
+    post "/api/users", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body) # grab the body of the server response
+    status = data["status"]
+    expect(status).to eq(1) # we should have a success
 
+    user = data["user"]
+    email = user["email"]
+    id = user["id"]
+
+    # Sign the User in to get a token
+    params = { "email": email, "password": "password" }
+    post "/api/login", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body) # grab the body of the server response
+    status = data["status"]
+    expect(status).to eq(1) # we should have a success
+    token = data["token"]
+
+    # Delete the User
+    params = { "token": token }
+    delete "/api/users/#{id}", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body) # grab the body of the server response
+    status = data["status"]
+    expect(status).to eq(1) # we should have a success
+
+    # Try to delete the User again - should fail because the user is already deleted
+    params = { "token": token }
+    delete "/api/users/#{id}", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body) # grab the body of the server response
+    status = data["status"]
+    expect(status).to eq(-1) # we should have a failure
+
+    # Try to delete a random user that doesn't exist
+    params = { "token": token }
+    delete "/api/users/0", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body) # grab the body of the server response
+    status = data["status"]
+    expect(status).to eq(-1) # we should have a failure
+
+    # Try to delete a user with a bad token
+    params = { "token": "random" }
+    delete "/api/users/#{id}", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body) # grab the body of the server response
+    status = data["status"]
+    expect(status).to eq(-1) # we should have a failure
+  end
 end

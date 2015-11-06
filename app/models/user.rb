@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   attr_accessor :activation_token, :reset_token
 
   # Associations
-  has_many :interests
+  has_and_belongs_to_many :interests
   has_many :custom_activities, :dependent => :delete_all
 
   # Validations

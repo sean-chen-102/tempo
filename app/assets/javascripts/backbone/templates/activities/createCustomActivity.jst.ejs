@@ -1,0 +1,53 @@
+<!-- Temporary styling -->
+<!-- TODO: move this away -->
+
+<style>
+	#custom-activities-form {
+		width: 350px;
+		height: 350px;
+		border: 1px solid #dedede;
+		border-radius: 3px;
+		background-color: white;
+		box-shadow: .5px .5px .5px #888888;
+		margin: 0 auto;
+		text-align: center;
+		padding-top: 30px;
+		padding-bottom: 20px;
+	}
+
+	input {
+		width: 300px;
+		height: 30px;
+		margin-bottom: 15px;
+		padding-left: 10px;
+	}
+
+	label {
+		margin-bottom: 5px;
+	}
+
+	.submitCustomActivity {
+		width: 315px;
+		height: 35px;
+	    background-color: #66CC99;
+	    border: 1px solid #2ABB9B;
+		border-radius: 3px;
+		margin-top: 10px;
+	}
+
+	.submitCustomActivity:hover {
+		opacity: .8;
+		cursor: pointer;
+	}
+</style>
+
+<form id="custom-activities-form" name="custom-activity"> 
+	<h3> Create New Custom Activity </h3>
+	<label for="title"> Title: </label> <br>
+	<input type="text" name"title" id="title" value=""> <br>
+	<label for="content"> Content: </label> <br>
+	<input type="text" name"content" id="content" value=""> <br>
+	<label for="completion_time"> Completion time: </label> <br>
+	<input type="text" name"completion_time" id="completion_time" value=""> <br>
+	<button type="button" class="submitCustomActivity"> Submit </button> <br>
+</form>

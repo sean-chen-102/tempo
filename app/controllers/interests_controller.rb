@@ -34,14 +34,32 @@ class InterestsController < ApplicationController
   # PUT /api/interests/:id
   # TODO: only allow admins to do this
   def edit_interest
-    respond_to do |format|
-      if @interest.update(interest_params)
-        # format.html { redirect_to @interest, notice: 'Interest was successfully updated.' }
-        format.json { render :show, status: :ok, location: @interest }
+    status = -1
+    json_response = {}
+    error_list = []
+    id = params["id"]
+    interest = Interest.find_by(id: id)
+    
+    if not interest.nil?
+      if interest.update(interest_params)
+        status = 1
+        json_response["interest"] = interest
       else
-        # format.html { render :edit }
-        format.json { render json: @interest.errors, status: :unprocessable_entity }
+        error_list << interest.errors
       end
+    else
+      error_list.append("Error: interest ##{id} doesn't exist.")
+    end
+
+    if status != 1
+      json_response["errors"] = error_list
+    end
+
+    json_response["status"] = status
+    json_response = json_response.to_json
+
+    respond_to do |format|
+      format.json { render json: json_response }
     end
   end
 
@@ -60,7 +78,7 @@ class InterestsController < ApplicationController
       error_list.append("Error: interest ##{params[:id]} does not exist.")
     end
 
-    if status == -1 
+    if status != 1
       json_response["errors"] = error_list
     end
 
@@ -138,9 +156,10 @@ class InterestsController < ApplicationController
     status = -1
     json_response = {}
     error_list = []
+    interest = Interest.find_by(id: params[:id])
 
-    if not @interest.nil?
-      users = Interest.get_users(@interest.id)
+    if not interest.nil?
+      users = Interest.get_users(interest.id)
       if !users.empty?
         status = 1
         json_response["users"] = users.as_json
@@ -167,7 +186,7 @@ class InterestsController < ApplicationController
     def set_interest
       if not params[:id].nil? and params[:id].respond_to?(:to_i)
         begin
-          @interest = Interest.find(params[:id])
+          @interest = Interest.find_by(id: params[:id])
         rescue ActiveRecord::RecordNotFound
           @interest = nil
         end

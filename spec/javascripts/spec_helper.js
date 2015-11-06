@@ -2,7 +2,6 @@
 //= require application 
 //= require_tree . 
 //= require helpers/sinon
-//= require application
 // require support/jasmine-jquery-1.7.0
 // require support/jasmine-jquery-2.0.0
 // require support/jasmine-jquery-2.1.0

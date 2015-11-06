@@ -10,8 +10,6 @@ describe("AppRouter routes", function() {
     this.interestsSpy = sinon.spy(TempoRouter.prototype, "interests");
     this.settingsSpy = sinon.spy(TempoRouter.prototype, "settings");
     this.activitiesSpy = sinon.spy(TempoRouter.prototype, "activities");
-    this.activitySpy = sinon.spy(TempoRouter.prototype, "activity");
-
     this.customActivitiesSpy = sinon.spy(TempoRouter.prototype, "customActivities");
     this.createCustomActivitySpy = sinon.spy(TempoRouter.prototype, "createCustomActivity");
     this.signupSpy = sinon.spy(TempoRouter.prototype, "signup");
@@ -29,7 +27,6 @@ describe("AppRouter routes", function() {
     TempoRouter.prototype.interests.restore();
     TempoRouter.prototype.settings.restore();
     TempoRouter.prototype.activities.restore();
-    TempoRouter.prototype.activity.restore();
     TempoRouter.prototype.customActivities.restore();
     TempoRouter.prototype.createCustomActivity.restore();
     TempoRouter.prototype.signup.restore();
@@ -60,11 +57,6 @@ describe("AppRouter routes", function() {
     expect(this.activitiesSpy.calledOnce).toBeTruthy();
   });
 
-  it("The activity view is rendered when the user is logged in and routes to that view", function() {
-    this.router.navigate("activities/3", true);
-    expect(this.activitySpy.calledOnce).toBeTruthy();
-  });
-
   it("The customActivities view is rendered when the user is logged in and routes to that view", function() {
     this.router.navigate("customActivities", true);
     expect(this.customActivitiesSpy.calledOnce).toBeTruthy();
@@ -92,6 +84,7 @@ describe("Routing when not logged in", function() {
     this.stub = sinon.stub(TempoRouter.prototype, "verifyUser", function() {
       TempoRouter.prototype.renderView("login", "")
     });
+    this.cookieStub = sinon.stub(Cookies, "get");
     this.loginSpy = sinon.spy(TempoRouter.prototype, "renderView");
     this.router = new TempoRouter;
 
@@ -104,37 +97,12 @@ describe("Routing when not logged in", function() {
   afterEach(function() {
     Cookies.set("login-token", this.cookie);
     TempoRouter.prototype.verifyUser.restore();
-    TempoRouter.prototype.renderView.restore();
 
   });
 
   it("The login view is fired when routing to the root", function() {
+    console.log("ramming speed!");
     this.router.navigate("", true);
-    expect(this.loginSpy.calledWith("login", "")).toBeTruthy();
-  });
-
-  it("The login view is fired when routing to the settings page", function() {
-    this.router.navigate("settings", true);
-    expect(this.loginSpy.calledWith("login", "")).toBeTruthy();
-  });
-
-    it("The login view is fired when routing to the interests page", function() {
-    this.router.navigate("interests", true);
-    expect(this.loginSpy.calledWith("login", "")).toBeTruthy();
-  });
-
-  it("The login view is fired when routing to the activities page", function() {
-    this.router.navigate("activities", true);
-    expect(this.loginSpy.calledWith("login", "")).toBeTruthy();
-  });
-
-   it("The login view is fired when routing to the customActivities page", function() {
-    this.router.navigate("customActivities", true);
-    expect(this.loginSpy.calledWith("login", "")).toBeTruthy();
-  });
-
-  it("The login view is fired when routing to the createCustomActivity page", function() {
-    this.router.navigate("createCustomActivity", true);
     expect(this.loginSpy.calledWith("login", "")).toBeTruthy();
   });
 });

@@ -157,8 +157,16 @@ Teaspoon.configure do |config|
   # You can have multiple coverage configs by passing a name to config.coverage.
   # e.g. config.coverage :ci do |coverage|
   # The default coverage config name is :default.
+
 config.coverage do |coverage|
-  coverage.reports = ['text', 'html']
+  coverage.reports = ['text', 'html', 'lcov']
+  coverage.ignore += [/js.cookie.js/]
+  coverage.ignore += ["spec/javascripts/coverage/lcov-report/" ]
+  coverage.ignore += ["app/assets/javascripts/jasmine_examples/" ]
+  coverage.ignore += ["spec/javascripts/helpers/"]
+  coverage.ignore += ["spec/javascripts/helpers/jasmine_examples/"] 
+  coverage.ignore += ["app/assets/javascripts/backbone/collections/"]    
+
     #
     # Available: text-summary, text, html, lcov, lcovonly, cobertura, teamcity
     #coverage.reports = ["text-summary", "html"]

@@ -28,12 +28,8 @@ var CreateCustomActivityView = Backbone.View.extend({
         var customActTemplate = JST["backbone/templates/activities/customActivity"]();
         $('.testDiv').html(customActTemplate);
       };
+      aat;frenderData();
 
-      this.customActivities.fetch({
-        success: function(data){
-          renderData();
-        }
-      });
     },
     createActivity: function (e){
       alert("Test");

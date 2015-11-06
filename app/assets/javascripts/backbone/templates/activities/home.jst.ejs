@@ -1,13 +1,54 @@
+<!-- Temporary styling
 
-<h3 style='color: #e74c3c;'> Welcome Home <%= name %></h3>
-<p>Activity duration</p>
-<select id='time-selector'>
-    <% _(times).each(function(time) { %> 
-        <option value='<%= time.duration %>'><%= time.duration %></option>
-    <% }); %>
-</select> 
-<button class='go-btn'>GO</button>
-<br>
-<a href='tempo#interests'> Change interests </a>
-<br>
-<a href='tempo#settings'> See your settings</a>
+<style>
+	.home-wrapper {
+		width: 350px;
+		height: 400px;
+		border: 1px solid green;
+		margin: 0 auto;
+		text-align: center;
+		padding: 20px;
+	    border: 1px solid #dedede;
+	    border-radius: 3px;
+	    background-color: white;
+	    box-shadow: .5px .5px .5px #888888;		
+
+	}
+
+	.home-wrapper h3 {
+		color: #e74c3c;
+	}
+
+	.home-wrapper button {
+	    width: 315px;
+	    height: 35px;
+	    display: block;
+	    margin: 0 auto;
+	    margin: 15px;
+	    background-color: #66CC99;
+	    border: 1px solid #2ABB9B;
+	    border-radius: 3px;		
+	}
+
+	.home-wrapper button:hover {
+		opacity: .8;
+		cursor: pointer;
+	}
+
+</style>
+ -->
+
+<div class="home-wrapper">
+	<h3> Welcome Home <%= name %></h3>
+	<p>Activity duration</p>
+	<select id='time-selector'>
+	    <% _(times).each(function(time) { %> 
+	        <option value='<%= time.duration %>'><%= time.duration %></option>
+	    <% }); %>
+	</select> 
+	<button class='go-btn'>GO</button>
+	<br>
+	<a href='tempo#interests'> Change interests </a>
+	<br>
+	<a href='tempo#settings'> See your settings</a>
+</div>

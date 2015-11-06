@@ -251,6 +251,7 @@ class UsersController < ApplicationController
         if interests.length > 0
           json_response.set_data("interests", interests)
         else
+          error_list.append("Error: user ##{params[:id]} does not have any interests.")
           json_response.set_data("interests", [])
         end
       else

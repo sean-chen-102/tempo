@@ -168,21 +168,23 @@ class ActivitiesController < ApplicationController
 		status = -1
 		json_response = {}
 		error_list = []
+		activity_id = params["id"]
+		activity = Activity.find_by(id: activity_id)
 
-		if !@activity.nil?
-			interests = Activity.get_interests(@activity.id)    
+		if not activity.nil?
+			interests = Activity.get_interests(activity.id)    
 			status = 1
 			json_response['interests'] = interests.as_json
 		else
-			error_list.append("Error: activity does not exist")
+			error_list.append("Error: activity ##{activity_id} does not exist.")
 		end
 
-		if status == -1
-	  		json_response["errors"] = error_list
-	  	end
+		if status != 1
+  		json_response["errors"] = error_list
+  	end
 
-	  	json_response["status"] = status
-	  	json_response = json_response.to_json
+  	json_response["status"] = status
+  	json_response = json_response.to_json
 
 		respond_to do |format|
 			format.json { render json: json_response }
@@ -206,11 +208,11 @@ class ActivitiesController < ApplicationController
 		end
 
 		if status == -1
-	  		json_response["errors"] = error_list
-	  	end
+  		json_response["errors"] = error_list
+  	end
 
-	  	json_response["status"] = status
-	  	json_response = json_response.to_json
+  	json_response["status"] = status
+  	json_response = json_response.to_json
 
 		respond_to do |format|
 			format.json { render json: json_response }
@@ -219,53 +221,44 @@ class ActivitiesController < ApplicationController
 
 	# Returns a status code (1 = success, -1 = failure), updates the activity in the database
 	# POST /api/activities/:id/like
-	# Testing via curl: curl -H "Content-Type: application/json" -d '{ "user_id": 1 }' -X PUT http://localhost:3000/api/activities/1/like
+	# Testing via curl: curl -H "Content-Type: application/json" -d '{ "token": "<token>" }' -X PUT http://localhost:3000/api/activities/1/like
 	def like
 		status = -1
 		json_response = {}
 		error_list = []
-		
-		user_id = params["user_id"]
-		user = User.find_by(id: user_id)
-		token = params[:token]
+		token = params["token"]
+		@user = User.authenticate_token(token)
+		activity_id = params["id"]
+		@activity = Activity.find_by(id: activity_id)
 
-		if not user.nil?
-			if not token.nil? and user_has_permission(User.authenticate_token(token), user.id) # if the token was provided and is valid and the user has permission
-				if not @activity.nil?
-
-					# Check if activity is in user's liked_list
-					if user.liked_list.include? @activity.id
-						error_list.append("Error: user has already liked this activity")
-					else 
-						
-						# If user has previously disliked post, we need to add two instead of one
-						if user.disliked_list.include? @activity.id
-							user.disliked_list.delete(@activity.id)
-							@activity.like_count = @activity.like_count + 2
-						else
-							@activity.like_count = @activity.like_count + 1
-						end
-
-						user.liked_list.push(@activity.id)
-
-						if @activity.save and user.save
-							status = 1
-							json_response["like_count"] = @activity.like_count
-						else
-							error_list.append("Error: could not save new like_count")
-						end
-
+		if not @user.nil?
+			if not @activity.nil?
+				# Check if activity is in user's liked_list
+				if @user.liked_list.include? @activity.id
+					error_list.append("Error: user has already liked this activity.")
+				else 
+					# If user has previously disliked post, we need to add two instead of one
+					if @user.disliked_list.include? @activity.id
+						@user.disliked_list.delete(@activity.id)
+						@activity.like_count = @activity.like_count + 2
+					else
+						@activity.like_count = @activity.like_count + 1
 					end
+					@user.liked_list.push(@activity.id)
 
-				else
-					error_list.append("Error: activity does not exist")
+					if @activity.save and @user.save
+						status = 1
+						json_response["like_count"] = @activity.like_count
+					else
+						error_list.append("Error: could not save new like_count.")
+					end
 				end
 			else
-				error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
-        		status = -2
+				error_list.append("Error: activity ##{activity_id} does not exist.")
 			end
 		else
-			error_list.append("Error: user_id is not valid")
+			error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
+  		status = -2
 		end
 
 		if status != 1
@@ -282,51 +275,44 @@ class ActivitiesController < ApplicationController
 
 	# Returns a status code (1 = success, -1 = failure), updates the activity in the database
 	# POST /api/activities/:id/dislike
-	# Testing via curl: curl -H "Content-Type: application/json" -d '{ "user_id": 1 }' -X PUT http://localhost:3000/api/activities/1/dislike
+	# Testing via curl: curl -H "Content-Type: application/json" -d '{ "token": "<token>" }' -X PUT http://localhost:3000/api/activities/1/dislike
 	def dislike 
 		status = -1
 		json_response = {}
 		error_list = []
+		token = params["token"]
+		@user = User.authenticate_token(token)
+		activity_id = params["id"]
+		@activity = Activity.find_by(id: activity_id)
 
-		user_id = params["user_id"]
-		user = User.find_by(id: user_id)
-		token = params[:token]
+		if not @user.nil?
+			if not @activity.nil?
+				# Check if activity is in user's disliked_list
+				if @user.disliked_list.include? @activity.id
+				 	error_list.append("Error: user has already disliked this activity.")
+				else 
+					# If user has previously liked post, we need to subtract two instead of one
+				 	if @user.liked_list.include? @activity.id
+				 		@user.liked_list.delete(@activity.id)
+				 		@activity.like_count = @activity.like_count - 2
+				 	else
+				 		@activity.like_count = @activity.like_count - 1
+				 	end
 
-		if not user.nil?
-			if not token.nil? and user_has_permission(User.authenticate_token(token), user.id) # if the token was provided and is valid and the user has permission
-				if not @activity.nil?
-					# Check if activity is in user's disliked_list
-					if user.disliked_list.include? @activity.id
-					 	error_list.append("Error: user has already disliked this activity")
-					else 
-
-						# If user has previously liked post, we need to subtract two instead of one
-					 	if user.liked_list.include? @activity.id
-					 		user.liked_list.delete(@activity.id)
-					 		@activity.like_count = @activity.like_count - 2
-					 	else
-					 		@activity.like_count = @activity.like_count - 1
-					 	end
-
-					 	user.disliked_list.push(@activity.id)
-					 	if @activity.save and user.save
-					 		status = 1
-					 		json_response["like_count"] = @activity.like_count
-					 	else
-					 		error_list.append("Error: could not save new like_count")
-					 	end
-
-					end
-
-				else
-					error_list.append("Error: activity does not exist")
+				 	@user.disliked_list.push(@activity.id)
+				 	if @activity.save and @user.save
+				 		status = 1
+				 		json_response["like_count"] = @activity.like_count
+				 	else
+				 		error_list.append("Error: could not save new like_count.")
+				 	end
 				end
 			else
-				error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
-        		status = -2
+				error_list.append("Error: activity ##{activity_id} does not exist.")
 			end
 		else
-			error_list.append("Error: user_id is not valid")
+			error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
+      status = -2
 		end
 
 		if status != 1
@@ -364,7 +350,7 @@ class ActivitiesController < ApplicationController
 				end
 			else
 				error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
-        		status = -2
+    		status = -2
 			end	
 		else
 			error_list.append("Error: user_id is not valid")

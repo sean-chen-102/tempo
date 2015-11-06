@@ -1,3 +1,4 @@
+
 describe("UserModel", function() {
 
   beforeEach(function() {

@@ -156,9 +156,10 @@ class InterestsController < ApplicationController
     status = -1
     json_response = {}
     error_list = []
+    interest = Interest.find_by(id: params[:id])
 
-    if not @interest.nil?
-      users = Interest.get_users(@interest.id)
+    if not interest.nil?
+      users = Interest.get_users(interest.id)
       if !users.empty?
         status = 1
         json_response["users"] = users.as_json
@@ -185,7 +186,7 @@ class InterestsController < ApplicationController
     def set_interest
       if not params[:id].nil? and params[:id].respond_to?(:to_i)
         begin
-          @interest = Interest.find(params[:id])
+          @interest = Interest.find_by(id: params[:id])
         rescue ActiveRecord::RecordNotFound
           @interest = nil
         end

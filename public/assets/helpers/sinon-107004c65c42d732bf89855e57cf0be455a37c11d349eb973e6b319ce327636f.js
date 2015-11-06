@@ -33,6 +33,7 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+
 (function (root, factory) {
   'use strict';
   if (typeof define === 'function' && define.amd) {
@@ -968,8 +969,8 @@
             if (timerType(timer) === ttype) {
                 delete clock.timers[timerId];
             } else {
-        throw new Error("Cannot clear timer: timer created with set" + ttype + "() but cleared with clear" + timerType(timer) + "()");
-      }
+				throw new Error("Cannot clear timer: timer created with set" + ttype + "() but cleared with clear" + timerType(timer) + "()");
+			}
         }
     }
 
@@ -6384,4 +6385,3 @@ if (typeof sinon === "undefined") {
 
   return sinon;
 }));
-

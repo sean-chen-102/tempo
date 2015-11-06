@@ -712,6 +712,21 @@
         1,
         null
       ],
+      "/Users/Dalton/Documents/Homework/Fall_2015/CS_169/Tempo/app/tempo/spec/requests/user_logout_spec.rb": [
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
       "/Users/Dalton/Documents/Homework/Fall_2015/CS_169/Tempo/app/tempo/spec/requests/user_sign_in_spec.rb": [
         1,
         null,
@@ -1534,7 +1549,7 @@
         null,
         null,
         1,
-        9,
+        10,
         null,
         null,
         null,
@@ -1646,13 +1661,17 @@
         null,
         null,
         1,
-        0,
-        0,
-        0,
+        1,
+        1,
+        1,
+        null,
+        1,
+        2,
+        null,
         null,
         null
       ]
     },
-    "timestamp": 1446808370
+    "timestamp": 1446808634
   }
 }

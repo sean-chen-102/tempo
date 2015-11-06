@@ -290,7 +290,8 @@ class UsersController < ApplicationController
           status = 1
           json_response.set_data("custom_activities", custom_activities)
         else
-          error_list.append("Error: user ##{user_id} does not have any custom activities.")
+          status = 1
+          json_response.set_data("custom_activities", [])
         end
       else
         error_list.append(ErrorMessages::AUTHORIZATION_ERROR)

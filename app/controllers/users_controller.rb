@@ -106,14 +106,37 @@ class UsersController < ApplicationController
   # TODO: Requires authentication
   # Requires token authentication
   def edit_user
-    respond_to do |format|
-      if @user.update(user_params)
-        # format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
+    status = -1
+    user_id = params["id"]
+    error_list = []
+    json_response = {}
+
+    if not user_id.nil?
+      if not User.find_by(id: user_id).nil?
+        if @user.update(user_params)
+          status = 1
+          json_response["user"] = @user.get_advanced_info()
+        else
+          error_list.append(@user.errors)
+        end
       else
-        # format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        error_list.append("Error: user##{user_id} doesn't exist.")
       end
+    else
+      error_list.append("Error: user id missing.")
+    end
+
+    json_response["status"] = status
+
+    if status != 1
+      json_response["errors"] = error_list
+    end
+
+    json_response = json_response.to_json
+
+    respond_to do |format|
+      # format.html # show.html.erb
+      format.json { render json: json_response }
     end
   end
 

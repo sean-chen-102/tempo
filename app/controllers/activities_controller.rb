@@ -286,41 +286,34 @@ class ActivitiesController < ApplicationController
 		activity_id = params["id"]
 		@activity = Activity.find_by(id: activity_id)
 
-		if not user.nil?
-			if not token.nil? and user_has_permission(User.authenticate_token(token), user.id) # if the token was provided and is valid and the user has permission
-				if not @activity.nil?
-					# Check if activity is in user's disliked_list
-					if user.disliked_list.include? @activity.id
-					 	error_list.append("Error: user has already disliked this activity")
-					else 
+		if not @user.nil?
+			if not @activity.nil?
+				# Check if activity is in user's disliked_list
+				if @user.disliked_list.include? @activity.id
+				 	error_list.append("Error: user has already disliked this activity.")
+				else 
+					# If user has previously liked post, we need to subtract two instead of one
+				 	if @user.liked_list.include? @activity.id
+				 		@user.liked_list.delete(@activity.id)
+				 		@activity.like_count = @activity.like_count - 2
+				 	else
+				 		@activity.like_count = @activity.like_count - 1
+				 	end
 
-						# If user has previously liked post, we need to subtract two instead of one
-					 	if user.liked_list.include? @activity.id
-					 		user.liked_list.delete(@activity.id)
-					 		@activity.like_count = @activity.like_count - 2
-					 	else
-					 		@activity.like_count = @activity.like_count - 1
-					 	end
-
-					 	user.disliked_list.push(@activity.id)
-					 	if @activity.save and user.save
-					 		status = 1
-					 		json_response["like_count"] = @activity.like_count
-					 	else
-					 		error_list.append("Error: could not save new like_count")
-					 	end
-
-					end
-
-				else
-					error_list.append("Error: activity does not exist")
+				 	@user.disliked_list.push(@activity.id)
+				 	if @activity.save and @user.save
+				 		status = 1
+				 		json_response["like_count"] = @activity.like_count
+				 	else
+				 		error_list.append("Error: could not save new like_count.")
+				 	end
 				end
 			else
-				error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
-        status = -2
+				error_list.append("Error: activity ##{activity_id} does not exist.")
 			end
 		else
-			error_list.append("Error: user_id is not valid")
+			error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
+      status = -2
 		end
 
 		if status != 1

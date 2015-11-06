@@ -119,9 +119,35 @@ RSpec.describe "test basic activities functionality - ", :type => :request do
     data = JSON.parse(response.body) # grab the body of the server response
     status = data["status"]
     expect(status).to eq(1) # we should have a success
-
     activities = data["activities"]
     expect(activities.length).to eq(3) # the number of activities should equal the amount we added
+
+    # Get activities filtered by time=10
+    params = { "time": 10 }
+    get "/api/activities/", params.as_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body) # grab the body of the server response
+    status = data["status"]
+    expect(status).to eq(1) # we should have a success
+    activities = data["activities"]
+    expect(activities.length).to eq(1)
+
+    # Get activities filtered by time=20
+    params = { "time": 20 }
+    get "/api/activities/", params.as_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body) # grab the body of the server response
+    status = data["status"]
+    expect(status).to eq(1) # we should have a success
+    activities = data["activities"]
+    expect(activities.length).to eq(2)
+
+    # Get activities filtered by time=20 and interests = "news" or "fitness"
+    params = { "time": 20, "interests": ["news", "fitness"] }
+    get "/api/activities/", params.as_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body) # grab the body of the server response
+    status = data["status"]
+    expect(status).to eq(1) # we should have a success
+    activities = data["activities"]
+    expect(activities.length).to eq(0)
   end
 
   ### DESTROY ACTIVITY ###

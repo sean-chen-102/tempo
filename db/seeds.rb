@@ -19,7 +19,7 @@ science_interest = Interest.create({ name: "science" })
 technology_interest = Interest.create({ name: "technology" })
 
 user1_interests = [news_interest, fitness_interest]
-user2_interests = [science_interest, technology_interest]
+user2_interests = [science_interest, technology_interest, news_interest], fitness_interest
 interests = user1_interests + user2_interests
 
 

@@ -1,4 +1,4 @@
-function verifyUser(view) {
+var verifyUser = function(view) {
   var cookie = Cookies.get("login-token");
   var token = new Token();
   token.url += cookie;
@@ -22,7 +22,7 @@ function verifyUser(view) {
 };
 
 
-function renderView(view, data) {
+var renderView = function(view, data) {
   if (view === "login") {
     Backbone.history.navigate('login');  
     App.Views['loginView'].render();

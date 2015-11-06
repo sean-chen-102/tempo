@@ -2,6 +2,9 @@ describe("AppRouter routes", function() {
   beforeEach(function() {
     this.routeSpy = sinon.spy(TempoRouter.prototype, "home");
     this.router = new TempoRouter;
+    this.todoListViewStub = sinon.stub(this.router, "verifyUser")
+      .returns(renderView("login", ""));
+s
     try {
       Backbone.history.start({silent:true, pushState:true});
     } catch(e) {}

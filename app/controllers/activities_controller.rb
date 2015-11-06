@@ -1,5 +1,5 @@
 class ActivitiesController < ApplicationController
-	before_action :set_activity, only: [:edit_activity, :destroy_activity, :get_activity, :get_interests, :like, :dislike, :get_like_count]
+	before_action :set_activity, only: [:edit_activity, :destroy_activity, :get_activity, :get_interests, :like, :dislike, :get_like_count, :complete_activity]
 
 	# CUSTOM CODE
 
@@ -201,32 +201,34 @@ class ActivitiesController < ApplicationController
 
 	# Returns a status code (1 = success, -1 = failure), updates the activity in the database
 	# POST /api/activities/:id/like
-	# Testing via curl: curl -H "Content-Type: application/json" -d '{ "user_id": 1 }' -X POST http://localhost:3000/api/activities/1/like
+	# Testing via curl: curl -H "Content-Type: application/json" -d '{ "user_id": 1 }' -X PUT http://localhost:3000/api/activities/1/like
 	def like
 		status = -1
 		json_response = {}
 		error_list = []
 		
 		user_id = params["user_id"]
-		user = User.find(user_id)
+		user = User.find_by(id: user_id)
 
 		if not user.nil?
 			if not @activity.nil?
-				# Check if user is in like list
-				if @activity.user_liked_list.include? user_id
+
+				# Check if activity is in user's liked_list
+				if user.liked_list.include? @activity.id
 					error_list.append("Error: user has already liked this activity")
 				else 
 					
 					# If user has previously disliked post, we need to add two instead of one
-					if @activity.user_disliked_list.include? user_id
-						@activity.user_disliked_list.delete(user_id)
+					if user.disliked_list.include? @activity.id
+						user.disliked_list.delete(@activity.id)
 						@activity.like_count = @activity.like_count + 2
 					else
 						@activity.like_count = @activity.like_count + 1
 					end
 
-					@activity.user_liked_list.push(user_id)
-					if @activity.save
+					user.liked_list.push(@activity.id)
+
+					if @activity.save and user.save
 						status = 1
 						json_response["like_count"] = @activity.like_count
 					else
@@ -234,6 +236,7 @@ class ActivitiesController < ApplicationController
 					end
 
 				end
+
 			else
 				error_list.append("Error: activity does not exist")
 			end
@@ -255,40 +258,41 @@ class ActivitiesController < ApplicationController
 
 	# Returns a status code (1 = success, -1 = failure), updates the activity in the database
 	# POST /api/activities/:id/dislike
-	# Testing via curl: curl -H "Content-Type: application/json" -d '{ "user_id": 1 }' -X POST http://localhost:3000/api/activities/1/dislike
+	# Testing via curl: curl -H "Content-Type: application/json" -d '{ "user_id": 1 }' -X PUT http://localhost:3000/api/activities/1/dislike
 	def dislike 
 		status = -1
 		json_response = {}
 		error_list = []
 
 		user_id = params["user_id"]
-		user = User.find(user_id)
+		user = User.find_by(id: user_id)
 
 		if not user.nil?
 			if not @activity.nil?
 
-				# Check if user is in like list
-				if @activity.user_disliked_list.include? user_id
-					error_list.append("Error: user has already disliked this activity")
+				# Check if activity is in user's disliked_list
+				if user.disliked_list.include? @activity.id
+				 	error_list.append("Error: user has already disliked this activity")
 				else 
 
 					# If user has previously liked post, we need to subtract two instead of one
-					if @activity.user_liked_list.include? user_id
-						@activity.user_liked_list.delete(user_id)
-						@activity.like_count = @activity.like_count - 2
-					else
-						@activity.like_count = @activity.like_count - 1
-					end
+				 	if user.liked_list.include? @activity.id
+				 		user.liked_list.delete(@activity.id)
+				 		@activity.like_count = @activity.like_count - 2
+				 	else
+				 		@activity.like_count = @activity.like_count - 1
+				 	end
 
-					@activity.user_disliked_list.push(user_id)
-					if @activity.save
-						status = 1
-						json_response["like_count"] = @activity.like_count
-					else
-						error_list.append("Error: could not save new like_count")
-					end
+				 	user.disliked_list.push(@activity.id)
+				 	if @activity.save and user.save
+				 		status = 1
+				 		json_response["like_count"] = @activity.like_count
+				 	else
+				 		error_list.append("Error: could not save new like_count")
+				 	end
 
 				end
+
 			else
 				error_list.append("Error: activity does not exist")
 			end
@@ -308,7 +312,40 @@ class ActivitiesController < ApplicationController
 		end
 	end
 
+	# Adds the Activity to the User's completed_activities list
+	# PUT /api/activities/:id/complete
+	# Testing via curl: curl -H "Content-Type: application/json" -d '{ "user_id": 1 }' -X PUT http://localhost:3000/api/activities/1/complete
+	def complete_activity
+		status = -1
+		json_response = {}
+		error_list = []
 
+		user_id = params["user_id"]
+		user = User.find_by(id: user_id)
+
+		if not user.nil?
+			if not @activity.nil?
+				status = 1
+				user.completed_activities.push(@activity.id)
+				user.save
+			else
+				error_list.append("Error: activity does not exist")
+			end
+		else
+			error_list.append("Error: user_id is not valid")
+		end		
+
+		if status == -1
+			json_response["errors"] = error_list
+		end
+
+		json_response["status"] = status
+		json_response = json_response.to_json
+
+		respond_to do |format|
+			format.json { render json: json_response }
+		end
+	end
 
 	private
 	  # Use callbacks to share common setup or constraints between actions.

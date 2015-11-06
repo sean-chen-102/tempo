@@ -1,5 +1,5 @@
 class CustomActivitiesController < ApplicationController
-	before_action :set_custom_activity, only: [:edit_custom_activity, :destroy_custom_activity]
+	before_action :set_custom_activity, only: [:edit_custom_activity, :destroy_custom_activity, :complete_custom_activity]
 
 	# Create a CustomInterest in the database for the given params
 	# POST /api/users/:id/custom_activities
@@ -174,6 +174,41 @@ class CustomActivitiesController < ApplicationController
 		json_response["status"] = status
 		json_response = json_response.to_json
 		
+		respond_to do |format|
+			format.json { render json: json_response }
+		end
+	end
+
+	# Adds the CustomActivity to the User's completed_custom_activities list
+	# PUT /api/custom_activities/:id/complete
+	# Testing via curl: curl -H "Content-Type: application/json" -d '{ "user_id": 1 }' -X PUT http://localhost:3000/api/custom_activities/1/complete
+	def complete_custom_activity
+		status = -1
+		json_response = {}
+		error_list = []
+
+		user_id = params["user_id"]
+		user = User.find_by(id: user_id)
+
+		if not user.nil?
+			if not @custom_activity.nil?
+				status = 1
+				user.completed_activities.push(@custom_activity.id)
+				user.save				
+			else
+				error_list.append("Error: activity does not exist")
+			end
+		else
+			error_list.append("Error: user_id is not valid")
+		end		
+
+		if status == -1
+			json_response["errors"] = error_list
+		end
+
+		json_response["status"] = status
+		json_response = json_response.to_json
+
 		respond_to do |format|
 			format.json { render json: json_response }
 		end

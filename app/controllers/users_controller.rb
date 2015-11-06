@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:get_user, :create_user, :edit_user, :destroy_user, :get_user_interests, :get_user_custom_activities]
+  before_action :set_user, only: [:get_user, :create_user, :edit_user, :destroy_user, :get_user_interests, :get_user_custom_activities, :get_completed_activities, :get_completed_custom_activities]
 
   # user authentication token idea: https://gist.github.com/josevalim/fb706b1e933ef01e4fb6
 
@@ -176,6 +176,20 @@ class UsersController < ApplicationController
     if not @user.nil? # if the User exists
       if not token.nil? and user_has_permission(User.authenticate_token(token), @user.id) # if the token was provided and is valid and the user has permission
         @user.destroy # delete the User from the database
+        
+        # Update all like and disliked activities
+        @user.liked_list.each do |activity_id|
+          activity = Activity.find_by(id: activity_id)
+          activity.like_count = activity.like_count - 1
+          activity.save
+        end
+
+        @user.disliked_list.each do |activity_id|
+          activity = Activity.find_by(id: activity_id)
+          activity.like_count = activity.like_count + 1
+          activity.save
+        end
+
         status = 1
       else
         error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
@@ -326,6 +340,76 @@ class UsersController < ApplicationController
 
     json_response.set_status(status)
     json_response = json_response.get_json
+
+    respond_to do |format|
+      format.json { render json: json_response }
+    end
+  end
+
+  # Returns specified User's completed Activities' ids
+  # GET /api/users/:id/completed_activities
+  # Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/users/1/completed_activities
+  def get_completed_activities
+    status = -1
+    error_list = []
+    json_response = {}
+
+    if not @user.nil?
+      status = 1
+      completed_activities = @user.completed_activities
+      completed_activities.each do |activity_id|
+        if Activity.find_by(id: activity_id).nil?
+          @user.completed_activities.delete(activity_id)
+        end
+      end
+      @user.save
+
+      json_response["completed_activities"] = @user.completed_activities
+    else
+      error_list.append("Error: user does not exist")
+    end
+
+    if status == -1
+      json_response["errors"] = error_list
+    end
+
+    json_response["status"] = status
+    json_response = json_response.to_json
+
+    respond_to do |format|
+      format.json { render json: json_response }
+    end
+  end
+
+  # Returns specified User's completed CustomActivities' ids
+  # GET /api/users/:id/completed_custom_activities
+  # Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/users/1/completed_custom_activities
+  def get_completed_custom_activities
+    status = -1
+    error_list = []
+    json_response = {}
+
+    if not @user.nil?
+      status = 1
+      completed_custom_activities = @user.completed_custom_activities
+      completed_custom_activities.each do |custom_activity_id|
+        if CustomActivity.find_by(id: custom_activity_id).nil?
+          @user.completed_custom_activities.delete(custom_activity_id)
+        end
+      end
+      @user.save
+
+      json_response["completed_custom_activities"] = @user.completed_custom_activities
+    else
+      error_list.append("Error: user does not exist")
+    end
+
+    if status == -1
+      json_response["errors"] = error_list
+    end
+
+    json_response["status"] = status
+    json_response = json_response.to_json
 
     respond_to do |format|
       format.json { render json: json_response }

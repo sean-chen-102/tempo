@@ -12,8 +12,7 @@ var CreateCustomActivityView = Backbone.View.extend({
     user : null,
     initialize: function(options){
       this.options = options;
-      
-      // this.user = options.user;
+
       this.customActivities = new CustomActivities();
       this.model = new CustomActivity();
       // alert("initialized model for custom activity");
@@ -22,19 +21,12 @@ var CreateCustomActivityView = Backbone.View.extend({
       // Set scope, construct new activity collection, call fetch, render data on callback function
       var that = this;
       this.user = options.user;
-      console.log(this.user + "OPTIONS ");
       var renderData = function(){
         // TODO: Move HTML into templates
-        var customActTemplate = JST["backbone/templates/activities/customActivity"]();
+        var customActTemplate = JST["backbone/templates/activities/createCustomActivity"]();
         $('.testDiv').html(customActTemplate);
       };
-
       renderData();
-      // this.customActivities.fetch({
-      //   success: function(data){
-      //     renderData();
-      //   }
-      // });
     },
     createActivity: function (e){
       alert("Test");

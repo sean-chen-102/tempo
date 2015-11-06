@@ -60,8 +60,22 @@ RSpec.describe "user password changing - ", :type => :request do
     status = data["status"]
     expect(status).to eq(-2) # we should have a failure
 
-    # Try to change the password to something that shouldn't be allowed - should fail
+    # Try to change the password to blank - should fail
     params = { "token": token, "old_password": "afternoon", "new_password": "" }
+    put "/api/users/#{id}/change_password", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body) # grab the body of the server response
+    status = data["status"]
+    expect(status).to eq(-1) # we should have a failure
+
+    # Try to change the password to something that is too short - should fail
+    params = { "token": token, "old_password": "afternoon", "new_password": "hi" }
+    put "/api/users/#{id}/change_password", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body) # grab the body of the server response
+    status = data["status"]
+    expect(status).to eq(-1) # we should have a failure
+
+    # Try to change the password when the old password is wrong
+    params = { "token": token, "old_password": "wrong", "new_password": "password" }
     put "/api/users/#{id}/change_password", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
     data = JSON.parse(response.body) # grab the body of the server response
     status = data["status"]

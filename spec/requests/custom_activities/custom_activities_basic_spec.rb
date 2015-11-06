@@ -5,24 +5,24 @@ RSpec.describe "test basic custom activities functionality - ", :type => :reques
 
 	before (:each) do
 		params = { "user": { "name": "Bob", "email": "bob@mail.com", "username": "bob", "password": "password", "password_confirmation": "password" }}
-    	post "/api/users", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+  	post "/api/users", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
 
-    	data = JSON.parse(response.body)
+  	data = JSON.parse(response.body)
 
-    	expect(data["status"]).to equal(1)
+  	expect(data["status"]).to equal(1)
 
-    	@token = data["user"]["token"]
-    	@user_id = data["user"]["id"]
+  	@token = data["user"]["token"]
+  	@user_id = data["user"]["id"]
 
-    	params = { "user": { "name": "Bill", "email": "bill@mail.com", "username": "bill", "password": "password", "password_confirmation": "password" }}
-    	post "/api/users", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+  	params = { "user": { "name": "Bill", "email": "bill@mail.com", "username": "bill", "password": "password", "password_confirmation": "password" }}
+  	post "/api/users", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
 
-    	data = JSON.parse(response.body)
+  	data = JSON.parse(response.body)
 
-    	expect(data["status"]).to equal(1)
+  	expect(data["status"]).to equal(1)
 
-    	@token2 = data["user"]["token"]
-    	@user_id2 = data["user"]["id"]
+  	@token2 = data["user"]["token"]
+  	@user_id2 = data["user"]["id"]
 	end
 
 	### CUSTOM_ACTIVITY CREATION ###

@@ -50,6 +50,20 @@ RSpec.describe "test basic users functionality - ", :type => :request do
     data = JSON.parse(response.body) # grab the body of the server response
     status = data["status"]
     expect(status).to eq(-1) # we should have a failure
+
+    # Try to edit account info with bad validation arguments
+    params = { "email": "bobbasdfasdfasdfasdfsfasdfy@email.com", "name": "" }
+    put "/api/users/#{user['id']}", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body) # grab the body of the server response
+    status = data["status"]
+    expect(status).to eq(-1) # we should have a failure
+
+    # Try to edit a user that doesn't exist
+    params = { "email": "bob@email.com", "name": "" }
+    put "/api/users/0", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body) # grab the body of the server response
+    status = data["status"]
+    expect(status).to eq(-1) # we should have a failure
   end
 
 	### GET USER ###

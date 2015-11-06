@@ -10,6 +10,7 @@
 #  link            :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  like_count      :integer          default(0)
 #
 
 require 'test_helper'
@@ -19,7 +20,7 @@ class ActivityTest < ActiveSupport::TestCase
   def setup
     @activity = Activity.new(title: "Example Activity", content: "dummy content",
     						 completion_time: 15, content_type: "video",
-    						 link: "www.example.com")
+    						 link: "www.example.com", like_count: 0)
   end
 
   test "activity should be valid" do

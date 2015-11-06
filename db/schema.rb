@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151104102214) do
+ActiveRecord::Schema.define(version: 20151105234351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,8 +22,9 @@ ActiveRecord::Schema.define(version: 20151104102214) do
     t.integer  "completion_time"
     t.string   "content_type"
     t.string   "link"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "like_count",      default: 0
   end
 
   create_table "activities_interests", id: false, force: :cascade do |t|
@@ -61,12 +62,16 @@ ActiveRecord::Schema.define(version: 20151104102214) do
     t.string   "username"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
-    t.integer  "role",              default: 0
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+    t.integer  "role",                        default: 0
     t.string   "activation_digest"
-    t.boolean  "activated",         default: false
+    t.boolean  "activated",                   default: false
     t.datetime "activated_at"
+    t.integer  "liked_list",                  default: [],                 array: true
+    t.integer  "disliked_list",               default: [],                 array: true
+    t.integer  "completed_activities",        default: [],                 array: true
+    t.integer  "completed_custom_activities", default: [],                 array: true
   end
 
   add_foreign_key "custom_activities", "users"

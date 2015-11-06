@@ -1,3 +1,4 @@
+
 describe("UserModel", function() {
 
   beforeEach(function() {
@@ -11,5 +12,14 @@ describe("UserModel", function() {
     expect(this.user.username)
       .toEqual("AaronZ");
   });
+
+   it("should save successfully", function() {
+	   var eventSpy = sinon.spy();
+	   this.user.bind("success", eventSpy);
+     this.user.username = "";
+	   this.user.save();
+     console.log(this.user);
+	   expect(this.user.validationError).toEqual("hi")
+	 });
 
 });

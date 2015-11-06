@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/Dalton/Documents/Homework/Fall_2015/CS_169/Tempo/app/tempo/spec/requests/account_creation_spec.rb": [
+      "/Users/Dalton/Documents/Homework/Fall_2015/CS_169/Tempo/app/tempo/spec/requests/user_account_creation_spec.rb": [
         1,
         null,
         null,
@@ -1733,6 +1733,6 @@
         null
       ]
     },
-    "timestamp": 1446809572
+    "timestamp": 1446809720
   }
 }

@@ -1,3 +1,4 @@
+
 describe("UserModel", function() {
 
   beforeEach(function() {
@@ -12,10 +13,12 @@ describe("UserModel", function() {
       .toEqual("AaronZ");
   });
 
-   it("should not save when title is empty", function() {
+   it("should save successfully", function() {
 	   var eventSpy = sinon.spy();
-	   this.todo.bind("error", eventSpy);
-	   this.user.save({"username": ""});
+	   this.user.bind("success", eventSpy);
+     this.user.username = "";
+	   this.user.save();
+     console.log(this.user);
 	   expect(this.user.validationError).toEqual("hi")
 	 });
 

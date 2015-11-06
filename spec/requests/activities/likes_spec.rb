@@ -52,11 +52,19 @@ RSpec.describe "test activity rating system - ", :type => :request do
     data = JSON.parse(response.body)
     expect(data["status"]).to eq(-1)
 
+    # Check the like count
     get "/api/activities/#{@activity_id}/like_count", {}, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
     data = JSON.parse(response.body)
     expect(data["status"]).to eq(1)
     like_count = data["like_count"]
     expect(like_count).to eq(1) # the like count should have stayed at 1
+
+    # Delete the User to make sure lazy deletion happens
+    params = { "token": @token }
+    delete "/api/users/#{@user_id}", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body) # grab the body of the server response
+    status = data["status"]
+    expect(status).to eq(1) # we should have a success
   end
 
   ### TEST LIKING WITH BAD INPUT ###
@@ -90,11 +98,19 @@ RSpec.describe "test activity rating system - ", :type => :request do
     data = JSON.parse(response.body)
     expect(data["status"]).to eq(-1)
 
+    # Check the like count
     get "/api/activities/#{@activity_id}/like_count", {}, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
     data = JSON.parse(response.body)
     expect(data["status"]).to eq(1)
     like_count = data["like_count"]
     expect(like_count).to eq(-1) # the like count should have stayed at -1
+
+    # Delete the User to make sure lazy deletion happens
+    params = { "token": @token }
+    delete "/api/users/#{@user_id}", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body) # grab the body of the server response
+    status = data["status"]
+    expect(status).to eq(1) # we should have a success
   end
 
   ### TEST DISLIKING WITH BAD INPUT ###

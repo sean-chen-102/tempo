@@ -159,6 +159,13 @@ RSpec.describe "test basic users functionality - ", :type => :request do
     expect(status).to eq(1) # we should have a success
     token = data["token"]
 
+    # Try to delete a user with a bad token
+    params = { "token": "random" }
+    delete "/api/users/#{id}", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body) # grab the body of the server response
+    status = data["status"]
+    expect(status).to eq(-2) # we should have a failure
+
     # Delete the User
     params = { "token": token }
     delete "/api/users/#{id}", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
@@ -180,11 +187,5 @@ RSpec.describe "test basic users functionality - ", :type => :request do
     status = data["status"]
     expect(status).to eq(-1) # we should have a failure
 
-    # Try to delete a user with a bad token
-    params = { "token": "random" }
-    delete "/api/users/#{id}", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
-    data = JSON.parse(response.body) # grab the body of the server response
-    status = data["status"]
-    expect(status).to eq(-1) # we should have a failure
   end
 end

@@ -191,6 +191,8 @@ class UsersController < ApplicationController
     json_response = JsonResponse.new
     error_list = []
     token = params[:token]
+    user_id = params["id"]
+    @user = User.find_by(id: user_id)
 
     if not @user.nil? # if the User exists
       if not token.nil? and user_has_permission(User.authenticate_token(token), @user.id) # if the token was provided and is valid and the user has permission
@@ -454,7 +456,7 @@ class UsersController < ApplicationController
     def set_user
       if not params[:id].nil? and params[:id].respond_to?(:to_i)
         begin
-          @user = User.find(params[:id])
+          @user = User.find_by(id: params[:id])
         rescue ActiveRecord::RecordNotFound
           @user = nil
         end

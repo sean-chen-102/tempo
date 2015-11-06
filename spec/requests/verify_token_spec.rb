@@ -2,7 +2,7 @@ require 'rails_helper'
 
 # USAGE: bundle exec rspec
 
-RSpec.describe "verify token", :type => :request do
+RSpec.describe "check token verification - ", :type => :request do
   # Verify the valid token
   it "succeeds with a valid token" do
     params = { "user": { "name": "Bob", "email": "bob@mail.com", "username": "bob", "password": "password", "password_confirmation": "password" }}

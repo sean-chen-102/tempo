@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   validates :name, :username, length: { maximum: 20 }
   validates :username, :email, uniqueness: true
   # TODO: Need to check this validation
-  # validates :password, length: { minimum: 8 }, unless: "password.nil?"
+  validates :password, presence: { on: :create }, length: { minimum: 8, allow_nil: true }
   validates_format_of :username, with: /\A[a-zA-Z0-9_\.]*\z/
   validates_format_of :email, with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 

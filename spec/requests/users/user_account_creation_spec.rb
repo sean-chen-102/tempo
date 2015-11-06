@@ -2,7 +2,7 @@ require 'rails_helper'
 
 # USAGE: bundle exec rspec
 
-RSpec.describe "account creation", :type => :request do
+RSpec.describe "user account creation - ", :type => :request do
   # Create a new user
   it "returns a valid user after account creation" do
     params = { "user": { "name": "Bob", "email": "bob@mail.com", "username": "bob", "password": "password", "password_confirmation": "password" }}

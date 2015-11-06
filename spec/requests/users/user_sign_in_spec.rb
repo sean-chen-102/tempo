@@ -2,7 +2,7 @@ require 'rails_helper'
 
 # USAGE: bundle exec rspec
 
-RSpec.describe "user sign in", :type => :request do
+RSpec.describe "user sign in - ", :type => :request do
   # Sign in with an email address
   it "succeeds with using email address" do
     params = { "user": { "name": "Bob", "email": "bob@mail.com", "username": "bob", "password": "password", "password_confirmation": "password" }}

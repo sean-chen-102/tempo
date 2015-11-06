@@ -35,7 +35,7 @@ var SettingsView = Backbone.View.extend({
 		interest.url = "/api/users/" + this.user.id + "/interests";
 		var token = Cookies.get('login-token');
 		interest.attributes = {id:this.user.id, interests:newInterests, token:token};
-		interest.save(interest.attributes, {
+		interest.save({
       		success: function(userSession, response) {
       			console.log("Saved Interest");
       		},

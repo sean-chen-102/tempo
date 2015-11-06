@@ -1,9 +1,9 @@
-<td><%= title %></td>
-<td><%= content %></td>
-<td><%= completion_time %></td>
-<td><%= content_type %></td>
-<td><%= link %></td>
-
-<td><a href="#/<%= id %>">Show</a></td>
-<td><a href="#/<%= id %>/edit">Edit</a></td>
-<td><a href="#/<%= id %>/destroy" class="destroy">Destroy</a></td>
+<div class="activity">
+	<h3><%= title %></h3>
+	<div id="likes">Likes: <div id="like-count"><%= likes %></div></div>
+	<button class='like-btn'>Like</button>
+	<button class='dislike-btn'>Dislike</button><br>
+	<p><%= content %></p>
+	<a href='<%= link %>'> Link </a><br>
+	<a href='tempo#activities'> Back </a>
+</div>

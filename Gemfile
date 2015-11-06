@@ -71,6 +71,11 @@ end
 group :development, :test do
   gem 'teaspoon-jasmine'
   gem 'phantomjs'
+  gem 'rspec-rails'
+end
+
+group :test do
+  gem 'simplecov', :require => false
 end
 
 

@@ -37,17 +37,12 @@ var SettingsView = Backbone.View.extend({
 		interest.attributes = {id:this.user.id, interests:newInterests, token:token};
 		interest.save({
       		success: function(userSession, response) {
-      			console.log("success!");
-      			console.log(userSession);
-      			console.log(response);
-      			Cookies.set("login-token", response.token);
-      			// Backbone.Events.trigger("user-interests", [response.user.interests, response.user.id]);
-      			alert("you successfully logged in!");
+      			console.log("Saved Interest");
       		},
       		error: function(userSession, response) {
-      			console.log("failure!");
+      			console.log("failed to save interest");
       		}
-    });
+    	});
 
 
 	},

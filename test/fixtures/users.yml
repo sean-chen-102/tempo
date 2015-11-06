@@ -2,17 +2,21 @@
 #
 # Table name: users
 #
-#  id                :integer          not null, primary key
-#  name              :string
-#  username          :string
-#  email             :string
-#  password_digest   :string
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
-#  role              :integer          default(0)
-#  activation_digest :string
-#  activated         :boolean          default(FALSE)
-#  activated_at      :datetime
+#  id                          :integer          not null, primary key
+#  name                        :string
+#  username                    :string
+#  email                       :string
+#  password_digest             :string
+#  created_at                  :datetime         not null
+#  updated_at                  :datetime         not null
+#  role                        :integer          default(0)
+#  activation_digest           :string
+#  activated                   :boolean          default(FALSE)
+#  activated_at                :datetime
+#  liked_list                  :integer          default([]), is an Array
+#  disliked_list               :integer          default([]), is an Array
+#  completed_activities        :integer          default([]), is an Array
+#  completed_custom_activities :integer          default([]), is an Array
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

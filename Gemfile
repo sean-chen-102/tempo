@@ -70,6 +70,7 @@ end
 
 group :development, :test do
   gem 'teaspoon-jasmine'
+  gem 'phantomjs'
 end
 
 

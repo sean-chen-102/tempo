@@ -67,6 +67,7 @@ var TempoRouter = Backbone.Router.extend({
                                 activitiesView: App.Views['activitiesView']});
     },
     home: function() {
+      console.log("The home router was called ");
       verifyUser("homeView");
 
     },

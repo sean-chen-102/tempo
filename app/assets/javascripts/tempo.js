@@ -4,7 +4,7 @@ window.Tempo = {
   Views: {},
   Routers: {},
   initialize: function() {
-  	console.log("Initiaasdkljaslkdjasl");
+  	console.log("Tempo.js Initiliazed");
   }
 };
 

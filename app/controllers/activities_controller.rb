@@ -209,6 +209,7 @@ class ActivitiesController < ApplicationController
 		
 		user_id = params["user_id"]
 		user = User.find_by(id: user_id)
+		token = params[:token]
 
 		if not user.nil?
 			if not token.nil? and user_has_permission(User.authenticate_token(token), user.id) # if the token was provided and is valid and the user has permission
@@ -271,6 +272,7 @@ class ActivitiesController < ApplicationController
 
 		user_id = params["user_id"]
 		user = User.find_by(id: user_id)
+		token = params[:token]
 
 		if not user.nil?
 			if not token.nil? and user_has_permission(User.authenticate_token(token), user.id) # if the token was provided and is valid and the user has permission

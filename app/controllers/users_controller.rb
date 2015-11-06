@@ -352,28 +352,34 @@ class UsersController < ApplicationController
   def get_completed_activities
     status = -1
     error_list = []
-    json_response = {}
+    json_response = JsonResponse.new
+    token = params[:token]
 
     if not @user.nil?
-      status = 1
-      completed_activities = @user.completed_activities
-      completed_activities.each do |activity_id|
-        if Activity.find_by(id: activity_id).nil?
-          @user.completed_activities.delete(activity_id)
+      if not token.nil? and user_has_permission(User.authenticate_token(token), @user.id) # if the token was provided and is valid and the user has permission
+        status = 1
+        completed_activities = @user.completed_activities
+        completed_activities.each do |activity_id|
+          if Activity.find_by(id: activity_id).nil?
+            @user.completed_activities.delete(activity_id)
+          end
         end
-      end
-      @user.save
+        @user.save
 
-      json_response["completed_activities"] = @user.completed_activities
+        json_response["completed_activities"] = @user.completed_activities
+      else
+        error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
+        status = -2
+      end
     else
       error_list.append("Error: user does not exist")
     end
 
-    if status == -1
-      json_response["errors"] = error_list
+    if status != 1
+      json_response.set_errors(error_list)    
     end
 
-    json_response["status"] = status
+    json_response.set_status(status)
     json_response = json_response.to_json
 
     respond_to do |format|
@@ -388,27 +394,33 @@ class UsersController < ApplicationController
     status = -1
     error_list = []
     json_response = {}
+    token = params[:token]
 
     if not @user.nil?
-      status = 1
-      completed_custom_activities = @user.completed_custom_activities
-      completed_custom_activities.each do |custom_activity_id|
-        if CustomActivity.find_by(id: custom_activity_id).nil?
-          @user.completed_custom_activities.delete(custom_activity_id)
+      if not token.nil? and user_has_permission(User.authenticate_token(token), @user.id) # if the token was provided and is valid and the user has permission
+        status = 1
+        completed_custom_activities = @user.completed_custom_activities
+        completed_custom_activities.each do |custom_activity_id|
+          if CustomActivity.find_by(id: custom_activity_id).nil?
+            @user.completed_custom_activities.delete(custom_activity_id)
+          end
         end
-      end
-      @user.save
+        @user.save
 
-      json_response["completed_custom_activities"] = @user.completed_custom_activities
+        json_response["completed_custom_activities"] = @user.completed_custom_activities
+      else
+        error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
+        status = -2
+      end
     else
       error_list.append("Error: user does not exist")
     end
 
-    if status == -1
-      json_response["errors"] = error_list
+    if status != 1
+      json_response.set_errors(error_list)  
     end
 
-    json_response["status"] = status
+    json_response.set_status(status)
     json_response = json_response.to_json
 
     respond_to do |format|

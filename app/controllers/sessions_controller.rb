@@ -34,11 +34,9 @@ class SessionsController < ApplicationController
 
     if not email.nil?
       # using email to login
-      puts "WE HAVE AN EMAIL"
       @user = User.find_by(email: email)
     elsif not username.nil?
       # using username to login
-      puts "WE HAVE A USERNAME"
       @user = User.find_by(username: username)
     else
       # append missing username or email error

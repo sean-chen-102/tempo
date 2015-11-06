@@ -2,10 +2,8 @@ require 'rails_helper'
 
 # USAGE: bundle exec rspec
 
-# POST /api/users/
-# Testing via curl: curl -H "Content-Type: application/json" -X POST -d '{"user": {"name": "Jack Daniels", "email": "jack6@mail.com", "username": "jackD6", "password": "password", "password_confirmation": "password"}}' http://localhost:3000/api/users
 RSpec.describe "account creation", :type => :request do
-  # CREATE A NEW USER
+  # Create a new user
   it "returns a valid user after account creation" do
     params = { "user": { "name": "Bob", "email": "bob@mail.com", "username": "bob", "password": "password", "password_confirmation": "password" }}
     post "/api/users", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
@@ -30,7 +28,7 @@ RSpec.describe "account creation", :type => :request do
     expect(custom_activities).to eq([])
   end
 
-  # TRY CREATING A NEW USER WITH INFO THAT ALREADY EXISTS IN THE DATABASE
+  # Try creating a user with credentials that already exist in the database
   it "does not allow duplicate account creation" do
     # Create a unique User
     params = { "user": { "name": "Bob", "email": "bob@mail.com", "username": "bob", "password": "password", "password_confirmation": "password" }}
@@ -152,7 +150,7 @@ RSpec.describe "account creation", :type => :request do
     expect(status).to eq(-1) # we should have a failure
   end
 
-  # SEND MISSING PARAMS
+  # Send missing params attributes
   it "with missing params attributes" do
     params = { "user": { "name": "hi"} }
     post "/api/users", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }

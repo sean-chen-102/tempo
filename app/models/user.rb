@@ -57,7 +57,6 @@ class User < ActiveRecord::Base
 
   # Returns a JSON list of all interests that have user_id as their User.id.
   def self.get_interests(user_id)
-    puts "In User.self.get_interests: user_id= #{user_id}"
     interests = User.find_by(id: user_id).interests
 
     interests.each do |interest|

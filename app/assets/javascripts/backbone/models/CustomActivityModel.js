@@ -7,14 +7,14 @@ var CustomActivity = Backbone.Model.extend({
     		"completion_time": ""
   		},
 		
-		validate: function (attrs) {
-        if (!attrs.email) {
-            return 'Please provide a title.';
-        }
-        if (!attrs.completion_time) {
-            return 'Please provide a completion time';
-        } else if (!isNAN(attrs.completion_time)) {
-        	return 'Completion time must be an integer';
-        }
-    }	
+  		validate: function (attrs) {
+          if (!attrs.title) {
+              return 'Please provide a title.';
+          }
+          if (!attrs.completion_time) {
+              return 'Please provide a completion time';
+          } else if (isNaN(attrs.completion_time)) {
+          	return 'Completion time must be an integer';
+          }
+      }	
 });

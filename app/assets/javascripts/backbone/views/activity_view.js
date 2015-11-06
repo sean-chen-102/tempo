@@ -4,18 +4,14 @@ var ActivityView = Backbone.View.extend({
     options: null,
     activity: null,
     events: {
-        "click a": "clicked"
+        events:{
+            "click .go-btn":"makeGoRequest",
+            "click .login-submit":"login"
+        },
     },
     initialize: function(options){
       this.options = options;
       this.activity_id = options['id'];
-    },
-    clicked: function(e){
-        e.preventDefault();
-        console.log("creating new activityModal");
-        modalView = new ActivityModalView({model: this.model}); 
-        modalView.show();
-        // alert(this.model.get('content'));
     },
     renderData: function(data){
         var template = JST["backbone/templates/activities/activity"]({

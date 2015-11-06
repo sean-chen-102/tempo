@@ -101,7 +101,8 @@ class ActivitiesController < ApplicationController
 	# Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/activities/1
 	def get_activity
 		status = -1
-		json_response = {} 
+		json_response = {}
+		error_list = []
 
 		if !@activity.nil?
 			status = 1
@@ -110,16 +111,16 @@ class ActivitiesController < ApplicationController
 			error_list.append("Error: activity does not exist.")
 		end
 
-		if status == -1
-	  		json_response["errors"] = error_list
-	  	end
+		if status != 1
+  		json_response["errors"] = error_list
+  	end
 
-	  	json_response["status"] = status
-	  	json_response = json_response.to_json
+  	json_response["status"] = status
+  	json_response = json_response.to_json
 
-	  	respond_to do |format|
-	    	format.json { render json: json_response }
-	  	end
+  	respond_to do |format|
+    	format.json { render json: json_response }
+  	end
 	end
 
 	# Return a JSON response with a list of given activities based on the params: interest and time
@@ -129,7 +130,7 @@ class ActivitiesController < ApplicationController
 	# Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/activities
 	# Testing via curl: curl -H "Content-Type: application/json" -X GET -d '{"interests": ["news","fitness"]}' http://localhost:3000/api/activities
 	# Testing via curl: curl -H "Content-Type: application/json" -X GET -d '{"interests": ["news","fitness"]}', "time": 5}' http://localhost:3000/api/activities
-	def get_activities
+	def get_all_activities
 	  status = -1
 	  interests_key = "interests"
 	  time_key = "time"
@@ -142,13 +143,12 @@ class ActivitiesController < ApplicationController
 	  if activities.length > 0
 	    status = 1
 	    json_response["activities"] = activities
-	  elsif not interests_list.nil?
-	  	error_list.append("Error: no activities found with the given interest.")
 	  else
-	  	error_list.append("Error: no activities found.")
+	  	status = 1
+	  	json_response["activities"] = []
 	  end
 
-	  if status == -1
+	  if status != 1
 	  	json_response["errors"] = error_list
 	  end
 

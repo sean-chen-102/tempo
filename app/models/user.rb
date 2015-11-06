@@ -76,8 +76,12 @@ class User < ActiveRecord::Base
 
   # Update the User's password to new_password
   def change_password(new_password)
-    self.password = new_password
-    return self.save
+    if not new_password.blank? and new_password.length >= 8
+      self.password = new_password
+      return self.save
+    else
+      return false
+    end
   end
 
   # Returns a hash of basic user info.

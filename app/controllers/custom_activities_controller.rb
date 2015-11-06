@@ -161,7 +161,7 @@ class CustomActivitiesController < ApplicationController
 				end
 			else
 				error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
-        status = -2
+        		status = -2
 			end
 		else
 			error_list.append("Error: user ##{user_id} doesn't exist.")
@@ -193,7 +193,7 @@ class CustomActivitiesController < ApplicationController
 		if not user.nil?
 			if not @custom_activity.nil?
 				status = 1
-				user.completed_activities.push(@custom_activity.id)
+				user.completed_custom_activities.push(@custom_activity.id)
 				user.save				
 			else
 				error_list.append("Error: activity does not exist")

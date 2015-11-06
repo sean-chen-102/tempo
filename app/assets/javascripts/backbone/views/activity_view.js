@@ -19,7 +19,7 @@ var ActivityView = Backbone.View.extend({
         console.log("activity view render call");
         var that = this;
         var template = JST["backbone/templates/activities/test"]({
-              title: that.model.get('title'),
+              title: that.model.get('title')
           });
         $(this.el).append(template);
 

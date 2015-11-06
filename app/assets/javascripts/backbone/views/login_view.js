@@ -8,6 +8,7 @@ var LoginView = Backbone.View.extend({
     	},
 		initialize: function(options){
 			this.model = new UserLogin();
+			this.loginDetails = {}
 
 		},
 		render : function (options){
@@ -27,26 +28,30 @@ var LoginView = Backbone.View.extend({
 
 			var password = $('#password').val();
 			if(usernameOrEmail.indexOf('@') === -1) {
-				this.model.attributes.username = usernameOrEmail;
+				this.loginDetails.username = usernameOrEmail
 			} else {
-				this.model.attributes.email = usernameOrEmail;
+				this.loginDetails.password = usernameOrEmail
 			}
-			this.model.attributes.password = password
+			this.loginDetails.password = password;
 			console.log(this.model.attributes);
-		    this.model.save(this.model.attributes, {
+		    this.model.save(this.loginDetails, {
 	      		success: function(userSession, response) {
 	      			console.log("success!");
 	      			Cookies.set("login-token", response.token);
 	      			console.log(response);
-	      			Backbone.Events.trigger("user-interests", [response.user.interests, response.user.id]);
-	      			Backbone.history.navigate('home', {trigger: true});  
+	      			if (response.status === 1 ) {
+	      				Backbone.Events.trigger("user-interests", [response.user.interests, response.user.id]);
+	      				Backbone.history.navigate('home', {trigger: true});  
+	      			} else {
+		    			$("#warning").html("Invalid username or password");
+	      			}
 	      },
 	      error: function(userSession, response) {
 	      	console.log("failure!");
 	      }
 	    });
 		    if (this.model.validationError) {
-		    	console.log(this.model.validationError);
+		    	console.log(this.model);
 		    	$("#warning").html(this.model.validationError);
   // validate error(s) accessible in model.validationError
 			}

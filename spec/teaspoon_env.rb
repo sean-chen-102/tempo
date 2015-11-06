@@ -158,7 +158,7 @@ Teaspoon.configure do |config|
   # e.g. config.coverage :ci do |coverage|
   # The default coverage config name is :default.
 config.coverage do |coverage|
-  coverage.reports = ['text', 'html', 'lcov']
+  coverage.reports = ['text', 'html']
     #
     # Available: text-summary, text, html, lcov, lcovonly, cobertura, teamcity
     #coverage.reports = ["text-summary", "html"]

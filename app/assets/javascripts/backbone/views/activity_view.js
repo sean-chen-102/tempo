@@ -4,10 +4,8 @@ var ActivityView = Backbone.View.extend({
     options: null,
     activity: null,
     events: {
-        events:{
-            "click .go-btn":"makeGoRequest",
-            "click .login-submit":"login"
-        },
+        "click .like-btn":"makeLikeRequest",
+        "click .dislike-btn":"makeDislikeRequest",
     },
     initialize: function(options){
       this.options = options;
@@ -36,5 +34,13 @@ var ActivityView = Backbone.View.extend({
                 that.renderData(data.attributes['activity']);
             }
         });
-    }  
+    },
+    makeLikeRequest : function(options){
+        //called when the like button is clicked
+        console.log("liked");
+    },
+    makeDislikeRequest : function(options){
+        //called when the dislike button is clicked
+        console.log("disliked");
+    },
   });

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "home page", :type => :request do
+RSpec.describe "test basic users functionality - ", :type => :request do
 
 
 end

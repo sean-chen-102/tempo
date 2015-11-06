@@ -26,7 +26,7 @@ class CustomActivitiesController < ApplicationController
 				end
 			else
 				error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
-        status = -2
+        		status = -2
 			end
 		else
 			error_list.append("Error: user ##{user_id} doesn't exist.")
@@ -67,7 +67,7 @@ class CustomActivitiesController < ApplicationController
 							status = 1
 							json_response["custom_activity"] = @custom_activity.as_json
 						else
-							error_list << @custom_activity.errors
+							error_list = error_list + process_save_errors(@custom_activity.errors)
 						end
 					else
 						error_list.append("Error: custom activity ##{custom_activity_id} doesn't belong to user ##{user_id}.")
@@ -77,7 +77,7 @@ class CustomActivitiesController < ApplicationController
 				end
 			else
 				error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
-        status = -2
+        		status = -2
 			end
 		else
 			error_list.append("Error: user ##{user_id} doesn't exist.")

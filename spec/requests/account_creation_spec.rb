@@ -11,8 +11,8 @@ RSpec.describe "account creation", :type => :request do
     #=> params contains { "controller" => "user", "action" => "reset_password", "token" => 0 }
 
     data = JSON.parse(response.body)
-    puts "WE ARE HERE!"
-    puts "#{data}"
+    # puts "WE ARE HERE!"
+    # puts "#{data}"
 
     expect(data["status"]).to equal(1)
   end

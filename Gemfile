@@ -69,7 +69,7 @@ group :production do
 end
 
 group :development, :test do
-  gem 'jasmine'
+  gem 'teaspoon-jasmine'
 end
 
 

@@ -3,7 +3,7 @@ var SignupView = Backbone.View.extend({
 		tagName : 'div',
 
 	  events: {
-	    'submit form': 'signup'
+	    'click #signup': 'signup'
 	  },
 
 	  initialize: function() {
@@ -40,10 +40,10 @@ var SignupView = Backbone.View.extend({
 	      success: function(userSession, response) {
 	      	console.log("success!");
 	      	console.log(userSession);
-	      	console.log(response);
+	      	console.log(response.user.token);
 	        el.find('input.btnprimary').prop('value', 'reset');
 	        currentUser = new User(response);
-  			Cookies.set("login-token", response.token);
+  			Cookies.set("login-token", response.user.token);
   			Backbone.history.navigate('home', {trigger: true});  
 
 

@@ -12,4 +12,11 @@ describe("UserModel", function() {
       .toEqual("AaronZ");
   });
 
+   it("should not save when title is empty", function() {
+	   var eventSpy = sinon.spy();
+	   this.todo.bind("error", eventSpy);
+	   this.user.save({"username": ""});
+	   expect(this.user.validationError).toEqual("hi")
+	 });
+
 });

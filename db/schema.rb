@@ -22,20 +22,15 @@ ActiveRecord::Schema.define(version: 20151106201453) do
     t.integer  "completion_time"
     t.string   "content_type"
     t.string   "link"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.integer  "like_count"
-    t.integer  "user_liked_list",    default: [],              array: true
-    t.integer  "user_disliked_list", default: [],              array: true
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "like_count",      default: 0
   end
 
   create_table "activities_interests", id: false, force: :cascade do |t|
     t.integer "activity_id", null: false
     t.integer "interest_id", null: false
   end
-
-  add_index "activities_interests", ["activity_id", "interest_id"], name: "index_activities_interests_on_activity_id_and_interest_id", using: :btree
-  add_index "activities_interests", ["interest_id", "activity_id"], name: "index_activities_interests_on_interest_id_and_activity_id", using: :btree
 
   create_table "custom_activities", force: :cascade do |t|
     t.string   "title"
@@ -52,6 +47,7 @@ ActiveRecord::Schema.define(version: 20151106201453) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
   create_table "interests_users", id: false, force: :cascade do |t|
@@ -80,6 +76,8 @@ ActiveRecord::Schema.define(version: 20151106201453) do
     t.string   "activation_digest"
     t.boolean  "activated",                   default: false
     t.datetime "activated_at"
+    t.integer  "liked_list",                  default: [],                 array: true
+    t.integer  "disliked_list",               default: [],                 array: true
     t.integer  "completed_activities",        default: [],                 array: true
     t.integer  "completed_custom_activities", default: [],                 array: true
   end

@@ -88,6 +88,68 @@ RSpec.describe "test basic interests functionality - ", :type => :request do
   end
 
 	### GET ALL INTERESTS ###
+  it "getting all interests" do
+    # Get all interests - should be []
+    get "/api/interests", {}, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body) # grab the body of the server response
+    status = data["status"]
+    expect(status).to eq(1) # we should have a success
+    interests = data["interests"]
+    expect(interests).to eq([])
+
+    # Create a new valid interest
+    params = { "interest": { "name": "science" } }
+    post "/api/interests", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body) # grab the body of the server response
+    status = data["status"]
+    expect(status).to eq(1) # we should have a success
+
+    # Create a new valid interest
+    params = { "interest": { "name": "technology" } }
+    post "/api/interests", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body) # grab the body of the server response
+    status = data["status"]
+    expect(status).to eq(1) # we should have a success
+
+    # Get all interests
+    get "/api/interests", {}, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body) # grab the body of the server response
+    status = data["status"]
+    expect(status).to eq(1) # we should have a success
+    interests = data["interests"]
+    expect(interests.length).to eq(2)
+  end
 
 	### DESTROY INTEREST ###
+  it "deleting an interest" do
+    # Create a new valid interest
+    params = { "interest": { "name": "science" } }
+    post "/api/interests", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body) # grab the body of the server response
+    status = data["status"]
+    expect(status).to eq(1) # we should have a success
+    interest = data["interest"]
+    id = interest["id"]
+
+    # Delete the interest
+    delete "/api/interests/#{id}", {}, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body) # grab the body of the server response
+    status = data["status"]
+    expect(status).to eq(1) # we should have a success
+
+    # Get all interests - should be []
+    get "/api/interests", {}, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body) # grab the body of the server response
+    status = data["status"]
+    expect(status).to eq(1) # we should have a success
+    interests = data["interests"]
+    expect(interests).to eq([])
+
+    # Try to delete an interest that doesn't exist - should fail
+    delete "/api/interests/0", {}, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body) # grab the body of the server response
+    status = data["status"]
+    expect(status).to eq(-1) # we should have a failure
+  end
+
 end

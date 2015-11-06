@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   get '/api/interests', to: 'interests#get_all_interests', defaults: { format: 'json' }
   get '/api/interests/:id/users', to: 'interests#get_users_with_interest', defaults: { format: 'json' }
   post '/api/interests', to: 'interests#create_interest', defaults: { format: 'json' }
-  post '/api/interests/:id', to: 'interests#edit_interest', defaults: { format: 'json' }
+  put '/api/interests/:id', to: 'interests#edit_interest', defaults: { format: 'json' }
   delete '/api/interests/:id', to: 'interests#destroy_interest', defaults: { format: 'json' }
 
   # Activities routing

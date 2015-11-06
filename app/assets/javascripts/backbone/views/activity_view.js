@@ -67,11 +67,9 @@ var ActivityView = Backbone.View.extend({
         var activity = new Activity();
         activity.url = "/api/activities/" + this.activity_id + "/dislike";
         var token = Cookies.get('login-token');
-        // activity.attributes = {id:this.activity_id, user_id:this.user.id,
-        //                       token:token};
-        activity.save({
-            id:this.activity_id, user_id:this.user.id,
-                token:token},
+        activity.attributes = {id:this.activity_id, user_id:this.user.id,
+                              token:token};
+        activity.save(activity.attributes,
             {
             success: function(userSession, response) {
                 if (response['status']== -1){

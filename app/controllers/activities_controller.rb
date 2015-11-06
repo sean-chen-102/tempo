@@ -211,7 +211,7 @@ class ActivitiesController < ApplicationController
 		user = User.find_by(id: user_id)
 
 		if not user.nil?
-			if not token.nil? and user_has_permission(User.authenticate_token(token), @user.id) # if the token was provided and is valid and the user has permission
+			if not token.nil? and user_has_permission(User.authenticate_token(token), user.id) # if the token was provided and is valid and the user has permission
 				if not @activity.nil?
 
 					# Check if activity is in user's liked_list
@@ -273,7 +273,7 @@ class ActivitiesController < ApplicationController
 		user = User.find_by(id: user_id)
 
 		if not user.nil?
-			if not token.nil? and user_has_permission(User.authenticate_token(token), @user.id) # if the token was provided and is valid and the user has permission
+			if not token.nil? and user_has_permission(User.authenticate_token(token), user.id) # if the token was provided and is valid and the user has permission
 				if not @activity.nil?
 					# Check if activity is in user's disliked_list
 					if user.disliked_list.include? @activity.id
@@ -334,7 +334,7 @@ class ActivitiesController < ApplicationController
 		user = User.find_by(id: user_id)
 
 		if not user.nil?
-			if not token.nil? and user_has_permission(User.authenticate_token(token), @user.id) # if the token was provided and is valid and the user has permission
+			if not token.nil? and user_has_permission(User.authenticate_token(token), user.id) # if the token was provided and is valid and the user has permission
 				if not @activity.nil?
 					status = 1
 					user.completed_activities.push(@activity.id)

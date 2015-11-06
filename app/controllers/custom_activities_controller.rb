@@ -191,7 +191,7 @@ class CustomActivitiesController < ApplicationController
 		user = User.find_by(id: user_id)
 
 		if not user.nil?
-			if not token.nil? and user_has_permission(User.authenticate_token(token), @user.id) # if the token was provided and is valid and the user has permission
+			if not token.nil? and user_has_permission(User.authenticate_token(token), user.id) # if the token was provided and is valid and the user has permission
 				if not @custom_activity.nil?
 					status = 1
 					user.completed_custom_activities.push(@custom_activity.id)

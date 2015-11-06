@@ -29,11 +29,12 @@ var CreateCustomActivityView = Backbone.View.extend({
         $('.testDiv').html(customActTemplate);
       };
 
-      this.customActivities.fetch({
-        success: function(data){
-          renderData();
-        }
-      });
+      renderData();
+      // this.customActivities.fetch({
+      //   success: function(data){
+      //     renderData();
+      //   }
+      // });
     },
     createActivity: function (e){
       alert("Test");
@@ -51,9 +52,11 @@ var CreateCustomActivityView = Backbone.View.extend({
       console.log(typeof completion_time);
       this.model.attributes.token = Cookies.get('login-token');
 
+      console.log(this.model.attributes);
       this.model.url = "/api/users/" + this.user.id + "/custom_activities";
+      console.log("Going to create custom activity");
 
-      this.model.save(this.model.attributes, {
+      this.model.save(this.model.attributes, {        
           success: function(userSession, response) {
             console.log("success!");
             console.log(userSession);

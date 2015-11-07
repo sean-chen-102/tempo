@@ -5,8 +5,6 @@ Rails.application.routes.draw do
   # Routes for the frontend
   get 'tempo', to: 'tempo#index'
 
-  # match '*path', to: 'application#catch', via: [:get, :post, :put, :patch, :delete]
-
   # Users routing
   get '/api/users', to: 'users#get_all_users', defaults: { format: 'json' }
   get '/api/users/:id', to: 'users#get_user', defaults: { format: 'json' }

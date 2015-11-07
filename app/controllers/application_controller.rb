@@ -28,21 +28,8 @@ class ApplicationController < ActionController::Base
 			@response_hash["errors"] = error_list
 		end
 
-		def replace_hash(new_hash)
-			@response_hash = new_hash
-		end
-
 		def get_json
 			return @response_hash.to_json
-		end
-	end
-
-	# Catch any undefined routes
-	def catch
-		json_response = { "status": -1, "message": "Route not found" }.to_json
-		respond_to do |format|
-			format.json { render json: json_response }
-      format.html { render :error_404 } # display custom 404 page if User enters URL wrong
 		end
 	end
 

@@ -148,10 +148,6 @@ class ActivitiesController < ApplicationController
 	  	json_response["activities"] = []
 	  end
 
-	  if status != 1
-	  	json_response["errors"] = error_list
-	  end
-
 	  json_response["status"] = status
 	  json_response = json_response.to_json
 
@@ -180,11 +176,11 @@ class ActivitiesController < ApplicationController
 		end
 
 		if status != 1
-  		json_response["errors"] = error_list
-  	end
+  			json_response["errors"] = error_list
+  		end
 
-  	json_response["status"] = status
-  	json_response = json_response.to_json
+  		json_response["status"] = status
+  		json_response = json_response.to_json
 
 		respond_to do |format|
 			format.json { render json: json_response }
@@ -208,11 +204,11 @@ class ActivitiesController < ApplicationController
 		end
 
 		if status == -1
-  		json_response["errors"] = error_list
-  	end
+  			json_response["errors"] = error_list
+  		end
 
-  	json_response["status"] = status
-  	json_response = json_response.to_json
+  		json_response["status"] = status
+  		json_response = json_response.to_json
 
 		respond_to do |format|
 			format.json { render json: json_response }
@@ -246,12 +242,11 @@ class ActivitiesController < ApplicationController
 					end
 					@user.liked_list.push(@activity.id)
 
-					if @activity.save and @user.save
-						status = 1
-						json_response["like_count"] = @activity.like_count
-					else
-						error_list.append("Error: could not save new like_count.")
-					end
+					@activity.save
+					@user.save
+					status = 1
+					json_response["like_count"] = @activity.like_count
+				
 				end
 			else
 				error_list.append("Error: activity ##{activity_id} does not exist.")
@@ -300,12 +295,12 @@ class ActivitiesController < ApplicationController
 				 	end
 
 				 	@user.disliked_list.push(@activity.id)
-				 	if @activity.save and @user.save
-				 		status = 1
-				 		json_response["like_count"] = @activity.like_count
-				 	else
-				 		error_list.append("Error: could not save new like_count.")
-				 	end
+				 	
+				 	@activity.save
+				 	@user.save
+				 	status = 1
+				 	json_response["like_count"] = @activity.like_count
+				 	
 				end
 			else
 				error_list.append("Error: activity ##{activity_id} does not exist.")
@@ -350,7 +345,7 @@ class ActivitiesController < ApplicationController
 				end
 			else
 				error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
-    		status = -2
+    			status = -2
 			end	
 		else
 			error_list.append("Error: user_id is not valid")

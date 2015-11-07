@@ -376,7 +376,7 @@ class UsersController < ApplicationController
   def get_completed_activities
     status = -1
     error_list = []
-    json_response = JsonResponse.new
+    json_response = {}
     token = params[:token]
 
     if not @user.nil?
@@ -389,8 +389,7 @@ class UsersController < ApplicationController
           end
         end
         @user.save
-
-        json_response["completed_activities"] = @user.completed_activities
+        json_response["completed_activities"] =  @user.completed_activities
       else
         error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
         status = -2
@@ -400,11 +399,11 @@ class UsersController < ApplicationController
     end
 
     if status != 1
-      json_response.set_errors(error_list)    
+      json_response["errors"] = error_list
     end
 
-    json_response.set_status(status)
-    json_response = json_response.to_json
+    json_response["status"] = status
+    json_response = json_response.as_json
 
     respond_to do |format|
       format.json { render json: json_response }
@@ -431,7 +430,7 @@ class UsersController < ApplicationController
         end
         @user.save
 
-        json_response["completed_custom_activities"] = @user.completed_custom_activities
+        json_response["completed_custom_activities"] =  @user.completed_custom_activities
       else
         error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
         status = -2
@@ -441,10 +440,10 @@ class UsersController < ApplicationController
     end
 
     if status != 1
-      json_response.set_errors(error_list)  
+      json_response["errors"] = error_list
     end
 
-    json_response.set_status(status)
+    json_response["status"] = status
     json_response = json_response.to_json
 
     respond_to do |format|
@@ -456,11 +455,7 @@ class UsersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       if not params[:id].nil? and params[:id].respond_to?(:to_i)
-        begin
-          @user = User.find_by(id: params[:id])
-        rescue ActiveRecord::RecordNotFound
-          @user = nil
-        end
+        @user = User.find_by(id: params[:id])
       end
     end
 

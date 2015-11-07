@@ -18649,7 +18649,7 @@ window.Tempo = {
   Views: {},
   Routers: {},
   initialize: function() {
-  	console.log("Initiaasdkljaslkdjasl");
+  	console.log("Tempo.js Initiliazed");
   }
 };
 
@@ -23138,36 +23138,54 @@ var __module0__ = (function(__dependency1__, __dependency2__, __dependency3__, _
 
   return __module0__;
 }));
-(function() { this.JST || (this.JST = {}); this.JST["backbone/templates/activities/activity"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<td>',  title ,'</td>\n<td>',  content ,'</td>\n<td>',  completion_time ,'</td>\n<td>',  content_type ,'</td>\n<td>',  link ,'</td>\n\n<td><a href="#/',  id ,'">Show</a></td>\n<td><a href="#/',  id ,'/edit">Edit</a></td>\n<td><a href="#/',  id ,'/destroy" class="destroy">Destroy</a></td>\n');}return __p.join('');};
+(function() { this.JST || (this.JST = {}); this.JST["backbone/templates/activities/activity"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<div class="activity">\n\t<h3 id="title">',  title ,'</h3>\n\t<div id="likes">Likes: <div id="like-count">',  likes ,'</div></div>\n\t<div id="dislikes">Disikes: <div id="dislike-count">',  dislikes ,'</div></div>\n\t<button class=\'like-btn\'>Like</button>\n\t<button class=\'dislike-btn\'>Dislike</button><br>\n\t<div id="content"><p>',  content ,'</p></div>\n\t<a id="link" href=\'',  link ,'\'> Link </a><br>\n\t<a href=\'tempo#activities\'> Back </a>\n</div>\n');}return __p.join('');};
 }).call(this);
-(function() { this.JST || (this.JST = {}); this.JST["backbone/templates/activities/customActivity"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<h3> Create New Custom Activity </h3>\n<form id="custom-activities-form" name="custom-activity"> \n\t<label for="title"> title: </label>\n\t<input type="text" name"title" id="title" value="">\n\t<label for="content"> content: </label>\n\t<input type="text" name"content" id="content" value="">\n\t<label for="completion_time"> completion time: </label>\n\t<input type="text" name"completion_time" id="completion_time" value="">\n\t<br> <button type="button" class="submitCustomActivity"> Submit </button> \n</form>\n');}return __p.join('');};
+(function() { this.JST || (this.JST = {}); this.JST["backbone/templates/activities/createCustomActivity"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<!-- Temporary styling -->\n<!-- TODO: move this away -->\n\n<style>\n\t#custom-activities-form {\n\t\twidth: 350px;\n\t\theight: 350px;\n\t\tborder: 1px solid #dedede;\n\t\tborder-radius: 3px;\n\t\tbackground-color: white;\n\t\tbox-shadow: .5px .5px .5px #888888;\n\t\tmargin: 0 auto;\n\t\ttext-align: center;\n\t\tpadding-top: 30px;\n\t\tpadding-bottom: 20px;\n\t}\n\n\tinput {\n\t\twidth: 300px;\n\t\theight: 30px;\n\t\tmargin-bottom: 15px;\n\t\tpadding-left: 10px;\n\t}\n\n\tlabel {\n\t\tmargin-bottom: 5px;\n\t}\n\n\t.submitCustomActivity {\n\t\twidth: 315px;\n\t\theight: 35px;\n\t    background-color: #66CC99;\n\t    border: 1px solid #2ABB9B;\n\t\tborder-radius: 3px;\n\t\tmargin-top: 10px;\n\t}\n\n\t.submitCustomActivity:hover {\n\t\topacity: .8;\n\t\tcursor: pointer;\n\t}\n</style>\n\n<form id="custom-activities-form" name="custom-activity"> \n\t<h3> Create New Custom Activity </h3>\n\t<label for="title"> Title: </label> <br>\n\t<input type="text" name"title" id="title" value=""> <br>\n\t<label for="content"> Content: </label> <br>\n\t<input type="text" name"content" id="content" value=""> <br>\n\t<label for="completion_time"> Completion time: </label> <br>\n\t<input type="text" name"completion_time" id="completion_time" value=""> <br>\n\t<button type="button" class="submitCustomActivity"> Submit </button> <br>\n</form>\n');}return __p.join('');};
+}).call(this);
+(function() { this.JST || (this.JST = {}); this.JST["backbone/templates/activities/customActivity"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<!-- Temporary styling -->\n<!-- TODO: move this away -->\n');}return __p.join('');};
 }).call(this);
 (function() { this.JST || (this.JST = {}); this.JST["backbone/templates/activities/edit"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<h1>Edit activity</h1>\n\n<form id="edit-activity" name="activity">\n  <div class="field">\n    <label for="title"> title:</label>\n    <input type="text" name="title" id="title" value="',  title ,'" >\n  </div>\n\n  <div class="field">\n    <label for="content"> content:</label>\n    <input type="text" name="content" id="content" value="',  content ,'" >\n  </div>\n\n  <div class="field">\n    <label for="completion_time"> completion_time:</label>\n    <input type="text" name="completion_time" id="completion_time" value="',  completion_time ,'" >\n  </div>\n\n  <div class="field">\n    <label for="content_type"> content_type:</label>\n    <input type="text" name="content_type" id="content_type" value="',  content_type ,'" >\n  </div>\n\n  <div class="field">\n    <label for="link"> link:</label>\n    <input type="text" name="link" id="link" value="',  link ,'" >\n  </div>\n\n  <div class="actions">\n    <input type="submit" value="Update Activity" />\n  </div>\n\n</form>\n\n<a href="#/index">Back</a>\n');}return __p.join('');};
 }).call(this);
-(function() { this.JST || (this.JST = {}); this.JST["backbone/templates/activities/home"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('\n<h3 style=\'color: #e74c3c;\'> Welcome Home ',  name ,'</h3>\n<select id=\'time-selector\'>\n    ');  _(times).each(function(time) { ; __p.push(' \n        <option value=\'',  time.duration ,'\'>',  time.duration ,'</option>\n    ');  }); ; __p.push('\n</select> \n<button class=\'go-btn\'>GO</button>\n<a href=\'tempo#interests\'> See your interests </a>\n\n');}return __p.join('');};
+(function() { this.JST || (this.JST = {}); this.JST["backbone/templates/activities/home"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<!-- Temporary styling -->\n\n<style>\n\t.home-wrapper {\n\t\twidth: 350px;\n\t\theight: 400px;\n\t\tborder: 1px solid green;\n\t\tmargin: 0 auto;\n\t\tmargin-top: 40px;\n\t\ttext-align: center;\n\t\tpadding: 20px;\n\t    border: 1px solid #dedede;\n\t    border-radius: 3px;\n\t    background-color: white;\n\t    box-shadow: .5px .5px .5px #888888;\t\t\n\n\t}\n\n\t.home-wrapper h3 {\n\t\tcolor: #e74c3c;\n\t}\n\n\t.home-wrapper button {\n\t    width: 75px;\n\t    height: 75px;\n\t    display: block;\n\t    margin: 0 auto;\n\t    /*margin: 15px;*/\n\t    margin-top: 15px;\n\t    background-color: #66CC99;\n\t    border: 1px solid #2ABB9B;\n\t    border-radius: 35px;\t\t\n\t}\n\n\t.home-wrapper button:hover {\n\t\topacity: .8;\n\t\tcursor: pointer;\n\t}\n\n</style>\n\n\n<div class="home-wrapper">\n\t<h3> Welcome Home ',  name ,'</h3>\n\t<p>Activity duration</p>\n\t<select id=\'time-selector\'>\n\t    ');  _(times).each(function(time) { ; __p.push(' \n\t        <option value=\'',  time.duration ,'\'>',  time.duration ,'</option>\n\t    ');  }); ; __p.push('\n\t</select> \n\t<button class=\'go-btn\'>GO</button>\n\t<br>\n\t<a href=\'tempo#interests\'> Change interests </a>\n\t<br>\n\t<a href=\'tempo#settings\'> See your settings</a>\n</div>\n');}return __p.join('');};
 }).call(this);
-(function() { this.JST || (this.JST = {}); this.JST["backbone/templates/activities/modal"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">\n  <div class="modal-dialog" role="document">\n    <div class="modal-content">\n      <div class="modal-header">\n        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\n        <h4 class="modal-title" id="myModalLabel">',  title ,'<</h4>\n      </div>\n      <div class="modal-body">\n        <div class="completion-time">Completion time: ',  completion_time ,'</div>\n        <div class="completion-time">Interest Type: ',  content_type ,'</div>\n        ',  body ,'\n      </div>\n      <div class="modal-footer">\n        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\n        <button type="button" class="btn btn-primary">Save changes</button>\n      </div>\n    </div>\n  </div>\n</div>\n');}return __p.join('');};
+(function() { this.JST || (this.JST = {}); this.JST["backbone/templates/activities/interest"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('');}return __p.join('');};
+}).call(this);
+(function() { this.JST || (this.JST = {}); this.JST["backbone/templates/activities/modal"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">\n  <div class="modal-dialog" role="document">\n    <div class="modal-content">\n      <div class="modal-header">\n        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\n        <h4 class="modal-title" id="myModalLabel">',  title ,'</h4>\n      </div>\n      <div class="modal-body">\n        <div class="completion-time">Completion time: ',  completion_time ,'</div>\n        <div class="completion-time">Interest Type: ',  content_type ,'</div>\n        ',  body ,'\n      </div>\n      <div class="modal-footer">\n        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\n      </div>\n    </div>\n  </div>\n</div>\n');}return __p.join('');};
 }).call(this);
 (function() { this.JST || (this.JST = {}); this.JST["backbone/templates/activities/new"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<h1>New activity</h1>\n\n<form id="new-activity" name="activity">\n  <div class="field">\n    <label for="title"> title:</label>\n    <input type="text" name="title" id="title" value="',  title ,'" >\n  </div>\n\n  <div class="field">\n    <label for="content"> content:</label>\n    <input type="text" name="content" id="content" value="',  content ,'" >\n  </div>\n\n  <div class="field">\n    <label for="completion_time"> completion_time:</label>\n    <input type="text" name="completion_time" id="completion_time" value="',  completion_time ,'" >\n  </div>\n\n  <div class="field">\n    <label for="content_type"> content_type:</label>\n    <input type="text" name="content_type" id="content_type" value="',  content_type ,'" >\n  </div>\n\n  <div class="field">\n    <label for="link"> link:</label>\n    <input type="text" name="link" id="link" value="',  link ,'" >\n  </div>\n\n  <div class="actions">\n    <input type="submit" value="Create Activity" />\n  </div>\n\n</form>\n\n<a href="#/index">Back</a>\n');}return __p.join('');};
+}).call(this);
+(function() { this.JST || (this.JST = {}); this.JST["backbone/templates/activities/settings"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<h3 style=\'color: #e74c3c;\'> Settings Page </h3>\n<span>\n<form>\n  New password:<br>\n  <input type="change-password" name="change-password" id="password-change">\n</form>\n  <button class="change-submit"> Change password </button>\n</span>\n<br>\n<a href=\'tempo#home\'> Go Home</a>\n');}return __p.join('');};
 }).call(this);
 (function() { this.JST || (this.JST = {}); this.JST["backbone/templates/activities/show"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<p>\n  <b>Title:</b>\n  ',  title ,'\n</p>\n\n<p>\n  <b>Content:</b>\n  ',  content ,'\n</p>\n\n<p>\n  <b>Completion time:</b>\n  ',  completion_time ,'\n</p>\n\n<p>\n  <b>Content type:</b>\n  ',  content_type ,'\n</p>\n\n<p>\n  <b>Link:</b>\n  ',  link ,'\n</p>\n\n\n<a href="#/index">Back</a>\n');}return __p.join('');};
 }).call(this);
 (function() { this.JST || (this.JST = {}); this.JST["backbone/templates/activities/test"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<a href="#">',  title ,'</a>\n\n');}return __p.join('');};
 }).call(this);
-(function() { this.JST || (this.JST = {}); this.JST["backbone/templates/unauthenticated/login"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<form id="login-form" class="form-horizontal">\n  <fieldset>\n    <div id="email_group" class="control-group">\n      <label class="control-label" >username or email</label>\n      <div class="controls">\n        <input id="username-or-email" name="username-or-email" required="required" />\n      </div>\n    </div>\n    <div id="password_group" class="control-group">\n      <label class="control-label" for="password">Password</label>\n      <div class="controls">\n        <input id="password" name="password" type="password" required="required" />\n      </div>\n    </div>\n    <div class="form-actions">\n    </div>\n  </fieldset>\n</form>\n      <button  value="login" class="btn btn-primary login-submit"> Login </button>\n\n      <a class="create"> create an account </a>\n');}return __p.join('');};
+(function() { this.JST || (this.JST = {}); this.JST["backbone/templates/unauthenticated/login"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<!-- Temporary Styling -->\n<!-- Temporary styling -->\n<style>\n  #login-form {\n    width: 350px;\n    height: 350px;\n    border: 1px solid #dedede;\n    border-radius: 3px;\n    background-color: white;\n    box-shadow: .5px .5px .5px #888888;\n    margin: 0 auto;\n    text-align: center;\n    padding-top: 30px;\n    padding-bottom: 20px;\n  }\n\n  input {\n    width: 300px;\n    height: 30px;\n    margin-bottom: 15px;\n  }\n\n  label {\n    margin-bottom: 5px;\n  }\n\n  fieldset {\n    border: none;\n  }\n\n  #warning {\n  color: red;\n  text-align: center;\n  }\n\n  button {\n    width: 315px;\n    height: 35px;\n    display: block;\n    margin: 0 auto;\n    margin-bottom: 15px;\n    background-color: #66CC99;\n    border: 1px solid #2ABB9B;\n    border-radius: 3px;\n\n  }\n\n  button:hover {\n    opacity: .8;\n    cursor: pointer;\n  }\n</style>\n\n<h1 id="warning"> </h1> \n<form id="login-form" class="form-horizontal">\n      <fieldset>\n        <div id="email_group" class="control-group">\n          <label class="control-label" >Username or Email</label>\n          <div class="controls">\n            <input id="username-or-email" name="username-or-email" required="required" />\n          </div>\n        </div>\n        <div id="password_group" class="control-group">\n          <label class="control-label" for="password">Password</label>\n          <div class="controls">\n            <input id="password" name="password" type="password" required="required" />\n          </div>\n        </div>\n        <div class="form-actions">\n        </div>\n      </fieldset>\n\n\n</form>\n\n      <button value="login" class="login-submit"> Login </button>\n\n      <button class="create"> Create an Account </button>\n\n');}return __p.join('');};
 }).call(this);
-(function() { this.JST || (this.JST = {}); this.JST["backbone/templates/unauthenticated/signup"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<form id="signup-form" class="form-horizontal">\n  <fieldset>\n    <div id="name-group" class="control-group">\n      <label class="control-label" for="login_name">Name</label>\n      <div class="controls">\n        <input id="name" name="name" type="name" required="required" />\n      </div>\n    </div>\n    <div id="username-group" class="control-group">\n      <label class="control-label" for="login_username">Username</label>\n      <div class="controls">\n        <input id="username" name="username" type="username" required="required" />\n      </div>\n    </div>\n    <div id="email_group" class="control-group">\n      <label class="control-label" for="login_user_email">Email</label>\n      <div class="controls">\n        <input id="email" name="email" type="email" required="required" />\n      </div>\n    </div>\n    <div id="password_group" class="control-group">\n      <label class="control-label" for="login_user_password">Password</label>\n      <div class="controls">\n        <input id="password" name="password" type="password" required="required" />\n      </div>\n    </div>\n    <div id="password_confirmation_group" class="control-group">\n      <label class="control-label" for="login_user_password_confirmation">Confirm Password</label>\n      <div class="controls">\n        <input id="password_confirmation" name="password_confirmation" type="password" required="required" />\n      </div>\n    </div>\n\n    <div class="form-actions">\n      <input type="submit" value="Sign up" class="btn btn-primary" />\n    </div>\n  </fieldset>\n</form>\n');}return __p.join('');};
+(function() { this.JST || (this.JST = {}); this.JST["backbone/templates/unauthenticated/signup"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<!-- Temporary Styling -->\n<!-- Temporary styling -->\n<style>\n  #signup-form {\n    width: 350px;\n    height: 350px;\n    border: 1px solid #dedede;\n    border-radius: 3px;\n    background-color: white;\n    box-shadow: .5px .5px .5px #888888;\n    margin: 0 auto;\n    text-align: center;\n    padding-top: 30px;\n    padding-bottom: 20px;\n  }\n\n  #signup-form input {\n    width: 300px;\n    height: 20px;\n    margin-bottom: 15px;\n  }\n\n  #signup-form label {\n    margin-bottom: 5px;\n  }\n\n  #signup-form fieldset {\n    border: none;\n  } \n\n  #signup-form button {\n    width: 300px;\n    height: 35px;\n    display: block;\n    margin: 0 auto;\n    margin-bottom: 15px;\n    background-color: #66CC99;\n    border: 1px solid #2ABB9B;\n    border-radius: 3px;\n    color: #EEEEEE;\n\n  }\n\n  #signup-form button:hover {\n    opacity: .8;\n    cursor: pointer;\n  }\n\n  #signup {\n    margin: 0 auto;\n  }\n</style>\n\n<div id="signup-form">\n<form  class="form-horizontal">\n  <fieldset>\n    <div id="name-group" class="control-group">\n      <label class="control-label" for="login_name">Name</label>\n      <div class="controls">\n        <input id="name" name="name" type="name" required="required" />\n      </div>\n    </div>\n    <div id="username-group" class="control-group">\n      <label class="control-label" for="login_username">Username</label>\n      <div class="controls">\n        <input id="username" name="username" type="username" required="required" />\n      </div>\n    </div>\n    <div id="email_group" class="control-group">\n      <label class="control-label" for="login_user_email">Email</label>\n      <div class="controls">\n        <input id="email" name="email" type="email" required="required" />\n      </div>\n    </div>\n    <div id="password_group" class="control-group">\n      <label class="control-label" for="login_user_password">Password</label>\n      <div class="controls">\n        <input id="password" name="password" type="password" required="required" />\n      </div>\n    </div>\n    <div id="password_confirmation_group" class="control-group">\n      <label class="control-label" for="login_user_password_confirmation">Confirm Password</label>\n      <div class="controls">\n        <input id="password_confirmation" name="password_confirmation" type="password" required="required" />\n      </div>\n    </div>\n\n  </fieldset>\n</form>\n\n    <div class="form-actions">\n      <button type="submit" id="signup" value="Sign up" class="btn btn-primary"> Sign Up </button>\n    </div>\n</div>\n');}return __p.join('');};
 }).call(this);
-var Activity = Backbone.Model.extend({});
+var Activity = Backbone.Model.extend({
+	url: '/api/activities'
+});
 var CustomActivity = Backbone.Model.extend({
   		url: '/api/custom_activities',
   		paramRoot: 'activity',
   		defaults: {
-  			"id": "",
     		"title": "",
     		"content": "",
     		"completion_time": ""
-  		}	
+  		},
+		
+		validate: function (attrs) {
+        if (!attrs.title) {
+            return 'Please provide a title.';
+        }
+        if (!attrs.completion_time) {
+            return 'Please provide a completion time';
+        } else if (isNaN(attrs.completion_time)) {
+        	return 'Completion time must be an integer';
+        }
+    }	
 });
 var Interest = Backbone.Model.extend({});
 var Time = Backbone.Model.extend({
@@ -23181,7 +23199,23 @@ var UserLogin = Backbone.Model.extend({
   		paramRoot: 'user',
   		defaults: {
 			"password": ""
-  		}
+  		},
+  		validate: function (attrs) {
+	        if (attrs.email === undefined && attrs.username === "") {
+	        	console.log(attrs.email === undefined);
+	        	console.log(attrs.username === "");
+	            return 'Please provide an email or username.';
+	        }
+
+	        if (attrs.email) {
+	        	if (attrs.email.indexOf('@') === -1 || attrs.email.indexOf('@') === (attrs.email.length - 1)) {
+	        		return 'Please provide a valid email address';
+	        	}
+	        }
+	        if (!attrs.password) {
+	            return 'Please provide a password';
+	    	}
+    	}
 });
 var User = Backbone.Model.extend({
   		url: '/api/users/',
@@ -23191,7 +23225,8 @@ var User = Backbone.Model.extend({
     		"username": "",
     		"id": "",
     		"interests": "",
-    		"password": ""
+    		"password": "",
+    		"name" : ""
   		}
 });
 var UserRegistration = Backbone.Model.extend({
@@ -23234,18 +23269,18 @@ var Interests = Backbone.Collection.extend({
 		jsonData: null,		
 		//TODO: Api endpoint to retrieve JSON data
 		url: "/api/interests",
-		sync: function(method, model, options){
-			console.log("in mySyncFunction");
-		  if(method=='GET'){
-		    // options.url = model.url; 
-		    console.log(model.url);
-		  }else{
-		     //options.url = model.url + '/save'; 
-		     console.log(model.url);
-		     console.log(options.url);
-		  }
-		  return Backbone.sync(method, model, options);
-		},
+		// sync: function(method, model, options){
+		// 	console.log("in mySyncFunction");
+		//   if(method=='GET'){
+		//     // options.url = model.url; 
+		//     console.log(model.url);
+		//   }else{
+		//      //options.url = model.url + '/save'; 
+		//      console.log(model.url);
+		//      console.log(options.url);
+		//   }
+		//   return Backbone.sync(method, model, options);
+		// },
 		parse: function(data){
 			return data.interests
 		}
@@ -23264,46 +23299,46 @@ var ActivitiesView = Backbone.View.extend({
     initialize: function(options){
       this.options = options;
       this.activities = new Activities();
-      _.bindAll(this, "renderItem");
-    },
-    renderItem: function(model){
-        var activityView = new ActivityView({model: model});
-        activityView.render();
-        $(this.el).append(activityView.el);
     },
     render : function (options){
       // Set scope, construct new activity collection, call fetch, render data on callback function
       var that = this; // To fix callback scoping error
 
       var renderData = function(data) {
-        console.log(data);
-        $(that.el).html("<h4 style='color: #9b59b6;'> Activity List </h4> <br>");
-        that.activities.each(that.renderItem);
-        //TODO: Create and import handlebars for templating     
-        // var html = "<h4 style='color: #9b59b6;'> Activity List </h4> <br>"
-        //       + "<table> <thead> <tr> <th>Title</th> <th>Content</th> <th>Completion Time</th> <th>Content type</th> <th>Id</th> "
-        //       + "<th colspan='3'></th> </tr> </thead>" 
-        //       + " <tbody> ";
+        // TODO: Create and import handlebars for templating     
+        var html = "<h4 style='color: #9b59b6;'> Activity List </h4> <br>"
+              + "<table> <thead> <tr> <th>Title</th><th>Type</th><th>Likes</th><th>Dislikes</th>"
+              + "<th colspan='3'></th> </tr> </thead>" 
+              + " <tbody> ";
 
-        // //Iterate throught he collections of Activities and create a template
-        // that.activities.each(function(model){
-        //   html += "<tr>" 
-        //       + "<td> " +  model.get('title') + " </td>"
-        //       + "<td> " +  model.get('content') + " </td>"
-        //       + "<td> " +  model.get('completion_time') + " </td>"
-        //       + "<td> " +  model.get('content_type') + " </td>"
-        //       + "<td> " +  model.get('id') + " </td>"
-        //     + "</tr>";  
-        // });
-        // html += " </tbody> </table> </br> ";
-        // //Adding activity link
+        //Iterate throught he collections of Activities and create a template
+        console.log("activity");
+        data.each(function(model){
+          html += "<tr>" 
+              + "<td> <a href='/tempo#activities/" +model.get('id') + "'>" +  model.get('title') + " </a> </td>"
+              + "<td> " +  model.get('content_type') + " </td>"
+              + "<td> " +  model.get('like_count') + " </td>"
+              + "<td> " +  model.get('dislike_count') + " </td>"
+              + "</tr>";  
+        });
+        html += " </tbody> </table> </br> ";
+        if (data['length'] == 0){
+          html += "<div id='no-activities' style='color: #9b59b6;'>No activities found for the interests "
+                  + "and amount of time selected</div>";
+        }
+        //Adding activity link
         // html += " <a href='/activities#show' id='add'> Add activity </a>";
-        // $(that.el).html(html);  
+        $(that.el).html(html);  
 
       };
 
       //TODO: Find better way to do this
-      if(this.interests && this.time){
+      if(this.interests.length == 0){
+        html = "<div id='no-activities' style='color: #9b59b6;'>Please select an interest from the list</div>"
+                  + "<a href='/tempo#home'>Back</a>";
+        $(that.el).append(html);
+      }
+      else if(this.time){
         this.activities.fetch({
             success: function(data){
             renderData(data);
@@ -23311,7 +23346,7 @@ var ActivitiesView = Backbone.View.extend({
           dataType: "json",
           data: {"interests": this.interests, "time": this.time}
         });
-      } else if (this.interests){
+      } else {
           this.activities.fetch({
             success: function(data){
             renderData(data);
@@ -23319,22 +23354,8 @@ var ActivitiesView = Backbone.View.extend({
           dataType: "json",
           data: {"interests": this.interests}
         });
-      } else if (this.time){
-        this.activities.fetch({
-          success: function(data){
-          renderData(data);
-        },
-        dataType: "json",
-        data: {"time": this.time}
-      });
-      } else {
-        this.activities.fetch({
-          success: function(data){
-          renderData(data);
-        }
-      });
       }
-    }
+     }
   });
 var ActivityModalView = Backbone.View.extend({
     id: 'base-modal',
@@ -23382,31 +23403,94 @@ var ActivityModalView = Backbone.View.extend({
     }
 });
 var ActivityView = Backbone.View.extend({
+    el: ".testDiv",
     tagName: "li",
     options: null,
+    activity: null,
+    activity_id: null,
     events: {
-        "click a": "clicked"
+        "click .like-btn":"makeLikeRequest",
+        "click .dislike-btn":"makeDislikeRequest",
     },
     initialize: function(options){
       this.options = options;
+      this.activity_id = options['id'];
     },
-    clicked: function(e){
-        e.preventDefault();
-        console.log("creating new activityModal");
-        modalView = new ActivityModalView({model: this.model}); 
-        modalView.show();
-        // alert(this.model.get('content'));
+    renderData: function(data){
+        var template = JST["backbone/templates/activities/activity"]({
+              title: data['title'],
+              content: data['content'],
+              completion_time: data['completion_time'],
+              content_type: data['content_type'],
+              link: data['link'],
+              id: data['id'],
+              likes: data['like_count'],
+              dislikes: data['dislike_count']
+          });
+        $(this.el).html(template);
     },
-
-    render: function(){
+    render: function(options){
         console.log("activity view render call");
         var that = this;
-        var template = JST["backbone/templates/activities/test"]({
-              title: that.model.get('title'),
-          });
-        $(this.el).append(template);
-
-    }  
+        this.user = options['user'];
+        var activity = new Activity();
+        activity.id = this.activity_id;
+        activity.url = "/api/activities/" + this.activity_id;
+        this.activity = activity;
+        this.activity.fetch({
+            success: function(data){
+                that.renderData(data.attributes['activity']);
+            }
+        });
+    },
+    makeLikeRequest : function(options){
+        //called when the like button is clicked
+        console.log("liked");
+        var activity = new Activity();
+        activity.url = "/api/activities/" + this.activity_id + "/like";
+        var token = Cookies.get('login-token');
+        activity.attributes = {id:this.activity_id, user_id:this.user.id,
+                              token:token};
+        activity.save(activity.attributes,
+            {
+            success: function(userSession, response) {
+                if (response['status']== -1){
+                    console.log("user already liked activity");
+                } else {
+                    console.log("liked!");
+                    $("#like-count").html(response['like_count']);
+                    $("#dislike-count").html(response['dislike_count']);
+                }
+            },
+            error: function(userSession, response) {
+                console.log("failure!");
+            }
+        });
+    },
+    makeDislikeRequest : function(options){
+        //called when the dislike button is clicked
+        console.log("disliked");
+        var activity = new Activity();
+        activity.url = "/api/activities/" + this.activity_id + "/dislike";
+        var token = Cookies.get('login-token');
+        activity.attributes = {id:this.activity_id, user_id:this.user.id,
+                              token:token};
+        activity.save(activity.attributes,
+            {
+            success: function(userSession, response) {
+                if (response['status']== -1){
+                    console.log("user already disliked activity");
+                } else {
+                    console.log("disliked!");
+                    $("#like-count").html(response['like_count']);
+                    $("#dislike-count").html(response['dislike_count']);
+                }
+            },
+            error: function(userSession, response) {
+                console.log("failure!");
+            }
+        });
+    },
   });
 // Custom Activity View
 var CreateCustomActivityView = Backbone.View.extend({
@@ -23419,8 +23503,10 @@ var CreateCustomActivityView = Backbone.View.extend({
     interests: [],
     customActivities : null,
     activities : null,
+    user : null,
     initialize: function(options){
       this.options = options;
+
       this.customActivities = new CustomActivities();
       this.model = new CustomActivity();
       // alert("initialized model for custom activity");
@@ -23428,18 +23514,13 @@ var CreateCustomActivityView = Backbone.View.extend({
     render : function (options){
       // Set scope, construct new activity collection, call fetch, render data on callback function
       var that = this;
-
+      this.user = options.user;
       var renderData = function(){
         // TODO: Move HTML into templates
-        var customActTemplate = JST["backbone/templates/activities/customActivity"]();
+        var customActTemplate = JST["backbone/templates/activities/createCustomActivity"]();
         $('.testDiv').html(customActTemplate);
       };
-
-      this.customActivities.fetch({
-        success: function(data){
-          renderData();
-        }
-      });
+      renderData();
     },
     createActivity: function (e){
       alert("Test");
@@ -23450,12 +23531,18 @@ var CreateCustomActivityView = Backbone.View.extend({
       var title = $('#title').val();
       var content = $('#content').val();
       var completion_time = $('#completion_time').val();
+
       this.model.attributes.title = title;
       this.model.attributes.content = content;
       this.model.attributes.completion_time = completion_time;
-      console.log(this.model.attributes);
+      console.log(typeof completion_time);
+      this.model.attributes.token = Cookies.get('login-token');
 
-      this.model.save(this.model.attributes, {
+      console.log(this.model.attributes);
+      this.model.url = "/api/users/" + this.user.id + "/custom_activities";
+      console.log("Going to create custom activity");
+
+      this.model.save(this.model.attributes, {        
           success: function(userSession, response) {
             console.log("success!");
             console.log(userSession);
@@ -23466,10 +23553,6 @@ var CreateCustomActivityView = Backbone.View.extend({
             alert("failure!");
           }
       });      
-
-
-      
-
     } 
   });
 // Custom Activity View
@@ -23481,6 +23564,7 @@ var CustomActivityView = Backbone.View.extend({
     interests: [],
     customActivities : null,
     activities : null,
+    user: null,
     initialize: function(options){
       this.options = options;
       this.customActivities = new CustomActivities();
@@ -23489,23 +23573,36 @@ var CustomActivityView = Backbone.View.extend({
     render : function (options){
       // Set scope, construct new activity collection, call fetch, render data on callback function
       var that = this; // To fix callback scoping error	
-      var renderData = function(data) {
-      		console.log(data);
+      this.user = options.user;
 
+      var renderData = function(data) {
+
+          // TODO: templating code needs debugging
+          // var template =  JST["backbone/templates/activities/customActivity"]({
+          //     title: data['title'],
+          //     content: data['content'],
+          //     completion_time: data['completion_time'],
+          //     name: that.user.name
+          // });
+          // console.log(template);
 
 	        //TODO: Create and import handlebars for templating     
-	        var html = "<h4 style='color: #9b59b6;'> Custom Activity List </h4> <br>"
-	              + "<table> <thead> <tr> <th>Title</th> <th>Content</th> <th>Completion Time</th> <th>Id</th> "
+	        var html = "<h4 style='color: #9b59b6;'> Custom Activity List for " + that.user.name + "</h4> <br>"
+	              + "<table> <thead> <tr> <th>Title</th> <th>Content</th> <th>Completion Time</th> "
 	              + "<th colspan='3'></th> </tr> </thead>" 
 	              + " <tbody> ";
 
 	        that.customActivities.each(function(model){
-	          html += "<tr>" 
-	              + "<td> " +  model.get('title') + " </td>"
-	              + "<td> " +  model.get('content') + " </td>"
-	              + "<td> " +  model.get('completion_time') + " </td>"
-	              + "<td> " +  model.get('id') + " </td>"
-	            + "</tr>";  
+
+            // We just want Sally"s Custom Activities
+            // if (model.get('id') == that.user.id){
+              html += "<tr>" 
+                  + "<td> " +  model.get('title') + " </td>"
+                  + "<td> " +  model.get('content') + " </td>"
+                  + "<td> " +  model.get('completion_time') + " </td>"
+                  // + "<td> " +  model.get('id') + " </td>"
+                + "</tr>"; 
+            // } 
 	        });
 
 	        html += " </tbody> </table> </br> ";
@@ -23516,46 +23613,18 @@ var CustomActivityView = Backbone.View.extend({
 	        $(that.el).html(html);  
        	};
 
+        // Get users's specific custom activities
+        this.customActivities.url = "/api/users/"+ this.user.id + "/custom_activities?token=" + Cookies.get('login-token');
        	this.customActivities.fetch({
        		success: function(data){
-       			renderData(data);
+       			renderData(data.models);
        		},
+          error: function(data){
+            console.log("ERROR");
+          },
           	dataType: "json",
           	data: {"interests": this.interests, "time": this.time}       		
        	});
-
-        //TODO: Find better way to do this
-        // if(this.interests && this.time){
-        //   this.activities.fetch({
-        // success: function(data){
-        //     renderData(data);
-        //   },
-        //   dataType: "json",
-        //   data: {"interests": this.interests, "time": this.time}
-        // });
-        // } else if (this.interests){
-        //   this.activities.fetch({
-        // success: function(data){
-        //     renderData(data);
-        //   },
-        //   dataType: "json",
-        //   data: {"interests": this.interests}
-        // });
-        // } else if (this.time){
-        //   this.activities.fetch({
-        //   success: function(data){
-        //     renderData(data);
-        //   },
-        //   dataType: "json",
-        //   data: {"time": this.time}
-        // });
-        // } else {
-        // this.activities.fetch({
-        //   success: function(data){
-        //     renderData(data);
-        //   }
-        // });
-        // }
     }
   });
 var HomeView = Backbone.View.extend({
@@ -23568,7 +23637,8 @@ var HomeView = Backbone.View.extend({
     	},
 		initialize: function(options){
 			this.options = options;
-
+			this.interestView = options.interestView;
+			this.activitiesView = options.activitiesView;
 			this.times = new Times(null, {
 	            view: this
 	        });
@@ -23582,9 +23652,10 @@ var HomeView = Backbone.View.extend({
 		},
 		render : function (options){
 			console.log("render home");
+			this.interestView.user = options.user;
+			this.interestView.interests = null;
 			var that = this;
-			console.log(options);
-	        this.name = options.name;
+	        this.name = options.user.name;
 			//TODO: Move template to separate page, custom welcome name
 			//populate the home_template with times collection
 			var home_template = JST["backbone/templates/activities/home"]({
@@ -23599,7 +23670,23 @@ var HomeView = Backbone.View.extend({
 			var index = $('#time-selector')[0].selectedIndex;
 			var duration = this.times.models[index].get('duration');
 			//save duration to activity view object
-			App.Views['activityView'].time = duration;
+			this.activitiesView.time = duration;
+			//save interests to activity view object
+			var interests = this.interestView.selectedInterests;
+			if (interests){
+				this.activitiesView.interests = interests;
+			} else {
+				var that = this;
+				App.Views['interestView'].getInterests({callback: function(data, that){
+					var userInterests = []
+					data.each(function(model){
+						userInterests.push(model.get('name'));
+					});
+					that.activitiesView.interests = userInterests;
+				}, scope: that});
+			}
+			//reset selectedInterests for the next go request
+			this.interestView.selectedInterests = null;
 			//switch view to activities view
 			window.location = '/tempo#activities';
 		},
@@ -23610,97 +23697,85 @@ var InterestView = Backbone.View.extend({
 	tagName : 'li',
 	options: null,
 	events:{
-    	"click #submit-interests":"saveInterests",
+    	"click #submit-temp-interests":"getSelectedInterests",
 	},
 	initialize: function(options){
 		console.log("interests initialize called");
 		this.userInterests = [];
 		this.id = -500;
 		this.options = options;
+		this.user = null;
 		this.numInterests = 0;
-		Backbone.Events.on("user-interests", function(interests) {
-			console.log("user-interests");
-			console.log(interests[1]);
-   			this.userInterests = interests[0];
-   			this.id = interests[1];
-   			console.log(this.id);
-
-			});
-		this.model = new User();
-
+		this.selectedInterests = null;
 	},
-	saveInterests : function(options) {
+	getSelectedInterests : function(options) {
+		//TODO; change so that it can be accessed in other view
 		var that = this;
-		var newInterests = []
+		var selectedInterests = [];
+		console.log('hi');
 		for (var j = 0; j < that.numInterests; j++) {
-			var currInterest = $('interest-' + j);
+			var currInterest = $('#interest-' + j);
 			var name = currInterest.attr('name')
-			if (currInterest.is(":checked") && that.userInterests.indexOf(name) > -1) {
-				newInterests.append(name);
+			if (currInterest.is(":checked")) {
+				selectedInterests.push(name);
 			}
 		}
-		this.model.url = "/api/users/" + this.id + "/interests";
-		this.model.attributes.interests = newInterests;
-
-		this.model.save(this.model.attributes, {
-      		success: function(userSession, response) {
-      			console.log("success!");
-      			console.log(userSession);
-      			console.log(response);
-      			Cookies.set("login-token", response.token);
-      			Backbone.Events.trigger("user-interests", [response.user.interests, response.user.id]);
-      			alert("you successfully logged in!");
-      },
-      		error: function(userSession, response) {
-      			console.log("failure!");
-      		}
-    });
-
-
+		this.selectedInterests = selectedInterests;
+		return selectedInterests;
 	},
 	getInterests : function(options){
+		var that = this;
 		// Fetches the user interests from the database
-		
-	},
-	render : function (options){
-		// Set scope, construct new activity collection, call fetch, render data on callback function
-		var that = this; // To fix callback scoping error
-	    var renderData = function(data){	    	
-			//TODO: Create and import handlebars for templating			
-			var html = "<h4 style='color: #1abc9c;'> Interest List </h4> <br>"
-						+ "<table> <thead> <tr> <th> </th><th>Name</th> <th>Created at</th> <th>Updated At</th> <th>User Id</th> <th>Content</th> "
-						+ "<th colspan='3'></th> </tr> </thead>" 
-						+ " <tbody> ";
-			//Iterate throught he collections of Activities and create a template
-			interests.each(function(model){
-				var checked = "";
-				console.log(that.userInterests);
-				if (that.userInterests.indexOf(model.get('name')) > -1) { 
-					checked = "checked";
-				}
-				html += "<tr>" 
-						+   " <td> <input type=checkbox name=" + model.get('name') +  " id=interest-" + that.numInterests + " " + checked + " >  </td>"
-						+ "<td> " +  model.get('name') + " </td>"
-						+ "<td> " +  model.get('created_at') + " </td>"
-						+ "<td> " +  model.get('updated_at') + " </td>"
-						+ "<td> " +  model.get('user_id') + " </td>"
-					+ "</tr>";	
-				that.numInterests += 1
-			});
-			html += " </tbody> </table> </br> ";
-			html += "<button id=submit-interests> save </button> <br>"; 
-			//Adding activity link
-			html += " <a href='/activities#show' id='add'> Add interest </a>";
-			$(that.el).html(html);	
-	    };
-
 		var interests = new Interests();
-		this.getInterests();	
+		interests.url = "/api/users/" + this.user.id + "/interests";
+		var token = Cookies.get('login-token');
+		interests.url += "?token=" + token;
 		interests.fetch({
 			success: function(data){
-				renderData(data);
+				that.userInterests = data;
+				if (options['callback']){
+					options['callback'](data, options['scope']);
+				}
 			}
 		});
+	},
+	render : function (options){
+		console.log('interest view rendering');
+		this.user = options["user"];
+		// Set scope, construct new activity collection, call fetch, render data on callback function
+		var that = this; // To fix callback scoping error
+		var template = JST["backbone/templates/activities/interest"]({
+    	    });
+        this.$el.html(template);
+
+		this.getInterests({callback:this.renderData, scope:this});
+	},
+	renderData : function(data, that){    	
+		//TODO: Create and import handlebars for templating			
+		var html = "<h4 style='color: #1abc9c;'> Interest List </h4> <br>"
+					+ "<table> <thead> <tr> <th> </th><th>Name</th>"
+					+ "<th colspan='3'></th> </tr> </thead>" 
+					+ " <tbody> ";
+		//Iterate throught he collections of Activities and create a template
+		var numInterests = 0;
+		data.each(function(model){
+			var checked = "checked";
+			// if (that.userInterests.indexOf(model.get('name')) > -1) { 
+			// 	checked = "checked";
+			// }
+			html += "<tr>" 
+					+   " <td> <input type=checkbox name=" + model.get('name') +  " id=interest-" + numInterests + " " + checked + " >  </td>"
+					+ "<td> " +  model.get('name') + " </td>"
+				+ "</tr>";	
+			numInterests += 1
+		});
+		that.numInterests = numInterests;
+		html += " </tbody> </table> </br> ";
+		html += "<button id=submit-temp-interests> save </button> <br>"; 
+		//Adding activity link
+		html += " <a href='/tempo#settings' id='add'> Add interest </a> <br>";
+		html += " <a href='tempo#home'> Go Back</a>"
+		$(that.el).append(html);	
 	}
 });
 var LoginView = Backbone.View.extend({
@@ -23713,6 +23788,7 @@ var LoginView = Backbone.View.extend({
     	},
 		initialize: function(options){
 			this.model = new UserLogin();
+			this.loginDetails = {}
 
 		},
 		render : function (options){
@@ -23732,29 +23808,150 @@ var LoginView = Backbone.View.extend({
 
 			var password = $('#password').val();
 			if(usernameOrEmail.indexOf('@') === -1) {
-				this.model.attributes.username = usernameOrEmail;
+				this.loginDetails.username = usernameOrEmail
 			} else {
-				this.model.attributes.email = usernameOrEmail;
+				this.loginDetails.password = usernameOrEmail
 			}
-			this.model.attributes.password = password
+			this.loginDetails.password = password;
 			console.log(this.model.attributes);
-		    this.model.save(this.model.attributes, {
+		    this.model.save(this.loginDetails, {
 	      		success: function(userSession, response) {
 	      			console.log("success!");
 	      			Cookies.set("login-token", response.token);
 	      			console.log(response);
-	      			Backbone.Events.trigger("user-interests", [response.user.interests, response.user.id]);
-	      			Backbone.history.navigate('home', {trigger: true});  
+	      			if (response.status === 1 ) {
+	      				Backbone.Events.trigger("user-interests", [response.user.interests, response.user.id]);
+	      				Backbone.history.navigate('home', {trigger: true});  
+	      			} else {
+		    			$("#warning").html("Invalid username or password");
+	      			}
 	      },
 	      error: function(userSession, response) {
 	      	console.log("failure!");
 	      }
 	    });
+		    if (this.model.validationError) {
+		    	console.log(this.model);
+		    	$("#warning").html(this.model.validationError);
+  // validate error(s) accessible in model.validationError
+			}
 		},
 		create : function(options) {
 			Backbone.history.navigate('signup', {trigger: true}); 
 		}
 	});
+// Creating View for Interests
+var SettingsView = Backbone.View.extend({
+	el: ".testDiv",
+	tagName : 'li',
+	options: null,
+	events:{
+    	"click #submit-interests":"saveInterests",
+	},
+	initialize: function(options){
+		console.log("settings initialize called");
+		this.userInterests = [];
+		this.user = null;
+		this.options = options;
+		this.numInterests = 0;
+		// Backbone.Events.on("user-interests", function(interests) {
+		// 	console.log("user-interests");
+		// 	console.log(interests[1]);
+  //  			this.userInterests = interests[0];
+  //  			this.id = interests[1];
+  //  			console.log(this.id);
+
+		// 	});
+	},
+	saveInterests : function(options) {
+		var that = this;
+		var newInterests = []
+		for (var j = 0; j < that.numInterests; j++) {
+			var currInterest = $('#interest-' + j);
+			var name = currInterest.attr('name')
+			if (currInterest.is(":checked")) {
+				newInterests.push(name);
+			}
+		}
+		var interest = new Interest();
+		interest.url = "/api/users/" + this.user.id + "/interests";
+		var token = Cookies.get('login-token');
+		interest.attributes = {id:this.user.id, interests:newInterests, token:token};
+		interest.save(interest.attributes, {
+      		success: function(userSession, response) {
+      			console.log("Saved Interest");
+      		},
+      		error: function(userSession, response) {
+      			console.log("failed to save interest");
+      		}
+    	});
+
+
+	},
+	getUserInterests : function(callback, args){
+		// Fetches the user interests from the database
+		var that = this;
+		var interests = new Interests();
+		interests.url = "/api/users/" + this.user.id + "/interests";
+		var token = Cookies.get('login-token');
+		interests.url += "?token=" + token;
+		interests.fetch({
+			success: function(data){
+				that.userInterests = [];
+				data.each(function(model){
+					that.userInterests.push(model.get('name'));
+				});
+				if (args){
+					callback(args);
+				} else {
+					callback();
+				}
+			}
+		});
+	},
+	getInterests : function(that){
+		var interests = new Interests();
+		interests.fetch({
+			success: function(data){
+				that.renderData(data, that);
+			}
+		});
+	},
+	render : function (options){
+		this.user = options["user"];
+		// Set scope, construct new activity collection, call fetch, render data on callback function
+		var that = this; // To fix callback scoping error
+		var template = JST["backbone/templates/activities/settings"]({
+    	    });
+        this.$el.html(template);
+		this.getUserInterests(this.getInterests, this);
+	}, 
+	renderData : function(data, that){	    	
+		//TODO: Create and import handlebars for templating			
+		var html = "<h4 style='color: #1abc9c;'> Interest List </h4> <br>"
+					+ "<table> <thead> <tr> <th> </th>"
+					+ "<th colspan='3'></th> </tr> </thead>" 
+					+ " <tbody> ";
+		//Iterate throught he collections of Activities and create a template
+		var numInterests = 0;
+		console.log(that.userInterests);
+		data.each(function(model){
+			var checked = "";
+			if (that.userInterests.indexOf(model.get('name')) > -1) { 
+				checked = "checked";
+			}
+			html += "<tr>" 
+					+   " <td> <input type=checkbox name=" + model.get('name') +  " id=interest-" + numInterests + " " + checked + " >  </td>"
+					+ "<td> " +  model.get('name') + " </td>"
+				+ "</tr>";	
+			numInterests += 1
+		});
+		that.numInterests = numInterests;
+		html += " </tbody> </table> </br> ";
+		html += "<button id=submit-interests> save </button> <br>"; 
+		$(that.el).append(html);
+    }
+});
 (function() {
   var base,
     extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -23781,85 +23978,15 @@ var LoginView = Backbone.View.extend({
   })(Backbone.View);
 
 }).call(this);
-var ActivityView = Backbone.View.extend({
-    el: ".testDiv",
-    tagName : 'div',
-    options: null,
-    time: null,
-    interests: [],
-    activities : null,
-    initialize: function(options){
-      this.options = options;
-      this.activities = new Activities();
-    },
-    render : function (options){
-      // Set scope, construct new activity collection, call fetch, render data on callback function
-      var that = this; // To fix callback scoping error
-
-      var renderData = function(data) {
-        console.log(data);
-        //TODO: Create and import handlebars for templating     
-        var html = "<h4 style='color: #9b59b6;'> Activity List </h4> <br>"
-              + "<table> <thead> <tr> <th>Title</th> <th>Content</th> <th>Completion Time</th> <th>Content type</th> <th>Id</th> "
-              + "<th colspan='3'></th> </tr> </thead>" 
-              + " <tbody> ";
-
-        //Iterate throught he collections of Activities and create a template
-        that.activities.each(function(model){
-          html += "<tr>" 
-              + "<td> " +  model.get('title') + " </td>"
-              + "<td> " +  model.get('content') + " </td>"
-              + "<td> " +  model.get('completion_time') + " </td>"
-              + "<td> " +  model.get('content_type') + " </td>"
-              + "<td> " +  model.get('id') + " </td>"
-            + "</tr>";  
-        });
-        html += " </tbody> </table> </br> ";
-        //Adding activity link
-        html += " <a href='/activities#show' id='add'> Add activity </a>";
-        $(that.el).html(html);  
-        };
-
-        //TODO: Find better way to do this
-        if(this.interests && this.time){
-          this.activities.fetch({
-        success: function(data){
-            renderData(data);
-          },
-          dataType: "json",
-          data: {"interests": this.interests, "time": this.time}
-        });
-        } else if (this.interests){
-          this.activities.fetch({
-        success: function(data){
-            renderData(data);
-          },
-          dataType: "json",
-          data: {"interests": this.interests}
-        });
-        } else if (this.time){
-          this.activities.fetch({
-          success: function(data){
-            renderData(data);
-          },
-          dataType: "json",
-          data: {"time": this.time}
-        });
-        } else {
-        this.activities.fetch({
-          success: function(data){
-            renderData(data);
-          }
-        });
-        }
-    }
-  });
+var SidebarView = Backbone.View.extend({
+	
+});
 var SignupView = Backbone.View.extend({
 		el: ".testDiv",
 		tagName : 'div',
 
 	  events: {
-	    'submit form': 'signup'
+	    'click #signup': 'signup'
 	  },
 
 	  initialize: function() {
@@ -23896,10 +24023,10 @@ var SignupView = Backbone.View.extend({
 	      success: function(userSession, response) {
 	      	console.log("success!");
 	      	console.log(userSession);
-	      	console.log(response);
+	      	console.log(response.user.token);
 	        el.find('input.btnprimary').prop('value', 'reset');
 	        currentUser = new User(response);
-  			Cookies.set("login-token", response.token);
+  			Cookies.set("login-token", response.user.token);
   			Backbone.history.navigate('home', {trigger: true});  
 
 
@@ -23927,83 +24054,104 @@ var TempoRouter = Backbone.Router.extend({
       'login': 'login',
       "interests": "interests",
       "activities": "activities",
+      "settings":"settings",
       "customActivities": "customActivities",
       "createCustomActivity": "createCustomActivity",
       "activities/:activity":"activity",
       "show": "show"
     },
-    initialize: function() {
-      App.Views['homeView'] = new HomeView();
-      App.Views['activityView'] = new ActivityView()
-      App.Views['interestView'] = new InterestView()
-      App.Views['customActivity'] = new CustomActivityView()
-      App.Views['createCustomActivity'] = new CreateCustomActivityView()
-      App.Views['activitiesView'] = new ActivitiesView();
-      App.Views['loginView'] = new LoginView();
-    },
-    home: function() {
+    verifyUser: function(view) {
+      console.log(Cookies.get("login-token"));
+      console.log("Verify USer Called");
+      console.log(Cookies.get("login-token"));
       var cookie = Cookies.get("login-token");
       var token = new Token();
       token.url += cookie;
-      console.log("hi");
-      console.log(token);
+      var response = {
+        "status": false,
+        "data": ""
+      };
       if (cookie === "undefined" || cookie === undefined) {
-          console.log('undefined cookie');
-          Backbone.history.navigate('login');  
-          App.Views['loginView'].render();
+        return this.renderView("login", "");
       } else {
+        var that = this;
         token.fetch({
             success: function(data){
-              console.log(data);
-              App.Views['homeView'].render({
-                "name" : data.attributes.user.name
-              });
-          }, failure: function(data) {
-            console.log('invalid cookie');
-            Backbone.history.navigate('login');  
-            App.Views['loginView'].render();
-          } 
+              that.renderView(view, data)
+          }
+      });
+      }
+    },
+    renderView : function(view, data) {
+      console.log(view, data);
+      console.log("renderView called");
+      if (view === "login") {
+        Backbone.history.navigate('login');  
+        App.Views['loginView'].render();
+      } else {
+        var userData = data.attributes.user;
+        var user = new User();
+        user.username = userData.username;
+        user.password = userData.password;
+        user.id = userData.id;
+        user.email = userData.email;
+        user.name = userData.name;
+        user.interests = userData.interests;
+        App.Views[view].render({
+            "user" : user
         });
       }
     },
+    initialize: function() {
+      App.Views['interestView'] = new InterestView()
+      App.Views['customActivityView'] = new CustomActivityView()
+      App.Views['createCustomActivityView'] = new CreateCustomActivityView()
+      App.Views['activitiesView'] = new ActivitiesView();
+      App.Views['settingsView'] = new SettingsView();
+      App.Views['loginView'] = new LoginView();
+      App.Views['homeView'] = new HomeView({interestView: App.Views['interestView'],
+                                activitiesView: App.Views['activitiesView']});
+    },
+    home: function() {
+      console.log("The home router was called ");
+      console.log(this.verifyUser("homeView"));
+      this.verifyUser("homeView");
+
+    },
     activities: function(){
       console.log("The activities router was called ");
-      //Constructing View 
-      App.Views['activitiesView'].render()    
-    },
-    activity: function(options) {
-      console.log("The activity router was called");
-      console.log(options);
-      // App.Views[''].render();
+      this.verifyUser("activitiesView");
+   
     },
     interests: function(){
       console.log("The interests router was called ");
-      //Constructing View 
-      App.Views['interestView'].render()      
+      this.verifyUser("interestView");
+     
+    },
+    settings: function(){
+      console.log("The settings router was called ");
+      this.verifyUser("settingsView");
+     
+    },
+    activity: function(activity_id) {
+      console.log("The activity router was called");
+      console.log(activity_id);
+      App.Views['activityView']= new ActivityView({id:activity_id});
+      this.verifyUser("activityView");
     },
     customActivities: function(){
       console.log("The custom Activities router was called ");
-      //Constructing View 
-      App.Views['customActivity'].render()      
+      this.verifyUser("customActivityView");     
     },    
     createCustomActivity: function(){
       console.log("Creating a custom activity");
-      App.Views['createCustomActivity'].render();
-    },
-    show: function(){
-      //This route doesn't do anything yet
-      console.log("The show router was called ");
-      document.getElementById('add').style.color = 'green';
-      var newNode = document.createElement("p");
-      newNode.appendChild(document.createTextNode("This hasn't been implemented yet"));
-      var refNode = document.getElementById("add");
-      refNode.parentNode.insertBefore(newNode, refNode.nextSibling);      
+      this.verifyUser("createCustomActivityView");
     },
     signup: function(){
       console.log("The signup router was called ");
       //Constructing View 
-      App.Views['SignupView'] = new SignupView()
-      App.Views['SignupView'].render()      
+      App.Views['signupView'] = new SignupView()
+      App.Views['signupView'].render()      
     },
     login: function(){
       console.log("The login router was called ");

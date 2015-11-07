@@ -1,3 +1,5 @@
+require 'httparty'
+
 # == Schema Information
 #
 # Table name: activities
@@ -49,6 +51,80 @@ class Activity < ActiveRecord::Base
   # Returns a list of all interests that the specified activity belongs to
   def self.get_interests(activity_id)
     return interests = Interest.joins(:activities).where(activities: {id: activity_id})\
+  end
+
+  # Populates the database with new Activities based on the given keyword, 
+  # which should relate to an interest name.
+  def self.populate_database(keyword)
+    puts "In populate function"
+    potential_activities = GuardianScraper.get_articles_by_keyword(keyword)
+
+    potential_activities.each do |potential_activity|
+      puts "#{potential_activity.calculate_estimated_time()}"
+    end
+
+  end
+
+  # FOR SCRAPING EXTERNAL DATA
+  class Scraper
+  end
+
+  # FOR SCRAPING EXTERNAL DATA FROM THE GUARDIAN
+  class GuardianScraper < Scraper
+    # Example API requests at:
+    # http://explorer.content.guardianapis.com/search?api-key=2fpuqbm55pzzra87m9rvnkgc&show-fields=all&q=technology
+
+    @api_key = "2fpuqbm55pzzra87m9rvnkgc"
+    @base_url = "http://content.guardianapis.com/search"
+
+    def self.get_articles_by_keyword(keyword)
+      # Set up the parameters for a call to the Guardian API
+      params = {}
+      params["api-key"] = @api_key
+      params["show-fields"] = "all"
+      params["q"] = keyword
+
+      # Make the JSON API call
+      body = HTTParty.get(@base_url, query: params).body
+      body = JSON.parse(body)
+      body = body["response"]
+      articles = body["results"]
+      potential_activities = []
+
+      # Create PotentialActivities out of all of the found articles
+      articles.each do |article|
+        unique_id = article["id"]
+        title = article["webTitle"]
+        content = article["fields"]["body"]
+        content_type = "text"
+        link = article["fields"]["webUrl"]
+        wordcount = article["fields"]["wordcount"]
+
+        potential_activity = PotentialActivity.new(unique_id, title, content, content_type, link, wordcount)
+        potential_activities.append(potential_activity)
+      end
+
+      return potential_activities
+    end
+  end
+
+  # A Class that represents a potential new activity that will be added to the database
+  class PotentialActivity
+
+    def initialize(unique_id, title, content, content_type, link, wordcount)
+      @average_words_per_minute = 300
+      @unqiue_id = unique_id
+      @title = title
+      @content = content
+      @content_type = content_type
+      @link = link
+      @wordcount = wordcount.to_i
+    end
+
+    def calculate_estimated_time
+      estimate = (@wordcount / @average_words_per_minute.to_f).ceil # round up
+      return estimate
+    end
   end
 
 end

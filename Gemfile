@@ -18,6 +18,8 @@ gem 'annotate'
 gem 'bcrypt'
 # For JSON Web Token encryption
 gem 'jwt'
+# For making JSON requests
+gem 'httparty'
 
 # Use bootstrap
 gem 'bootstrap-sass', '~> 3.2.0'

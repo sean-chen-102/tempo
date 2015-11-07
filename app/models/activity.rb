@@ -1,3 +1,5 @@
+require 'httparty'
+
 # == Schema Information
 #
 # Table name: activities
@@ -49,6 +51,41 @@ class Activity < ActiveRecord::Base
   # Returns a list of all interests that the specified activity belongs to
   def self.get_interests(activity_id)
     return interests = Interest.joins(:activities).where(activities: {id: activity_id})\
+  end
+
+  # Populates the database with new Activities based on the given keyword, 
+  # which should relate to an interest name.
+  def self.populate_database(keyword)
+    puts "In populate function"
+    #guardian_scraper = GardianScraper.new
+    #guardian_scraper.get_articles_by_keyword(keyword)
+    GuardianScraper.get_articles_by_keyword(keyword)
+  end
+
+  # FOR SCRAPING EXTERNAL DATA
+  class Scraper
+  end
+
+  # FOR SCRAPING EXTERNAL DATA FROM THE GUARDIAN
+  class GuardianScraper < Scraper
+    # Example API requests at:
+    # http://explorer.content.guardianapis.com/search?api-key=2fpuqbm55pzzra87m9rvnkgc&show-fields=all&q=technology
+
+    @api_key = "2fpuqbm55pzzra87m9rvnkgc"
+    @base_url = "http://content.guardianapis.com/search"
+
+    def self.get_articles_by_keyword(keyword)
+      params = {}
+      params["api-key"] = @api_key
+      params["show-fields"] = "all"
+      params["q"] = keyword
+
+      body = HTTParty.get(@base_url, body: params).body
+      body = JSON.parse(body)
+      body = body["response"]
+      articles = body["results"]
+      
+    end
   end
 
 end

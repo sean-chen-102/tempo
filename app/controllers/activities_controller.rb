@@ -199,12 +199,15 @@ class ActivitiesController < ApplicationController
 		status = -1
 		error_list = []
 		json_response = {}
+		activity_id = params["id"]
+		@activity = Activity.find_by(id: activity_id)
 
 		if not @activity.nil?
 			status = 1
 			json_response["like_count"] = @activity.like_count
+			json_response["dislike_count"] = @activity.dislike_count
 		else
-			error_list.append("Error: activity does not exist")
+			error_list.append("Error: activity ##{activity_id} does not exist.")
 		end
 
 		if status == -1
@@ -233,25 +236,31 @@ class ActivitiesController < ApplicationController
 
 		if not @user.nil?
 			if not @activity.nil?
-				# Check if activity is in user's liked_list
-				if @user.liked_list.include? @activity.id
-					error_list.append("Error: user has already liked this activity.")
-				else 
-					# If user has previously disliked post, we need to add two instead of one
-					if @user.disliked_list.include? @activity.id
-						@user.disliked_list.delete(@activity.id)
-						@activity.like_count = @activity.like_count + 2
-					else
-						@activity.like_count = @activity.like_count + 1
-					end
-					@user.liked_list.push(@activity.id)
+				if @user.liked_list.include? @activity.id # we have already liked this
+					status = 1
+					@user.liked_list.delete(@activity.id) # de-like this activity (we are "de-selecting" the thumbs up to neutral state)
+					@user.save
+					@activity.like_count = @activity.like_count - 1
+					@activity.save
+				elsif @user.disliked_list.include? @activity.id # we have already disliked this
+					status = 1
+					@user.disliked_list.delete(@activity.id) # de-dislike this activity
+					@user.liked_list.push(@activity.id) # like this activity (we are switching our dislike to a like)
+					@user.save
+					@activity.like_count = @activity.like_count + 1
+					@activity.dislike_count = @activity.dislike_count - 1
+					@activity.save
+				else # we have not selected like or dislike
+					status = 1
+					@user.liked_list.push(@activity.id) # like this activity from neutral state
+					@user.save
+					@activity.like_count = @activity.like_count + 1
+					@activity.save
+				end
 
-					if @activity.save and @user.save
-						status = 1
-						json_response["like_count"] = @activity.like_count
-					else
-						error_list.append("Error: could not save new like_count.")
-					end
+				if status == 1
+					json_response["like_count"] = @activity.like_count
+					json_response["dislike_count"] = @activity.dislike_count
 				end
 			else
 				error_list.append("Error: activity ##{activity_id} does not exist.")
@@ -287,32 +296,38 @@ class ActivitiesController < ApplicationController
 
 		if not @user.nil?
 			if not @activity.nil?
-				# Check if activity is in user's disliked_list
-				if @user.disliked_list.include? @activity.id
-				 	error_list.append("Error: user has already disliked this activity.")
-				else 
-					# If user has previously liked post, we need to subtract two instead of one
-				 	if @user.liked_list.include? @activity.id
-				 		@user.liked_list.delete(@activity.id)
-				 		@activity.like_count = @activity.like_count - 2
-				 	else
-				 		@activity.like_count = @activity.like_count - 1
-				 	end
+				if @user.disliked_list.include? @activity.id # we have already disliked this
+					status = 1
+					@user.disliked_list.delete(@activity.id) # de-dislike this activity (we are "de-selecting" the thumbs down to neutral state)
+					@user.save
+					@activity.dislike_count = @activity.dislike_count - 1
+					@activity.save
+				elsif @user.liked_list.include? @activity.id # we have already liked this
+					status = 1
+					@user.liked_list.delete(@activity.id) # de-like this activity
+					@user.disliked_list.push(@activity.id) # dislike this activity (we are switching our like to a dislike)
+					@user.save
+					@activity.dislike_count = @activity.dislike_count + 1
+					@activity.like_count = @activity.like_count - 1
+					@activity.save
+				else # we have not selected like or dislike
+					status = 1
+					@user.disliked_list.push(@activity.id) # dislike this activity from neutral state
+					@user.save
+					@activity.dislike_count = @activity.dislike_count + 1
+					@activity.save
+				end
 
-				 	@user.disliked_list.push(@activity.id)
-				 	if @activity.save and @user.save
-				 		status = 1
-				 		json_response["like_count"] = @activity.like_count
-				 	else
-				 		error_list.append("Error: could not save new like_count.")
-				 	end
+				if status == 1
+					json_response["like_count"] = @activity.like_count
+					json_response["dislike_count"] = @activity.dislike_count
 				end
 			else
 				error_list.append("Error: activity ##{activity_id} does not exist.")
 			end
 		else
 			error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
-      status = -2
+  		status = -2
 		end
 
 		if status != 1

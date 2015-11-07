@@ -16,7 +16,7 @@ var ActivitiesView = Backbone.View.extend({
       var renderData = function(data) {
         // TODO: Create and import handlebars for templating     
         var html = "<h4 style='color: #9b59b6;'> Activity List </h4> <br>"
-              + "<table> <thead> <tr> <th>Title</th><th>Type</th><th>Likes</th>"
+              + "<table> <thead> <tr> <th>Title</th><th>Type</th><th>Likes</th><th>Dislikes</th>"
               + "<th colspan='3'></th> </tr> </thead>" 
               + " <tbody> ";
 
@@ -27,6 +27,7 @@ var ActivitiesView = Backbone.View.extend({
               + "<td> <a href='/tempo#activities/" +model.get('id') + "'>" +  model.get('title') + " </a> </td>"
               + "<td> " +  model.get('content_type') + " </td>"
               + "<td> " +  model.get('like_count') + " </td>"
+              + "<td> " +  model.get('dislike_count') + " </td>"
               + "</tr>";  
         });
         html += " </tbody> </table> </br> ";

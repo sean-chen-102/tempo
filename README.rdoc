@@ -1,5 +1,36 @@
 == README
 
-To view this application, please go to: https://tempo169.herokuapp.com/activities#home
+*** Heroku ***
+To view this application, please go to: https://tempo169.herokuapp.com/
 
+
+*** Local Server ***
 To run it locally, have Ruby on Rails installed with Ruby version 2.2.0 and Rails version 4.2.4. Run 'rails s' in the folder to run the server on localhost:3000.
+
+
+*** Tests ***
+To run all of the functional and unit tests on the back end, run:
+rake db:reset
+bundle exec rspec
+	
+	After running these tests, you will also be able to see our code coverage percentage in the terminal. If you'd like to see a visualization of our code coverage, open up the folder in tempo/coverage and open the file index.html in a web browser. Our code coverage should be around ~98.74%.
+
+You can also run some model-only unit tests on the back end through the command:
+rake test:models
+
+To run the front end tests over the Backbone.js framework, run the command:
+bundle exec teaspoon --coverage=default
+
+Note: some Backbone.js tests will fail due to conflicts with Sinon, Teaspoon, and Backbone.js. However, you will
+still be able to see our code coverage for this part.
+
+
+*** Troubleshooting ***
+If things aren't working right, try:
+1. rake db:drop
+2. rake db:create
+3. rake db:migrate
+4. rake db:reset
+5. rake assets:clean
+6. rake assets:precompile
+

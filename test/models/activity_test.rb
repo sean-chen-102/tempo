@@ -11,6 +11,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  like_count      :integer          default(0)
+#  dislike_count   :integer          default(0)
 #
 
 require 'test_helper'

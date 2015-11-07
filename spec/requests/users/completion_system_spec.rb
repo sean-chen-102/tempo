@@ -152,7 +152,6 @@ RSpec.describe "test completing activities and custom_activities - ", :type => :
     end
 
     it "attempts to complete custom_activity (token is bad)" do
-        puts @token
         params = {"user_id": @user_id, "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0MTcyLCJyYW5kb21fc3RyaW5nIjoiZmY0NWM5NTA4NDdmOGFkYjgxMjA2NTc2ZGU0NGQxNWUiLCJleHAiOjE0NDc0NzMwNzN9.dAn-gqtjTLxJg6sHJ6yT6ktQ-umiTzuDz1c-QzCCiLQ"}
         put "/api/custom_activities/#{@custom_activity["id"]}/complete", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
         data = JSON.parse(response.body)

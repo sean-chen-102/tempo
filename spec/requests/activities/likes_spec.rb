@@ -20,13 +20,15 @@ RSpec.describe "test activity rating system - ", :type => :request do
   end
 
   ### TEST THE LIKE COUNT OF THE ACTIVITY IS INITIALIZED TO 0 ###
-  it "check that like count is 0 upon initializing" do
+  it "check that like and dislike count is 0 upon initializing" do
     get "/api/activities/#{@activity_id}/like_count", {}, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
     data = JSON.parse(response.body)
     expect(data["status"]).to eq(1)
     
     like_count = data["like_count"]
+    dislike_count = data["dislike_count"]
     expect(like_count).to eq(0) # the like count should start at 0
+    expect(dislike_count).to eq(0) # the dislike count should start at 0
   end
 
   ### TEST THE LIKE COUNT OF AN ACTIVITY THAT DOESN'T EXIST ###
@@ -44,20 +46,38 @@ RSpec.describe "test activity rating system - ", :type => :request do
     data = JSON.parse(response.body)
     expect(data["status"]).to eq(1)
     like_count = data["like_count"]
+    dislike_count = data["dislike_count"]
     expect(like_count).to eq(1) # the activity should have only been liked once
+    expect(dislike_count).to eq(0) # the activity shouldn't have been disliked yet
 
-    # Try to like the activity again - should fail
+    # Try to like the activity again - should reset it to zero
     params = { "token": @token }
     put "/api/activities/#{@activity_id}/like", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
     data = JSON.parse(response.body)
-    expect(data["status"]).to eq(-1)
+    expect(data["status"]).to eq(1)
+    like_count = data["like_count"]
+    dislike_count = data["dislike_count"]
+    expect(like_count).to eq(0) # the activity should have its likes decremented
+    expect(dislike_count).to eq(0) # the activity shouldn't have been disliked yet
 
     # Check the like count
     get "/api/activities/#{@activity_id}/like_count", {}, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
     data = JSON.parse(response.body)
     expect(data["status"]).to eq(1)
     like_count = data["like_count"]
-    expect(like_count).to eq(1) # the like count should have stayed at 1
+    dislike_count = data["dislike_count"]
+    expect(like_count).to eq(0) # the like count should have stayed at 0
+    expect(dislike_count).to eq(0) # the dislike count should have stayed at 0
+
+    # Try to like the activity again - should increment by 1
+    params = { "token": @token }
+    put "/api/activities/#{@activity_id}/like", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body)
+    expect(data["status"]).to eq(1)
+    like_count = data["like_count"]
+    dislike_count = data["dislike_count"]
+    expect(like_count).to eq(1) # the activity should have its likes decremented
+    expect(dislike_count).to eq(0) # the activity shouldn't have been disliked yet
 
     # Delete the User to make sure lazy deletion happens
     params = { "token": @token }
@@ -65,6 +85,15 @@ RSpec.describe "test activity rating system - ", :type => :request do
     data = JSON.parse(response.body) # grab the body of the server response
     status = data["status"]
     expect(status).to eq(1) # we should have a success
+
+    # Check the like count
+    get "/api/activities/#{@activity_id}/like_count", {}, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body)
+    expect(data["status"]).to eq(1)
+    like_count = data["like_count"]
+    dislike_count = data["dislike_count"]
+    expect(like_count).to eq(0) # the like count should have been reset to 0
+    expect(dislike_count).to eq(0) # the dislike count should have stayed at 0
   end
 
   ### TEST LIKING WITH BAD INPUT ###
@@ -90,20 +119,38 @@ RSpec.describe "test activity rating system - ", :type => :request do
     data = JSON.parse(response.body)
     expect(data["status"]).to eq(1)
     like_count = data["like_count"]
-    expect(like_count).to eq(-1) # the activity should have a negative like count
+    dislike_count = data["dislike_count"]
+    expect(like_count).to eq(0) # the activity should have no like count
+    expect(dislike_count).to eq(1) # the activity should have been disliked once
 
-    # Try to dislike the activity again - should fail
+    # Try to dislike the activity again - should reset it to zero
     params = { "token": @token }
     put "/api/activities/#{@activity_id}/dislike", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
     data = JSON.parse(response.body)
-    expect(data["status"]).to eq(-1)
+    expect(data["status"]).to eq(1)
+    like_count = data["like_count"]
+    dislike_count = data["dislike_count"]
+    expect(like_count).to eq(0) # the activity should have no like count
+    expect(dislike_count).to eq(0) # the activity should have dislike count reset to zero
 
     # Check the like count
     get "/api/activities/#{@activity_id}/like_count", {}, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
     data = JSON.parse(response.body)
     expect(data["status"]).to eq(1)
     like_count = data["like_count"]
-    expect(like_count).to eq(-1) # the like count should have stayed at -1
+    dislike_count = data["dislike_count"]
+    expect(like_count).to eq(0) # the activity should have no like count
+    expect(dislike_count).to eq(0) # the activity should have no dislike count
+
+    # Try to dislike the activity again - should add one to it
+    params = { "token": @token }
+    put "/api/activities/#{@activity_id}/dislike", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body)
+    expect(data["status"]).to eq(1)
+    like_count = data["like_count"]
+    dislike_count = data["dislike_count"]
+    expect(like_count).to eq(0) # the activity should have no like count
+    expect(dislike_count).to eq(1) # the activity should have had its dislike count incremented
 
     # Delete the User to make sure lazy deletion happens
     params = { "token": @token }
@@ -111,6 +158,15 @@ RSpec.describe "test activity rating system - ", :type => :request do
     data = JSON.parse(response.body) # grab the body of the server response
     status = data["status"]
     expect(status).to eq(1) # we should have a success
+
+    # Check the like count after user deletion
+    get "/api/activities/#{@activity_id}/like_count", {}, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body)
+    expect(data["status"]).to eq(1)
+    like_count = data["like_count"]
+    dislike_count = data["dislike_count"]
+    expect(like_count).to eq(0) # the activity should have no like count
+    expect(dislike_count).to eq(0) # the activity should have no dislike count
   end
 
   ### TEST DISLIKING WITH BAD INPUT ###
@@ -136,7 +192,9 @@ RSpec.describe "test activity rating system - ", :type => :request do
     data = JSON.parse(response.body)
     expect(data["status"]).to eq(1)
     like_count = data["like_count"]
-    expect(like_count).to eq(-1) # the activity should have a negative like count
+    dislike_count = data["dislike_count"]
+    expect(like_count).to eq(0) # the activity should have no like count
+    expect(dislike_count).to eq(1) # the activity should have 1 dislike count
 
     # Try to like the activity
     params = { "token": @token }
@@ -144,13 +202,9 @@ RSpec.describe "test activity rating system - ", :type => :request do
     data = JSON.parse(response.body)
     expect(data["status"]).to eq(1)
     like_count = data["like_count"]
-    expect(like_count).to eq(1) # the activity should have a positive like count
-
-    # Try to like the activity again
-    params = { "token": @token }
-    put "/api/activities/#{@activity_id}/like", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
-    data = JSON.parse(response.body)
-    expect(data["status"]).to eq(-1)
+    dislike_count = data["dislike_count"]
+    expect(like_count).to eq(1) # the activity should have 1 like count
+    expect(dislike_count).to eq(0) # the activity should have no dislike count
 
     # Dislike the activity again
     params = { "token": @token }
@@ -158,7 +212,8 @@ RSpec.describe "test activity rating system - ", :type => :request do
     data = JSON.parse(response.body)
     expect(data["status"]).to eq(1)
     like_count = data["like_count"]
-    expect(like_count).to eq(-1) # the activity should have a negative like count
+    dislike_count = data["dislike_count"]
+    expect(like_count).to eq(0) # the activity should have no like count
+    expect(dislike_count).to eq(1) # the activity should have 1 dislike count
   end
-
 end

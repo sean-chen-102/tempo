@@ -198,17 +198,22 @@ class UsersController < ApplicationController
       if not token.nil? and user_has_permission(User.authenticate_token(token), @user.id) # if the token was provided and is valid and the user has permission
         @user.destroy # delete the User from the database
         
-        # Update all like and disliked activities
+        # Update all liked activities to not use this User's likes
         @user.liked_list.each do |activity_id|
           activity = Activity.find_by(id: activity_id)
-          activity.like_count = activity.like_count - 1
-          activity.save
+          if not activity.nil? # it's possible that this activity no longer exists
+            activity.like_count = activity.like_count - 1
+            activity.save
+          end
         end
 
+        # Update all disliked activities to not use this User's dislikes
         @user.disliked_list.each do |activity_id|
           activity = Activity.find_by(id: activity_id)
-          activity.like_count = activity.like_count + 1
-          activity.save
+          if not activity.nil? # it's possible that this activity no longer exists
+            activity.dislike_count = activity.dislike_count -1
+            activity.save
+          end
         end
 
         status = 1

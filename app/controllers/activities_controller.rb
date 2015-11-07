@@ -34,7 +34,7 @@ class ActivitiesController < ApplicationController
 	  end
 	end
 
-  	# Edit the fields of a specified Activity 
+	# Edit the fields of a specified Activity 
 	# PUT /api/activities/:id
 	# TODO: update this API request to only allow admins to do this
 	def edit_activity

@@ -20,6 +20,8 @@ gem 'bcrypt'
 gem 'jwt'
 # For making JSON requests
 gem 'httparty'
+# For underscore.js
+gem 'underscore-rails'
 
 # Use bootstrap
 gem 'bootstrap-sass', '~> 3.2.0'

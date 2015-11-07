@@ -148,10 +148,6 @@ class ActivitiesController < ApplicationController
 	  	json_response["activities"] = []
 	  end
 
-	  if status != 1
-	  	json_response["errors"] = error_list
-	  end
-
 	  json_response["status"] = status
 	  json_response = json_response.to_json
 
@@ -180,11 +176,11 @@ class ActivitiesController < ApplicationController
 		end
 
 		if status != 1
-  		json_response["errors"] = error_list
-  	end
+  			json_response["errors"] = error_list
+  		end
 
-  	json_response["status"] = status
-  	json_response = json_response.to_json
+  		json_response["status"] = status
+  		json_response = json_response.to_json
 
 		respond_to do |format|
 			format.json { render json: json_response }
@@ -211,11 +207,11 @@ class ActivitiesController < ApplicationController
 		end
 
 		if status == -1
-  		json_response["errors"] = error_list
-  	end
+  			json_response["errors"] = error_list
+  		end
 
-  	json_response["status"] = status
-  	json_response = json_response.to_json
+  		json_response["status"] = status
+  		json_response = json_response.to_json
 
 		respond_to do |format|
 			format.json { render json: json_response }
@@ -365,7 +361,7 @@ class ActivitiesController < ApplicationController
 				end
 			else
 				error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
-    		status = -2
+    			status = -2
 			end	
 		else
 			error_list.append("Error: user_id is not valid")

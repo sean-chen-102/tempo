@@ -107,10 +107,6 @@ class InterestsController < ApplicationController
       json_response["interests"] = []
     end
 
-    if status == -1
-      json_response["errors"] = error_list
-    end
-
     json_response["status"] = status
     json_response = json_response.to_json
 
@@ -185,11 +181,7 @@ class InterestsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_interest
       if not params[:id].nil? and params[:id].respond_to?(:to_i)
-        begin
-          @interest = Interest.find_by(id: params[:id])
-        rescue ActiveRecord::RecordNotFound
-          @interest = nil
-        end
+        @interest = Interest.find_by(id: params[:id])       
       end
     end
 

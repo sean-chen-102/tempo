@@ -22,7 +22,7 @@ var ActivitiesView = Backbone.View.extend({
 
         //Iterate throught he collections of Activities and create a template
         console.log("activity");
-        that.activities.each(function(model){
+        data.each(function(model){
           html += "<tr>" 
               + "<td> <a href='/tempo#activities/" +model.get('id') + "'>" +  model.get('title') + " </a> </td>"
               + "<td> " +  model.get('content_type') + " </td>"
@@ -31,6 +31,10 @@ var ActivitiesView = Backbone.View.extend({
               + "</tr>";  
         });
         html += " </tbody> </table> </br> ";
+        if (data['length'] == 0){
+          html += "<div id='no-activities' style='color: #9b59b6;'>No activities found for the interests "
+                  + "and amount of time selected</div>";
+        }
         //Adding activity link
         // html += " <a href='/activities#show' id='add'> Add activity </a>";
         $(that.el).html(html);  
@@ -38,7 +42,12 @@ var ActivitiesView = Backbone.View.extend({
       };
 
       //TODO: Find better way to do this
-      if(this.interests != [] && this.time){
+      if(this.interests.length == 0){
+        html = "<div id='no-activities' style='color: #9b59b6;'>Please select an interest from the list</div>"
+                  + "<a href='/tempo#home'>Back</a>";
+        $(that.el).append(html);
+      }
+      else if(this.time){
         this.activities.fetch({
             success: function(data){
             renderData(data);
@@ -46,7 +55,7 @@ var ActivitiesView = Backbone.View.extend({
           dataType: "json",
           data: {"interests": this.interests, "time": this.time}
         });
-      } else if (this.interests){
+      } else {
           this.activities.fetch({
             success: function(data){
             renderData(data);
@@ -54,20 +63,6 @@ var ActivitiesView = Backbone.View.extend({
           dataType: "json",
           data: {"interests": this.interests}
         });
-      } else if (this.time){
-        this.activities.fetch({
-          success: function(data){
-          renderData(data);
-        },
-        dataType: "json",
-        data: {"time": this.time}
-      });
-      } else {
-        this.activities.fetch({
-          success: function(data){
-          renderData(data);
-        }
-      });
       }
-    }
+     }
   });

@@ -186,6 +186,7 @@ class CustomActivitiesController < ApplicationController
 		status = -1
 		json_response = {}
 		error_list = []
+		token = params[:token]
 
 		user_id = params["user_id"]
 		user = User.find_by(id: user_id)

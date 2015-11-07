@@ -20,8 +20,7 @@ var ActivityView = Backbone.View.extend({
               content_type: data['content_type'],
               link: data['link'],
               id: data['id'],
-              likes: data['like_count'],
-              dislikes: data['dislike_count']
+              likes: data['like_count']
           });
         $(this.el).html(template);
     },
@@ -54,8 +53,7 @@ var ActivityView = Backbone.View.extend({
                     console.log("user already liked activity");
                 } else {
                     console.log("liked!");
-                    $("#like-count").html(response['like_count']);
-                    $("#dislike-count").html(response['dislike_count']);
+                    $("#like-count").html(response['like_count'])
                 }
             },
             error: function(userSession, response) {
@@ -78,8 +76,7 @@ var ActivityView = Backbone.View.extend({
                     console.log("user already disliked activity");
                 } else {
                     console.log("disliked!");
-                    $("#like-count").html(response['like_count']);
-                    $("#dislike-count").html(response['dislike_count']);
+                    $("#like-count").html(response['like_count'])
                 }
             },
             error: function(userSession, response) {

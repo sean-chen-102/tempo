@@ -1,9 +1,10 @@
 <div class="activity">
-	<h3><%= title %></h3>
+	<h3 id="title"><%= title %></h3>
 	<div id="likes">Likes: <div id="like-count"><%= likes %></div></div>
+	<div id="dislikes">Disikes: <div id="dislike-count"><%= dislikes %></div></div>
 	<button class='like-btn'>Like</button>
 	<button class='dislike-btn'>Dislike</button><br>
-	<p><%= content %></p>
-	<a href='<%= link %>'> Link </a><br>
+	<div id="content"><p><%= content %></p></div>
+	<a id="link" href='<%= link %>'> Link </a><br>
 	<a href='tempo#activities'> Back </a>
 </div>

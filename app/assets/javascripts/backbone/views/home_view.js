@@ -24,6 +24,7 @@ var HomeView = Backbone.View.extend({
 		render : function (options){
 			console.log("render home");
 			this.interestView.user = options.user;
+			this.interestView.interests = null;
 			var that = this;
 	        this.name = options.user.name;
 			//TODO: Move template to separate page, custom welcome name

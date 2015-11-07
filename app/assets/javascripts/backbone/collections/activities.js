@@ -4,7 +4,6 @@ var Activities = Backbone.Collection.extend({
 		url: "/api/activities",
 		parse: function(data){
 			//TODO: change json key
-			console.log('data');
 			return data.activities
 		}
 	});

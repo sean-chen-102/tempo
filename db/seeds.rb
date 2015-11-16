@@ -359,3 +359,26 @@ history_7.interests << history_interest
 history_8.interests << history_interest
 history_9.interests << history_interest
 history_10.interests << history_interest
+
+# Populate the database with fun facts
+fun_fact_1 = Activity.create({title: "Fun Fact #1", content_type: "text", completion_time: 1, link: "N/A", content: "It's impossible to sneeze with your eyes open!"})
+fun_fact_2 = Activity.create({title: "Fun Fact #2", content_type: "text", completion_time: 1, link: "N/A", content: "On average, vending machines kill more people annually than sharks (13 vs 5)."})
+fun_fact_3 = Activity.create({title: "Fun Fact #3", content_type: "text", completion_time: 1, link: "N/A", content: "Antarctica is technically classified as a desert because it receives less than 2 inches of rainfall per year."})
+fun_fact_4 = Activity.create({title: "Fun Fact #4", content_type: "text", completion_time: 1, link: "N/A", content: "The first movie released by Disney was Snow White and the Seven Dwarfs in 1947."})
+fun_fact_5 = Activity.create({title: "Fun Fact #5", content_type: "text", completion_time: 1, link: "N/A", content: "The first woman to be elected to Congress was Jeannette Rankin of Montana in 1916."})
+fun_fact_6 = Activity.create({title: "Fun Fact #6", content_type: "text", completion_time: 1, link: "N/A", content: "The S in Ulysses S Grant doesn't stand for anything and was in fact a mistake by the congressman who appointed Grant."})
+fun_fact_7 = Activity.create({title: "Fun Fact #7", content_type: "text", completion_time: 1, link: "N/A", content: "It is possible to see Russia from Alaska; the closest islands are 2.5 miles apart."})
+fun_fact_8 = Activity.create({title: "Fun Fact #8", content_type: "text", completion_time: 1, link: "N/A", content: "Contrary to popular belief, the correct word for the plural of octopus is octopuses, not octopi."})
+fun_fact_9 = Activity.create({title: "Fun Fact #9", content_type: "text", completion_time: 1, link: "N/A", content: "Woodrow Wilson is the only U.S. President in history to hold a Ph.D.; he also served as President of Princeton from 1902 to 1910."})
+fun_fact_10 = Activity.create({title: "Fun Fact #10", content_type: "text", completion_time: 1, link: "N/A", content: "The only vegetable or fruit never sold frozen, canned, processed, cooked, or in any form but fresh is lettuce."})
+
+fun_fact_1.interests <<  fun_facts_interest
+fun_fact_2.interests <<  fun_facts_interest
+fun_fact_3.interests <<  fun_facts_interest
+fun_fact_4.interests <<  fun_facts_interest
+fun_fact_5.interests <<  fun_facts_interest
+fun_fact_6.interests <<  fun_facts_interest
+fun_fact_7.interests <<  fun_facts_interest
+fun_fact_8.interests <<  fun_facts_interest
+fun_fact_9.interests <<  fun_facts_interest
+fun_fact_10.interests << fun_facts_interest

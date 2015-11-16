@@ -41,7 +41,7 @@ var LoginView = Backbone.View.extend({
 	      			console.log(response);
 	      			if (response.status === 1 ) {
 	      				Backbone.Events.trigger("user-interests", [response.user.interests, response.user.id]);
-	      				Backbone.history.navigate('home', {trigger: true});  
+	      				Backbone.history.navigate('home', {trigger: true}); 
 	      			} else {
 		    			$("#warning").html("Invalid username or password");
 	      			}

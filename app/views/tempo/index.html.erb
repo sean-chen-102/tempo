@@ -3,26 +3,42 @@
 <!-- Todo: Move to css file -->
 <style>
   body {
-    background-color: #f3f3f3;
+    background-color: #F4F4F4;
     padding: 0px;
     margin: 0;
     font-family: 'Open Sans Condensed', sans-serif;
     font-size: 120%;
   }
+
+  #logo {
+    width: 200px;
+    height: 80px;
+    margin-left: 20px;
+    margin-top: 20px;
+    float: left;
+  }
   
   .menuSelection {
     list-style-type: none;
-    height: 90px;
-    margin-top: -13px;
-    padding-right: 40px;
-    background-color: #3b333f;
+    padding: 0;
+    width: 100%;
+    margin-bottom: 0;
+  }
 
+  .sidebar {
+    width: 15%;
+    height: 100%;
+    float: left;
+    position: fixed;
+    top: 100px;
+    left: 0;
+    background-color: #0b102d;
   }
 
   .menuSelection li{
-    display: inline;
     margin: 10px;
-    float: right;
+    margin-top: 25px;
+    margin-left: 30px;
   }
 
   .menuSelection li a {
@@ -30,20 +46,35 @@
     font-size: 25px;
     font-family: 'Open Sans Condensed', sans-serif;
     text-decoration: none;
-    position: relative;
-    top: 30px;
+    color: #F4F4F4;
+
   }
 
   .menuSelection li a:hover {
     text-decoration: underline;
-    background-color: #3b333f;
+    background-color: #0b102d;
+  }
+
+  .top-bar {
+    width: 15%;
+    position: fixed;
+    background-color: #0b102d;
+    height: 100px;
+    top: 0;
+    left: 0;
+  }
+
+  .nav-bar-divider {
+    width: 100%;
+    height: 1px;
+    background-color: #fbfbfb;
   }
 
   footer {
     position: absolute;
     bottom: 0;
-    height: 65px;
-    background-color: #3b333f;
+    height: 50px;
+    background-color: #0b102d;
     width: 100%;
     color: white;
     font-size: 20px;
@@ -61,9 +92,10 @@
   /*Activity List styling ~~~~~~~~~~~~~~~*/
   #activityTitle {
     margin: 0 auto;
+    margin-top: 50px;
     text-align: center;
     background-color: #D5DDE6;
-    width: 625px;
+    width: 675px;
     height: 45px;
     border-radius: 2px;
     position: relative;
@@ -79,7 +111,7 @@
 
   .activityTable {
     border: 1px solid #eee;
-    width: 625px;
+    width: 675px;
     margin: 0 auto;
     background: rgb(250, 250, 250);
     box-shadow: 1px 1px 1px #999;
@@ -130,16 +162,27 @@
 
 </style>
 
+<div class="top-bar">
+  <img id="logo" src="/tempologo.png" />
+</div>
 
-<ul class="menuSelection"> 
-  <li><a href="/tempo#home"> Home </a></li>
-  <!-- <li><a href="/tempo#activities"> Activities </a></li> -->
-  <!-- <li><a href="/tempo#interests"> Interests </a></li> -->
-  <!-- <li><a href="/tempo#users"> Users</a></li> -->
-  <li><a href="/tempo#settings"> Settings</a></li> 
-  <li><a href="/tempo#customActivities"> Custom Activities</a></li>
- 
-</ul>
+<div class="sidebar">
+  <ul class="menuSelection"> 
+    <li><a href="/tempo#home"> Home </a></li>
+    <div class="nav-bar-divider"> </div>
+    <li><a href="/tempo#customActivities"> Custom Activities</a></li>
+    <div class="nav-bar-divider"> </div>
+    <li><a href="/tempo#settings"> Settings</a></li>
+        <div class="nav-bar-divider"> </div>
+    <div id="logout-button">
+      <li><a href="/tempo#logout"> Logout</a></li>
+      <div class="nav-bar-divider"> </div>
+    </div>
+
+
+  </ul>
+</div>
+
 
 <div class="testDiv">
   <div id="time-options-container"></div>

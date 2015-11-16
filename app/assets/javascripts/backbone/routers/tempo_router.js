@@ -10,7 +10,8 @@ var TempoRouter = Backbone.Router.extend({
       "customActivities": "customActivities",
       "createCustomActivity": "createCustomActivity",
       "activities/:activity":"activity",
-      "show": "show"
+      "show": "show",
+      "logout": 'logout',
     },
     verifyUser: function(view) {
       console.log(Cookies.get("login-token"));
@@ -29,6 +30,7 @@ var TempoRouter = Backbone.Router.extend({
         var that = this;
         token.fetch({
             success: function(data){
+              $("#logout-button").show(); 
               that.renderView(view, data)
           }
       });
@@ -63,6 +65,7 @@ var TempoRouter = Backbone.Router.extend({
       App.Views['loginView'] = new LoginView();
       App.Views['homeView'] = new HomeView({interestView: App.Views['interestView'],
                                 activitiesView: App.Views['activitiesView']});
+      $("#logout-button").hide(); 
     },
     home: function() {
       console.log("The home router was called ");
@@ -110,5 +113,22 @@ var TempoRouter = Backbone.Router.extend({
       //Constructing View 
       App.Views['loginView'].render()      
     },
-
+    logout: function(){
+      console.log("logout called");
+      var token = new LogoutToken();
+      var cookie = Cookies.get("login-token")
+      if (cookie === "undefined" || cookie === undefined) {
+        return;
+      } else {
+        var that = this;
+        token.url += cookie;
+        token.destroy({
+            success: function(data){
+              Cookies.set("login-token", undefined);
+              $("#logout-button").hide(); 
+              that.home();
+            }
+        });
+      }
+    }
   });

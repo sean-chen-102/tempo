@@ -1,3 +1,62 @@
 // Place all the styles related to the custom_activities controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+/*Custom Activity Module*/
+  .customActivity {
+   /* position: relative;
+    top: 45px;
+    border: 1px solid green;
+    margin: 0 auto;
+    width: 400px;
+    height: 400px;
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 1px 1px 1px #eee;
+    border-top-left-radius: 5px;
+  	border-top-right-radius: 5px;*/
+    border: 1px solid #eee;
+    width: 675px;
+    margin: 0 auto;
+    background: rgb(250, 250, 250);
+    box-shadow: 1px 1px 1px #999;
+    border-radius: 2px;
+    text-align: center;  	
+  }
+
+
+  .customActivity header {
+    margin: 0 auto;
+
+  }
+
+  .customActivity header h4 {
+    margin: 0 auto;
+    text-align: center;
+    background-color: #D5DDE6;
+    width: 675px;
+    height: 45px;
+    border-radius: 2px;
+    position: relative;
+    border: 1px solid #eee;
+  }
+
+
+  .customActivityTable thead {
+    background-color: #2980B9;
+    color: white;
+    width: 100%;
+    padding: 0;
+  }
+
+  .customActivityTable th {
+    height: 30px;
+    padding: 3px;
+  }
+
+  .customActivityTable td {
+    height: 30px;
+    border-top: 1px solid #eee;
+  }
+
+
+  

@@ -65,23 +65,12 @@ class Activity < ActiveRecord::Base
     end
   end
 
-  # Populates the database with new Activities based on the given keyword, 
-  # which should relate to an interest name.
-  def self.populate_database(keyword)
-    potential_activities = GuardianScraper.get_articles_by_keyword(keyword)
+  # Populates the database with new Activities based on news.
+  def self.populate_database_with_news()
+    potential_activities = GuardianScraper.get_articles_by_keyword
 
     potential_activities.each do |potential_activity|
-      potential_activity.save_to_database(keyword)
-    end
-  end
-
-  # Populates the database with data based on our interests.
-  def self.populate_database_from_interests()
-    interests = Interest.get_interests
-
-    interests.each do |interest|
-      interest_name = interest.name
-      self.populate_database(interest_name)
+      potential_activity.save_to_database
     end
   end
 
@@ -96,13 +85,14 @@ class Activity < ActiveRecord::Base
 
     @api_key = "2fpuqbm55pzzra87m9rvnkgc"
     @base_url = "http://content.guardianapis.com/search"
+    @interest_name = "News"
 
-    def self.get_articles_by_keyword(keyword)
+    def self.get_articles_by_keyword
       # Set up the parameters for a call to the Guardian API
       params = {}
       params["api-key"] = @api_key
       params["show-fields"] = "all"
-      params["q"] = keyword
+      params["q"] = @interest_name
 
       # Make the JSON API call
       body = HTTParty.get(@base_url, query: params).body
@@ -118,10 +108,9 @@ class Activity < ActiveRecord::Base
         content = article["fields"]["body"]
         content_type = "text"
         link = article["webUrl"]
-        puts "LINK IS: #{link}"
         wordcount = article["fields"]["wordcount"]
 
-        potential_activity = PotentialActivity.new(unique_id, title, content, content_type, link, wordcount)
+        potential_activity = PotentialActivity.new(unique_id, title, content, content_type, link, wordcount, @interest_name)
         potential_activities.append(potential_activity)
       end
 
@@ -132,7 +121,7 @@ class Activity < ActiveRecord::Base
   # A Class that represents a potential new activity that will be added to the database
   class PotentialActivity
 
-    def initialize(unique_id, title, content, content_type, link, wordcount)
+    def initialize(unique_id, title, content, content_type, link, wordcount, interest_name)
       @average_words_per_minute = 300
       @unqiue_id = unique_id
       @title = title
@@ -141,6 +130,7 @@ class Activity < ActiveRecord::Base
       @link = link
       @wordcount = wordcount.to_i
       @completion_time = self.calculate_estimated_time
+      @interest_name = interest_name
     end
 
     def calculate_estimated_time
@@ -148,14 +138,14 @@ class Activity < ActiveRecord::Base
       return estimate
     end
 
-    def save_to_database(interest_name)
+    def save_to_database
       if @wordcount >= @average_words_per_minute
         activity = Activity.new({ title: @title, content: @content, completion_time: @completion_time, content_type: @content_type, link: @link })
         if not activity.save
           puts "ERRORS populating database with new activities: #{activity.errors}"
         end
 
-        activity.add_interest(interest_name)
+        activity.add_interest(@interest_name)
       end
     end
   end

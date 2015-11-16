@@ -114,11 +114,24 @@ class SessionsController < ApplicationController
   # DELETE 'api/logout'
   # Delete the User Session (aka logout). Note that this relies on the client-side front-end
   # to delete the stored JWT token in the browser.
-  # TODO: implement this
+  # Testing: curl -H "Content-Type: application/json" -X DELETE -d '{"token":"<token>"}' http://localhost:3000/api/logout
+  # Requires token
   def logout
-    status = 1
+    status = -1
+    error_list = []
+    json_response = {}
+    token = params["token"]
     message = "Success: please remove the JWT token from the client side."
     json_response = { message: message, status: status }
+
+    if not token.nil? and User.authenticate_token(token) # if the token was provided and is valid
+      status = 1
+    else
+      message = "Error: you don't have permission to log out this user."
+    end
+
+    json_response["status"] = status
+    json_response["message"] = message
 
     respond_to do |format|
       format.json { render json: json_response }

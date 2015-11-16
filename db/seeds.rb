@@ -309,4 +309,6 @@ end
 activity_list_tech[0].interests << news_interest
 activity_list_tech[0].interests << science_interest
 
-# Test
+# Populate the databse via external APIs
+Activity.populate_database_with_news() # add news articles to the database
+

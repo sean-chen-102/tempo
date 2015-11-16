@@ -1,9 +1,9 @@
 <div class="settingsContainer">
-
+	<h1 class="page-header"> Settings </h1>
 	<div class="settingsCol1">
 		<div class="settingsModule">
 			<header>
-				<h3 style='color: #e74c3c;'> Settings Page </h3>
+				<h3 style='color: #e74c3c;'> Change Password </h3>
 			</header>
 		    <section>
 			    <form>
@@ -17,17 +17,16 @@
 			     <button class="change-submit"> Change password </button>
 		    </section> 
 		    <br>
-		    <footer>
-		        <a href='tempo#home'> Go Home</a>        
-		    </footer>
 		</div>	
 	</div>
 
 	<div class="settingsCol2">
 		<div class="settingInterests">
 		    <span>
-		    <h4 style='color: #1abc9c ;'> Interest List </h4>
+		    <header>
+		    	<h3 style='color: #1abc9c ;'> Interests </h3>
 		        <br>
+		    </header>
 		    <table class="settingInterestTable">
 		        <thead>
 		            <tr>
@@ -40,8 +39,7 @@
 		            <tr>
 		                <td>  
 		                    <input type=checkbox name= "<%= interest.name%>"  id="interest-<%= interest.index%>" <%= interest.checked%> >
-		                </td>
-		                <td> <%= interest.name %>
+		               	 	<%= interest.name %>
 		                </td>
 		            </tr>
 		            <% }); %>

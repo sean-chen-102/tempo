@@ -31,7 +31,7 @@ var CustomActivityView = Backbone.View.extend({
 
 	        //TODO: Create and import handlebars for templating     
 	        var html = "<h4 style='color: #9b59b6;'> Custom Activity List for " + that.user.name + "</h4> <br>"
-	              + "<table> <thead> <tr> <th>Title</th> <th>Content</th> <th>Completion Time</th> "
+	              + "<table class='customActivityTable'> <thead> <tr> <th>Title</th> <th>Content</th> <th>Completion Time</th> "
 	              + "<th colspan='3'></th> </tr> </thead>" 
 	              + " <tbody> ";
 

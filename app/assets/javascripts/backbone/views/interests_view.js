@@ -60,7 +60,7 @@ var InterestView = Backbone.View.extend({
 	renderData : function(data, that){    	
 		//TODO: Create and import handlebars for templating			
 		var html = "<h4 style='color: #1abc9c;'> Interest List </h4> <br>"
-					+ "<table> <thead> <tr> <th> </th><th>Name</th>"
+					+ "<table class='interestTable'> <thead> <tr> <th> </th><th>Name</th>"
 					+ "<th colspan='3'></th> </tr> </thead>" 
 					+ " <tbody> ";
 		//Iterate throught he collections of Activities and create a template

@@ -382,3 +382,28 @@ health_7.interests << health_interest
 health_8.interests << health_interest
 health_9.interests << health_interest
 health_10.interests << health_interest
+
+# Populate the database with eli5-based activities
+eli5_1 = Activity.create({ title: "ELI5: Why does it take 5 seconds for credit card companies to take money out of my account but 5 days to refund it?", content_type: "text", completion_time: 10, link: "https://www.reddit.com/r/explainlikeimfive/comments/3hu553/eli5_why_does_it_take_5_seconds_for_credit/", content: "" })
+eli5_2 = Activity.create({ title: "ELI5: How is Orange Juice economically viable when it takes 10 oranges to have enough for a single glass of Orange Juice?", content_type: "text", completion_time: 10, link: "https://www.reddit.com/r/explainlikeimfive/comments/3iarsy/eli5_how_is_orange_juice_economically_viable_when/", content: "" })
+eli5_3 = Activity.create({ title: "ELI5: What about Coca-Cola is so hard to replicate?", content_type: "text", completion_time: 10, link: "https://www.reddit.com/r/explainlikeimfive/comments/3hb0mo/eli5_what_about_cocacola_is_so_hard_to_replicate/", content: "" })
+eli5_4 = Activity.create({ title: "ELI5: What does the TPP (Trans-Pacific Partnership) mean for me and what does it do?", content_type: "text", completion_time: 10, link: "https://www.reddit.com/r/explainlikeimfive/comments/3az0fa/eli5_what_does_the_tpp_transpacific_partnership/", content: "" })
+eli5_5 = Activity.create({ title: "ELI5: What's the difference between an Ave, Rd, St, Ln, Dr, Way, Pl, Blvd etc?", content_type: "text", completion_time: 10, link: "https://www.reddit.com/r/explainlikeimfive/comments/2me7l2/eli5_whats_the_difference_between_an_ave_rd_st_ln/", content: "" })
+eli5_6 = Activity.create({ title: "ELI5: what exactly happens to your brain when you feel mentally exhausted?", content_type: "text", completion_time: 10, link: "https://www.reddit.com/r/explainlikeimfive/comments/3g1moj/eli5_what_exactly_happens_to_your_brain_when_you/", content: "" })
+eli5_7 = Activity.create({ title: "ELI5: How can Roman bridges be still standing after 2000 years, but my 10 year old concrete driveway is cracking?", content_type: "text", completion_time: 10, link: "https://www.reddit.com/r/explainlikeimfive/comments/362pru/eli5_how_can_roman_bridges_be_still_standing/", content: "" })
+eli5_8 = Activity.create({ title: "ELI5: Why are humans so bad at growing teeth?", content_type: "text", completion_time: 10, link: "https://www.reddit.com/r/explainlikeimfive/comments/3g4z79/eli5_why_are_humans_so_bad_at_growing_teeth/", content: "" })
+eli5_9 = Activity.create({ title: "ELI5: Why is Australia full of poisonous creatures, but New Zealand has surprisingly few of them?", content_type: "text", completion_time: 10, link: "https://www.reddit.com/r/explainlikeimfive/comments/3gg3cx/eli5_why_is_australia_chokefull_of_poisonous/", content: "" })
+eli5_10 = Activity.create({ title: "ELI5: How could Germany lose 2 wars and become one of the wealthiest countries in 80 years?", content_type: "text", completion_time: 10, link: "https://www.reddit.com/r/explainlikeimfive/comments/2mp3qh/eli5_how_could_germany_in_a_span_of_80_years/", content: "" })
+
+eli5_1.interests << eli5_interest
+eli5_2.interests << eli5_interest
+eli5_3.interests << eli5_interest
+eli5_4.interests << eli5_interest
+eli5_5.interests << eli5_interest
+eli5_6.interests << eli5_interest
+eli5_7.interests << eli5_interest
+eli5_8.interests << eli5_interest
+eli5_9.interests << eli5_interest
+eli5_10.interests << eli5_interest
+
+

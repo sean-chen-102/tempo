@@ -149,12 +149,14 @@ class Activity < ActiveRecord::Base
     end
 
     def save_to_database(interest_name)
-      activity = Activity.new({ title: @title, content: @content, completion_time: @completion_time, content_type: @content_type, link: @link })
-      if not activity.save
-        puts "ERRORS populating database with new activities: #{activity.errors}"
-      end
+      if @wordcount >= @average_words_per_minute
+        activity = Activity.new({ title: @title, content: @content, completion_time: @completion_time, content_type: @content_type, link: @link })
+        if not activity.save
+          puts "ERRORS populating database with new activities: #{activity.errors}"
+        end
 
-      activity.add_interest(interest_name)
+        activity.add_interest(interest_name)
+      end
     end
   end
 

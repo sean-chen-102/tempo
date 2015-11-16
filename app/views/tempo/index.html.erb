@@ -20,10 +20,9 @@
   
   .menuSelection {
     list-style-type: none;
-    height: 90px;
-    margin-top: -13px;
+    padding: 0;
+    width: 100%;
     margin-bottom: 0;
-    padding-right: 40px;
 
 
   }
@@ -35,11 +34,13 @@
     position: fixed;
     top: 100px;
     left: 0;
-    background-color: #262d63;
+    background-color: #0b102d;
   }
 
   .menuSelection li{
     margin: 10px;
+    margin-top: 25px;
+    margin-left: 30px;
   }
 
   .menuSelection li a {
@@ -47,31 +48,35 @@
     font-size: 25px;
     font-family: 'Open Sans Condensed', sans-serif;
     text-decoration: none;
-    position: relative;
-    top: 30px;
     color: #F4F4F4;
 
   }
 
   .menuSelection li a:hover {
     text-decoration: underline;
-    background-color: #1A1F3F;
+    background-color: #0b102d;
   }
 
   .top-bar {
     width: 15%;
     position: fixed;
-    background-color: #262d63;
+    background-color: #0b102d;
     height: 100px;
     top: 0;
     left: 0;
+  }
+
+  .nav-bar-divider {
+    width: 100%;
+    height: 1px;
+    background-color: #fbfbfb;
   }
 
   footer {
     position: absolute;
     bottom: 0;
     height: 50px;
-    background-color: #262d63;
+    background-color: #0b102d;
     width: 100%;
     color: white;
     font-size: 20px;
@@ -89,12 +94,20 @@
   <img id="logo" src="/tempologo.png" />
 </div>
 
+
 <div class="sidebar">
   <ul class="menuSelection"> 
-    <li><a href="/tempo#logout"> Logout</a></li>
-    <li><a href="/tempo#settings"> Settings</a></li>
-    <li><a href="/tempo#customActivities"> Custom Activities</a></li>
     <li><a href="/tempo#home"> Home </a></li>
+    <div class="nav-bar-divider"> </div>
+    <li><a href="/tempo#customActivities"> Custom Activities</a></li>
+    <div class="nav-bar-divider"> </div>
+    <li><a href="/tempo#settings"> Settings</a></li>
+        <div class="nav-bar-divider"> </div>
+    <div id="logout-button">
+      <li><a href="/tempo#logout"> Logout</a></li>
+      <div class="nav-bar-divider"> </div>
+    </div>
+
 
   </ul>
 </div>

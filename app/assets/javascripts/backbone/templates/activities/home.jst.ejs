@@ -8,14 +8,40 @@
 		margin: 0 auto;
 		margin-top: 40px;
 		text-align: center;
-		padding: 20px;
+		/*padding: 20px;*/
 	    border: 1px solid #dedede;
 	    border-radius: 3px;
 	    background-color: white;
 	    box-shadow: .5px .5px .5px #888888;		
-
+	    position: relative;
 	}
 
+	.home-wrapper header {
+		position: absolute;
+		top: 0;
+		height: 20%;
+		width: 100%;
+		background-color: #2980B9;
+	}
+
+	.home-wrapper header h3{
+		color: #fff;
+	}
+
+	.home-wrapper section {
+		position: absolute;
+		top: 20%;
+		width: 100%;
+		height: 60%;
+	}
+
+	.home-wrapper footer {
+		position: absolute;
+		top: 80%;
+		width: 100%;
+		height: 20%;		
+		background-color: white;
+	}
 	.home-wrapper h3 {
 		color: #e74c3c;
 	}
@@ -41,16 +67,22 @@
 
 
 <div class="home-wrapper">
-	<h3> Welcome Home <%= name %></h3>
-	<p>Activity duration</p>
-	<select id='time-selector'>
-	    <% _(times).each(function(time) { %> 
-	        <option value='<%= time.duration %>'><%= time.duration %></option>
-	    <% }); %>
-	</select> 
-	<button class='go-btn'>GO</button>
-	<br>
-	<a href='tempo#interests'> Change interests </a>
-	<br>
-	<a href='tempo#settings'> See your settings</a>
+	<header>
+		<h3> Welcome Home <%= name %></h3>
+	</header>
+	<section> 
+		<div> Activity duration </div>
+		<select id='time-selector'>
+		    <% _(times).each(function(time) { %> 
+		        <option value='<%= time.duration %>'><%= time.duration %></option>
+		    <% }); %>
+		</select> 
+		<button class='go-btn'>GO</button>
+		<br>
+		<a href='tempo#interests'> Change interests </a>
+		<br>
+		<a href='tempo#settings'> See your settings</a>
+	</section>
+	<footer>
+	</footer>
 </div>

@@ -1,23 +1,63 @@
-<p id="notice"><%= notice %></p>
-
+<!-- <p id="notice"><%= notice %></p> -->
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 <!-- Todo: Move to css file -->
 <style>
   body {
     background-color: #f3f3f3;
+    padding: 0px;
+    margin: 0;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 120%;
   }
   
   .menuSelection {
     list-style-type: none;
+    height: 90px;
+    margin-top: -13px;
+    padding-right: 40px;
+    background-color: #3b333f;
+
   }
 
   .menuSelection li{
     display: inline;
     margin: 10px;
+    float: right;
+  }
+
+  .menuSelection li a {
+    color: white;
+    font-size: 25px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    text-decoration: none;
+    position: relative;
+    top: 30px;
+  }
+
+  .menuSelection li a:hover {
+    text-decoration: underline;
+    background-color: #3b333f;
+  }
+
+  footer {
+    position: absolute;
+    bottom: 0;
+    height: 65px;
+    background-color: #3b333f;
+    width: 100%;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  footer h3 {
+    margin: 0;
+    margin-top: 20px;
+    font-weight: normal;
   }
 </style>
 
 
-<h1>Sidebar</h1>
 <ul class="menuSelection"> 
   <li><a href="/tempo#home"> Home </a></li>
   <li><a href="/tempo#activities"> Activities </a></li>
@@ -32,6 +72,8 @@
 </div>
 
 <div class='createCustomActivity'> </div>
-
-
 <br>
+
+<footer> 
+  <h3>Tempo © 2016</h3>
+</footer>

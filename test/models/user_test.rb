@@ -25,7 +25,7 @@ class UserTest < ActiveSupport::TestCase
 
   def setup
     @user = User.new(name: "Example User", username: "example_user",
-                     email: "user@example.com", password_digest: "password")
+                     email: "user@example.com", password: "password", password_confirmation: "password")
   end
 
   test "user should be valid" do
@@ -65,6 +65,8 @@ class UserTest < ActiveSupport::TestCase
   test "user username must be unique" do
     duplicate_user = @user.dup
     duplicate_user.email = "user1@example.com"
+    @user.password = "password"
+    @user.password_confirmation = "password"
     @user.save!
     assert_not duplicate_user.valid?
   end
@@ -72,6 +74,8 @@ class UserTest < ActiveSupport::TestCase
   test "user email must be unique" do
     duplicate_user = @user.dup
     duplicate_user.username = "example_user1"
+    @user.password = "password"
+    @user.password_confirmation = "password"
     @user.save!
     assert_not duplicate_user.valid?
   end

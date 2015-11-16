@@ -1,2 +1,0 @@
-(function() { this.JST || (this.JST = {}); this.JST["backbone/templates/activities/activity"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<div class="activity">\n\t<h3>',  title ,'</h3>\n\t<button class=\'like-btn\'>Like</button>\n\t<button class=\'dislike-btn\'>Dislike</button><br>\n\t<p>',  content ,'</p>\n\t<a href=\'',  link ,'\'> Link </a><br>\n\t<a href=\'tempo#activities\'> Back </a>\n</div>\n');}return __p.join('');};
-}).call(this);

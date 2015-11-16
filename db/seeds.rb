@@ -13,13 +13,17 @@ user_list = [user_1, user_2]
 
 
 # SET UP INTERESTS
-news_interest = Interest.create({ name: "news" })
-fitness_interest = Interest.create({ name: "fitness" })
-science_interest = Interest.create({ name: "science" })
-technology_interest = Interest.create({ name: "technology" })
+news_interest = Interest.create({ name: "News" })
+fitness_interest = Interest.create({ name: "Fitness" })
+science_interest = Interest.create({ name: "Science" })
+technology_interest = Interest.create({ name: "Technology" })
+food_interest = Interest.create({ name: "Food" })
+eli5_interest = Interest.create({ name: "Explain it like I'm 5" })
+history_interest = Interest.create({ name: "History" })
+
 
 user1_interests = [news_interest, fitness_interest]
-user2_interests = [science_interest, technology_interest, news_interest], fitness_interest
+user2_interests = [science_interest, technology_interest, news_interest, fitness_interest]
 interests = user1_interests + user2_interests
 
 

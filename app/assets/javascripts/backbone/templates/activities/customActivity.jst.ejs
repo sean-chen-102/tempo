@@ -1,2 +1,22 @@
 <!-- Temporary styling -->
 <!-- TODO: move this away -->
+<h4 style='color: #9b59b6;'> Custom Activity List for <%= name%> </h4> <br>
+<table>
+	<thead>
+		<tr>
+			<th>Title</th> <th>Content</th> <th>Time</th> <th>Delete</th>
+			<th colspan='3'> </th>
+		</tr>
+	</thead>
+	<tbody>
+	<% _.each(data, function(custAct) { %> 
+		<tr class='activity <%= custAct.id %>'>
+			<td>  <%= custAct.title%> </td>
+			<td>  <%= custAct.content%> </td>
+			<td>  <%= custAct.time%> </td>
+			<td>  <button class='del-btn' id='<%= custAct.id %>'>Delete</button> </td>
+		</tr>
+		<% }); %>
+	</tbody> 
+</table> </br>
+<a href='/tempo#createCustomActivity' id='add'> Create a Custom Activity </a>

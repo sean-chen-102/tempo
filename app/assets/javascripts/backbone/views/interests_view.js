@@ -59,7 +59,7 @@ var InterestView = Backbone.View.extend({
 	},
 	renderData : function(data, that){    	
 		//TODO: Create and import handlebars for templating			
-		var html = "<div class='interestContainer'> <h4 id='interestsTitle' style='color: #1abc9c;'> Interest List </h4> <br>"
+		var html = "<div class='interestContainer'> <header> <h4 id='interestsTitle' style='color: #1abc9c;'> Interest List </h4> </header> <br>"
 					+ "<table class='interestTable'> <thead> <tr> <th> </th><th>Name</th>"
 					+ "<th colspan='3'></th> </tr> </thead>" 
 					+ " <tbody> ";
@@ -78,10 +78,10 @@ var InterestView = Backbone.View.extend({
 		});
 		that.numInterests = numInterests;
 		html += " </tbody> </table> </br> ";
-		html += "<button id=submit-temp-interests> save </button> <br>"; 
+		html += "<footer> <button id=submit-temp-interests> save </button> <br>"; 
 		//Adding activity link
 		html += " <a href='/tempo#settings' id='add'> Add interest </a> <br>";
-		html += " <a href='tempo#home'> Go Back</a> </div>"
+		html += " <a href='tempo#home'> Go Back</a> </div> </footer>"
 		$(that.el).append(html);	
 	}
 });

@@ -1,3 +1,95 @@
 // Place all the styles related to the Interests controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+  .interestContainer {
+	width: 350px;
+	height: 400px;
+	max-height: 600px;
+	border: 1px solid #dedede;
+	border-radius: 3px;
+	background-color: white;
+	box-shadow: .5px .5px .5px #888888;
+	margin: 0 auto;
+	text-align: center;
+	position: relative;
+	top: 20px;
+	margin-top: 50px;    
+  }
+
+.interestContainer header {
+	position: relative;
+	top: 0;
+	width: 100%;
+	height: 10%;
+	border-bottom: 1px solid #DDD;
+	background: #F4F4F2;
+}
+
+.interestContainer header h4 {
+	position: relative;
+	padding: 10px;
+	margin: 0;
+	font-size: 20px;
+}
+
+
+  .interestTable {
+    width: 100%;
+    position: relative;
+	text-align: center;
+	height: 45%;
+	border-collapse: separate; 
+	border-spacing: .5em;    
+  }
+
+	.interestTable tbody {
+		overflow: scroll;
+	}  
+
+	.interestTable td {
+		font-family: 'Open Sans Condensed', sans-serif;
+		font-size: 100%;
+	}
+
+.interestTable td input {
+	float: left;
+	margin-left: 75px;
+}
+
+.interestTable tbody {
+	margin-bottom: 20px;
+}
+
+.interestContainer footer {
+	margin-top: 20px;
+	background-color: white;
+	position: relative;
+	height: 20%;
+	bottom: 0;
+
+}
+
+.interestContainer footer #submit-temp-interests {
+	width: 300px;
+	height: 35px;
+	display: block;
+	position: relative;
+	margin: 0 auto;
+	background-color: #3498db;
+	border: 1px solid #3498db;
+	border-radius: 3px;
+	color: white;
+	font-size: 15px;
+}
+
+.interestContainer footer #submit-temp-interests:hover {
+	opacity: .8;
+	cursor: pointer;
+}	
+
+
+.interestContainer a {
+	display:block;
+}

@@ -1,0 +1,192 @@
+.settingsContainer {
+	display: inline-block;
+	position: relative;
+	height: 500px;
+	width: 100%;
+	/*border: 1px solid green;*/
+	margin-top: 20px;
+}
+
+.settingsCol1 {
+	position: relative;
+	left: 0;
+	width: 50%;
+	height: 100%;
+	float: left;
+	/*border: 1px solid red;*/
+}
+
+.settingsCol2 {
+	position: relative;
+	right: 0;
+	width: 49%;
+	height: 100%;
+	float: right;
+	/*border: 1px solid yellow;*/
+}	
+
+.settingsModule {
+	margin: 0 auto;
+	text-align: center;
+	width: 350px;
+	height: 350px;
+	border: 1px solid #dedede ;
+	border-radius: 3px;
+	background-color: white;
+	box-shadow: .5px .5px .5px #888888 ;
+	margin: 0 auto;
+	text-align: center;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	font-size: 15px;
+	margin-top: 20px;
+	position: relative;    
+	top: 15px;    
+}
+
+.settingsModule header {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 10%;
+	border-bottom: 1px solid #DDD;
+	background: #F4F4F2;
+}
+
+.settingsModule header h3 {
+	position: relative;
+	margin: 10px;
+}
+
+.settingsModule section {
+	position: absolute;
+	top: 15%;
+	width: 100%;
+	height: 65%;
+}
+
+.settingsModule section p {
+	font-family: 'Open Sans Condensed', sans-serif;
+	margin: 0px;
+}
+
+.settingsModule footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 10%;
+	background: white;
+}
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	background-color: white;
+	color: black;
+	font-size: 110%;
+}
+
+
+.settingsModule input {
+	width: 295px;
+	height: 25px;
+	margin-bottom: 15px;
+	margin-top: 10px;
+}
+
+.settingsModule input:hover {
+	background-color: #E4F1FE ;
+	border: 1px solid #DDD;
+}
+
+.settingsModule button {
+	width: 300px;
+	height: 35px;
+	display: block;
+	position: relative;
+	margin: 0 auto;
+	margin-bottom: 15px;
+	margin-top: 10px;
+	/*background-color: #66CC99 ;*/
+	background-color: #D35C48 ;
+	border: 1px solid #D35C48 ;
+	border-radius: 3px;
+	color: white;
+	font-size: 15px;
+}
+
+.settingsModule button:hover {
+	opacity: .8;
+	cursor: pointer;
+}
+
+
+/*Interests in settings page*/
+
+.settingInterests { 
+	border: 1px solid green;
+	width: 350px;
+	height: 350px;
+	max-height: 600px;
+	border: 1px solid #dedede;
+	border-radius: 3px;
+	background-color: white;
+	box-shadow: .5px .5px .5px #888888;
+	margin: 0 auto;
+	text-align: center;
+	position: relative;
+	top: 90px;
+}
+
+.settingInterests h4 {
+	position: absolute;
+	width: 100%;
+	height: 15%;
+	margin: 0;
+	padding-top: 10px;
+	border-bottom: 1px solid #DDD;
+	background: #F4F4F2;
+}  
+
+.settingInterests .settingInterestTable {
+	position: absolute;
+	top: 15%;
+	width: 100%;
+	height: 45%;
+	margin-top: 10px;
+}
+
+.settingInterests td {
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 100%;
+}
+
+.settingInterests tbody {
+	margin-bottom: 10px;
+}
+
+.settingInterests footer {
+	background-color: white;
+}
+
+.settingInterests footer #submit-interests {
+	width: 300px;
+	height: 35px;
+	display: block;
+	position: relative;
+	margin: 0 auto;
+	margin-bottom: 15px;
+	margin-top: 0px;
+	/*background-color: #66CC99;*/
+	background-color: #3498db;
+	border: 1px solid #3498db;
+	border-radius: 3px;
+	color: white;
+	font-size: 15px;
+}
+
+.settingInterests footer #submit-interests:hover {
+	opacity: .8;
+	cursor: pointer;
+}

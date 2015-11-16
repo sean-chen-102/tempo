@@ -86,8 +86,8 @@ var SettingsView = Backbone.View.extend({
 	}, 
 	renderData : function(data, that){	    	
 		//TODO: Create and import handlebars for templating			
-		var html = "<h4 style='color: #1abc9c;'> Interest List </h4> <br>"
-					+ "<table> <thead> <tr> <th> </th>"
+		var html = "<div class='settingInterests'> <h4 style='color: #1abc9c;'> Interest List </h4> <br>"
+					+ "<table class='settingInterestTable'> <thead> <tr> <th> </th>"
 					+ "<th colspan='3'></th> </tr> </thead>" 
 					+ " <tbody> ";
 		//Iterate throught he collections of Activities and create a template
@@ -106,7 +106,7 @@ var SettingsView = Backbone.View.extend({
 		});
 		that.numInterests = numInterests;
 		html += " </tbody> </table> </br> ";
-		html += "<button id=submit-interests> save </button> <br>"; 
+		html += "<footer> <button id=submit-interests> save </button> <br> </div> </footer>"; 
 		$(that.el).append(html);
     }
 });

@@ -29,9 +29,8 @@ var CreateCustomActivityView = Backbone.View.extend({
       renderData();
     },
     createActivity: function (e){
-      alert("Test");
       var self = this,
-        el = $(this.el);
+      el = $(this.el);
       e.preventDefault();
 
       var title = $('#title').val();
@@ -41,7 +40,6 @@ var CreateCustomActivityView = Backbone.View.extend({
       this.model.attributes.title = title;
       this.model.attributes.content = content;
       this.model.attributes.completion_time = completion_time;
-      console.log(typeof completion_time);
       this.model.attributes.token = Cookies.get('login-token');
 
       console.log(this.model.attributes);
@@ -50,14 +48,19 @@ var CreateCustomActivityView = Backbone.View.extend({
 
       this.model.save(this.model.attributes, {        
           success: function(userSession, response) {
-            console.log("success!");
-            console.log(userSession);
-            console.log(response);
-            alert("yay");
+            window.location = '/tempo#customActivities';
           },
          error: function(userSession, response) {
             alert("failure!");
           }
-      });      
-    } 
+      });    
+       // validate error(s) accessible in model.validationError
+      if (this.model.validationError) {
+          $("#warning").html(this.model.validationError);
+      }  
+    },
+    deleteActivity: function(e){
+      //DELETE /api/users/:id/custom_activities/:cid
+
+    }
   });

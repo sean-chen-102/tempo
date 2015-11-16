@@ -359,3 +359,26 @@ history_7.interests << history_interest
 history_8.interests << history_interest
 history_9.interests << history_interest
 history_10.interests << history_interest
+
+# Populate the database with health-based activities
+health_1 = Activity.create({ title: "Flow through the Heart", content_type: "video", completion_time: 8, link: "https://www.youtube.com/watch?v=7XaftdE_h60", content: "" })
+health_2 = Activity.create({ title: "Lub Dub", content_type: "video", completion_time: 10, link: "https://www.youtube.com/watch?v=-4kGMI-qQ3I", content: "" })
+health_3 = Activity.create({ title: "Meet the heart!", content_type: "video", completion_time: 11, link: "https://www.youtube.com/watch?v=Vi1JK6IYVt8", content: "" })
+health_4 = Activity.create({ title: "Electrical System of the Heart", content_type: "video", completion_time: 10, link: "https://www.youtube.com/watch?v=7K2icszdxQc", content: "" })
+health_5 = Activity.create({ title: "Meet the Lungs", content_type: "video", completion_time: 10, link: "https://www.youtube.com/watch?v=qGiPZf7njqY", content: "" })
+health_6 = Activity.create({ title: "Basics of Metabolism", content_type: "video", completion_time: 12, link: "https://www.youtube.com/watch?v=wQ1QGZ6gJ8w", content: "" })
+health_7 = Activity.create({ title: "What's Inside of Blood?", content_type: "video", completion_time: 12, link: "https://www.youtube.com/watch?v=5MOn8X-tyFw", content: "" })
+health_8 = Activity.create({ title: "How do our kidneys work? (Renal Anatomy)", content_type: "video", completion_time: 8, link: "https://www.youtube.com/watch?v=ctGkLYuUCvU", content: "" })
+health_9 = Activity.create({ title: "Arteries vs. Veins - What's the Difference?", content_type: "video", completion_time: 12, link: "https://www.youtube.com/watch?v=7b6LRebCgb4", content: "" })
+health_10 = Activity.create({ title: "Digesting Food", content_type: "video", completion_time: 17, link: "https://www.youtube.com/watch?v=v2V4zMx33Mc", content: "" })
+
+health_1.interests << health_interest
+health_2.interests << health_interest
+health_3.interests << health_interest
+health_4.interests << health_interest
+health_5.interests << health_interest
+health_6.interests << health_interest
+health_7.interests << health_interest
+health_8.interests << health_interest
+health_9.interests << health_interest
+health_10.interests << health_interest

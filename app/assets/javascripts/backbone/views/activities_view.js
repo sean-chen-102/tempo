@@ -3,6 +3,7 @@ var ActivitiesView = Backbone.View.extend({
     tagName : 'ul',
     options: null,
     time: null,
+    template: 'backbone/templates/activities/activityList',
     interests: [],
     activities : null,
     initialize: function(options){
@@ -14,20 +15,24 @@ var ActivitiesView = Backbone.View.extend({
       var that = this; // To fix callback scoping error
 
       var renderData = function(data) {
-        // TODO: Create and import handlebars for templating     
-        var html = "<h4 style='color: #9b59b6;'> Activity List </h4> <br>"
-              + "<table> <thead> <tr> <th>Title</th><th>Type</th><th>Likes</th><th>Dislikes</th>"
-              + "<th colspan='3'></th> </tr> </thead>" 
+        // TODO: Create and import handlebars for templating   
+
+        // var template = JST["backbone/templates/activities/activityList"]({});
+        // $(this.el).html(template);  
+
+        var html = "<div id='activityTitle'> <h4> Activity List </h4> </div> <br>"
+              + "<table class='activityTable'> <thead> <tr> <th>Title</th><th>Type</th><th>Likes</th><th>Dislikes</th>"
+              + " </tr> </thead>" 
               + " <tbody> ";
 
         //Iterate throught he collections of Activities and create a template
         console.log("activity");
         data.each(function(model){
-          html += "<tr>" 
+          html += "<tr class='tRow'>" 
               + "<td> <a href='/tempo#activities/" +model.get('id') + "'>" +  model.get('title') + " </a> </td>"
-              + "<td> " +  model.get('content_type') + " </td>"
-              + "<td> " +  model.get('like_count') + " </td>"
-              + "<td> " +  model.get('dislike_count') + " </td>"
+              + "<td id='contentType'> " +  model.get('content_type') + " </td>"
+              + "<td id='likeCount'> " +  model.get('like_count') + " </td>"
+              + "<td id='dislikeCount''> " +  model.get('dislike_count') + " </td>"
               + "</tr>";  
         });
         html += " </tbody> </table> </br> ";

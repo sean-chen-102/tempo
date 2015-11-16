@@ -11,7 +11,7 @@
   }
 
   #logo {
-    width: 200px;
+    width: 170px;
     height: 80px;
     margin-left: 20px;
     margin-top: 20px;
@@ -23,8 +23,6 @@
     padding: 0;
     width: 100%;
     margin-bottom: 0;
-
-
   }
 
   .sidebar {
@@ -88,12 +86,83 @@
     margin-top: 20px;
     font-weight: normal;
   }
+
+  /*Activity List styling ~~~~~~~~~~~~~~~*/
+  #activityTitle {
+    margin: 0 auto;
+    margin-top: 50px;
+    text-align: center;
+    background-color: #D5DDE6;
+    width: 675px;
+    height: 45px;
+    border-radius: 2px;
+    position: relative;
+    border: 1px solid #eee;
+  }
+
+  #activityTitle h4 {
+    margin: 0;
+    position: relative;
+    top: 12px;
+    color: #9b59b6;
+  }
+
+  .activityTable {
+    border: 1px solid #eee;
+    width: 675px;
+    margin: 0 auto;
+    background: rgb(250, 250, 250);
+    box-shadow: 1px 1px 1px #999;
+    border-radius: 2px;
+    text-align: center;
+  }
+
+  .activityTable thead {
+    background-color: #2980B9;
+    color: white;
+    width: 100%;
+    padding: 0;
+  }
+
+  .activityTable th {
+    height: 30px;
+    padding: 3px;
+  }
+
+  .activityTable td {
+    height: 30px;
+    border-top: 1px solid #eee;
+  }
+
+  .activityTable a {
+    text-decoration: none;
+  }
+
+  .activityTable a:hover {
+    text-decoration: underline;
+    color: black;
+    opacity: .6;
+    background-color: rgb(250, 250, 250);
+  }  
+
+  .activityTable #contentType {
+    color: #e67e22;
+  }
+
+  .activityTable #likeCount {
+    color: #16a085;
+  }
+
+  .activityTable #dislikeCount {
+    color: #c0392b;
+  }  
+
+
 </style>
 
 <div class="top-bar">
   <img id="logo" src="/tempologo.png" />
 </div>
-
 
 <div class="sidebar">
   <ul class="menuSelection"> 
@@ -111,6 +180,7 @@
 
   </ul>
 </div>
+
 
 <div class="testDiv">
   <div id="time-options-container"></div>

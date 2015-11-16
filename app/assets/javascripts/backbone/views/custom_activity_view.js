@@ -8,65 +8,66 @@ var CustomActivityView = Backbone.View.extend({
     customActivities : null,
     activities : null,
     user: null,
+    events: {
+        "click .del-btn":"deleteActivity"
+    },
     initialize: function(options){
       this.options = options;
       this.customActivities = new CustomActivities();
       this.activities = new Activities();
     },
+    renderData : function(data){
+      var that = this;
+      var templateData = [];
+      //Iterate throught he collections of Activities and create a template
+      data.each(function(model){
+        templateData.push({"title": model.get("title"), "content" : model.get("content"), 
+                            "time": model.get("completion_time"), "id" : model.get("id")})
+      });
+      var template = JST["backbone/templates/activities/customActivity"]({
+        data: templateData,
+        name: that.user.name
+      });
+      this.$el.html(template);
+    },
     render : function (options){
+      console.log("customAC render");
       // Set scope, construct new activity collection, call fetch, render data on callback function
       var that = this; // To fix callback scoping error	
       this.user = options.user;
 
-      var renderData = function(data) {
-
-          // TODO: templating code needs debugging
-          // var template =  JST["backbone/templates/activities/customActivity"]({
-          //     title: data['title'],
-          //     content: data['content'],
-          //     completion_time: data['completion_time'],
-          //     name: that.user.name
-          // });
-          // console.log(template);
-
-	        //TODO: Create and import handlebars for templating     
-	        var html = "<h4 style='color: #9b59b6;'> Custom Activity List for " + that.user.name + "</h4> <br>"
-	              + "<table class='customActivityTable'> <thead> <tr> <th>Title</th> <th>Content</th> <th>Completion Time</th> "
-	              + "<th colspan='3'></th> </tr> </thead>" 
-	              + " <tbody> ";
-
-	        that.customActivities.each(function(model){
-
-            // We just want Sally"s Custom Activities
-            // if (model.get('id') == that.user.id){
-              html += "<tr>" 
-                  + "<td> " +  model.get('title') + " </td>"
-                  + "<td> " +  model.get('content') + " </td>"
-                  + "<td> " +  model.get('completion_time') + " </td>"
-                  // + "<td> " +  model.get('id') + " </td>"
-                + "</tr>"; 
-            // } 
-	        });
-
-	        html += " </tbody> </table> </br> ";
-	        
-          //Adding activity link
-	        html += " <a href='/tempo#createCustomActivity' id='add'> Create a Custom Activity </a>";
-          // html += " <div class='createCustomActivity'> </div> ";
-	        $(that.el).html(html);  
-       	};
-
-        // Get users's specific custom activities
-        this.customActivities.url = "/api/users/"+ this.user.id + "/custom_activities?token=" + Cookies.get('login-token');
-       	this.customActivities.fetch({
-       		success: function(data){
-       			renderData(data.models);
-       		},
-          error: function(data){
-            console.log("ERROR");
+      // Get users's specific custom activities
+      this.customActivities.url = "/api/users/"+ this.user.id + "/custom_activities?token=" + Cookies.get('login-token');
+     	this.customActivities.fetch({
+     		success: function(data){
+     			that.renderData(data);
+     		},
+        error: function(data){
+          console.log("ERROR");
+        },
+        	dataType: "json",
+        	data: {"interests": this.interests, "time": this.time}       		
+     	});
+    },
+    deleteActivity: function(options){
+      //DELETE /api/users/:id/custom_activities/:cid
+      console.log("deleting");
+      var that = this; // To fix callback scoping error 
+      var activityId = options.currentTarget.id;
+      var activity = new CustomActivity();
+      activity.url = "/api/users/" + this.user.id + "/custom_activities/" + activityId;
+      var token = Cookies.get('login-token');
+      activity.attributes = {token:token, id:activityId};
+      activity.destroy({data : activity.attributes, processData: true,
+          success: function(userSession, response) {
+              console.log("success");
+              //remove custom activity from the DOM
+              $(".activity."+activityId).remove();
           },
-          	dataType: "json",
-          	data: {"interests": this.interests, "time": this.time}       		
-       	});
+          error: function(userSession, response) {
+              console.log("failure!");
+          }
+      });
     }
   });
+

@@ -14,7 +14,6 @@ var CreateCustomActivityView = Backbone.View.extend({
       this.options = options;
 
       this.customActivities = new CustomActivities();
-      this.model = new CustomActivity();
       // alert("initialized model for custom activity");
     },
     render : function (options){
@@ -36,17 +35,16 @@ var CreateCustomActivityView = Backbone.View.extend({
       var title = $('#title').val();
       var content = $('#content').val();
       var completion_time = $('#completion_time').val();
+      var model = new CustomActivity();
+      model.attributes.title = title;
+      model.attributes.content = content;
+      model.attributes.completion_time = completion_time;
+      model.attributes.token = Cookies.get('login-token');
 
-      this.model.attributes.title = title;
-      this.model.attributes.content = content;
-      this.model.attributes.completion_time = completion_time;
-      this.model.attributes.token = Cookies.get('login-token');
-
-      console.log(this.model.attributes);
-      this.model.url = "/api/users/" + this.user.id + "/custom_activities";
+      model.url = "/api/users/" + this.user.id + "/custom_activities";
       console.log("Going to create custom activity");
 
-      this.model.save(this.model.attributes, {        
+      model.save(model.attributes, {        
           success: function(userSession, response) {
             window.location = '/tempo#customActivities';
           },
@@ -55,12 +53,8 @@ var CreateCustomActivityView = Backbone.View.extend({
           }
       });    
        // validate error(s) accessible in model.validationError
-      if (this.model.validationError) {
-          $("#warning").html(this.model.validationError);
+      if (model.validationError) {
+          $("#warning").html(model.validationError);
       }  
-    },
-    deleteActivity: function(e){
-      //DELETE /api/users/:id/custom_activities/:cid
-
     }
   });

@@ -13,6 +13,9 @@ var ActivityView = Backbone.View.extend({
       this.activity_id = options['id'];
     },
     renderData: function(data){
+        if(data['link'] == "N/A"){
+            data['link'] = 'javascript:;';
+        }
         var template = JST["backbone/templates/activities/activity"]({
               title: data['title'],
               content: data['content'],

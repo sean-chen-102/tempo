@@ -1,11 +1,130 @@
+<style>
+	/*Activity module*/
+  .activity {
+    position: relative;
+    top: 45px;
+    border: 1px solid green;
+    margin: 0 auto;
+    width: 400px;
+    height: 400px;
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 1px 1px 1px #eee;
+    border-top-left-radius: 5px;
+  	border-top-right-radius: 5px;
+  }
 
+  .activity header {
+  	border-bottom: 1px solid silver;
+  	background-color: #4078c0;
+  	border-color: #4078c0;
+  	border-top-left-radius: 5px;
+  	border-top-right-radius: 5px;
+  	padding: 20px;
+  	position: relative;
+  	height: 10%;
+  	color: white;
+  }
+
+  .activity header h3 {
+  	margin: 0;
+  	line-height: 23px;
+  }
+
+  .activity section {
+  	height: 80%;
+  	overflow: hidden;
+  	margin-bottom: 0;
+  }
+
+  .activity section p {
+  	overflow: hidden;
+  	height: 68%;
+  	font-family: 'Open Sans Condensed', sans-serif;
+  	font-size: 100%;
+  	margin: 10px;
+
+  }
+
+  .activity section .likeContainer {
+  	margin: 10px;
+  	margin-bottom: 0;
+  }
+
+  .activity footer {
+  	background-color: #f5f5f5;
+  	position: relative;
+  	height: 10%;
+  	bottom: 0;
+  	border: 1px solid #ddd;
+  }
+
+  .activity footer a {
+  	position: relative;
+  	top: 10px;
+  	text-decoration: none;
+  	color: #2980B9;
+  }
+
+  .activity footer a:hover {
+  	background-color: #f5f5f5;
+  	color: #2980B9;
+  	opacity: .7;
+  }
+
+  #like-count {
+	color: #16a085;
+  }
+
+  #dislike-count {
+	color: #c0392b;
+  }
+
+  .like-btn {
+  	background-color: #16a085;
+  	border: 1px solid #16a085;
+  	border-radius: 2px;
+  }
+
+  .dislike-btn {
+	background-color: #c0392b;
+	border: 1px solid #c0392b;
+	border-radius: 2px;
+  }
+
+  .likeContainer {
+  	width: 100%;
+  	position: relative;
+  	left: -10px;
+  	text-align: center;
+  }
+
+  .likeContainer button:hover {
+  	opacity: .8;
+  	cursor: pointer;
+  }
+
+  a:hover {
+  	background-color: white;
+  }
+
+</style>
 <div class="activity">
-	<h3 id="title"><%= title %></h3>
-	<div id="likes">Likes: <div id="like-count"><%= likes %></div></div>
-	<div id="dislikes">Disikes: <div id="dislike-count"><%= dislikes %></div></div>
-	<button class='like-btn'>Like</button>
-	<button class='dislike-btn'>Dislike</button><br>
-	<div id="content"><p><%= content %></p></div>
-	<a id="link" href='<%= link %>'> Link </a><br>
-	<a href='tempo#activities'> Back </a>
+	<header>
+		<h3 id="title"><%= title %></h3>
+	</header> 
+	<section id="content">
+		<p><%= content %></p>
+		<div class="likeContainer">
+			<div id="likes">Likes: <a id="like-count"><%= likes %></a></div>
+			<div id="dislikes">Disikes: <a id="dislike-count"><%= dislikes %></a></div>
+			<button class='like-btn'>Like</button>
+			<button class='dislike-btn'>Dislike</button><br>	
+		</div>
+	</section>
+
+	<footer>
+		<a id="link" href='<%= link %>'> Link </a>
+		<a href='tempo#activities'> Back </a>
+	</footer>
 </div>

@@ -1,31 +1,58 @@
 <!-- Temporary Styling -->
 <!-- Temporary styling -->
+
+
 <style>
   #login-form {
     width: 350px;
-    height: 350px;
+    height: 315px;
     border: 1px solid #dedede;
     border-radius: 3px;
     background-color: white;
     box-shadow: .5px .5px .5px #888888;
     margin: 0 auto;
     text-align: center;
-    padding-top: 30px;
+    padding-top: 20px;
     padding-bottom: 20px;
+    font-size: 15px;
+    margin-top: 30px;
+    position: relative;
+  }
+
+  #login-form header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 35px;
+    border-bottom: 1px solid #DDD;
+    background: #F4F4F2;
+  }
+
+  #login-form header h3 {
+    margin-top: 8px;
+    font-weight: normal;
   }
 
   input {
     width: 300px;
     height: 30px;
     margin-bottom: 15px;
+    margin-top: 10px;
+  }
+
+  input:hover {
+    background-color: #E4F1FE;
+    border: 1px solid #DDD;
   }
 
   label {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
   }
 
   fieldset {
     border: none;
+    position: relative;
+    top: 25px;
   }
 
   #warning {
@@ -37,11 +64,16 @@
     width: 315px;
     height: 35px;
     display: block;
+    position: relative;
+    top: -125px;
     margin: 0 auto;
     margin-bottom: 15px;
-    background-color: #66CC99;
-    border: 1px solid #2ABB9B;
+    /*background-color: #66CC99;*/
+    background-color: #D35C48;
+    border: 1px solid #D35C48;
     border-radius: 3px;
+    color: white;
+    font-size: 15px;
 
   }
 
@@ -49,10 +81,30 @@
     opacity: .8;
     cursor: pointer;
   }
+
+  .create {
+    width: 315px;
+    height: 35px;
+    display: block;
+    position: relative;
+    top: -125px;
+    margin: 0 auto;
+    text-align: center;
+    color: #D35C48;
+
+  }
+
+  .create:hover {
+    opacity: .6;
+    cursor: pointer;
+  }
+
 </style>
 
 <h1 id="warning"> </h1> 
 <form id="login-form" class="form-horizontal">
+
+      <header> <h3> Login </h3></header>
       <fieldset>
         <div id="email_group" class="control-group">
           <label class="control-label" >Username or Email</label>
@@ -75,5 +127,5 @@
 
       <button value="login" class="login-submit"> Login </button>
 
-      <button class="create"> Create an Account </button>
+      <div class="create"> Create an Account </div>
 

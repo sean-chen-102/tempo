@@ -1,0 +1,216 @@
+Starting the Teaspoon server...
+Teaspoon running default suite at http://127.0.0.1:49521/teaspoon/default
+Tempo.js Initiliazed
+Initilizing the app
+interests initialize called
+settings initialize called
+The home router was called 
+undefined
+Verify USer Called
+undefined
+login 
+renderView called
+render login
+undefined
+undefined
+Verify USer Called
+undefined
+login 
+renderView called
+render login
+render home
+[32m.[0mrender home
+[32m.[0mrender home
+[31mF[0m[31mF[0m[31mF[0minterests initialize called
+settings initialize called
+The home router was called 
+undefined
+Verify USer Called
+undefined
+login 
+renderView called
+render login
+undefined
+undefined
+Verify USer Called
+undefined
+login 
+renderView called
+render login
+[32m.[0minterests initialize called
+settings initialize called
+The login router was called 
+render login
+[32m.[0minterests initialize called
+settings initialize called
+The interests router was called 
+undefined
+Verify USer Called
+undefined
+login 
+renderView called
+render login
+[32m.[0minterests initialize called
+settings initialize called
+The settings router was called 
+undefined
+Verify USer Called
+undefined
+login 
+renderView called
+render login
+[32m.[0minterests initialize called
+settings initialize called
+The activities router was called 
+undefined
+Verify USer Called
+undefined
+login 
+renderView called
+render login
+[32m.[0minterests initialize called
+settings initialize called
+The activity router was called
+3
+undefined
+Verify USer Called
+undefined
+login 
+renderView called
+render login
+[32m.[0minterests initialize called
+settings initialize called
+The custom Activities router was called 
+undefined
+Verify USer Called
+undefined
+login 
+renderView called
+render login
+[32m.[0minterests initialize called
+settings initialize called
+Creating a custom activity
+undefined
+Verify USer Called
+undefined
+login 
+renderView called
+render login
+[32m.[0minterests initialize called
+settings initialize called
+The signup router was called 
+signup init
+render signup
+function (obj) {__cov_NL5QZw4halWd7XTxoeRIGA.f['2']++;__cov_NL5QZw4halWd7XTxoeRIGA.s['4']++;var __p=[],print=function(){__cov_NL5QZw4halWd7XTxoeRIGA.f['3']++;__cov_NL5QZw4halWd7XTxoeRIGA.s['5']++;__p.push.apply(__p,arguments);};__cov_NL5QZw4halWd7XTxoeRIGA.s['6']++;with((__cov_NL5QZw4halWd7XTxoeRIGA.b['2'][0]++,obj)||(__cov_NL5QZw4halWd7XTxoeRIGA.b['2'][1]++,{})){__cov_NL5QZw4halWd7XTxoeRIGA.s['7']++;__p.push('<!-- Temporary Styling -->\n<!-- Temporary styling -->\n<style>\n  #signup-form {\n    width: 350px;\n    height: 350px;\n    border: 1px solid #dedede;\n    border-radius: 3px;\n    background-color: white;\n    box-shadow: .5px .5px .5px #888888;\n    margin: 0 auto;\n    text-align: center;\n    padding-top: 30px;\n    padding-bottom: 20px;\n  }\n\n  #signup-form input {\n    width: 300px;\n    height: 20px;\n    margin-bottom: 15px;\n  }\n\n  #signup-form label {\n    margin-bottom: 5px;\n  }\n\n  #signup-form fieldset {\n    border: none;\n  } \n\n  #signup-form button {\n    width: 300px;\n    height: 35px;\n    display: block;\n    margin: 0 auto;\n    margin-bottom: 15px;\n    background-color: #66CC99;\n    border: 1px solid #2ABB9B;\n    border-radius: 3px;\n    color: #EEEEEE;\n\n  }\n\n  #signup-form button:hover {\n    opacity: .8;\n    cursor: pointer;\n  }\n\n  #signup {\n    margin: 0 auto;\n  }\n</style>\n\n<div id="signup-form">\n<form  class="form-horizontal">\n  <fieldset>\n    <div id="name-group" class="control-group">\n      <label class="control-label" for="login_name">Name</label>\n      <div class="controls">\n        <input id="name" name="name" type="name" required="required" />\n      </div>\n    </div>\n    <div id="username-group" class="control-group">\n      <label class="control-label" for="login_username">Username</label>\n      <div class="controls">\n        <input id="username" name="username" type="username" required="required" />\n      </div>\n    </div>\n    <div id="email_group" class="control-group">\n      <label class="control-label" for="login_user_email">Email</label>\n      <div class="controls">\n        <input id="email" name="email" type="email" required="required" />\n      </div>\n    </div>\n    <div id="password_group" class="control-group">\n      <label class="control-label" for="login_user_password">Password</label>\n      <div class="controls">\n        <input id="password" name="password" type="password" required="required" />\n      </div>\n    </div>\n    <div id="password_confirmation_group" class="control-group">\n      <label class="control-label" for="login_user_password_confirmation">Confirm Password</label>\n      <div class="controls">\n        <input id="password_confirmation" name="password_confirmation" type="password" required="required" />\n      </div>\n    </div>\n\n  </fieldset>\n</form>\n\n    <div class="form-actions">\n      <button type="submit" id="signup" value="Sign up" class="btn btn-primary"> Sign Up </button>\n    </div>\n</div>\n');}__cov_NL5QZw4halWd7XTxoeRIGA.s['8']++;return __p.join('');}
+[32m.[0minterests initialize called
+settings initialize called
+The home router was called 
+login 
+renderView called
+render login
+undefined
+login 
+renderView called
+render login
+[32m.[0minterests initialize called
+settings initialize called
+The settings router was called 
+login 
+renderView called
+render login
+[32m.[0minterests initialize called
+settings initialize called
+The interests router was called 
+login 
+renderView called
+render login
+[32m.[0minterests initialize called
+settings initialize called
+The activities router was called 
+login 
+renderView called
+render login
+[32m.[0minterests initialize called
+settings initialize called
+The custom Activities router was called 
+login 
+renderView called
+render login
+[32m.[0minterests initialize called
+settings initialize called
+Creating a custom activity
+login 
+renderView called
+render login
+[32m.[0m
+
+Failures:
+
+  1) Home View Go Go request should be called
+[31m     Failure/Error: TypeError: 'undefined' is not an object (evaluating 'this.times.models[index].get') in http://127.0.0.1:49521/assets/backbone/views/home_view.self-ba316c5f3b3979fea349be00b472b31a0436491977c3640caa75258ad58e84d4.js?body=1&instrument=1 (line 9)
+[0m
+  2) Home View Go Go request should be called
+[31m     Failure/Error: TypeError: 'undefined' is not an object (evaluating 'this.homeSpy.calledWith') in http://127.0.0.1:49521/assets/home_view_spec.self-aaa815c52a07d1abea53da3e60143f2fc585c9dd861265a52f123a2a657c9c27.js?body=1 (line 62)
+[0m
+  3) Home View Go Go request should be called
+[31m     Failure/Error: TypeError: 'undefined' is not an object (evaluating 'this.homeSpy.restore') in http://127.0.0.1:49521/assets/home_view_spec.self-aaa815c52a07d1abea53da3e60143f2fc585c9dd861265a52f123a2a657c9c27.js?body=1 (line 58)
+[0m
+Finished in 0.05300 seconds
+[31m20 examples, 3 failures[0m
+
+Failed examples:
+
+[31mteaspoon -s default --filter="Home View Go Go request should be called"[0m
+[31mteaspoon -s default --filter="Home View Go Go request should be called"[0m
+[31mteaspoon -s default --filter="Home View Go Go request should be called"[0m
+
+-------------------------------------------------|----------|----------|----------|----------|----------------|
+File                                             |  % Stmts | % Branch |  % Funcs |  % Lines |Uncovered Lines |
+-------------------------------------------------|----------|----------|----------|----------|----------------|
+ javascripts/                                    |      100 |      100 |      100 |      100 |                |
+  account_activations.coffee                     |      100 |      100 |      100 |      100 |                |
+  activities.coffee                              |      100 |      100 |      100 |      100 |                |
+  application.js                                 |      100 |      100 |      100 |      100 |                |
+  interests.coffee                               |      100 |      100 |      100 |      100 |                |
+  sessions.coffee                                |      100 |      100 |      100 |      100 |                |
+  tempo.js                                       |      100 |      100 |      100 |      100 |                |
+  users.coffee                                   |      100 |      100 |      100 |      100 |                |
+ javascripts/backbone/models/                    |    47.83 |    27.78 |       50 |    47.83 |                |
+  ActivityModel.js                               |      100 |      100 |      100 |      100 |                |
+  CustomActivityModel.js                         |    14.29 |        0 |        0 |    14.29 |... 14,15,16,17 |
+  InterestModel.js                               |      100 |      100 |      100 |      100 |                |
+  TimeModel.js                                   |      100 |      100 |      100 |      100 |                |
+  Token.js                                       |      100 |      100 |      100 |      100 |                |
+  UserLoginModel.js                              |       40 |    41.67 |      100 |       40 |... 11,15,16,20 |
+  UserModel.js                                   |      100 |      100 |      100 |      100 |                |
+  UserRegistrationModel.js                       |      100 |      100 |      100 |      100 |                |
+ javascripts/backbone/routers/                   |    78.57 |    66.67 |    92.31 |    78.57 |                |
+  tempo_router.js                                |    78.57 |    66.67 |    92.31 |    78.57 |... 49,50,51,52 |
+ javascripts/backbone/templates/activities/      |    43.96 |    29.55 |    38.24 |      100 |                |
+  activity.jst.ejs                               |     37.5 |       50 |    33.33 |      100 |                |
+  createCustomActivity.jst.ejs                   |     37.5 |       25 |    33.33 |      100 |                |
+  customActivity.jst.ejs                         |     37.5 |       25 |    33.33 |      100 |                |
+  edit.jst.ejs                                   |     37.5 |       25 |    33.33 |      100 |                |
+  home.jst.ejs                                   |    90.91 |       50 |       75 |      100 |                |
+  interest.jst.ejs                               |     37.5 |       25 |    33.33 |      100 |                |
+  modal.jst.ejs                                  |     37.5 |       25 |    33.33 |      100 |                |
+  new.jst.ejs                                    |     37.5 |       25 |    33.33 |      100 |                |
+  settings.jst.ejs                               |     37.5 |       25 |    33.33 |      100 |                |
+  show.jst.ejs                                   |     37.5 |       25 |    33.33 |      100 |                |
+  test.jst.ejs                                   |     37.5 |       25 |    33.33 |      100 |                |
+ javascripts/backbone/templates/unauthenticated/ |     62.5 |     37.5 |       50 |      100 |                |
+  login.jst.ejs                                  |     87.5 |       50 |    66.67 |      100 |                |
+  signup.jst.ejs                                 |     37.5 |       25 |    33.33 |      100 |                |
+ javascripts/backbone/views/                     |    20.62 |        0 |     19.4 |    20.62 |                |
+  activities_view.js                             |    13.64 |        0 |     12.5 |    13.64 |... 57,59,65,67 |
+  activity_view.js                               |     8.82 |        0 |       10 |     8.82 |... 80,82,83,87 |
+  create_custom_activity_view.js                 |    13.33 |      100 |    16.67 |    13.33 |... 54,55,56,59 |
+  custom_activity_view.js                        |    23.53 |      100 |    16.67 |    23.53 |... 60,61,63,66 |
+  home_view.js                                   |    58.62 |        0 |       60 |    58.62 |... 53,55,59,61 |
+  interests_view.js                              |    17.78 |        0 |    14.29 |    17.78 |... 81,83,84,85 |
+  login_view.js                                  |       25 |        0 |    33.33 |       25 |... 53,54,55,60 |
+  settings_view.js                               |    11.32 |        0 |     8.33 |    11.32 |... 108,109,110 |
+  signup_view.js                                 |    24.24 |      100 |    28.57 |    24.24 |... 56,57,58,61 |
+-------------------------------------------------|----------|----------|----------|----------|----------------|
+All files                                        |    36.59 |    23.58 |    38.93 |    35.93 |                |
+-------------------------------------------------|----------|----------|----------|----------|----------------|

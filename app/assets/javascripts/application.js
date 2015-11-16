@@ -42,6 +42,7 @@ $(document).ready(function(){
 		//Start app router and history
 		App.Router = new TempoRouter();
 		Backbone.history.start();
+
 	  }
 	};
 

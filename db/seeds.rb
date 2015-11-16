@@ -20,6 +20,8 @@ technology_interest = Interest.create({ name: "Technology" })
 food_interest = Interest.create({ name: "Food" })
 eli5_interest = Interest.create({ name: "Explain it like I'm 5" })
 history_interest = Interest.create({ name: "History" })
+health_interest = Interest.create({ name: "Health" })
+fun_facts_interest = Interest.create({ name: "Fun Facts" })
 
 
 user1_interests = [news_interest, fitness_interest]

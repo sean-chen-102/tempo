@@ -42,12 +42,7 @@ var ActivitiesView = Backbone.View.extend({
       };
 
       //TODO: Find better way to do this
-      if(this.interests.length == 0){
-        html = "<div id='no-activities' style='color: #9b59b6;'>Please select an interest from the list</div>"
-                  + "<a href='/tempo#home'>Back</a>";
-        $(that.el).append(html);
-      }
-      else if(this.time){
+      if(this.time){
         this.activities.fetch({
             success: function(data){
             renderData(data);

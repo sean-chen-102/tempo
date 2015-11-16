@@ -57,6 +57,7 @@ var SettingsView = Backbone.View.extend({
 			success: function(data){
 				that.userInterests = [];
 				data.each(function(model){
+					console.log("hi")
 					that.userInterests.push(model.get('name'));
 				});
 				if (args){

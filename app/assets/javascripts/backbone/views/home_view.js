@@ -35,11 +35,23 @@ var HomeView = Backbone.View.extend({
             	name: this.name
     	    });
         	this.$el.html(home_template);
+        	$(function() {
+    			console.log("knob");
+    			console.log($(".dial"));
+        		$(".knob").knob({
+        			max: 60,
+        			width: 150,
+        			height: 150,
+        			step: 1,
+        			fgColor: "#2C7EBF",
+        			inputColor: "#2C7EBF"
+        		});
+        		$(".knob").val(30).trigger('change');
+    		});
 		},
 		makeGoRequest : function(options){
 			//called when the go button is clicked
-			var index = $('#time-selector')[0].selectedIndex;
-			var duration = this.times.models[index].get('duration');
+			var duration = $(".knob").val();
 			//save duration to activity view object
 			this.activitiesView.time = duration;
 			//save interests to activity view object

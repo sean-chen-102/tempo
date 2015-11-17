@@ -28,6 +28,7 @@ var InterestView = Backbone.View.extend({
 			}
 		}
 		this.selectedInterests = selectedInterests;
+		window.location = '/tempo#home';
 		return selectedInterests;
 	},
 	getInterests : function(options){

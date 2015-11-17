@@ -54,7 +54,12 @@ class Activity < ActiveRecord::Base
         type = activity.content_type
         if type == "video"
           link = activity.link
-          activity.content = "<iframe width=\"380\" height=\"200\" src=\"#{link}\" frameborder=\"0\"></iframe>"
+
+          if link.include? "watch?v="
+            link = link.sub! "watch?v=", "v/"
+          end
+
+          activity.content = "<iframe width=\"345\" height=\"200\" src=\"#{link}\" frameborder=\"0\"></iframe>"
           activity.save
         end
       end

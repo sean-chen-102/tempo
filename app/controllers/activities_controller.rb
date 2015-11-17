@@ -129,19 +129,34 @@ class ActivitiesController < ApplicationController
 	# Testing via curl: curl -H "Content-Type: application/json" -X GET -d '{"time":5}' http://localhost:3000/api/activities
 	# Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/activities
 	# Testing via curl: curl -H "Content-Type: application/json" -X GET -d '{"interests": ["news","fitness"]}' http://localhost:3000/api/activities
-	# Testing via curl: curl -H "Content-Type: application/json" -X GET -d '{"interests": ["news","fitness"]}', "time": 5}' http://localhost:3000/api/activities
+	# Testing via curl: curl -H "Content-Type: application/json" -X GET -d '{"interests": ["news","fitness"], "time": 5}' http://localhost:3000/api/activities
 	def get_all_activities
 	  status = -1
 	  interests_key = "interests"
 	  time_key = "time"
 	  interests_list = params[interests_key]
 	  time = params[time_key]
-	  activities = Activity.get_activities(interests_list, time)
+	  user_id = params["user_id"]
+	  token = params["token"]
 	  json_response = {}
 	  error_list = []
+	  custom_activities = []
 
-	  if activities.length > 0
+	  user = User.find_by(id: user_id)
+	  activities = Activity.get_activities(interests_list, time)
+
+	  if not token.nil? and not user.nil?
+	  	# we would also like to check for CustomActivities
+	  	if user_has_permission(User.authenticate_token(token), user.id) # if the token was provided and is valid and the user has permission
+	  		custom_activities = CustomActivity.get_filtered_custom_activities(user, time)
+	  		status = 1
+	  	end
+	  end
+
+	  if activities.length > 0 or custom_activities.length > 0
 	    status = 1
+	    activities = activities + custom_activities
+	    activities = activities.shuffle
 	    json_response["activities"] = activities
 	  else
 	  	status = 1

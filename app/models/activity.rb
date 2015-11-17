@@ -36,21 +36,28 @@ class Activity < ActiveRecord::Base
   def self.get_activities(interests_list, time)
     activities_list = []
 
-    puts "In self.get_activities. Interests_list = #{interests_list}, time= #{time}"
-
     if interests_list.nil?
       activities = Activity.all
     else
       # make sure each name begins with a capital letter
       interests_list.map! { |interest_name| interest_name.titleize }
-
-      puts "After change of list: #{interests_list}"
-
       activities = Activity.joins(:interests).distinct.where(interests: {name: interests_list})
     end
 
     if not time.nil?
       activities = activities.where("completion_time <= ?", time)
+    end
+
+    # FOR YOUTUBE EMBEDS - TEMPORARY
+    if activities.length > 0
+      activities.each do |activity|
+        type = activity.content_type
+        if type == "video"
+          link = activity.link
+          activity.content = "<iframe width=\"380\" height=\"200\" src=\"#{link}\" frameborder=\"0\"></iframe>"
+          activity.save
+        end
+      end
     end
 
     activities = activities.as_json

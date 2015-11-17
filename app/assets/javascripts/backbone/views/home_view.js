@@ -40,6 +40,7 @@ var HomeView = Backbone.View.extend({
     			console.log($(".dial"));
         		$(".knob").knob({
         			max: 60,
+        			min:1,
         			width: 150,
         			height: 150,
         			step: 1,

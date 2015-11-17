@@ -19,7 +19,6 @@ var InterestView = Backbone.View.extend({
 		//TODO; change so that it can be accessed in other view
 		var that = this;
 		var selectedInterests = [];
-		console.log('hi');
 		for (var j = 0; j < that.numInterests; j++) {
 			var currInterest = $('#interest-' + j);
 			var name = currInterest.attr('name')
@@ -28,6 +27,7 @@ var InterestView = Backbone.View.extend({
 			}
 		}
 		this.selectedInterests = selectedInterests;
+		window.location = '/tempo#home';
 		return selectedInterests;
 	},
 	getInterests : function(options){
@@ -59,8 +59,8 @@ var InterestView = Backbone.View.extend({
 	},
 	renderData : function(data, that){    	
 		//TODO: Create and import handlebars for templating			
-		var html = "<div class='interestContainer'> <header> <h4 id='interestsTitle' style='color: #1abc9c;'> Interest List </h4> </header> <br>"
-					+ "<table class='interestTable'> <thead> <tr> <th>Name</th>"
+		var html = "<div class='interestContainer'> <header> <h4 id='interestsTitle' style='color: #1abc9c;'> Your Interests </h4> </header> <br>"
+					+ "<table class='interestTable'> <thead> <tr> <th> </th><th>Name</th>"
 					+ "<th colspan='3'></th> </tr> </thead>" 
 					+ " <tbody> ";
 		//Iterate throught he collections of Activities and create a template
@@ -80,8 +80,9 @@ var InterestView = Backbone.View.extend({
 		html += " </tbody> </table> </br> ";
 		html += "<footer> <button id=submit-temp-interests> save </button> <br>"; 
 		//Adding activity link
-		html += " <a href='/tempo#settings' id='add'> Add interest </a> <br>";
-		html += " <a href='tempo#home'> Go Back</a> </div> </footer>"
+		// html += " <a href='/tempo#settings' id='add'> Add interest </a> <br>";
+		// html += " <a href='tempo#home'> Go Back</a> </div> </footer>"
+		html += "</div></footer>"
 		$(that.el).append(html);	
 	}
 });

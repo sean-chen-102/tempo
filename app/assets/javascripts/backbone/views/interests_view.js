@@ -60,7 +60,7 @@ var InterestView = Backbone.View.extend({
 	renderData : function(data, that){    	
 		//TODO: Create and import handlebars for templating			
 		var html = "<div class='interestContainer'> <header> <h4 id='interestsTitle' style='color: #1abc9c;'> Interest List </h4> </header> <br>"
-					+ "<table class='interestTable'> <thead> <tr> <th> </th><th>Name</th>"
+					+ "<table class='interestTable'> <thead> <tr> <th>Name</th>"
 					+ "<th colspan='3'></th> </tr> </thead>" 
 					+ " <tbody> ";
 		//Iterate throught he collections of Activities and create a template
@@ -71,8 +71,8 @@ var InterestView = Backbone.View.extend({
 			// 	checked = "checked";
 			// }
 			html += "<tr>" 
-					+   " <td> <input type=checkbox name=" + model.get('name') +  " id=interest-" + numInterests + " " + checked + " >  </td>"
-					+ "<td> " +  model.get('name') + " </td>"
+					+   " <td> <input type=checkbox name=" + model.get('name') +  " id=interest-" + numInterests + " " + checked + " >  "
+					+ " " +  model.get('name') + " </td>"
 				+ "</tr>";	
 			numInterests += 1
 		});

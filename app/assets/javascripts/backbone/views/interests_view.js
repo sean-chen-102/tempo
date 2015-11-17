@@ -72,7 +72,7 @@ var InterestView = Backbone.View.extend({
 			// }
 			html += "<tr>" 
 					+   " <td> <input type=checkbox name=" + model.get('name') +  " id=interest-" + numInterests + " " + checked + " >  "
-					+ " " +  model.get('name') + " </td>"
+					+ " <span> " +  model.get('name') + "</span> </td>"
 				+ "</tr>";	
 			numInterests += 1
 		});

@@ -11,7 +11,8 @@
   }
 
   #logo {
-    width: 83%;
+    /*width: 160px;*/
+    width: 80%;
     height: 80%;
     margin-left: 20px;
     margin-top: 20px;
@@ -71,7 +72,7 @@
   }
 
   footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     height: 50px;
     background-color: #0b102d;
@@ -85,10 +86,6 @@
     margin: 0;
     margin-top: 20px;
     font-weight: normal;
-  }
-
-  footer.mainFooter {
-    position: fixed;
   }
 
   /*Activity List styling ~~~~~~~~~~~~~~~*/
@@ -161,6 +158,24 @@
     color: #c0392b;
   }  
 
+  /*INTEREST TABLE*/
+  #interestsTitle {
+    text-align: center;
+    width: 200px;
+    border: 1px solid green;
+  }
+
+  .interestContainer {
+    width: 300px;
+    height: 400px;
+    border: 1px solid green;
+    margin: 0 auto;
+  }
+
+  .interestTable {
+    border: 1px solid green;
+    width: 200px;
+  }
 
 
 /*
@@ -265,6 +280,6 @@
 <div class='createCustomActivity'> </div>
 <br>
 
-<footer class='mainFooter'> 
+<footer> 
   <h3>Tempo © 2016</h3>
 </footer>

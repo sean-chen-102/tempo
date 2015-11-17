@@ -19,7 +19,6 @@ var InterestView = Backbone.View.extend({
 		//TODO; change so that it can be accessed in other view
 		var that = this;
 		var selectedInterests = [];
-		console.log('hi');
 		for (var j = 0; j < that.numInterests; j++) {
 			var currInterest = $('#interest-' + j);
 			var name = currInterest.attr('name')
@@ -28,6 +27,7 @@ var InterestView = Backbone.View.extend({
 			}
 		}
 		this.selectedInterests = selectedInterests;
+		window.location = '/tempo#home';
 		return selectedInterests;
 	},
 	getInterests : function(options){
@@ -80,8 +80,9 @@ var InterestView = Backbone.View.extend({
 		html += " </tbody> </table> </br> ";
 		html += "<footer> <button id=submit-temp-interests> save </button> <br>"; 
 		//Adding activity link
-		html += " <a href='/tempo#settings' id='add'> Add interest </a> <br>";
-		html += " <a href='tempo#home'> Go Back</a> </div> </footer>"
+		// html += " <a href='/tempo#settings' id='add'> Add interest </a> <br>";
+		// html += " <a href='tempo#home'> Go Back</a> </div> </footer>"
+		html += "</div></footer>"
 		$(that.el).append(html);	
 	}
 });

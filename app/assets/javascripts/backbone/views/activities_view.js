@@ -47,13 +47,15 @@ var ActivitiesView = Backbone.View.extend({
       };
 
       //TODO: Find better way to do this
+      var token = Cookies.get('login-token');
       if(this.time){
         this.activities.fetch({
             success: function(data){
             renderData(data);
           },
           dataType: "json",
-          data: {"interests": this.interests, "time": this.time}
+          data: {"interests": this.interests, "time": this.time, 
+                 "user_id": options.user.id, "token":token}
         });
       } else {
           this.activities.fetch({
@@ -61,7 +63,8 @@ var ActivitiesView = Backbone.View.extend({
             renderData(data);
           },
           dataType: "json",
-          data: {"interests": this.interests}
+          data: {"interests": this.interests, "user_id": options.user.id,
+                 "token":token}
         });
       }
      }

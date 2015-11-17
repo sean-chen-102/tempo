@@ -27,4 +27,25 @@ class CustomActivity < ActiveRecord::Base
     custom_activity = self
     return user.custom_activities.include? custom_activity
   end
+
+  # Returns a list of CustomActivities belonging to the specified User, 
+  # filtered by CustomActivities that take less than or equal to the 
+  # specified time to complete. Returns all CustomActivities belonging to
+  # the User if time is nil.
+  def self.get_filtered_custom_activities(user, time)
+    filtered_custom_activities = []
+
+    if not user.nil?
+      custom_activities = user.custom_activities
+
+      if not time.nil?
+        filtered_custom_activities = custom_activities.where("completion_time <= ?", time)
+      else
+        filtered_custom_activities = custom_activities
+      end
+    end
+
+    return filtered_custom_activities.as_json
+  end
+
 end

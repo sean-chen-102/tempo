@@ -338,6 +338,7 @@ class UsersController < ApplicationController
     if not user_id.nil?
       if not token.nil? and user_has_permission(User.authenticate_token(token), user_id) # if the token was provided and is valid and the user has permission
         user = User.find_by(id: user_id)
+
         if not interests.nil?
           status = 1
           user.interests = []
@@ -352,7 +353,8 @@ class UsersController < ApplicationController
             end
           end
         else
-          error_list.append("Error: interests can't be missing.")
+          user.interests = []
+          user.save
         end
       else
         error_list.append(ErrorMessages::AUTHORIZATION_ERROR)

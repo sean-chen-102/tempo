@@ -54,8 +54,13 @@
 	}
 
 .interestTable td input {
-	float: left;
 	margin-left: 75px;
+	position: absolute;
+	left: 0;
+}
+
+.interestTable span {
+	text-align: center;
 }
 
 .interestTable tbody {

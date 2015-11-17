@@ -126,6 +126,8 @@ class ActivitiesController < ApplicationController
 	# Return a JSON response with a list of given activities based on the params: interest and time
 	# GET /api/activities
 	# URL format: '/api/activities?interest=<interest_name>&time=<time>'
+	# NOTE: if you also include a valid "token" and matching "user_id" in this request, you will also receive
+	# the specified User's CustomActivities in the list that match the filters.
 	# Testing via curl: curl -H "Content-Type: application/json" -X GET -d '{"time":5}' http://localhost:3000/api/activities
 	# Testing via curl: curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/activities
 	# Testing via curl: curl -H "Content-Type: application/json" -X GET -d '{"interests": ["news","fitness"]}' http://localhost:3000/api/activities

@@ -59,7 +59,7 @@ var InterestView = Backbone.View.extend({
 	},
 	renderData : function(data, that){    	
 		//TODO: Create and import handlebars for templating			
-		var html = "<div class='interestContainer'> <header> <h4 id='interestsTitle' style='color: #1abc9c;'> Interest List </h4> </header> <br>"
+		var html = "<div class='interestContainer'> <header> <h4 id='interestsTitle' style='color: #1abc9c;'> Your Interests </h4> </header> <br>"
 					+ "<table class='interestTable'> <thead> <tr> <th> </th><th>Name</th>"
 					+ "<th colspan='3'></th> </tr> </thead>" 
 					+ " <tbody> ";

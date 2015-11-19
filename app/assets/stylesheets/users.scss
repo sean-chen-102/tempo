@@ -4,6 +4,8 @@
 */ /*Login */
 
 $signupFontColor: #c07130;
+$orangeBorder: #f06c00;
+$orangeButton: #e65000;
 
   .loginHead {
     width: 100%;
@@ -16,7 +18,6 @@ $signupFontColor: #c07130;
   		text-align: center;
   		color: white;
   	}
-
   }
 
 
@@ -146,19 +147,20 @@ $signupFontColor: #c07130;
   .signupContainer {
 
 	    #signup-form {
-	    width: 350px;
-	    height: 375px;
-	    border: 1px solid #dedede;
-	    border-radius: 3px;
-	    background-color: white;
-	    box-shadow: .5px .5px .5px #888888;
-	    margin: 0 auto;
-	    text-align: center;
-	    padding-top: 30px;
-	    padding-bottom: 20px;
-	    margin-top: 30px;
-	    position: relative;
-	  }
+		    width: 350px;
+		    height: 445px;
+		    border: 1px solid #dedede;
+		    border-radius: 3px;
+		    background-color: white;
+		    box-shadow: .5px .5px .5px #888888;
+		    margin: 0 auto;
+		    text-align: center;
+		    padding-top: 20px;
+		    padding-bottom: 20px;
+		    font-size: 15px;
+		    margin-top: 30px;
+		    position: relative;		    
+		  }
 
 	 #signup-form header {
 	    position: absolute;
@@ -167,11 +169,12 @@ $signupFontColor: #c07130;
 	    height: 35px;
 	    border-bottom: 1px solid #DDD;
 	    background: #F4F4F2;
+	    border-top: 2px solid $orangeBorder;
 	  }  
 
 	  #signup-form header h3 {
-	    margin-top: 8px;
-	    font-weight: normal;
+	    margin-top: 5px;
+	    font-weight: italic;
 	  }
 
 	  #signup-form input {
@@ -198,12 +201,12 @@ $signupFontColor: #c07130;
 	    height: 35px;
 	    display: block;
 	    margin: 0 auto;
-	    margin-bottom: 15px;
-	    background-color: #D35C48;
-	    border: 1px solid #D35C48;
+	    margin-top: 3px;
+	    margin-bottom: 10px;
+	    background-color: $orangeButton;
+	    border: 1px solid $orangeBorder;
 	    border-radius: 3px;
 	    color: #EEEEEE;
-
 	  }
 
 	  #signup-form button:hover {

@@ -14,14 +14,19 @@
  *= require_self
  */
 
-/*@import "bootstrap-sprockets";*/
-/*@import "bootstrap";*/
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
 $logoColor: #1B1B1B;
 $backgroundColor: #23282e;
 $sidebarMain: #192227;
 $sidebarHighlight: #3D4857;
 $sidebarFontColor: #28b5f6;
+
+
+$containerHeaderColor: rgb(31, 137, 229);
+
+$buttonFontColor: #ECF0F1;
 
   body {
     /*background-color: #F4F4F4;*/
@@ -50,6 +55,7 @@ $sidebarFontColor: #28b5f6;
     height: 100px;
     top: 0;
     left: 0;
+    border-left: 3px solid #1f89e5;
   }
 
   .top-bar:hover {
@@ -200,8 +206,130 @@ $sidebarFontColor: #28b5f6;
   }  
 
 
+/*HOME VIEW STYLING */
+	.home-wrapper {
+		width: 350px;
+		height: 500px;
+		border: 1px solid green;
+		margin: 0 auto;
+		margin-top: 100px;
+		text-align: center;
+		/*padding: 20px;*/
+	    border: 1px solid #dedede;
+	    border-radius: 3px;
+	    background-color: white;
+	    box-shadow: .5px .5px .5px #888888;		
+	    position: relative;
+	}
+
+	.home-wrapper header {
+		position: absolute;
+		top: 0;
+		height: 15%;
+		width: 100%;
+		/*background-color: #2980B9;*/
+		background-color: $containerHeaderColor;
+	}
+
+	.home-wrapper header h3{
+		color: #fff;
+		margin-bottom: 0;
+	}
+
+	.home-wrapper .subtitle {
+		position: relative;
+		top: 15%;
+		height: 7%;
+		border-bottom: 1px solid #89C4F4;
+		/*border-bottom: 1px solid #ddd;*/
+
+		h3 {
+			color: #2c3e50;
+			margin-top: 7px;
+		}
+	}
+
+	.home-wrapper section {
+		position: absolute;
+		top: 25%;
+		width: 100%;
+		height: 55%;
+
+		canvas {
+			margin-top: 10px;
+		}
+
+		.knob {
+			display: inline-block;
+			position: absolute;
+			top: 10px;
+		}
+
+		#btn-wrapper {
+			width: 30%;
+			margin: 0 auto;
+			margin-top: 10px;
+		}
+	}
+	.home-wrapper h3 {
+		color: #e74c3c;
+	}
+
+	.home-wrapper .go-btn {
+		position: absolute;
+	    width: 100px;
+	    height: 40px;
+	    display: block;
+	    margin: 0 auto;
+	    margin-top: 15px;
+	    background-image: linear-gradient(to bottom, #28b5f6 0%, #28b5f6 100%);
+	    box-shadow: .5px .5px .5px #888888;		
+	    border: 1px solid #28b5f6;;
+	    border-radius: 5px;	
+	    font-size: 25px;	
+	    color: $buttonFontColor;
+	}
+
+	.home-wrapper .go-btn:hover {
+		opacity: .8;
+		cursor: pointer;
+	}
+
+
+
+	.home-wrapper select {
+		width: 100px;
+	}
+
+	.home-wrapper footer {
+		position: absolute;
+		top: 80%;
+		width: 100%;
+		height: 20%;		
+		background-color: white;
+		border-bottom: 3px solid #1f89e5;
+	}
+
+	.home-wrapper footer a {
+		text-decoration: none;
+		color: #2980B9;
+		margin-bottom: 10px;
+	}
+
+	.home-wrapper footer a:hover {
+		background-color: white;
+		opacity: .6;
+	}
+
+
+
+/*THE MAIN WRAPPER*/
 
 .testDiv {
-	margin-left: 15%;
+	margin-left: 200px;
 	height: 100%;
+	/*position: absolute; */
+	/*top: 0;*/
+	position: relative;
+	top: -50px;
 }

@@ -1,0 +1,207 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+/*@import "bootstrap-sprockets";*/
+/*@import "bootstrap";*/
+
+$logoColor: #1B1B1B;
+$backgroundColor: #23282e;
+$sidebarMain: #192227;
+$sidebarHighlight: #3D4857;
+$sidebarFontColor: #28b5f6;
+
+  body {
+    /*background-color: #F4F4F4;*/
+    background-color: #edf0f2;
+    padding: 0px;
+    margin: 0;
+    font-family: 'Open Sans Condensed', sans-serif;
+    /*font-family: "Avenir", "Lato", Arial, Helvetica, sans-serif;*/
+    font-size: 120%;
+  }
+  
+  .sidebar {
+    width: 200px;
+    height: 100%;
+    float: left;
+    position: fixed;
+    top: 0px;
+    left: 0;
+	background-color: $sidebarMain;
+  }
+
+  .top-bar {
+    width: 100%;
+    position: relative;
+    background-color: $logoColor;
+    height: 100px;
+    top: 0;
+    left: 0;
+  }
+
+  .top-bar:hover {
+  	opacity: .7;
+  	cursor: pointer;
+  }
+
+  #logo {
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    top: 50%;
+    margin-top: -40px;
+    left: 50%;
+    margin-left: -80px;
+    opacity: .9;
+    background-color: $logoColor;
+  }
+  
+  .menuSelection {
+    list-style-type: none;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  .menuSelection li{
+    padding: 25px 10px 10px 30px;
+  }
+
+  .menuSelection li a {
+    font-size: 25px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    text-decoration: none;
+    color: $sidebarFontColor;
+  }
+
+  .menuSelection li:hover {
+  	background-color: $sidebarHighlight;
+  	cursor: pointer;
+  	border-left: 3px solid #1f89e5;
+  }
+
+  .menuSelection li a:hover {
+    text-decoration: underline;
+    background-color: $sidebarHighlight;
+  }
+
+  .nav-bar-divider {
+    width: 100%;
+    height: 1px;
+    background-color: $sidebarMain;
+  }
+
+  footer {
+    position: absolute;
+    bottom: 0;
+    height: 50px;
+    background-color: #1B1B1B;
+    width: 100%;
+    color: #91c5f2;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  footer h3 {
+    margin: 0;
+    margin-top: 20px;
+    font-weight: normal;
+  }
+
+  footer.mainFooter {
+    position: fixed;
+  }
+
+
+  /*Activity List styling ~~~~~~~~~~~~~~~*/
+  #activityTitle {
+    margin: 0 auto;
+    margin-top: 50px;
+    text-align: center;
+    background-color: #D5DDE6;
+    width: 675px;
+    height: 45px;
+    border-radius: 2px;
+    position: relative;
+    border: 1px solid #eee;
+  }
+
+  #activityTitle h4 {
+    margin: 0;
+    position: relative;
+    top: 12px;
+    color: #9b59b6;
+  }
+
+  .activityTable {
+    border: 1px solid #eee;
+    width: 675px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    background: rgb(250, 250, 250);
+    box-shadow: 1px 1px 1px #999;
+    border-radius: 2px;
+    text-align: center;
+  }
+
+  .activityTable thead {
+    background-color: #2980B9;
+    color: white;
+    width: 100%;
+    padding: 0;
+  }
+
+  .activityTable th {
+    height: 30px;
+    padding: 3px;
+  }
+
+  .activityTable td {
+    height: 30px;
+    border-top: 1px solid #eee;
+  }
+
+  .activityTable a {
+    text-decoration: none;
+  }
+
+  .activityTable a:hover {
+    text-decoration: underline;
+    color: black;
+    opacity: .6;
+    font-size: 100%;
+    background-color: rgb(250, 250, 250);
+  }  
+
+  .activityTable #contentType {
+    color: #e67e22;
+  }
+
+  .activityTable #likeCount {
+    color: #16a085;
+  }
+
+  .activityTable #dislikeCount {
+    color: #c0392b;
+  }  
+
+
+
+.testDiv {
+	margin-left: 15%;
+	height: 100%;
+}

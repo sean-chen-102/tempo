@@ -1,0 +1,333 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+$logoColor: #1B1B1B;
+$backgroundColor: #23282e;
+$sidebarMain: #192227;
+$sidebarHighlight: #3D4857;
+$sidebarFontColor: #28b5f6;
+
+
+$containerHeaderColor: rgb(31, 137, 229);
+
+$buttonFontColor: #ECF0F1;
+
+  body {
+    /*background-color: #F4F4F4;*/
+    background-color: #edf0f2;
+    padding: 0px;
+    margin: 0;
+    font-family: 'Open Sans Condensed', sans-serif;
+    /*font-family: "Avenir", "Lato", Arial, Helvetica, sans-serif;*/
+    font-size: 120%;
+  }
+  
+  .sidebar {
+    width: 200px;
+    height: 100%;
+    float: left;
+    position: fixed;
+    top: 0px;
+    left: 0;
+	background-color: $sidebarMain;
+  }
+
+  .top-bar {
+    width: 100%;
+    position: relative;
+    background-color: $logoColor;
+    height: 100px;
+    top: 0;
+    left: 0;
+    border-left: 3px solid #1f89e5;
+  }
+
+  .top-bar:hover {
+  	opacity: .7;
+  	cursor: pointer;
+  }
+
+  #logo {
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    top: 50%;
+    margin-top: -40px;
+    left: 50%;
+    margin-left: -80px;
+    opacity: .9;
+    background-color: $logoColor;
+  }
+  
+  .menuSelection {
+    list-style-type: none;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  .menuSelection li{
+    padding: 25px 10px 10px 30px;
+  }
+
+  .menuSelection li a {
+    font-size: 25px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    text-decoration: none;
+    color: $sidebarFontColor;
+  }
+
+  .menuSelection li:hover {
+  	background-color: $sidebarHighlight;
+  	cursor: pointer;
+  	border-left: 3px solid #1f89e5;
+  }
+
+  .menuSelection li a:hover {
+    text-decoration: underline;
+    background-color: $sidebarHighlight;
+  }
+
+  .nav-bar-divider {
+    width: 100%;
+    height: 1px;
+    background-color: $sidebarMain;
+  }
+
+  footer {
+    position: absolute;
+    bottom: 0;
+    height: 50px;
+    background-color: #1B1B1B;
+    width: 100%;
+    color: #91c5f2;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  footer h3 {
+    margin: 0;
+    margin-top: 20px;
+    font-weight: normal;
+  }
+
+  footer.mainFooter {
+    position: fixed;
+  }
+
+
+  /*Activity List styling ~~~~~~~~~~~~~~~*/
+  #activityTitle {
+    margin: 0 auto;
+    margin-top: 50px;
+    text-align: center;
+    background-color: #D5DDE6;
+    width: 675px;
+    height: 45px;
+    border-radius: 2px;
+    position: relative;
+    border: 1px solid #eee;
+  }
+
+  #activityTitle h4 {
+    margin: 0;
+    position: relative;
+    top: 12px;
+    color: #9b59b6;
+  }
+
+  .activityTable {
+    border: 1px solid #eee;
+    width: 675px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    background: rgb(250, 250, 250);
+    box-shadow: 1px 1px 1px #999;
+    border-radius: 2px;
+    text-align: center;
+  }
+
+  .activityTable thead {
+    background-color: #2980B9;
+    color: white;
+    width: 100%;
+    padding: 0;
+  }
+
+  .activityTable th {
+    height: 30px;
+    padding: 3px;
+  }
+
+  .activityTable td {
+    height: 30px;
+    border-top: 1px solid #eee;
+  }
+
+  .activityTable a {
+    text-decoration: none;
+  }
+
+  .activityTable a:hover {
+    text-decoration: underline;
+    color: black;
+    opacity: .6;
+    font-size: 100%;
+    background-color: rgb(250, 250, 250);
+  }  
+
+  .activityTable #contentType {
+    color: #e67e22;
+  }
+
+  .activityTable #likeCount {
+    color: #16a085;
+  }
+
+  .activityTable #dislikeCount {
+    color: #c0392b;
+  }  
+
+
+/*HOME VIEW STYLING */
+	.home-wrapper {
+		width: 350px;
+		height: 500px;
+		border: 1px solid green;
+		margin: 0 auto;
+		margin-top: 100px;
+		text-align: center;
+		/*padding: 20px;*/
+	    border: 1px solid #dedede;
+	    border-radius: 3px;
+	    background-color: white;
+	    box-shadow: .5px .5px .5px #888888;		
+	    position: relative;
+	}
+
+	.home-wrapper header {
+		position: absolute;
+		top: 0;
+		height: 15%;
+		width: 100%;
+		/*background-color: #2980B9;*/
+		background-color: $containerHeaderColor;
+	}
+
+	.home-wrapper header h3{
+		color: #fff;
+		margin-bottom: 0;
+	}
+
+	.home-wrapper .subtitle {
+		position: relative;
+		top: 15%;
+		height: 7%;
+		border-bottom: 1px solid #89C4F4;
+		/*border-bottom: 1px solid #ddd;*/
+
+		h3 {
+			color: #2c3e50;
+			margin-top: 7px;
+		}
+	}
+
+	.home-wrapper section {
+		position: absolute;
+		top: 25%;
+		width: 100%;
+		height: 55%;
+
+		h3 {
+			color: #e74c3c;
+		}
+
+		canvas {
+			margin-top: 10px;
+		}
+
+		.knob {
+			display: inline-block;
+			position: absolute;
+			top: 10px;
+		}
+
+		#btn-wrapper {
+			width: 30%;
+			margin: 0 auto;
+			margin-top: 10px;
+		}
+
+		.go-btn {
+				position: absolute;
+			    width: 100px;
+			    height: 40px;
+			    display: block;
+			    margin: 0 auto;
+			    margin-top: 15px;
+			    background-image: linear-gradient(to bottom, #28b5f6 0%, #28b5f6 100%);
+			    box-shadow: .5px .5px .5px #888888;		
+			    border: 1px solid #28b5f6;;
+			    border-radius: 5px;	
+			    font-size: 25px;	
+			    color: $buttonFontColor;
+		}
+
+		.go-btn:hover {
+				opacity: .8;
+				cursor: pointer;
+		}		
+
+
+	}
+
+	.home-wrapper select {
+		width: 100px;
+	}
+
+	.home-wrapper footer {
+		position: absolute;
+		top: 80%;
+		width: 100%;
+		height: 20%;		
+		background-color: white;
+		border-bottom: 3px solid #1f89e5;
+	}
+
+	.home-wrapper footer a {
+		text-decoration: none;
+		color: #2980B9;
+		margin-bottom: 10px;
+	}
+
+	.home-wrapper footer a:hover {
+		background-color: white;
+		opacity: .6;
+	}
+
+
+/*THE MAIN WRAPPER*/
+
+.testDiv {
+	margin-left: 200px;
+	height: 100%;
+	position: relative;
+	top: -50px;
+}

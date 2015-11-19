@@ -1,6 +1,6 @@
 <!-- Temporary styling -->
 <!-- TODO: move this away -->
-
+<!-- 
 <div class="customActivity">
 	<header> 
 		<h4 id='customActivityTitle' style='color: #9b59b6;'> Custom Activity List for <%= name%> </h4> 
@@ -10,7 +10,7 @@
 		<thead>
 			<tr>
 				<th>Title</th> <th>Content</th> <th>Time</th> <th>Delete</th>
-				<!-- <th colspan='3'> </th> -->
+
 			</tr>
 		</thead>
 		<tbody>
@@ -28,4 +28,39 @@
 	<footer> 
 		<a href='/tempo#createCustomActivity' id='add'> Create a 	Custom Activity </a>
 	</footer>
+</div>
+ -->
+
+
+
+
+<div class="custActContainer animated pulse">
+	<header> 
+		<h3 id='customActivityTitle'> Custom Activity List for <%= name%> </h3> 
+	</header>
+	<section>
+		<div class="tableContainer">
+			<table id="custActTable" class="table table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>Title</th> <th>Content</th> <th>Time</th> <th>Delete</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<% _.each(data, function(custAct) { %> 
+						<tr class='activity <%= custAct.id %>'>
+							<td>  <%= custAct.title%> </td>
+							<td>  <%= custAct.content%> </td>
+							<td>  <%= custAct.time%> </td>
+							<td>  <button class='del-btn' id='<%= custAct.id %>'>Delete</button> </td>
+						</tr>
+						<% }); %>			
+				</tbody>
+			</table>
+		</div>
+	</section>
+	<footer> 
+		<a href='/tempo#createCustomActivity' id='add'> Create a 	Custom Activity </a>
+	</footer>	
 </div>

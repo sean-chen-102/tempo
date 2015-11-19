@@ -133,79 +133,6 @@ $buttonFontColor: #ECF0F1;
   }
 
 
-  /*Activity List styling ~~~~~~~~~~~~~~~*/
-  #activityTitle {
-    margin: 0 auto;
-    margin-top: 50px;
-    text-align: center;
-    background-color: #D5DDE6;
-    width: 675px;
-    height: 45px;
-    border-radius: 2px;
-    position: relative;
-    border: 1px solid #eee;
-  }
-
-  #activityTitle h4 {
-    margin: 0;
-    position: relative;
-    top: 12px;
-    color: #9b59b6;
-  }
-
-  .activityTable {
-    border: 1px solid #eee;
-    width: 675px;
-    margin: 0 auto;
-    margin-bottom: 20px;
-    background: rgb(250, 250, 250);
-    box-shadow: 1px 1px 1px #999;
-    border-radius: 2px;
-    text-align: center;
-  }
-
-  .activityTable thead {
-    background-color: #2980B9;
-    color: white;
-    width: 100%;
-    padding: 0;
-  }
-
-  .activityTable th {
-    height: 30px;
-    padding: 3px;
-  }
-
-  .activityTable td {
-    height: 30px;
-    border-top: 1px solid #eee;
-  }
-
-  .activityTable a {
-    text-decoration: none;
-  }
-
-  .activityTable a:hover {
-    text-decoration: underline;
-    color: black;
-    opacity: .6;
-    font-size: 100%;
-    background-color: rgb(250, 250, 250);
-  }  
-
-  .activityTable #contentType {
-    color: #e67e22;
-  }
-
-  .activityTable #likeCount {
-    color: #16a085;
-  }
-
-  .activityTable #dislikeCount {
-    color: #c0392b;
-  }  
-
-
 /*HOME VIEW STYLING */
 	.home-wrapper {
 		width: 350px;
@@ -227,7 +154,6 @@ $buttonFontColor: #ECF0F1;
 		top: 0;
 		height: 15%;
 		width: 100%;
-		/*background-color: #2980B9;*/
 		background-color: $containerHeaderColor;
 	}
 
@@ -275,6 +201,7 @@ $buttonFontColor: #ECF0F1;
 			margin-top: 10px;
 		}
 
+		/*Blue button color scheme*/
 		.go-btn {
 				position: absolute;
 			    width: 100px;

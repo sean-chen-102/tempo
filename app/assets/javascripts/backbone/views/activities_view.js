@@ -20,8 +20,8 @@ var ActivitiesView = Backbone.View.extend({
         // var template = JST["backbone/templates/activities/activityList"]({});
         // $(this.el).html(template);  
 
-        var html = "<div id='activityTitle'> <h4> Activity List </h4> </div> <br>"
-              + "<table class='activityTable'> <thead> <tr> <th>Title</th><th>Type</th><th>Likes</th><th>Dislikes</th>"
+        var html = "<div class='actContainer animated pulse'> <header id='activityTitle'> <h3> Activity List </h3> </header>"
+              + "<section> <div class='tableContainer'> <table id='actTable' class='table table-bordered table-hover activityTable'> <thead> <tr> <th>Title</th><th>Type</th><th>Likes</th><th>Dislikes</th>"
               + " </tr> </thead>" 
               + " <tbody> ";
 
@@ -35,7 +35,7 @@ var ActivitiesView = Backbone.View.extend({
               + "<td id='dislikeCount''> " +  model.get('dislike_count') + " </td>"
               + "</tr>";  
         });
-        html += " </tbody> </table> </br> ";
+        html += " </tbody> </table> </div> </section> <footer> </footer> </div>";
         if (data['length'] == 0){
           html += "<div id='no-activities' style='color: #9b59b6;'>No activities found for the interests "
                   + "and amount of time selected</div>";

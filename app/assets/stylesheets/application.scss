@@ -255,6 +255,10 @@ $buttonFontColor: #ECF0F1;
 		width: 100%;
 		height: 55%;
 
+		h3 {
+			color: #e74c3c;
+		}
+
 		canvas {
 			margin-top: 10px;
 		}
@@ -270,32 +274,29 @@ $buttonFontColor: #ECF0F1;
 			margin: 0 auto;
 			margin-top: 10px;
 		}
-	}
-	.home-wrapper h3 {
-		color: #e74c3c;
-	}
 
-	.home-wrapper .go-btn {
-		position: absolute;
-	    width: 100px;
-	    height: 40px;
-	    display: block;
-	    margin: 0 auto;
-	    margin-top: 15px;
-	    background-image: linear-gradient(to bottom, #28b5f6 0%, #28b5f6 100%);
-	    box-shadow: .5px .5px .5px #888888;		
-	    border: 1px solid #28b5f6;;
-	    border-radius: 5px;	
-	    font-size: 25px;	
-	    color: $buttonFontColor;
-	}
+		.go-btn {
+				position: absolute;
+			    width: 100px;
+			    height: 40px;
+			    display: block;
+			    margin: 0 auto;
+			    margin-top: 15px;
+			    background-image: linear-gradient(to bottom, #28b5f6 0%, #28b5f6 100%);
+			    box-shadow: .5px .5px .5px #888888;		
+			    border: 1px solid #28b5f6;;
+			    border-radius: 5px;	
+			    font-size: 25px;	
+			    color: $buttonFontColor;
+		}
 
-	.home-wrapper .go-btn:hover {
-		opacity: .8;
-		cursor: pointer;
-	}
+		.go-btn:hover {
+				opacity: .8;
+				cursor: pointer;
+		}		
 
 
+	}
 
 	.home-wrapper select {
 		width: 100px;
@@ -322,14 +323,11 @@ $buttonFontColor: #ECF0F1;
 	}
 
 
-
 /*THE MAIN WRAPPER*/
 
 .testDiv {
 	margin-left: 200px;
 	height: 100%;
-	/*position: absolute; */
-	/*top: 0;*/
 	position: relative;
 	top: -50px;
 }

@@ -11,6 +11,8 @@ var ActivitiesView = Backbone.View.extend({
       this.activities = new Activities();
     },
     render : function (options){
+      console.log("I am rendering the activity view");
+      console.log(this.activities);
       // Set scope, construct new activity collection, call fetch, render data on callback function
       var that = this; // To fix callback scoping error
 
@@ -48,7 +50,10 @@ var ActivitiesView = Backbone.View.extend({
 
       //TODO: Find better way to do this
       var token = Cookies.get('login-token');
-      if(this.time){
+      if (this.activities.length > 0) {
+        renderData(this.activities);
+      } else if (this.time) {
+        console.log("im in this");
         this.activities.fetch({
             success: function(data){
             renderData(data);

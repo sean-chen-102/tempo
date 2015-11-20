@@ -73,7 +73,7 @@ class CustomActivitiesController < ApplicationController
 						error_list.append("Error: custom activity ##{custom_activity_id} doesn't belong to user ##{user_id}.")
 					end
 				else
-					error_list.append("Error: custom activity ##{custom_activity_id} doesn't exists.")
+					error_list.append("Error: custom activity ##{custom_activity_id} doesn't exist.")
 				end
 			else
 				error_list.append(ErrorMessages::AUTHORIZATION_ERROR)

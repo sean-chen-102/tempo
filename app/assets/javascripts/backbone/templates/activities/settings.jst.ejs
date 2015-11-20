@@ -1,5 +1,62 @@
+<div class="settingsHead">
+  <h1> User Settings </h1>
+</div>
+
+
+<div class="jumbotron">
+  <div class="container settingsContainer">
+  	<header>
+    	<!-- <img id="avatar" src="http://placekitten.com/g/200/300"> -->
+    	<!-- <img src="http://placekitten.com/g/200/300" /> -->
+    	<img src="http://lorempixel.com/400/200" id="avatar" />
+
+    	<div class="headline"> <h2>Name</h2> </div>
+	</header>
+
+	<section>
+	    <form>
+	      <p> Old Password </p>
+	      <input type="password" name="change-password" id="old-password">
+	      <p> New Password </p>
+	      <input type="password" name="change-password" id="new-password">
+	      <p id="new-password-error" class="password-error"> Your password must be at least 8 characters</p>
+	      <p> Confirm Password </p>
+	      <input type="password" name="change-password" id="new-password-confirmation">
+	      <p id="new-password-confirmation-error" class="password-error">passwords do not match</p>
+	    </form>
+
+
+			    <table class="settingInterestTable">
+			        <thead>
+			            <tr>
+			                <th> </th>
+			                <th colspan='3'> </th>
+			            </tr>
+			        </thead>
+			        <tbody>
+			        <% _.each(data, function(interest) { %> 
+			            <tr>
+			                <td>  
+			                    <input type=checkbox name= "<%= interest.name%>"  id="interest-<%= interest.index%>" <%= interest.checked%> >
+			               	 	<%= interest.name %>
+			                </td>
+			            </tr>
+			            <% }); %>
+			        </tbody> 
+			    </table> 
+
+
+			  	<button id='submit-interests'> save </button> <br>
+
+
+	</section>
+  </div>
+</div>
+
+
+
+<!-- 
 <div class="settingsContainer">
-	<h1 class="page-header"> Settings </h1>
 	<div class="settingsCol1">
 		<div class="settingsModule">
 			<header>
@@ -53,4 +110,4 @@
 		    </footer>
 		</div>		
 	</div>
-</div>
+</div> -->

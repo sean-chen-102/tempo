@@ -9,6 +9,7 @@ var TempoRouter = Backbone.Router.extend({
       "settings":"settings",
       "customActivities": "customActivities",
       "createCustomActivity": "createCustomActivity",
+      "activities/:activity?history=:history":"activityHistory",
       "activities/:activity":"activity",
       "show": "show",
       "logout": 'logout',
@@ -98,6 +99,11 @@ var TempoRouter = Backbone.Router.extend({
       console.log("The activity router was called");
       console.log(activity_id);
       App.Views['activityView']= new ActivityView({id:activity_id});
+      this.verifyUser("activityView");
+    },
+    activityHistory: function(activity_id, history) {
+      console.log("The activityHistory router was called");
+      App.Views['activityView']= new ActivityView({id:activity_id, history:history});
       this.verifyUser("activityView");
     },
     customActivities: function(){

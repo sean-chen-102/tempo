@@ -11,10 +11,16 @@ var ActivityView = Backbone.View.extend({
     initialize: function(options){
       this.options = options;
       this.activity_id = options['id'];
+      this.history = options['history'];
     },
     renderData: function(data){
         if(data['link'] == "N/A"){
             data['link'] = 'javascript:;';
+        }
+        if(this.history){
+            var backLink = 'history';
+        } else {
+            var backLink = 'activities';
         }
         var template = JST["backbone/templates/activities/activity"]({
               title: data['title'],
@@ -24,7 +30,8 @@ var ActivityView = Backbone.View.extend({
               link: data['link'],
               id: data['id'],
               likes: data['like_count'],
-              dislikes: data['dislike_count']
+              dislikes: data['dislike_count'],
+              backLink: backLink,
           });
         $(this.el).html(template);
     },

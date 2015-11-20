@@ -197,7 +197,7 @@ class CustomActivitiesController < ApplicationController
 					status = 1
 					completed_custom_activities = user.completed_custom_activities
 
-					if not completed_custom_activities.include? @custom_activity.id
+					if not completed_custom_activities.include? @custom_activity.id #prevent duplicates
 						completed_custom_activities.push(@custom_activity.id)
 						user.completed_custom_activities = completed_custom_activities
 						user.save

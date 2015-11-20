@@ -161,7 +161,7 @@ class CustomActivitiesController < ApplicationController
 				end
 			else
 				error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
-        		status = -2
+        status = -2
 			end
 		else
 			error_list.append("Error: user ##{user_id} doesn't exist.")
@@ -195,14 +195,20 @@ class CustomActivitiesController < ApplicationController
 			if not token.nil? and user_has_permission(User.authenticate_token(token), user.id) # if the token was provided and is valid and the user has permission
 				if not @custom_activity.nil?
 					status = 1
-					user.completed_custom_activities.push(@custom_activity.id)
-					user.save				
+					completed_custom_activities = user.completed_custom_activities
+
+					if not completed_custom_activities.include? @custom_activity.id #prevent duplicates
+						completed_custom_activities.push(@custom_activity.id)
+						user.completed_custom_activities = completed_custom_activities
+						user.save
+					end
+
 				else
 					error_list.append("Error: activity does not exist")
 				end
 			else
 				error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
-        		status = -2
+        status = -2
 			end
 		else
 			error_list.append("Error: user_id is not valid")
@@ -219,6 +225,53 @@ class CustomActivitiesController < ApplicationController
 			format.json { render json: json_response }
 		end
 	end
+
+	# Get a User's specific CustomActivity
+	# GET /api/users/:id/custom_activities/:cid/
+	# Testing via curl: curl -H "Content-Type: application/json" -d '{ "token": "<token>" }' -X GET http://localhost:3000/api/users/1/custom_activities/1/
+	def get_custom_activity
+		status = -1
+		json_response = {}
+		error_list = []
+		token = params[:token]
+		user_id = params[:id]
+		user = User.find_by(id: user_id)
+		custom_activity_id = params[:cid]
+
+		if not user.nil?
+			if not token.nil? and user_has_permission(User.authenticate_token(token), user.id) # if the token was provided and is valid and the user has permission
+				custom_activity = CustomActivity.find_by(id: custom_activity_id)
+
+				if not custom_activity.nil? and user.custom_activities.include? custom_activity # if this CustomActivity belongs to the User
+					status = 1
+					json_response["custom_activity"] = custom_activity
+				else
+					error_list.append("Error: you don't have permission to view this CustomActivity.")
+				end
+			else
+				error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
+        status = -2
+			end
+		else
+			error_list.append("Error: user_id is not valid.")
+		end		
+
+		if status != 1
+			json_response["errors"] = error_list
+		end
+
+		json_response["status"] = status
+		json_response = json_response.to_json
+
+		respond_to do |format|
+			format.json { render json: json_response }
+		end
+	end
+
+
+
+
+
 
 	private
 	# Use callbacks to share common setup or constraints between actions.

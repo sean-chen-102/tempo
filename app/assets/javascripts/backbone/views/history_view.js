@@ -12,14 +12,17 @@ var HistoryView = Backbone.View.extend({
       this.options = options;
     },
     saveCustData: function(data){
+      console.log("cust data");
+      console.log(data);
+      var that = this;
       var custData = [];
       data.each(function(model){
-        custData.push({"title": model.get("title"), "content" : model.get("content"), 
-                            "time": model.get("completion_time"), "id" : model.get("id")})
+        custData.push({"title": model.get("title"), "time": model.get("completion_time"),
+                     "id" : model.get("id")})
       });
       this.custData = custData;
 
-      var activities = new Activities();
+      var activities = new CompletedActivities();
       activities.url = "/api/users/"+ this.user.id + "/completed_activities";
       activities.fetch({
         success: function(data){
@@ -38,8 +41,8 @@ var HistoryView = Backbone.View.extend({
       var templateData = [];
       //Iterate throught he collections of Activities and create a template
       data.each(function(model){
-        templateData.push({"title": model.get("title"), "content" : model.get("content"), 
-                            "time": model.get("completion_time"), "id" : model.get("id")})
+        templateData.push({"title": model.get("title"), "time": model.get("completion_time"),
+                           "id" : model.get("id")})
       });
 
       var template = JST["backbone/templates/activities/history"]({
@@ -55,7 +58,7 @@ var HistoryView = Backbone.View.extend({
       this.user = options.user;
 
       // Get users's specific custom activities
-      var custActivities = new CustomActivities();
+      var custActivities = new CompletedCustomActivities();
       custActivities.url = "/api/users/"+ this.user.id + "/completed_custom_activities";
      	custActivities.fetch({
      		success: function(data){

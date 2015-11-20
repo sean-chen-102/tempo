@@ -8,15 +8,14 @@
 	<table class='historyTable' >
 		<thead>
 			<tr>
-				<th>Title</th> <th>Content</th> <th>Time</th>
+				<th>Title</th> <th>Time</th>
 
 			</tr>
 		</thead>
 		<tbody>
 		<% _.each(data, function(custAct) { %> 
 			<tr class='history <%= custAct.id %>'>
-				<td>  <%= custAct.title%> </td>
-				<td>  <%= custAct.content%> </td>
+				<td> <a href='/tempo#activities/<%= custAct.id%>'> <%= custAct.title%> </a></td>
 				<td>  <%= custAct.time%> </td>
 			</tr>
 			<% }); %>
@@ -29,15 +28,14 @@
 	<table class='customHistoryTable' >
 		<thead>
 			<tr>
-				<th>Title</th> <th>Content</th> <th>Time</th>
+				<th>Title</th> <th>Time</th>
 
 			</tr>
 		</thead>
 		<tbody>
 		<% _.each(custData, function(custAct) { %> 
 			<tr class='history <%= custAct.id %>'>
-				<td>  <%= custAct.title%> </td>
-				<td>  <%= custAct.content%> </td>
+				<td>  <a href='/tempo#activities/<%= custAct.id%>'> <%= custAct.title%> </a></td>
 				<td>  <%= custAct.time%> </td>
 			</tr>
 			<% }); %>

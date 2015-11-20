@@ -30,6 +30,8 @@ var ActivityView = Backbone.View.extend({
     },
     render: function(options){
         console.log("activity view render call");
+        //mark activity as complete because it has been viewed
+        this.markAsComplete(options);
         var that = this;
         this.user = options['user'];
         var activity = new Activity();
@@ -39,6 +41,22 @@ var ActivityView = Backbone.View.extend({
         this.activity.fetch({
             success: function(data){
                 that.renderData(data.attributes['activity']);
+            }
+        });
+    },
+    markAsComplete: function(options){
+        var activity = new Activity();
+        activity.url = "/api/activities/" + this.activity_id + "/complete";
+        var token = Cookies.get('login-token');
+        activity.attributes = {id:this.activity_id, user_id:options.user.id,
+                              token:token};
+        activity.save(activity.attributes,
+            {
+            success: function(userSession, response) {
+                console.log("activity complete!");
+            },
+            error: function(userSession, response) {
+                console.log("failure!");
             }
         });
     },

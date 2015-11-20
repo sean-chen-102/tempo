@@ -5,7 +5,6 @@ class UsersController < ApplicationController
 
   # CUSTOM CODE
 
-  # TODO: change password API call
 
   # Create a User in the database for the given params
   # POST /api/users/

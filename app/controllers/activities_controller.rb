@@ -371,8 +371,14 @@ class ActivitiesController < ApplicationController
 			if not token.nil? and user_has_permission(User.authenticate_token(token), user.id) # if the token was provided and is valid and the user has permission
 				if not @activity.nil?
 					status = 1
-					user.completed_activities.push(@activity.id)
-					user.save
+					completed_activities = user.completed_activities
+
+					if not completed_activities.include? @activity.id # prevent duplicates
+						completed_activities.push(@activity.id)
+						user.completed_activities = completed_activities
+						user.save
+					end
+					
 				else
 					error_list.append("Error: activity does not exist")
 				end

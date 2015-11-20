@@ -195,8 +195,14 @@ class CustomActivitiesController < ApplicationController
 			if not token.nil? and user_has_permission(User.authenticate_token(token), user.id) # if the token was provided and is valid and the user has permission
 				if not @custom_activity.nil?
 					status = 1
-					user.completed_custom_activities.push(@custom_activity.id)
-					user.save				
+					completed_custom_activities = user.completed_custom_activities
+
+					if not completed_custom_activities.include? @custom_activity.id #prevent duplicates
+						completed_custom_activities.push(@custom_activity.id)
+						user.completed_custom_activities = completed_custom_activities
+						user.save
+					end
+
 				else
 					error_list.append("Error: activity does not exist")
 				end

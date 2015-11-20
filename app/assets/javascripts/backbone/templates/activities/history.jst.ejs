@@ -35,7 +35,7 @@
 		<tbody>
 		<% _.each(custData, function(custAct) { %> 
 			<tr class='history <%= custAct.id %>'>
-				<td>  <a href='/tempo#activities/<%= custAct.id%>'> <%= custAct.title%> </a></td>
+				<td>  <a href='/tempo#customActivities/<%= custAct.id%>?history=true'> <%= custAct.title%> </a></td>
 				<td>  <%= custAct.time%> </td>
 			</tr>
 			<% }); %>

@@ -30,12 +30,22 @@ var ActivitiesView = Backbone.View.extend({
         //Iterate throught he collections of Activities and create a template
         console.log("activity");
         data.each(function(model){
-          html += "<tr class='tRow'>" 
-              + "<td> <a href='/tempo#activities/" +model.get('id') + "'>" +  model.get('title') + " </a> </td>"
-              + "<td id='contentType'> " +  model.get('content_type') + " </td>"
-              + "<td id='likeCount'> " +  model.get('like_count') + " </td>"
-              + "<td id='dislikeCount''> " +  model.get('dislike_count') + " </td>"
-              + "</tr>";  
+          //jank way to determine if it's a custom activity
+          if (model.get('like_count') == undefined){
+            html += "<tr class='tRow'>" 
+                + "<td> <a href='/tempo#customActivities/" +model.get('id') + "'>" +  model.get('title') + " </a> </td>"
+                + "<td id='contentType'> text </td>"
+                + "<td id='likeCount'> 0 </td>"
+                + "<td id='dislikeCount''> 0 </td>"
+                + "</tr>";  
+          } else {
+            html += "<tr class='tRow'>" 
+                + "<td> <a href='/tempo#activities/" +model.get('id') + "'>" +  model.get('title') + " </a> </td>"
+                + "<td id='contentType'> " +  model.get('content_type') + " </td>"
+                + "<td id='likeCount'> " +  model.get('like_count') + " </td>"
+                + "<td id='dislikeCount''> " +  model.get('dislike_count') + " </td>"
+                + "</tr>";  
+          }
         });
         html += " </tbody> </table> </div> </section> <footer> </footer> </div>";
         if (data['length'] == 0){

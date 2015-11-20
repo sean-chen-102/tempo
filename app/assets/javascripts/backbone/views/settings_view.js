@@ -24,6 +24,23 @@ var SettingsView = Backbone.View.extend({
 			data: that.templateData,
     	});
         this.$el.html(template);
+        $("#new-password").keyup(function() {
+  			if ($("#new-password").val().length < 8) {
+  				$("#new-password-error").text("password must be at least 8 characters");
+  			} else {
+  				$("#new-password-error").text("");
+  			}
+		});
+		$("#new-password-confirmation").keyup(function() {
+			console.log($("#new-password").val());
+			console.log($("#new-password-confirmation").val());
+  			if ($("#new-password").val() === $("#new-password-confirmation").val()) {
+  				$("#new-password-confirmation-error").text("");
+  			} else {
+  				$("#new-password-confirmation-error").text("passwords do not match");
+
+  			}
+		});
     },
 	initialize: function(options){
 		console.log("settings initialize called");

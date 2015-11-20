@@ -46,6 +46,7 @@ Rails.application.routes.draw do
   put '/api/users/:id/custom_activities/:cid', to: 'custom_activities#edit_custom_activity', defaults: { format: 'json' }
   put '/api/custom_activities/:id/complete', to: 'custom_activities#complete_custom_activity', defaults: { format: 'json' }
   delete '/api/users/:id/custom_activities/:cid', to: 'custom_activities#destroy_custom_activity', defaults: { format: 'json' }
+  get '/api/users/:id/custom_activities/:cid', to: 'custom_activities#get_custom_activity', defaults: { format: 'json' }
 
   # User Sessions routing
   post 'api/login', to: 'sessions#login', defaults: { format: 'json' }

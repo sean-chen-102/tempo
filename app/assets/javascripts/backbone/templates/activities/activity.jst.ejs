@@ -33,6 +33,7 @@
   	line-height: 23px;
   }
 
+  /*TODO: Fix adjusting section container*/
   .activity section {
   	height: 90%;
   	overflow: hidden;
@@ -106,13 +107,15 @@
   	cursor: pointer;
   }
 
-  #link, #back {
+  .linkContainer {
     float: right;
-    margin-top: -30px;
+    margin-top: -35px;
+    padding-right: 10px;
   }
 
   a:hover {
   	background-color: transparent;
+    font-size: 100%;
   }
 </style>
 
@@ -137,8 +140,10 @@
       <br>
       <button class='btn btn-primary like-btn' role="button">Like</button>
       <button class='btn btn-default dislike-btn' role="button">Dislike</button><br>  
-      <a id="link" href='<%= link %>' target="_blank"> Link </a>
-      <a href='tempo#activities' id='back'> Back </a>      
+      <div class="linkContainer">
+        <a id="link" href='<%= link %>' target="_blank"> Link </a>
+        <a href='tempo#activities' id='back'> Back </a>     
+      </div>
   </footer>
 </div>
 

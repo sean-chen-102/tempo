@@ -395,7 +395,17 @@ class UsersController < ApplicationController
           end
         end
         @user.save
-        json_response["completed_activities"] =  @user.completed_activities
+        completed_activity_ids = @user.completed_activities
+        completed_activities = []
+
+        completed_activity_ids.each do |activity_id|
+          activity = Activity.find_by(id: activity_id)
+          if not activity.nil?
+            completed_activities.append(activity)
+          end
+        end
+
+        json_response["completed_activities"] =  completed_activities
       else
         error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
         status = -2

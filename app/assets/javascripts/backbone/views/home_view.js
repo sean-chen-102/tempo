@@ -72,6 +72,7 @@ var HomeView = Backbone.View.extend({
 			//reset selectedInterests for the next go request
 			this.interestView.selectedInterests = null;
 			//switch view to activities view
-			window.location = '/tempo#activities';
+			this.activitiesView.activities = new Activities();
+			window.location = '/tempo#activities?';
 		},
 	});

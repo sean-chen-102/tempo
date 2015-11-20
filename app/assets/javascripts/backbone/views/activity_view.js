@@ -11,10 +11,16 @@ var ActivityView = Backbone.View.extend({
     initialize: function(options){
       this.options = options;
       this.activity_id = options['id'];
+      this.history = options['history'];
     },
     renderData: function(data){
         if(data['link'] == "N/A"){
             data['link'] = 'javascript:;';
+        }
+        if(this.history){
+            var backLink = 'history';
+        } else {
+            var backLink = 'activities';
         }
         var template = JST["backbone/templates/activities/activity"]({
               title: data['title'],
@@ -24,12 +30,15 @@ var ActivityView = Backbone.View.extend({
               link: data['link'],
               id: data['id'],
               likes: data['like_count'],
-              dislikes: data['dislike_count']
+              dislikes: data['dislike_count'],
+              backLink: backLink,
           });
         $(this.el).html(template);
     },
     render: function(options){
         console.log("activity view render call");
+        //mark activity as complete because it has been viewed
+        this.markAsComplete(options);
         var that = this;
         this.user = options['user'];
         var activity = new Activity();
@@ -39,6 +48,22 @@ var ActivityView = Backbone.View.extend({
         this.activity.fetch({
             success: function(data){
                 that.renderData(data.attributes['activity']);
+            }
+        });
+    },
+    markAsComplete: function(options){
+        var activity = new Activity();
+        activity.url = "/api/activities/" + this.activity_id + "/complete";
+        var token = Cookies.get('login-token');
+        activity.attributes = {id:this.activity_id, user_id:options.user.id,
+                              token:token};
+        activity.save(activity.attributes,
+            {
+            success: function(userSession, response) {
+                console.log("activity complete!");
+            },
+            error: function(userSession, response) {
+                console.log("failure!");
             }
         });
     },

@@ -5,6 +5,7 @@ var SettingsView = Backbone.View.extend({
 	options: null,
 	events:{
     	"click #submit-interests":"saveInterests",
+    	"click #change-password" : "changePassword",
 	},
 	renderData : function(data){
 		var that = this;
@@ -24,6 +25,21 @@ var SettingsView = Backbone.View.extend({
 			data: that.templateData,
     	});
         this.$el.html(template);
+        $("#new-password").keyup(function() {
+  			if ($("#new-password").val().length < 8) {
+  				$("#new-password-error").css("visibility", "visible");
+  			} else {
+  				$("#new-password-error").css("visibility", "hidden");
+  			}
+		});
+		$("#new-password-confirmation").keyup(function() {
+  			if ($("#new-password").val() === $("#new-password-confirmation").val()) {
+  				$("#new-password-confirmation-error").css("visibility", "hidden");
+  			} else {
+  				$("#new-password-confirmation-error").css("visibility", "visible");
+
+  			}
+		});
     },
 	initialize: function(options){
 		console.log("settings initialize called");
@@ -73,6 +89,23 @@ var SettingsView = Backbone.View.extend({
 				that.getInterests();
 			}
 		});
+	},
+	changePassword : function() {
+		var oldPassword = $("#old-password").val();
+		var newPassword = $("#new-password").val();
+		var passwordChange = new PasswordChange();
+		passwordChange.url = "/api/users/" + this.user.id + "/change_password";
+		var token = Cookies.get('login-token');
+		passwordChange.attributes = {id:this.user.id, old_password: oldPassword, new_password: newPassword, token:token};
+		passwordChange.save(passwordChange.attributes, {
+      		success: function(userSession, response) {
+      			console.log("password Changed");
+      		},
+      		error: function(userSession, response) {
+      			console.log("failed to save interest");
+      		}
+    	});
+
 	},
 	getInterests : function(){
 		console.log("pls");

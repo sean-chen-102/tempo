@@ -59,7 +59,7 @@ class Activity < ActiveRecord::Base
             link = link.sub! "watch?v=", "v/"
           end
 
-          activity.content = "<iframe width=\"345\" height=\"200\" src=\"#{link}\" frameborder=\"0\"></iframe>"
+          activity.content = "<iframe width=\"345\" height=\"200\" src=\"#{link}\" frameborder=\"0\" allowfullscreen></iframe>"
           activity.save
         end
       end

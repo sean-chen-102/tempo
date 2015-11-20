@@ -107,7 +107,7 @@ a:hover {
 	display: block;
 	position: relative;
 	margin: 0 auto;
-	margin-top: 68px;
+	margin-top: 45px;
 	/*background-color: #66CC99 ;*/
 	background-color: #D35C48 ;
 	border: 1px solid #D35C48 ;
@@ -208,4 +208,16 @@ font-size: 100%;
 .settingInterests footer #submit-interests:hover {
 	opacity: .8;
 	cursor: pointer;
+}
+
+.password-error {
+	color: red;
+	font-size: 10px;
+	margin-bottom: 5px !important;
+	margin-top: -5px !important;
+	visibility: hidden;
+}
+
+#old-password {
+	margin-bottom: 25px;
 }

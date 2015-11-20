@@ -31,7 +31,7 @@ var HistoryView = Backbone.View.extend({
         dataType: "json",
         data: {"token": Cookies.get('login-token')}           
       });
-    }
+    },
     renderData : function(data){
       console.log(data);
       var that = this;

@@ -9,9 +9,11 @@ var TempoRouter = Backbone.Router.extend({
       "settings":"settings",
       "customActivities": "customActivities",
       "createCustomActivity": "createCustomActivity",
+      "activities/:activity?history=:history":"activityHistory",
       "activities/:activity":"activity",
       "show": "show",
       "logout": 'logout',
+      "history": "history",
     },
     verifyUser: function(view) {
       console.log(Cookies.get("login-token"));
@@ -57,9 +59,10 @@ var TempoRouter = Backbone.Router.extend({
       }
     },
     initialize: function() {
-      App.Views['interestView'] = new InterestView()
-      App.Views['customActivityView'] = new CustomActivityView()
-      App.Views['createCustomActivityView'] = new CreateCustomActivityView()
+      App.Views['interestView'] = new InterestView();
+      App.Views['historyView'] = new HistoryView();
+      App.Views['customActivityView'] = new CustomActivityView();
+      App.Views['createCustomActivityView'] = new CreateCustomActivityView();
       App.Views['activitiesView'] = new ActivitiesView();
       App.Views['settingsView'] = new SettingsView();
       App.Views['loginView'] = new LoginView();
@@ -83,6 +86,10 @@ var TempoRouter = Backbone.Router.extend({
       this.verifyUser("interestView");
      
     },
+    history: function(){
+      console.log("The history router was called");
+      this.verifyUser("historyView");
+    },
     settings: function(){
       console.log("The settings router was called ");
       this.verifyUser("settingsView");
@@ -92,6 +99,11 @@ var TempoRouter = Backbone.Router.extend({
       console.log("The activity router was called");
       console.log(activity_id);
       App.Views['activityView']= new ActivityView({id:activity_id});
+      this.verifyUser("activityView");
+    },
+    activityHistory: function(activity_id, history) {
+      console.log("The activityHistory router was called");
+      App.Views['activityView']= new ActivityView({id:activity_id, history:history});
       this.verifyUser("activityView");
     },
     customActivities: function(){

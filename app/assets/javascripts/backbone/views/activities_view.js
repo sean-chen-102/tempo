@@ -31,10 +31,10 @@ var ActivitiesView = Backbone.View.extend({
         console.log("activity");
         data.each(function(model){
           //jank way to determine if it's a custom activity
-          if (model.get('like_count') == undefined){
+          if (model.get('activity_type') == "custom_activity"){
             html += "<tr class='tRow'>" 
                 + "<td> <a href='/tempo#customActivities/" +model.get('id') + "'>" +  model.get('title') + " </a> </td>"
-                + "<td id='contentType'> TEXT </td>"
+                + "<td id='contentType'> text </td>"
                 + "<td id='likeCount'> 0 </td>"
                 + "<td id='dislikeCount''> 0 </td>"
                 + "</tr>";  

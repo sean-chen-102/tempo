@@ -34,7 +34,7 @@ var ActivitiesView = Backbone.View.extend({
           if (model.get('like_count') == undefined){
             html += "<tr class='tRow'>" 
                 + "<td> <a href='/tempo#customActivities/" +model.get('id') + "'>" +  model.get('title') + " </a> </td>"
-                + "<td id='contentType'> text </td>"
+                + "<td id='contentType'> TEXT </td>"
                 + "<td id='likeCount'> 0 </td>"
                 + "<td id='dislikeCount''> 0 </td>"
                 + "</tr>";  
@@ -63,7 +63,6 @@ var ActivitiesView = Backbone.View.extend({
       if (this.activities.length > 0) {
         renderData(this.activities);
       } else if (this.time) {
-        console.log("im in this");
         this.activities.fetch({
             success: function(data){
             renderData(data);

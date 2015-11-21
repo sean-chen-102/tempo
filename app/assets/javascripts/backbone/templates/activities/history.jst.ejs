@@ -1,0 +1,44 @@
+<!-- Temporary styling -->
+<!-- TODO: move this away --> 
+<div class="history">
+	<header> 
+		<h4 id='historyTitle' style='color: #9b59b6;'> History for <%= name%> </h4> 
+	</header>
+	<br>
+	<table class='historyTable' >
+		<thead>
+			<tr>
+				<th>Title</th> <th>Time</th>
+
+			</tr>
+		</thead>
+		<tbody>
+		<% _.each(data, function(custAct) { %> 
+			<tr class='history <%= custAct.id %>'>
+				<td> <a href='/tempo#activities/<%= custAct.id%>?history=true'> <%= custAct.title%> </a></td>
+				<td>  <%= custAct.time%> </td>
+			</tr>
+			<% }); %>
+		</tbody> 
+	</table> </br>
+	<header> 
+		<h4 id='customHistoryTitle' style='color: #9b59b6;'> Custom Activity History for <%= name%> </h4> 
+	</header>
+	<br>
+	<table class='customHistoryTable' >
+		<thead>
+			<tr>
+				<th>Title</th> <th>Time</th>
+
+			</tr>
+		</thead>
+		<tbody>
+		<% _.each(custData, function(custAct) { %> 
+			<tr class='history <%= custAct.id %>'>
+				<td>  <a href='/tempo#customActivities/<%= custAct.id%>?history=true'> <%= custAct.title%> </a></td>
+				<td>  <%= custAct.time%> </td>
+			</tr>
+			<% }); %>
+		</tbody> 
+	</table> </br>
+</div>

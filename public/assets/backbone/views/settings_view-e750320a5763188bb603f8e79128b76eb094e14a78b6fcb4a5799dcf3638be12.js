@@ -66,15 +66,9 @@ var SettingsView = Backbone.View.extend({
 		interest.save(interest.attributes, {
       		success: function(userSession, response) {
       			console.log("Saved Interest");
-      			if (response.status === 1) {
-      				notie.alert(4, 'Interests Saved!', 1.5);
-      			} else {
-      				notie.alert(3, response.errors[0], 1.5);
-      			}
       		},
       		error: function(userSession, response) {
       			console.log("failed to save interest");
-      			notie.alert(3, 'Interests could not be saved.', 1.5);
       		}
     	});
     },
@@ -105,6 +99,7 @@ var SettingsView = Backbone.View.extend({
 		passwordChange.attributes = {id:this.user.id, old_password: oldPassword, new_password: newPassword, token:token};
 		passwordChange.save(passwordChange.attributes, {
       		success: function(userSession, response) {
+      			console.log(response);
       			console.log("password Changed");
       			if (response.status === 1) {
       				notie.alert(4, 'Password Changed!', 1.5);

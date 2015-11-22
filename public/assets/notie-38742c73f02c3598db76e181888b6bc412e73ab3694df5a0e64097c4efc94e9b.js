@@ -13,7 +13,7 @@
  *
 */
 
-$( document ).ready(function() {
+
     window.notie = function(){
 
         // SETTINGS
@@ -780,4 +780,3 @@ $( document ).ready(function() {
     if (typeof module !== 'undefined' && module) {
         module.exports = notie;
     }
-});

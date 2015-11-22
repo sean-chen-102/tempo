@@ -22,8 +22,6 @@ gem 'jwt'
 gem 'httparty'
 # For underscore.js
 gem 'underscore-rails'
-# For Capybara UI Testing
-gem 'capybara'
 
 # Use bootstrap
 gem 'bootstrap-sass', '~> 3.2.0'
@@ -78,6 +76,10 @@ group :development, :test do
   gem 'teaspoon-jasmine'
   gem 'phantomjs'
   gem 'rspec-rails'
+  # For Capybara UI Testing
+  gem 'capybara'
+  # For cleaning up database with Capybara 
+  gem 'database_cleaner'
 end
 
 group :test do

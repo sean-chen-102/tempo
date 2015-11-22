@@ -183,7 +183,7 @@ RSpec.describe "test basic custom activities functionality - ", :type => :reques
 
 		expect(data["status"]).to equal(-1)
 		errors = data["errors"]
-		expect(errors[0]).to eq("Error: custom activity #999999999999 doesn't exists.")
+		expect(errors[0]).to eq("Error: custom activity #999999999999 doesn't exist.")
 	end
 
 	it "attempts to edit custom_activities (fails because custom_activity doesn't belong to user)" do

@@ -1,6 +1,7 @@
+require 'capybara/rspec' # for Capybara UI testing
+
 # FOR CODE COVERAGE
 require 'simplecov'
-require 'capybara/rspec' # for Capybara UI testing
 SimpleCov.start do 
   add_group "Models", "app/models"
   add_group "Controllers", "app/controllers"

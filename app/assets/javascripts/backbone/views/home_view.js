@@ -10,16 +10,6 @@ var HomeView = Backbone.View.extend({
 			this.options = options;
 			this.interestView = options.interestView;
 			this.activitiesView = options.activitiesView;
-			this.times = new Times(null, {
-	            view: this
-	        });
-
-			//TODO: Find better way to do this
-			//add all the times we want the user to  be able to select
-	        this.times.add(new Time({duration: "5"}));
-	        this.times.add(new Time({duration: "15"}));
-	        this.times.add(new Time({duration: "30"}));
-	        this.times.add(new Time({duration: "60"}));
 		},
 		render : function (options){
 			console.log("render home");
@@ -30,7 +20,6 @@ var HomeView = Backbone.View.extend({
 			//TODO: Move template to separate page, custom welcome name
 			//populate the home_template with times collection
 			var home_template = JST["backbone/templates/activities/home"]({
-            	times: that.times.toJSON(),
             	labelValue: 'Times',
             	name: this.name
     	    });

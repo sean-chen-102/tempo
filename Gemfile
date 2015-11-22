@@ -76,6 +76,7 @@ group :development, :test do
   gem 'teaspoon-jasmine'
   gem 'phantomjs'
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
   # For Capybara UI Testing
   gem 'capybara'
   # For cleaning up database with Capybara 

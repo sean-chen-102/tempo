@@ -62,7 +62,14 @@ var CustomActivityView = Backbone.View.extend({
           success: function(userSession, response) {
               console.log("success");
               //remove custom activity from the DOM
-              $(".activity."+activityId).remove();
+              if (response.status === 1) {
+                notie.confirm('Are you sure you want to delete this Activity?', 'Yes', 'Cancel', function() {
+                  notie.alert(1, 'Activity Deleted!', 1.5);
+                  $(".activity."+activityId).remove();
+                });
+              } else {
+                notie.alert(4, "Custom activity could not be deleted.", 1.5);
+              }
           },
           error: function(userSession, response) {
               console.log("failure!");

@@ -404,7 +404,7 @@ class UsersController < ApplicationController
           end
         end
 
-        json_response["completed_activities"] =  completed_activities
+        json_response["completed_activities"] =  completed_activities.reverse
       else
         error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
         status = -2
@@ -455,7 +455,7 @@ class UsersController < ApplicationController
           end
         end
 
-        json_response["completed_custom_activities"] =  completed_custom_activities
+        json_response["completed_custom_activities"] =  completed_custom_activities.reverse
       else
         error_list.append(ErrorMessages::AUTHORIZATION_ERROR)
         status = -2

@@ -46,7 +46,11 @@ var CreateCustomActivityView = Backbone.View.extend({
 
       model.save(model.attributes, {        
           success: function(userSession, response) {
-            window.location = '/tempo#customActivities';
+            if (response.status === 1) {
+              window.location = '/tempo#customActivities';
+            } else {
+              notie.alert(3, response.errors[0], 1.5);
+            }
           },
          error: function(userSession, response) {
             alert("failure!");
@@ -54,7 +58,7 @@ var CreateCustomActivityView = Backbone.View.extend({
       });    
        // validate error(s) accessible in model.validationError
       if (model.validationError) {
-          $("#warning").html(model.validationError);
+          notie.alert(3, model.validationError, 1.5);
       }  
     }
   });

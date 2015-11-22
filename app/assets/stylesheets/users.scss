@@ -196,20 +196,21 @@ $orangeButton: #e65000;
 	    border: none;
 	  } 
 
-	  #signup-form button {
+	  #submit-interests {
 	    width: 300px;
 	    height: 35px;
 	    display: block;
 	    margin: 0 auto;
 	    margin-top: 3px;
 	    margin-bottom: 10px;
-	    background-color: $orangeButton;
+	    /*background-color: $orangeButton;*/
+	    background-image: linear-gradient(rgb(189, 85, 0) 0%, rgb(189, 85, 0) 100%);
 	    border: 1px solid $orangeBorder;
 	    border-radius: 3px;
 	    color: #EEEEEE;
 	  }
 
-	  #signup-form button:hover {
+	  #submit-interests:hover {
 	    opacity: .8;
 	    cursor: pointer;
 	  }

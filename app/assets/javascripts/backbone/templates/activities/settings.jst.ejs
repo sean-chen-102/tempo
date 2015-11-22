@@ -3,14 +3,13 @@
 </div>
 
 
-<div class="jumbotron">
+<!-- <div class="jumbotron">
   <div class="container settingsContainer">
-  	<header>
+  	<header> -->
     	<!-- <img id="avatar" src="http://placekitten.com/g/200/300"> -->
     	<!-- <img src="http://placekitten.com/g/200/300" /> -->
-    	<img src="http://lorempixel.com/400/200" id="avatar" />
-
-    	<div class="headline"> <h2>Name</h2> </div>
+    	<!-- <img src="http://lorempixel.com/400/200" id="avatar" /> -->
+<!--     	<div class="headline"> <h2>Name</h2> </div>
 	</header>
 
 	<section>
@@ -25,37 +24,35 @@
 	      <p id="new-password-confirmation-error" class="password-error">passwords do not match</p>
 	    </form>
 
-
-			    <table class="settingInterestTable">
-			        <thead>
-			            <tr>
-			                <th> </th>
-			                <th colspan='3'> </th>
-			            </tr>
-			        </thead>
-			        <tbody>
-			        <% _.each(data, function(interest) { %> 
-			            <tr>
-			                <td>  
-			                    <input type=checkbox name= "<%= interest.name%>"  id="interest-<%= interest.index%>" <%= interest.checked%> >
-			               	 	<%= interest.name %>
-			                </td>
-			            </tr>
-			            <% }); %>
-			        </tbody> 
-			    </table> 
+	     <button id="change-password" class="change-submit"> Change password </button>
+	 </section>
 
 
-			  	<button id='submit-interests'> save </button> <br>
-
-
-	</section>
+		<div class="settingInterests">
+		    <table class="settingInterestTable">
+		        <thead>
+		            <tr>
+		                <th> </th>
+		                <th colspan='3'> </th>
+		            </tr>
+		        </thead>
+		        <tbody>
+		        <% _.each(data, function(interest) { %> 
+		            <tr>
+		                <td>  
+							<%= interest.name %>
+		                    <input id="interestCheck" type=checkbox name= "<%= interest.name%>"  id="interest-<%= interest.index%>" <%= interest.checked%> >
+						</td>
+		            </tr>
+		            <% }); %>
+		        </tbody> 
+		    </table> 
+			<button id='submit-interests'> save </button> <br>
+		</div>
   </div>
 </div>
+ -->
 
-
-
-<!-- 
 <div class="settingsContainer">
 	<div class="settingsCol1">
 		<div class="settingsModule">
@@ -110,4 +107,4 @@
 		    </footer>
 		</div>		
 	</div>
-</div> -->
+</div>

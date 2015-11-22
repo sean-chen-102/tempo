@@ -65,12 +65,12 @@
 			      <input type="password" name="change-password" id="old-password">
 			      <p> New Password </p>
 			      <input type="password" name="change-password" id="new-password">
-			      <p id="new-password-error" class="password-error"> Your password must be at least 8 characters</p>
 			      <p> Confirm Password </p>
+		      	  <p id="new-password-error" class="password-error"> Your password must be at least 8 characters</p>			      
 			      <input type="password" name="change-password" id="new-password-confirmation">
 			      <p id="new-password-confirmation-error" class="password-error">passwords do not match</p>
 			    </form>
-			     <button id="change-password" class="change-submit"> Change password </button>
+			     <button id="change-password" class="change-submit btn btn-danger"> Change password </button>
 		    </section> 
 		    <br>
 		</div>	
@@ -80,7 +80,7 @@
 		<div class="settingInterests">
 		    <span>
 		    <header>
-		    	<h3 style='color: #1abc9c ;'> All Interests </h3>
+		    	<h3> All Interests </h3>
 		        <br>
 		    </header>
 		    <table class="settingInterestTable">
@@ -100,10 +100,10 @@
 		            </tr>
 		            <% }); %>
 		        </tbody> 
-		    </table> 
+		    </table>     
 		    </br>
 		    <footer> 
-		    	<button id='submit-interests'> save </button> <br>
+				<button id='submit-interests' class='btn btn-primary'> Save </button> 			    	
 		    </footer>
 		</div>		
 	</div>

@@ -23,8 +23,8 @@ $greenText: rgb(104, 187, 108);
     border-bottom-left-radius: 2px;  
     float: left;
     margin-left: 4%;
+    margin-right: 2%;
     min-width: 300px;
-    max-width: 550px;
 
     header {
       height: 10%;
@@ -72,12 +72,12 @@ $greenText: rgb(104, 187, 108);
 
           tbody tr td {
             font-family: 'Open Sans Condensed', sans-serif;
-            font-size: 16px;
+            font-size: 18px;
           }
 
           tbody tr td a:hover {
           	text-decoration: none;
-          	font-size: 16px;
+          	font-size: 18px;
           	opacity: .7;
           	background-color: transparent;
           }
@@ -103,9 +103,9 @@ $greenText: rgb(104, 187, 108);
     border-bottom-right-radius: 2px;
     border-bottom-left-radius: 2px;
     float: left;
-    margin-left: 4%;
+    margin-left: 2%;
+    margin-right: 4%;
     min-width: 300px;
-    max-width: 550px;
 
     header {
       height: 10%;
@@ -153,12 +153,12 @@ $greenText: rgb(104, 187, 108);
 
           tbody tr td {
             font-family: 'Open Sans Condensed', sans-serif;
-            font-size: 16px;
+            font-size: 18px;
           }
 
           tbody tr td a:hover {
             text-decoration: none;
-            font-size: 16px;
+            font-size: 18px;
             opacity: .7;
             background-color: transparent;
           }

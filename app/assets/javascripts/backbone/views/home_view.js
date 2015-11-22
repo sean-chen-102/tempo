@@ -1,4 +1,5 @@
 var HomeView = Backbone.View.extend({
+<<<<<<< HEAD
 	el: ".testDiv",
 	tagName : 'div',
 	options: null,

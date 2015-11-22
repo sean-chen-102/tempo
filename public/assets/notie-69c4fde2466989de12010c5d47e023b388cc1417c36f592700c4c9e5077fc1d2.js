@@ -13,9 +13,10 @@
  *
 */
 
+
 $( document ).ready(function() {
     console.log("hi");
-    window.notie = function(){
+    var notie = function(){
 
         // SETTINGS
         // *********************************************

@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require js.cookie
+//= require notie
 //= require underscore
 //= require bootstrap-sprockets
 //= require bootstrap

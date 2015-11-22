@@ -67,7 +67,7 @@ var SettingsView = Backbone.View.extend({
       		success: function(userSession, response) {
       			console.log("Saved Interest");
       			if (response.status === 1) {
-      				notie.alert(4, 'Interests Saved!', 1.5);
+      				notie.alert(1, 'Interests Saved!', 1.5);
       			} else {
       				notie.alert(3, response.errors[0], 1.5);
       			}
@@ -107,7 +107,7 @@ var SettingsView = Backbone.View.extend({
       		success: function(userSession, response) {
       			console.log("password Changed");
       			if (response.status === 1) {
-      				notie.alert(4, 'Password Changed!', 1.5);
+      				notie.alert(1, 'Password Changed!', 1.5);
       			} else {
       				notie.alert(3, response.errors[0], 1.5);
       			}

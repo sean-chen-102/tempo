@@ -100,6 +100,8 @@ var SettingsView = Backbone.View.extend({
 		passwordChange.save(passwordChange.attributes, {
       		success: function(userSession, response) {
       			console.log("password Changed");
+      			notie.alert(1, 'Success!', 1.5);
+
       		},
       		error: function(userSession, response) {
       			console.log("failed to save interest");

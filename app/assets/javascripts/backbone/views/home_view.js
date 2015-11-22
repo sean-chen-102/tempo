@@ -36,8 +36,6 @@ var HomeView = Backbone.View.extend({
     	    });
         	this.$el.html(home_template);
         	$(function() {
-    			console.log("knob");
-    			console.log($(".dial"));
         		$(".knob").knob({
         			max: 60,
         			min:1,

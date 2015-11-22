@@ -80,6 +80,7 @@ group :development, :test do
   gem 'capybara'
   # For cleaning up database with Capybara 
   gem 'database_cleaner'
+  gem 'capybara-webkit'
 end
 
 group :test do

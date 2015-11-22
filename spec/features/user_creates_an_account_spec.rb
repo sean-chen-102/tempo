@@ -3,6 +3,7 @@ require 'rails_helper'
 
 describe "User creates an account", :type => :feature, :js => true do
   scenario 'they see themselves logged in after account creation' do
+    puts "PATH= root_path + #signup"
     visit (root_path + "#signup")
 
     fill_in 'name', with: 'John'

@@ -17,6 +17,22 @@ var SignupView = Backbone.View.extend({
 			var signup_template = JST["backbone/templates/unauthenticated/signup"];
     	    console.log(signup_template);
         	this.$el.html(signup_template);
+        	$("#password").keyup(function() {
+	  			if ($("#password").val().length < 8) {
+	  				$("#password-error").css("visibility", "visible");
+	  			} else {
+	  				$("#password-error").css("visibility", "hidden");
+	  			}
+			});
+			$("#password_confirmation").keyup(function() {
+	  			if ($("#password").val() === $("#password_confirmation").val() 
+	  				|| $("#password_confirmation").val().length == 0) {
+	  				$("#password-confirmation-error").css("visibility", "hidden");
+	  			} else {
+	  				$("#password-confirmation-error").css("visibility", "visible");
+
+	  			}
+			});
 		},
 
 	  signup: function(e) {
@@ -38,18 +54,16 @@ var SignupView = Backbone.View.extend({
 	    console.log(this.model.attributes);
 	    this.model.save(this.model.attributes, {
 	      success: function(userSession, response) {
-	      	console.log("success!");
-	      	console.log(userSession);
-	      	console.log(response.user.token);
-	        el.find('input.btnprimary').prop('value', 'reset');
-	        currentUser = new User(response);
-  			Cookies.set("login-token", response.user.token);
-  			Backbone.history.navigate('home', {trigger: true});  
-
-
+	      	if (response.status === 1) {
+	      		el.find('input.btnprimary').prop('value', 'reset');
+		        currentUser = new User(response);
+	  			Cookies.set("login-token", response.user.token);
+	  			Backbone.history.navigate('home', {trigger: true});
+  			} else {
+  				notie.alert(3, response.errors[0], 1.5);
+  			}
 	      },
 	      error: function(userSession, response) {
-	      	console.log("failure!");
 	        var result = $.parseJSON(response.responseText);
 	        el.find('form').prepend(BD.Helpers.Notifications.error("Unable to complete signup."));
 	        _(result.errors).each(function(errors,field) {

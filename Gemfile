@@ -22,6 +22,8 @@ gem 'jwt'
 gem 'httparty'
 # For underscore.js
 gem 'underscore-rails'
+# For Capybara UI Testing
+gem 'capybara'
 
 # Use bootstrap
 gem 'bootstrap-sass', '~> 3.2.0'

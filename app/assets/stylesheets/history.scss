@@ -23,6 +23,8 @@ $greenText: rgb(104, 187, 108);
     border-bottom-left-radius: 2px;  
     float: left;
     margin-left: 4%;
+    min-width: 300px;
+    max-width: 550px;
 
     header {
       height: 10%;
@@ -58,7 +60,6 @@ $greenText: rgb(104, 187, 108);
         /*border: 1px solid green;	*/
 
         #histTable {
-          position: relative;
           border-radius: 3px;
           margin: 0 auto;
           width: 100%;
@@ -103,6 +104,8 @@ $greenText: rgb(104, 187, 108);
     border-bottom-left-radius: 2px;
     float: left;
     margin-left: 4%;
+    min-width: 300px;
+    max-width: 550px;
 
     header {
       height: 10%;
@@ -138,7 +141,6 @@ $greenText: rgb(104, 187, 108);
         /*border: 1px solid green;  */
 
         #customHistTable {
-          position: relative;
           border-radius: 3px;
           margin: 0 auto;
           width: 100%;

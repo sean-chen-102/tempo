@@ -4,7 +4,6 @@ var TempoRouter = Backbone.Router.extend({
       'home': 'home',
       'signup': 'signup',
       'login': 'login',
-      "interests": "interests",
       "activities": "activities",
       "settings":"settings",
       "customActivities": "customActivities",
@@ -61,15 +60,13 @@ var TempoRouter = Backbone.Router.extend({
       }
     },
     initialize: function() {
-      App.Views['interestView'] = new InterestView();
       App.Views['historyView'] = new HistoryView();
       App.Views['customActivitiesView'] = new CustomActivityView();
       App.Views['createCustomActivityView'] = new CreateCustomActivityView();
       App.Views['activitiesView'] = new ActivitiesView();
       App.Views['settingsView'] = new SettingsView();
       App.Views['loginView'] = new LoginView();
-      App.Views['homeView'] = new HomeView({interestView: App.Views['interestView'],
-                                activitiesView: App.Views['activitiesView']});
+      App.Views['homeView'] = new HomeView({activitiesView: App.Views['activitiesView']});
       $("#logout-button").hide(); 
     },
     home: function() {
@@ -82,11 +79,6 @@ var TempoRouter = Backbone.Router.extend({
       console.log("The activities router was called ");
       this.verifyUser("activitiesView");
    
-    },
-    interests: function(){
-      console.log("The interests router was called ");
-      this.verifyUser("interestView");
-     
     },
     history: function(){
       console.log("The history router was called");

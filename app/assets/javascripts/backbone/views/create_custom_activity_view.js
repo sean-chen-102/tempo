@@ -26,6 +26,18 @@ var CreateCustomActivityView = Backbone.View.extend({
         $('.testDiv').html(customActTemplate);
       };
       renderData();
+      $(function() {
+        $(".knob").knob({
+          max: 60,
+          min: 0,
+          width: 150,
+          height: 150,
+          step: 1,
+          fgColor: "#2C7EBF",
+          inputColor: "#2C7EBF"
+        });
+        $(".knob").val(30).trigger('change');
+      });
     },
     createActivity: function (e){
       var self = this,
@@ -38,7 +50,7 @@ var CreateCustomActivityView = Backbone.View.extend({
       var model = new CustomActivity();
       model.attributes.title = title;
       model.attributes.content = content;
-      model.attributes.completion_time = completion_time;
+      model.attributes.completion_time = $('.knob').val();
       model.attributes.token = Cookies.get('login-token');
 
       model.url = "/api/users/" + this.user.id + "/custom_activities";

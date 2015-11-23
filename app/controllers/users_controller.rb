@@ -16,6 +16,12 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save 
       status = 1
+      # Give the User all Interests by default
+      Interest.all.each do |interest|
+        @user.interests << interest
+      end
+
+      @user.save
       user_data = @user.get_advanced_info()
       token = @user.get_signed_token()
       user_data["token"] = token

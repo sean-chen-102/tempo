@@ -18,15 +18,17 @@ var ActivityView = Backbone.View.extend({
             data['link'] = 'javascript:;';
         }
         if(this.history){
-            var backLink = '/tempo#history';
+            var backLink = 'history';
         } else {
-            var backLink = '/tempo#activities';
+            var backLink = 'activities';
         }
 
         if(data['content_type'] == "video"){
-            data['content'] = "<iframe width='580' height='300' src='"
+            console.log("video linkn");
+            console.log(data['content'])
+            data['content'] = "<iframe width='600' height='300' src='"
                 + data['link'] + "'"
-                + " frameborder='0' allowfullscreen='true'></iframe>";
+                + " frameborder='0' allowfullscreen=''></iframe>";
         }
 
         var template = JST["backbone/templates/activities/activity"]({

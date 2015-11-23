@@ -344,22 +344,21 @@ class UsersController < ApplicationController
       if not token.nil? and user_has_permission(User.authenticate_token(token), user_id) # if the token was provided and is valid and the user has permission
         user = User.find_by(id: user_id)
 
-        if not interests.nil?
-          status = 1
-          user.interests = []
-          user.save
+        if interests.nil?
+          interests = []
+        end
 
-          interests.each do |interest_name|
-            interest_object = Interest.find_by(name: interest_name)
-            if not interest_object.nil?
-              user.interests << interest_object
-              user.save
-              successful_interests << interest_name
-            end
+        status = 1
+        user.interests = []
+        user.save
+
+        interests.each do |interest_name|
+          interest_object = Interest.find_by(name: interest_name)
+          if not interest_object.nil?
+            user.interests << interest_object
+            user.save
+            successful_interests << interest_name
           end
-        else
-          user.interests = []
-          user.save
         end
       else
         error_list.append(ErrorMessages::AUTHORIZATION_ERROR)

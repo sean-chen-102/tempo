@@ -245,22 +245,227 @@ end
 activity_list_tech[0].interests << news_interest
 activity_list_tech[0].interests << science_interest
 
-# Populate the databse via external APIs
-Activity.populate_database_with_news() # add news articles to the database
-Activity.populate_database_with_videos() # add videos with various interests to the database
-
 # Populate the database with food-based activities
-food_1 = Activity.create({ title: "Recipe: Butternut Squash and Cranberry Muffins", content_type: "text", completion_time: 40, link: "http://allrecipes.com/recipe/239607/butternut-squash-and-cranberry-muffins/", content: "\"I got some butternut squash and cranberries (both I am not fond of) in my 'Bountiful Basket' last week. Not having a clue what to do with them, I came up with this surprisingly yummy muffin. I made up this recipe with what I had on hand. It is really very light, tasty, and not too sweet. I serve mine with honey or sweetened cream cheese. If possible, always choose organic.\"" })
-food_2 = Activity.create({ title: "Recipe: Fluffy French Toast", content_type: "text", completion_time: 30, link: "http://allrecipes.com/recipe/16895/fluffy-french-toast/", content: "\"This French toast recipe is different because it uses flour. I have given it to some friends and they've all liked it better than the French toast they usually make!\"" })
-food_3 = Activity.create({ title: "Recipe: Salsa Chicken", content_type: "text", completion_time: 45, link: "http://allrecipes.com/recipe/16700/salsa-chicken/", content: "\"Someone gave me this recipe a few years back and it's become a household favorite. You can use mild, medium or hot salsa depending on your taste. I usually serve it with Spanish rice and Mexican-style canned corn. Very easy and quick!\"" })
-food_4 = Activity.create({ title: "Recipe: Easy Quiche", content_type: "text", completion_time: 60, link: "http://allrecipes.com/recipe/23389/easy-quiche/", content: "\"This is an easy mix-it-up-in-one-bowl-and-cook recipe. I make it for every brunch I attend. You may substitute chopped spinach for the broccoli if you wish.\"" })
-food_5 = Activity.create({ title: "Recipe: Lime Chicken Soft Tacos", content_type: "text", completion_time: 50, link: "http://allrecipes.com/recipe/25371/lime-chicken-soft-tacos/", content: "\"I was given this recipe by my mom when I went away to college, and it has become all of my friends' favorite!\"" })
-food_6 = Activity.create({ title: "Recipe: Marinated Grilled Shrimp", content_type: "text", completion_time: 55, link: "http://allrecipes.com/recipe/21694/marinated-grilled-shrimp/", content: "\"A very simple and easy marinade that makes your shrimp so yummy you don't even need cocktail sauce! Don't let the cayenne pepper scare you, you don't even taste it. My 2 and 4 year-olds love it and eat more shrimp than their parents! It is also a big hit with company, and easy to prepare. I make this with frozen or fresh shrimp and use my indoor electric grill if the weather is not good for outside grilling. Try it with a salad, baked potato, and garlic bread. You will not be disappointed!!!\"" })
-food_7 = Activity.create({ title: "Recipe: Easy Tuna Casserole", content_type: "text", completion_time: 45, link: "http://allrecipes.com/recipe/18871/easy-tuna-casserole/", content: "\"Tuna, macaroni, creamy soup, cheese and fried onions are all you need to make this super easy tuna casserole that I learned from my roommate. It's great as leftovers, too.\"" })
-food_8 = Activity.create({ title: "Recipe: Simple Hamburger Stroganoff", content_type: "text", completion_time: 30, link: "http://allrecipes.com/recipe/23260/simple-hamburger-stroganoff/", content: "\"I've always loved the taste of a good Stroganoff, but I hated the expense and preparation of beef tips or steak or roast beef to make it. So I created my own creamy Stroganoff.\"" })
-food_9 = Activity.create({ title: "Recipe: Taco Pie", content_type: "text", completion_time: 30, link: "http://allrecipes.com/recipe/17303/taco-pie/", content: "\"It's a quick, easy meal that is very filling. Some people will also top it with regular taco toppings, i.e. lettuce, tomatoes, black olives, etc. It also is great as leftovers for lunches! Serve with taco sauce.\"" })
-food_10 = Activity.create({ title: "Recipe: Suki's Spinach and Feta Pasta", content_type: "text", completion_time: 40, link: "http://allrecipes.com/recipe/19591/sukis-spinach-and-feta-pasta/", content: "\"Spinach, tomatoes, and mushrooms mingle with tangy feta cheese in this quick and easy dish for a summer night or anytime.\"" })
-food_11 = Activity.create({ title: "Recipe: Sausage Balls", content_type: "text", completion_time: 35, link: "http://allrecipes.com/recipe/21649/sausage-balls/", content: "\"These are so yummy! My family makes every Christmas morning. Enjoy!\"" })
+food_1 = Activity.create({ title: "Recipe: Butternut Squash and Cranberry Muffins", content_type: "text", completion_time: 40, link: "http://allrecipes.com/recipe/239607/butternut-squash-and-cranberry-muffins/", content: "<p><strong>The author says:</strong> \"I got some butternut squash and cranberries (both I am not fond of) in my 'Bountiful Basket' last week. Not having a clue what to do with them, I came up with this surprisingly yummy muffin. I made up this recipe with what I had on hand. It is really very light, tasty, and not too sweet. I serve mine with honey or sweetened cream cheese. If possible, always choose organic.\"</p>
+<img src='http://images.media-allrecipes.com/userphotos/720x405/1528573.jpg'>
+<h3>Ingredients</h3>
+<ul>
+<li>3 cups all-purpose flour</li>
+<li>1 cup white sugar</li>
+<li>1 cup brown sugar</li>
+<li>2 teaspoons ground cinnamon</li>
+<li>1 teaspoon baking powder</li>
+<li>1 teaspoon ground nutmeg</li>
+<li>1/2 teaspoon ground cloves</li>
+<li>1/2 teaspoon baking soda</li>
+<li>1/4 teaspoon freshly grated nutmeg, or more to taste</li>
+<li>1 cup fresh cranberries, or more to taste</li>
+<li>2 cups mashed, cooked butternut squash</li>
+<li>4 large eggs, lightly beaten</li>
+<li>1/2 cup coconut oil</li>
+<li>1/2 cup safflower oil</li>
+<li>1 (1 inch) piece fresh ginger, peeled and pressed through a garlic press</li>
+</ul>
+<h3>Directions</h3>
+<ol>
+<li>Preheat oven to 350 degrees F (175 degrees C). Grease or line 24 muffin cups with paper liners.</li>
+<li>Mix flour, white sugar, brown sugar, cinnamon, baking powder, ground nutmeg, cloves, baking soda, and freshly grated nutmeg together in a bowl; fold in cranberries. Beat butternut squash, eggs, coconut oil, safflower oil, and ginger together in a separate bowl until smooth; stir into flour mixture until batter is just mixed. Spoon batter into the prepared muffin cups.</li>
+<li>Bake in the preheated oven until a toothpick inserted in the center of a muffin comes out clean, about 25 minutes.</li></ol>" })
+
+food_2 = Activity.create({ title: "Recipe: Fluffy French Toast", content_type: "text", completion_time: 30, link: "http://allrecipes.com/recipe/16895/fluffy-french-toast/", content: "<p><strong>The author says:</strong> \"This French toast recipe is different because it uses flour. I have given it to some friends and they've all liked it better than the French toast they usually make!\"</p>
+<img src='http://images.media-allrecipes.com/userphotos/720x405/2049275.jpg'>
+<h3>Ingredients</h3>
+<ul>
+<li>1/4 cup all-purpose flour</li>
+<li>1 cup milk</li>
+<li>1 pinch salt</li>
+<li>3 eggs</li>
+<li>1/2 teaspoon ground cinnamon</li>
+<li>1 teaspoon vanilla extract</li>
+<li>1 tablespoon white sugar</li>
+<li>12 thick slices bread</li>
+</ul>
+<h3>Directions</h3>
+<ol>
+<li>Measure flour into a large mixing bowl. Slowly whisk in the milk. Whisk in the salt, eggs, cinnamon, vanilla extract and sugar until smooth.</li>
+<li>Heat a lightly oiled griddle or frying pan over medium heat.</li>
+<li>Soak bread slices in mixture until saturated. Cook bread on each side until golden brown. Serve hot.</li></ol>" })
+
+food_3 = Activity.create({ title: "Recipe: Salsa Chicken", content_type: "text", completion_time: 45, link: "http://allrecipes.com/recipe/16700/salsa-chicken/", content: "<p><strong>The author says:</strong> \"Someone gave me this recipe a few years back and it's become a household favorite. You can use mild, medium or hot salsa depending on your taste. I usually serve it with Spanish rice and Mexican-style canned corn. Very easy and quick!\"</p>
+<img src='http://images.media-allrecipes.com/userphotos/250x250/117563.jpg'>
+<h3>Ingredients</h3>
+<ul>
+<li>4 skinless, boneless chicken breast halves</li>
+<li>4 teaspoons taco seasoning mix</li>
+<li>1 cup salsa</li>
+<li>1 cup shredded Cheddar cheese</li>
+<li>2 tablespoons sour cream (optional)</li>
+</ul>
+<h3>Directions</h3>
+<ol>
+<li>Preheat oven to 375 degrees F (190 degrees C)</li>
+<li>Place chicken breasts in a lightly greased 9x13 inch baking dish. Sprinkle taco seasoning on both sides of chicken breasts, and pour salsa over all.</li>
+<li>Bake at 375 degrees F (190 degrees C) for 25 to 35 minutes, or until chicken is tender and juicy and its juices run clear.</li>
+<li>Sprinkle chicken evenly with cheese, and continue baking for an additional 3 to 5 minutes, or until cheese is melted and bubbly. Top with sour cream if desired, and serve.</li></ol>" })
+
+
+food_4 = Activity.create({ title: "Recipe: Easy Quiche", content_type: "text", completion_time: 60, link: "http://allrecipes.com/recipe/23389/easy-quiche/", content: "<p><strong>The author says:</strong> \"This is an easy mix-it-up-in-one-bowl-and-cook recipe. I make it for every brunch I attend. You may substitute chopped spinach for the broccoli if you wish.\"</p>
+<img src='http://images.media-allrecipes.com/userphotos/720x405/834646.jpg'>
+<h3>Ingredients</h3>
+<ul>
+<li>2 cups milk</li>
+<li>4 eggs</li>
+<li>3/4 cup biscuit baking mix</li>
+<li>1/4 cup butter, softened</li>
+<li>1 cup grated Parmesan cheese</li>
+<li>1 (10 ounce) package chopped frozen broccoli, thawed and drained</li>
+<li>1 cup cubed cooked ham</li>
+<li>8 ounces shredded Cheddar cheese</li>
+</ul>
+<h3>Directions</h3>
+<ol>
+<li>Preheat oven to 375 degrees F (190 degrees C). Lightly grease a 10 inch quiche dish.</li>
+<li>In a large bowl, beat together milk, eggs, baking mix, butter and parmesan cheese. Batter will be lumpy. Stir in broccoli, ham and Cheddar cheese. Pour into prepared quiche dish.</li>
+<li>Bake in preheated oven for 50 minutes, until eggs are set and top is golden brown.</li></ol>" })
+
+
+food_5 = Activity.create({ title: "Recipe: Lime Chicken Soft Tacos", content_type: "text", completion_time: 50, link: "http://allrecipes.com/recipe/25371/lime-chicken-soft-tacos/", content: "<p><strong>The author says:</strong> \"I was given this recipe by my mom when I went away to college, and it has become all of my friends' favorite!\"</p>
+<img src='http://images.media-allrecipes.com/userphotos/720x405/642313.jpg'>
+<h3>Ingredients</h3>
+<ul>
+<li>1 1/2 pounds skinless, boneless chicken breast meat - cubed</li>
+<li>1/8 cup red wine vinegar</li>
+<li>1/2 lime, juiced</li>
+<li>1 teaspoon white sugar</li>
+<li>1/2 teaspoon salt</li>
+<li>1/2 teaspoon ground black pepper</li>
+<li>2 green onions, chopped</li>
+<li>2 cloves garlic, minced</li>
+<li>1 teaspoon dried oregano</li>
+<li>10 (6 inch) flour tortillas</li>
+<li>1 tomato, diced</li>
+<li>1/4 cup shredded lettuce</li>
+<li>1/4 cup shredded Monterey Jack cheese</li>
+<li>1/4 cup salsa</li>
+</ul>
+<h3>Directions</h3>
+<ol>
+<li>Saute chicken in a medium saucepan over medium high heat for about 20 minutes. Add vinegar, lime juice, sugar, salt, pepper, green onion, garlic and oregano. Simmer for an extra 10 minutes.</li>
+<li>Heat an iron skillet over medium heat. Place a tortilla in the pan, warm, and turn over to heat the other side. Repeat with remaining tortillas. Serve lime chicken mixture in warm tortillas topped with tomato, lettuce, cheese and salsa.</li></ol>" })
+
+
+food_6 = Activity.create({ title: "Recipe: Marinated Grilled Shrimp", content_type: "text", completion_time: 55, link: "http://allrecipes.com/recipe/21694/marinated-grilled-shrimp/", content: "<p><strong>The author says:</strong> \"A very simple and easy marinade that makes your shrimp so yummy you don't even need cocktail sauce! Don't let the cayenne pepper scare you, you don't even taste it. My 2 and 4 year-olds love it and eat more shrimp than their parents! It is also a big hit with company, and easy to prepare. I make this with frozen or fresh shrimp and use my indoor electric grill if the weather is not good for outside grilling. Try it with a salad, baked potato, and garlic bread. You will not be disappointed!!!\"</p>
+<img src='http://images.media-allrecipes.com/userphotos/720x405/2374052.jpg'>
+<h3>Ingredients</h3>
+<ul>
+<li>3 cloves garlic, minced</li>
+<li>1/3 cup olive oil</li>
+<li>1/4 cup tomato sauce</li>
+<li>2 tablespoons red wine vinegar</li>
+<li>2 tablespoons chopped fresh basil</li>
+<li>1/2 teaspoon salt</li>
+<li>1/4 teaspoon cayenne pepper</li>
+<li>2 pounds fresh shrimp, peeled and deveined</li>
+<li>skewers</li>
+</ul>
+<h3>Directions</h3>
+<ol>
+<li>In a large bowl, stir together the garlic, olive oil, tomato sauce, and red wine vinegar. Season with basil, salt, and cayenne pepper. Add shrimp to the bowl, and stir until evenly coated. Cover, and refrigerate for 30 minutes to 1 hour, stirring once or twice.</li>
+<li>Preheat grill for medium heat. Thread shrimp onto skewers, piercing once near the tail and once near the head. Discard marinade.</li>
+<li>Lightly oil grill grate. Cook shrimp on preheated grill for 2 to 3 minutes per side, or until opaque.</li></ol>" })
+
+
+food_7 = Activity.create({ title: "Recipe: Easy Tuna Casserole", content_type: "text", completion_time: 45, link: "http://allrecipes.com/recipe/18871/easy-tuna-casserole/", content: "<p><strong>The author says:</strong> \"Tuna, macaroni, creamy soup, cheese and fried onions are all you need to make this super easy tuna casserole that I learned from my roommate. It's great as leftovers, too.\"</p>
+<img src='http://images.media-allrecipes.com/userphotos/250x250/668635.jpg'>
+<h3>Ingredients</h3>
+<ul>
+<li>3 cups cooked macaroni</li>
+<li>1 (6 ounce) can tuna, drained</li>
+<li>1 (10.75 ounce) can condensed cream of chicken soup</li>
+<li>1 cup shredded Cheddar cheese</li>
+<li>1 1/2 cups French fried onions</li>
+</ul>
+<h3>Directions</h3>
+<ol>
+<li>Preheat oven to 350 degrees F (175 degrees C).</li>
+<li>In a 9x13-inch baking dish, combine the macaroni, tuna, and soup. Mix well, and then top with cheese.</li>
+<li>Bake at 350 degrees F (175 degrees C) for about 25 minutes, or until bubbly. Sprinkle with fried onions, and bake for another 5 minutes. Serve hot.</li></ol>" })
+
+
+food_8 = Activity.create({ title: "Recipe: Simple Hamburger Stroganoff", content_type: "text", completion_time: 30, link: "http://allrecipes.com/recipe/23260/simple-hamburger-stroganoff/", content: "<p><strong>The author says:</strong> \"I've always loved the taste of a good Stroganoff, but I hated the expense and preparation of beef tips or steak or roast beef to make it. So I created my own creamy Stroganoff.\"</p>
+<img src='http://images.media-allrecipes.com/userphotos/250x250/730905.jpg'>
+<h3>Ingredients</h3>
+<ul>
+<li>1 (16 ounce) package egg noodles</li>
+<li>1 pound lean ground beef</li>
+<li>1 (.75 ounce) packet dry brown gravy mix</li>
+<li>1 (8 ounce) package cream cheese</li>
+<li>1 (6 ounce) can chopped mushrooms, with liquid</li>
+<li>1/2 cup milk</li>
+<li>1 (8 ounce) container sour cream</li>
+<li>2 (10.75 ounce) cans condensed cream of mushroom soup</li>
+</ul>
+<h3>Directions</h3>
+<ol>
+<li>Bring a large pot of lightly salted water to a boil. Add egg noodles and cook for 8 to 10 minutes or until al dente; drain.</li>
+<li>In a skillet over medium heat, brown the ground beef until no pink shows, about 5 minutes; drain fat.</li>
+<li>Mix brown gravy, cream cheese, and mushrooms with hamburger, stirring until cream cheese melts. Add milk, sour cream, and mushroom soup to cooked pasta. Blend hamburger mixture with pasta.</li></ol>" })
+
+
+food_9 = Activity.create({ title: "Recipe: Taco Pie", content_type: "text", completion_time: 30, link: "http://allrecipes.com/recipe/17303/taco-pie/", content: "<p><strong>The author says:</strong> \"It's a quick, easy meal that is very filling. Some people will also top it with regular taco toppings, i.e. lettuce, tomatoes, black olives, etc. It also is great as leftovers for lunches! Serve with taco sauce.\"</p>
+<img src='http://images.media-allrecipes.com/userphotos/720x405/144650.jpg'>
+<h3>Ingredients</h3>
+<ul>
+<li>1 (8 ounce) package refrigerated crescent rolls</li>
+<li>1 pound ground beef</li>
+<li>1 (1 ounce) package taco seasoning mix</li>
+<li>1 (16 ounce) container sour cream</li>
+<li>8 ounces shredded Mexican-style cheese blend</li>
+<li>1 (14 ounce) bag tortilla chips, crushed</li>
+</ul>
+<h3>Directions</h3>
+<ol>
+<li>Preheat oven to 350 degrees F (175 degrees C).</li>
+<li>Lay crescent dough flat on the bottom of a square cake pan and bake according to package directions.</li>
+<li>Meanwhile, brown the ground beef in a large skillet over medium high heat. Add the taco seasoning and stir together well. When dough is done, remove from oven and place meat mixture on top, then layer with sour cream and cheese, and then top off with the crushed nacho chips.</li>
+<li>Return to oven and bake at 350 degrees F (175 degrees C) for 10 minutes, or until cheese has melted.</li></ol>" })
+
+
+food_10 = Activity.create({ title: "Recipe: Suki's Spinach and Feta Pasta", content_type: "text", completion_time: 40, link: "http://allrecipes.com/recipe/19591/sukis-spinach-and-feta-pasta/", content: "<p><strong>The author says:</strong> \"Spinach, tomatoes, and mushrooms mingle with tangy feta cheese in this quick and easy dish for a summer night or anytime.\"</p>
+<img src='http://images.media-allrecipes.com/userphotos/720x405/1442659.jpg'>
+<h3>Ingredients</h3>
+<ul>
+<li>1 (8 ounce) package penne pasta</li>
+<li>2 tablespoons olive oil</li>
+<li>1/2 cup chopped onion</li>
+<li>1 clove garlic, minced</li>
+<li>3 cups chopped tomatoes</li>
+<li>1 cup sliced fresh mushrooms</li>
+<li>2 cups spinach leaves, packed</li>
+<li>salt and pepper to taste</li>
+<li>1 pinch red pepper flakes</li>
+<li>8 ounces feta cheese, crumbled</li>
+</ul>
+<h3>Directions</h3>
+<ol>
+<li>Bring a large pot of lightly salted water to a boil. Cook pasta in boiling water until al dente; drain.</li>
+<li>Meanwhile, heat olive oil in a large skillet over medium-high heat; add onion and garlic, and cook until golden brown. Mix in tomatoes, mushrooms, and spinach. Season with salt, pepper, and red pepper flakes. Cook 2 minutes more, until tomatoes are heated through and spinach is wilted. Reduce heat to medium, stir in pasta and feta cheese, and cook until heated through.</li></ol>" })
+
+
+food_11 = Activity.create({ title: "Recipe: Sausage Balls", content_type: "text", completion_time: 35, link: "http://allrecipes.com/recipe/21649/sausage-balls/", content: "<p><strong>The author says:</strong> \"These are so yummy! My family makes every Christmas morning. Enjoy!\"</p>
+<img src='http://images.media-allrecipes.com/userphotos/720x405/466969.jpg'>
+<h3>Ingredients</h3>
+<ul>
+<li>1 pound ground pork sausage</li>
+<li>2 cups biscuit baking mix</li>
+<li>1 pound sharp Cheddar cheese, shredded</li>
+</ul>
+<h3>Directions</h3>
+<ol>
+<li>Preheat oven to 350 degrees F (175 degrees C).</li>
+<li>In a large bowl, combine sausage, biscuit baking mix and cheese. Form into walnut size balls and place on baking sheets.</li>
+<li>Bake in preheated oven for 20 to 25 minutes, until golden brown and sausage is cooked through.</li></ol>" })
+
 
 food_1.interests << food_interest
 food_2.interests << food_interest
@@ -452,4 +657,8 @@ eli5_7.interests << eli5_interest
 eli5_8.interests << eli5_interest
 eli5_9.interests << eli5_interest
 eli5_10.interests << eli5_interest
+
+# Populate the databse via external APIs
+Activity.populate_database_with_news() # add news articles to the database
+Activity.populate_database_with_videos() # add videos with various interests to the database
 

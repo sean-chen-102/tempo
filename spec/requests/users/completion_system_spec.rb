@@ -35,7 +35,7 @@ RSpec.describe "test completing activities and custom_activities - ", :type => :
         get "/api/users/#{@user_id}/completed_activities", params.as_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
         data = JSON.parse(response.body)
         expect(data["status"]).to equal(1)
-        expect(data["completed_activities"][0]).to eq(@activity["id"])
+        expect(data["completed_activities"][0]["id"]).to eq(@activity["id"])
     end
 
     it "attempts to complete activity (activity does not exist)" do
@@ -130,7 +130,7 @@ RSpec.describe "test completing activities and custom_activities - ", :type => :
         get "/api/users/#{@user_id}/completed_custom_activities", params.as_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
         data = JSON.parse(response.body)
         expect(data["status"]).to equal(1)
-        expect(data["completed_custom_activities"][0]).to eq(@custom_activity["id"])
+        expect(data["completed_custom_activities"][0]["id"]).to eq(@custom_activity["id"])
     end
 
     it "attempts to complete custom_activity (custom_activity does not exist)" do

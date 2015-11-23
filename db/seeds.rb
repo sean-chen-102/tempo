@@ -236,11 +236,6 @@ activity_list_tech.each do |technology_activity|
   technology_activity.interests << technology_interest
 end
 
-# Give news Interests to news Activities
-activity_list_news.each do |news_activity|
-  news_activity.interests << news_interest
-end
-
 # Give science Interests to science Activities
 activity_list_science.each do |science_activity|
   science_activity.interests << science_interest

@@ -50,8 +50,8 @@ $containerHeaderColor: rgb(31, 137, 229);
 	background-color: $sidebarMain;
   }
 
-   button, button:focus {
-    outline: none;
+   button, button:focus, button:active, button:visited {
+    outline: none !important;
   }
 
   .top-bar {

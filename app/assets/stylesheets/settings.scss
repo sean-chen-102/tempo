@@ -282,7 +282,10 @@ a:hover {
 #new-password {
 	margin: 0;
 }
-  
+
+button:active, button:focus {
+	outline: none !important;
+}
 
 
 

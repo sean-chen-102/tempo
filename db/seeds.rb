@@ -200,7 +200,7 @@ tech_list = [tech_1, tech_2, tech_3, tech_4, tech_5, tech_6]
 science_1 = { title: "10 Cool Science Experiments Compilation #9", completion_time: 5, link: "https://www.youtube.com/v/TDMXs2hJv28", content_type: "video" }
 
 
-science_2 = { title: "These Huge Rats Can Sniff Out Land Mines", completion_time: 3, link: "http://video.nationalgeographic.com/video/news/151007-cambodia-rats-land-mines-sniff-vin?gc=%2Fvideo%2Fscience-space", content_type: "video", like_count: 0 }
+science_2 = { title: "10 Amazing Science Tricks Using Liquid!", completion_time: 7, link: "https://www.youtube.com/v/HQx5Be9g16U", content_type: "video", like_count: 0 }
 
 
 science_3 = { title: "No, Mount St. Helens Doesn’t Have New Magma Chambers", completion_time: 8, link: "http://www.wired.com/2015/11/no-mount-st-helens-doesnt-have-new-magma-chambers/", content_type: "text", content: "You may have noticed a lot of rumbling in the science media over the past week over a study presented at last week’s Geological Society of America meeting concerning the state of things underneath Mount St. Helens. Many of

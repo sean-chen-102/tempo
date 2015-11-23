@@ -78,7 +78,7 @@ class Activity < ActiveRecord::Base
 
   # Populates the database with new Activities based on news.
   def self.populate_database_with_videos()
-    interests = ["tech", "science", "food", "medicine", "history"]
+    interests = ["Technology", "Science", "Food", "Health", "History"]
     interests.each do |interest|
       potential_activities = YoutubeImporter.get_videos_by_keyword(interest)
       potential_activities.each do |potential_activity|
@@ -145,17 +145,17 @@ class Activity < ActiveRecord::Base
       potential_videos = []
 
       # Figure out which channelIds to use
-      if (interest == "tech")
+      if (interest == "Technology")
         ids = @tech_channel_ids
-      elsif (interest == "science")
+      elsif (interest == "Science")
         ids = @science_channel_ids
-      elsif (interest == "food")
+      elsif (interest == "Food")
         ids = @food_channel_ids
-      elsif (interest == "medicine")
+      elsif (interest == "Health")
         ids = @medicine_channel_ids
       end
     
-      if interest != "history"
+      if interest != "History"
         ids.each do |id|
           channel = Yt::Channel.new id: id
           videos = channel.videos
@@ -172,7 +172,7 @@ class Activity < ActiveRecord::Base
           end
         end
 
-      elsif interest == "history"
+      elsif interest == "History"
         playlist_id = "PLAC6B9F15C835224C"
         playlist = Yt::Playlist.new id: playlist_id
 
@@ -181,7 +181,7 @@ class Activity < ActiveRecord::Base
 
           unique_id = video.id
           title = video.title
-          link = "https://www.youtube.com/watch?v=" + unique_id
+          link = "https://www.youtube.com/v/" + unique_id
           completion_time = (video.duration/60).ceil
           content = video.description
 

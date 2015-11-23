@@ -123,9 +123,9 @@ $dangerRed: #891515;
   /*Create custom custom_activities form */
     #custom-activities-form {
     position: relative;
-    top: 100px;   
+    top: 75px;   
     width: 350px;
-    height: 550px;
+    height: 625px;
     border: 1px solid #dedede;
     border-radius: 3px;
     background-color: white;
@@ -169,6 +169,17 @@ $dangerRed: #891515;
     height: 30px;
     border-radius: 5px;
     border: 1px solid silver;
+  }
+
+  #custom-activities-form textarea, #custom-activities-form textarea:focus {
+    float: left;
+    border-radius: 5px;
+    width: 100%;
+    border: 1px solid silver;
+    margin-bottom: 10px;
+    height: 100px;
+    outline: none;
+    resize: none;
   }
 
 

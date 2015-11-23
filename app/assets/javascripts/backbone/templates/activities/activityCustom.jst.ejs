@@ -1,124 +1,175 @@
 <style>
-	/*activityCustom module*/
-  .activityCustom {
+  /*Activity module*/
+  @media screen and (max-width: 675px) {
+      .activity {
+          width: 300px;
+      }
+  }
+
+  .jumbotron {
+    padding: 0;
+    min-height: 500px;
+    position: relative;
+  }
+
+  .activity {
     position: relative;
     top: 45px;
-    border: 1px solid green;
     margin: 0 auto;
-    width: 400px;
-    height: 400px;
+    width: 90%;
+    min-height: 500px;
+    max-height: 800px;
     background-color: white;
     border: 1px solid #ddd;
     box-shadow: 1px 1px 1px #eee;
     border-top-left-radius: 5px;
-  	border-top-right-radius: 5px;
+    border-top-right-radius: 5px;
   }
 
-  .activityCustom header {
-  	border-bottom: 1px solid silver;
-  	background-color: #4078c0;
-  	border-color: #4078c0;
-  	border-top-left-radius: 5px;
-  	border-top-right-radius: 5px;
-  	padding: 20px;
-  	position: relative;
-  	height: 10%;
-  	color: white;
+  .activity header {
+    position: relative;
+    top: 0;
+    height: 12%;
+    background-color: rgb(31, 137, 229);
+    color: white;
   }
 
-  .activityCustom header h3 {
-  	margin: 0;
-  	line-height: 23px;
+  .activity header h3 {
+    margin: 0;
+    padding: 7px;
+    line-height: 23px;
   }
 
-  .activityCustom section {
-  	height: 80%;
-  	overflow: hidden;
-  	margin-bottom: 0;
+  /*TODO: Fix adjusting section container*/
+  .activity section {
+    height: 90%;
+    max-height: 375px;
+    overflow: hidden;
+    margin-bottom: 0;
+    padding: 10px;
+
   }
 
-  .activityCustom section p {
-  	overflow: scroll;
-  	height: 68%;
-  	font-family: 'Lato', sans-serif;
+  .activity section p {
+    overflow: scroll;
+    height: 100%;
+    width: 100%;
+    font-family: 'Lato', sans-serif;
     font-weight: 300;
-  	font-size: 100%;
-  	margin: 10px;
+    font-size: 100%;
+    margin: 10px;
     padding: 10px;
   }
 
-  .activityCustom section .likeContainer {
-  	margin: 10px;
-  	margin-bottom: 0;
+  .activity section .thumbnail {
+    height: 90%;
+    width: 100%;
+    max-height: 365px;
+    overflow: scroll;
+    position: relative;
+    border: none;
+    font-size: 18px;
   }
 
-  .activityCustom footer {
-  	background-color: #f5f5f5;
-  	position: relative;
-  	height: 10%;
-  	bottom: 0;
-  	border: 1px solid #ddd;
+  .activity section .content-video {
+    text-align: center;
   }
 
-  .activityCustom footer a {
-  	position: relative;
-  	top: 10px;
-  	text-decoration: none;
-  	color: #2980B9;
+  .activity section .likeContainer {
+    margin: 10px;
+    margin-bottom: 0;
   }
 
-  .activityCustom footer a:hover {
-  	background-color: #f5f5f5;
-  	color: #2980B9;
-  	opacity: .7;
+  .activity footer {
+    background-color: #f5f5f5;
+    position: absolute;
+    height: 10%;
+    bottom: 0;
+    border: 1px solid #ddd;
+  }
+
+  .activity footer a {
+    position: relative;
+    top: 10px;
+    text-decoration: none;
+    color: #2980B9;
+  }
+
+  .activity footer a:hover {
+    background-color: #f5f5f5;
+    color: #2980B9;
+    opacity: .7;
   }
 
   #like-count {
-	color: #16a085;
+    color: rgb(92, 184, 92);
+    margin-right: 45px;
   }
 
   #dislike-count {
-	color: #c0392b;
+    color: rgb(217, 83, 79);
   }
 
   .like-btn {
-  	background-color: #16a085;
-  	border: 1px solid #16a085;
-  	border-radius: 2px;
+    background-color: rgb(92, 184, 92);
+    border-color: rgb(92, 184, 92);    
   }
 
   .dislike-btn {
-	background-color: #c0392b;
-	border: 1px solid #c0392b;
-	border-radius: 2px;
+    background-color: rgb(217, 83, 79);
+    border-color: rgb(217, 83, 79);
   }
 
   .likeContainer {
-  	width: 100%;
-  	position: relative;
-  	left: -10px;
-  	text-align: center;
+
   }
 
   .likeContainer button:hover {
-  	opacity: .8;
-  	cursor: pointer;
+    opacity: .8;
+    cursor: pointer;
+  }
+
+  .linkContainer {
+    margin-top: -35px;
+    padding-left: 10px;
+    padding-right: 10px; 
   }
 
   a:hover {
-  	background-color: white;
+    background-color: transparent;
+    font-size: 100%;
   }
 
-</style>
-<div class="activityCustom">
-	<header>
-		<h3 id="title"><%= title %></h3>
-	</header> 
-	<section id="content">
-		<p><%= content %></p>
-	</section>
+  #share {
+    float: right;
+    cursor: pointer;
+  }
 
-	<footer>
-		<a href='tempo#<%= backLink %>'> Back </a>
-	</footer>
+  #back {
+    margin: 0 auto;
+  }
+
+  #link {
+    position: relative;
+    top: 40px;
+  }
+</style>
+
+<div class="jumbotron activity">
+  <header>
+      <h3 id="title"><%= title %></h3>
+  </header>  
+
+  <section>
+    <div class="thumbnail">
+      <!-- <img src="..." alt="..."> -->
+      <div class="caption">
+        <div id="content"><%= content %></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <a id="back" href='<%= backLink %>' id='back'> Back </a>   
+  </footer>
 </div>

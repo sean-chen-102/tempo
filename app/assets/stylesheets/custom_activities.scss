@@ -65,7 +65,8 @@ $dangerRed: #891515;
           }
 
           tbody tr td {
-            font-family: 'Open Sans Condensed', sans-serif;
+            font-family: 'Lato', sans-serif;
+            font-weight: 400;
             font-size: 16px;
           }
 
@@ -95,7 +96,7 @@ $dangerRed: #891515;
       /*Red button color scheme*/
       #add {
           position: relative;
-          width: 150px;
+          width: 200px;
           height: 30px;
           display: block;
           margin: 0 auto;

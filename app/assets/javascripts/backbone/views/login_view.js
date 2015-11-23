@@ -36,14 +36,14 @@ var LoginView = Backbone.View.extend({
 			console.log(this.model.attributes);
 		    this.model.save(this.loginDetails, {
 	      		success: function(userSession, response) {
-	      			console.log("success!");
-	      			Cookies.set("login-token", response.token);
-	      			console.log(response);
 	      			if (response.status === 1 ) {
+	      				console.log("success!");
+	      				Cookies.set("login-token", response.token);
+	      				console.log(response);
 	      				Backbone.Events.trigger("user-interests", [response.user.interests, response.user.id]);
 	      				Backbone.history.navigate('home', {trigger: true}); 
 	      			} else {
-		    			$("#warning").html("Invalid username or password");
+	      				notie.alert(3, response.errors[0], 1.5);
 	      			}
 	      },
 	      error: function(userSession, response) {
@@ -52,7 +52,7 @@ var LoginView = Backbone.View.extend({
 	    });
 		    if (this.model.validationError) {
 		    	console.log(this.model);
-		    	$("#warning").html(this.model.validationError);
+		    	notie.alert(3, "please enter a username and password", 1.5);
   // validate error(s) accessible in model.validationError
 			}
 		},

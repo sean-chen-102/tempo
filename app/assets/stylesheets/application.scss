@@ -51,7 +51,7 @@ $buttonFontColor: #ECF0F1;
   .top-bar {
     width: 100%;
     position: relative;
-    background-color: $logoColor;
+    background-color: $sidebarMain;
     height: 100px;
     top: 0;
     left: 0;
@@ -72,7 +72,7 @@ $buttonFontColor: #ECF0F1;
     left: 50%;
     margin-left: -80px;
     opacity: .9;
-    background-color: $logoColor;
+    background-color: $sidebarMain;
   }
   
   .menuSelection {
@@ -115,7 +115,7 @@ $buttonFontColor: #ECF0F1;
     position: absolute;
     bottom: 0;
     height: 50px;
-    background-color: #1B1B1B;
+    background-color: $sidebarMain;
     width: 100%;
     color: #91c5f2;
     font-size: 20px;
@@ -135,8 +135,8 @@ $buttonFontColor: #ECF0F1;
 
 /*HOME VIEW STYLING */
 	.home-wrapper {
-		width: 350px;
-		height: 500px;
+		width: 700px;
+		height: 700px;
 		border: 1px solid green;
 		margin: 0 auto;
 		margin-top: 100px;
@@ -152,7 +152,7 @@ $buttonFontColor: #ECF0F1;
 	.home-wrapper header {
 		position: absolute;
 		top: 0;
-		height: 15%;
+		height: 10%;
 		width: 100%;
 		background-color: $containerHeaderColor;
 	}
@@ -176,10 +176,11 @@ $buttonFontColor: #ECF0F1;
 	}
 
 	.home-wrapper section {
+		border-bottom: 1px solid $containerHeaderColor;
 		position: absolute;
 		top: 25%;
 		width: 100%;
-		height: 55%;
+		height: 38%;
 
 		h3 {
 			color: #e74c3c;
@@ -203,7 +204,6 @@ $buttonFontColor: #ECF0F1;
 
 		/*Blue button color scheme*/
 		.go-btn {
-				position: absolute;
 			    width: 100px;
 			    height: 40px;
 			    display: block;

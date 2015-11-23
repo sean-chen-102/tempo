@@ -56,3 +56,66 @@ feature "User hits the 'GO' button", :type => :feature, :js => true do
     expect(page).to have_content 'Activity List'
   end
 end
+
+feature "User clicks on sidebar links", :type => :feature, :js => true do
+  background do
+    User.create(name: 'John', username: 'johnny22', email: 'johnny22@mail.com', password: 'password')
+  end
+
+  scenario 'the Home view is displayed' do
+    visit root_path
+
+    # Login
+    fill_in 'username-or-email', with: 'johnny22'
+    fill_in 'password', with: 'password'
+    click_button 'Login'
+    expect(page).to have_content 'Welcome Home, John!'
+
+    # Click 'Home' link
+    click_link 'Home'
+    expect(page).to have_content 'Welcome Home, John!'
+  end
+
+  scenario 'the Custom Activities view is displayed' do
+    visit root_path
+
+    # Login
+    fill_in 'username-or-email', with: 'johnny22'
+    fill_in 'password', with: 'password'
+    click_button 'Login'
+    expect(page).to have_content 'Welcome Home, John!'
+
+    # Click 'Custom Activities' link
+    click_link 'Custom Activities'
+    expect(page).to have_content 'Custom Activity List'
+  end
+
+  scenario 'the History view is displayed' do
+    visit root_path
+
+    # Login
+    fill_in 'username-or-email', with: 'johnny22'
+    fill_in 'password', with: 'password'
+    click_button 'Login'
+    expect(page).to have_content 'Welcome Home, John!'
+
+    # Click 'History' link
+    click_link 'History'
+    expect(page).to have_content 'History for'
+  end
+
+  scenario 'the Settings view is displayed' do
+    visit root_path
+
+    # Login
+    fill_in 'username-or-email', with: 'johnny22'
+    fill_in 'password', with: 'password'
+    click_button 'Login'
+    expect(page).to have_content 'Welcome Home, John!'
+
+    # Click 'Settings' link
+    click_link 'Settings'
+    expect(page).to have_content 'User Settings'
+  end
+end
+

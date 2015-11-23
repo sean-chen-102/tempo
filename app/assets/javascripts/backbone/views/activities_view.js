@@ -60,6 +60,7 @@ var ActivitiesView = Backbone.View.extend({
 
       //TODO: Find better way to do this
       var token = Cookies.get('login-token');
+      console.log(this.time);
       if (this.activities.length > 0) {
         renderData(this.activities);
       } else if (this.time) {

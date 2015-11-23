@@ -76,6 +76,17 @@ class Activity < ActiveRecord::Base
     end
   end
 
+  # Populates the database with new Activities based on news.
+  def self.populate_database_with_videos()
+    interests = ["tech", "science", "food", "medicine", "history"]
+    interests.each do |interest|
+      potential_activities = YoutubeImporter.get_videos_by_keyword(interest)
+      potential_activities.each do |potential_activity|
+        potential_activity.save_to_database
+      end
+    end
+  end
+
   # FOR SCRAPING EXTERNAL DATA
   class Scraper
   end
@@ -120,18 +131,83 @@ class Activity < ActiveRecord::Base
     end
   end
 
+  # FOR SCRAPING EXTERNAL DATA FROM THE GUARDIAN
+  class YoutubeImporter < Scraper
+    
+    @tech_channel_ids = [ "UCBJycsmduvYEL83R_U4JriQ", "UCDlQwv99CovKafGvxyaiNDA", "UCR0AnNR7sViH3TWMJl5jyxw", "UCgyqtNWZmIxTx3b6OxTSALw"]
+    @science_channel_ids = ["UC6nSFpj9HTCZ5t-N3Rm3-HA", "UCHnyfMqiRRG1u-2MsSQLbXA", "UCZYTClx2T1of7BRZ86-8fow", "UCsXVk37bltHxD1rDPwtNM8Q", "UCUHW94eEFW7hkUMVaZz4eDg"]
+    @food_channel_ids = ["UCaLfMkkHhSA_LaCta0BzyhQ", "UCIEv3lZ_tNXHzL3ox-_uUGQ", "UCfyehHM_eo4g5JUyWmms2LA"]
+    @medicine_channel_ids = ["UCJayvjGvKEblkA3KYK1BQQw"]
+
+    def self.get_videos_by_keyword(interest)
+      ids = nil
+      content_type = "video"
+      potential_videos = []
+
+      # Figure out which channelIds to use
+      if (interest == "tech")
+        ids = @tech_channel_ids
+      elsif (interest == "science")
+        ids = @science_channel_ids
+      elsif (interest == "food")
+        ids = @food_channel_ids
+      elsif (interest == "medicine")
+        ids = @medicine_channel_ids
+      end
+    
+      if interest != "history"
+        ids.each do |id|
+          channel = Yt::Channel.new id: id
+          videos = channel.videos
+
+          videos.first(10).each do |video|
+            unique_id = video.id
+            title = video.title
+            link = "https://www.youtube.com/watch?v=" + unique_id
+            completion_time = (video.duration/60).ceil
+            content = video.description
+
+            potential_video = PotentialActivity.new(unique_id, title, content, content_type, link, nil, interest)
+            potential_videos.append(potential_video)
+          end
+        end
+
+      elsif interest == "history"
+        playlist_id = "PLAC6B9F15C835224C"
+        playlist = Yt::Playlist.new id: playlist_id
+
+        playlist.playlist_items.first(10).each do |item|
+          video = Yt::Video.new id: item.snippet.data["resourceId"]["videoId"]
+
+          unique_id = video.id
+          title = video.title
+          link = "https://www.youtube.com/watch?v=" + unique_id
+          completion_time = (video.duration/60).ceil
+          content = video.description
+
+          potential_video = PotentialActivity.new(unique_id, title, content, content_type, link, nil, interest)
+          potential_videos.append(potential_video)
+        end
+      end
+
+      return potential_videos
+    end
+  end
+
   # A Class that represents a potential new activity that will be added to the database
   class PotentialActivity
 
     def initialize(unique_id, title, content, content_type, link, wordcount, interest_name)
       @average_words_per_minute = 300
-      @unqiue_id = unique_id
+      @unique_id = unique_id
       @title = title
       @content = content
       @content_type = content_type
       @link = link
-      @wordcount = wordcount.to_i
-      @completion_time = self.calculate_estimated_time
+      if not wordcount.nil?
+        @wordcount = wordcount.to_i
+        @completion_time = self.calculate_estimated_time
+      end
       @interest_name = interest_name
     end
 
@@ -141,7 +217,7 @@ class Activity < ActiveRecord::Base
     end
 
     def save_to_database
-      if @wordcount >= @average_words_per_minute
+      if @interest == "News" and @wordcount >= @average_words_per_minute
         activity = Activity.new({ title: @title, content: @content, completion_time: @completion_time, content_type: @content_type, link: @link })
         if not activity.save
           puts "ERRORS populating database with new activities: #{activity.errors}"

@@ -19,6 +19,13 @@ var LoginView = Backbone.View.extend({
 			var home_template = JST["backbone/templates/unauthenticated/login"]({
     	    });
         	this.$el.html(home_template);
+        	$("input").keyup(function(e) {
+        		console.log(e);
+        		if (e.which == 13) {
+    				that.login(options);
+  				}
+			});
+
 		},
 		login : function(options){
 			console.log("attempting login");

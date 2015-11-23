@@ -69,6 +69,7 @@ var SettingsView = Backbone.View.extend({
       			if (response.status === 1) {
       				notie.alert(1, 'Interests Saved!', 1.5);
       			} else {
+      				console.log(response.errors);
       				notie.alert(3, response.errors[0], 1.5);
       			}
       		},

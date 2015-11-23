@@ -37,6 +37,12 @@ var SignupView = Backbone.View.extend({
 	  				that.canSignUp = false;
 	  			}
 			});
+			$("input").keyup(function(e) {
+        		console.log(e);
+        		if (e.which == 13) {
+    				that.signup(e);
+  				}
+			});
 		},
 	  signup: function(e) {
 	    var self = this,

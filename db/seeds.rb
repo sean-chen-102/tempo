@@ -152,8 +152,7 @@ news_list = [news_1, news_2, news_3, news_4, news_5, news_6]
 
 
 # TECH ACTIVITIES
-tech_1 = { title: "Bill Gates: Can online classrooms educate the developing world?", completion_time: 3, link: "http://www.theverge.com/2015/2/11/8016647/bill-gates-online-classes-education-the-big-future", content_type: "video", like_count: 0 }
-
+tech_1 = { title: "5 Mind Blowing Facts About Your Smartphone!", completion_time: 10, link: "https://www.youtube.com/v/3MYhhO_nSAk", content_type: "video", like_count: 0 }
 
 tech_2 = { title: "Nexus 6P Review!", completion_time: 14, link: "https://www.youtube.com/v/Xc5fFvp8le4", content_type: "video"}
 

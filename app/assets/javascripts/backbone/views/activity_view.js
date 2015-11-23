@@ -23,17 +23,11 @@ var ActivityView = Backbone.View.extend({
             var backLink = 'activities';
         }
 
-        if(data['content_type']=='video'){
-            var player;
-            function onYouTubeIframeAPIReady() {
-              player = new YT.Player('content', {
-                height: '390',
-                width: '640',
-                videoId: 'M7lc1UVf-VE',
-                events: {
-                }
-              });
-            }
+        if(data['content_type'] == "video"){
+            var vidLink = data['content'];
+            data['content'] = "<iframe width='380' height='200' src='"
+                + vidLink + "'"
+                + " frameborder='0' allowfullscreen=''></iframe>";
         }
 
         var template = JST["backbone/templates/activities/activity"]({

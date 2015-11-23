@@ -17,12 +17,6 @@ var HomeView = Backbone.View.extend({
 		this.user = null;
 		this.numInterests = 0;
 		this.selectedInterests = null;
-
-		var tag = document.createElement('script');
-
-	    tag.src = "https://www.youtube.com/iframe_api";
-	    var firstScriptTag = document.getElementsByTagName('script')[0];
-	    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 	},
 	render : function (options){
 		console.log("render home");

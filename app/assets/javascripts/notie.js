@@ -165,10 +165,11 @@ $( document ).ready(function() {
         alert_outer.id = alert_outer_id;
         alert_outer.style.position = 'fixed';
         alert_outer.style.top = '0';
-        alert_outer.style.left = '0';
+        alert_outer.style.left = '200px';
         alert_outer.style.zIndex = '999999999';
         alert_outer.style.height = 'auto';
-        alert_outer.style.width = '100%';
+        alert_outer.style.width = 'calc(100% - 200px)';
+        /* Firefox */
         alert_outer.style.display = 'none';
         alert_outer.style.textAlign = 'center';
         alert_outer.style.cursor = 'default';

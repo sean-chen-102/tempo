@@ -314,7 +314,7 @@ activity_list_tech[0].interests << science_interest
 
 # Populate the databse via external APIs
 Activity.populate_database_with_news() # add news articles to the database
-Activity.populate_database_with_videos()
+Activity.populate_database_with_videos() # add videos with various interests to the database
 
 # Populate the database with food-based activities
 food_1 = Activity.create({ title: "Recipe: Butternut Squash and Cranberry Muffins", content_type: "text", completion_time: 40, link: "http://allrecipes.com/recipe/239607/butternut-squash-and-cranberry-muffins/", content: "\"I got some butternut squash and cranberries (both I am not fond of) in my 'Bountiful Basket' last week. Not having a clue what to do with them, I came up with this surprisingly yummy muffin. I made up this recipe with what I had on hand. It is really very light, tasty, and not too sweet. I serve mine with honey or sweetened cream cheese. If possible, always choose organic.\"" })
@@ -340,29 +340,6 @@ food_8.interests << food_interest
 food_9.interests << food_interest
 food_10.interests << food_interest
 food_11.interests << food_interest
-
-# Populate the database with history-based activities
-history_1 = Activity.create({ title: "US History Overview 1: Jamestown to the Civil War", content_type: "video", completion_time: 19, link: "https://www.youtube.com/v/ghgPq2wjQUQ", content: "" })
-history_2 = Activity.create({ title: "Appomattox Court House and Lincoln's Assassination", content_type: "video", completion_time: 6, link: "https://www.youtube.com/v/Frpq_A7Ky_Q", content: "" })
-history_3 = Activity.create({ title: "US History Overview 2 - Reconstruction to the Great Depression", content_type: "video", completion_time: 15, link: "https://www.youtube.com/v/zmBV87XA52Q", content: "" })
-history_4 = Activity.create({ title: "US History Overview 3 - WWII to Vietnam", content_type: "video", completion_time: 15, link: "https://www.youtube.com/v/j2eKaxU-8kA", content: "" })
-history_5 = Activity.create({ title: "Communism", content_type: "video", completion_time: 16, link: "https://www.youtube.com/v/MmRgMAZyYN0", content: "" })
-history_6 = Activity.create({ title: "Korean War Overview", content_type: "video", completion_time: 17, link: "https://www.youtube.com/v/MEGyRgYJKEY", content: "" })
-history_7 = Activity.create({ title: "Bay of Pigs Invasion", content_type: "video", completion_time: 14, link: "https://www.youtube.com/v/XmkbAduMD_E", content: "" })
-history_8 = Activity.create({ title: "Cuban Missile Crisis", content_type: "video", completion_time: 19, link: "https://www.youtube.com/v/VO40SpSBjbc", content: "" })
-history_9 = Activity.create({ title: "Vietnam War", content_type: "video", completion_time: 18, link: "https://www.youtube.com/v/9e9GWdT2pEQ", content: "" })
-history_10 = Activity.create({ title: "Pattern of US Cold War Interventions", content_type: "video", completion_time: 10, link: "https://www.youtube.com/v/aNkrawaaiZQ", content: "" })
-
-history_1.interests << history_interest
-history_2.interests << history_interest
-history_3.interests << history_interest
-history_4.interests << history_interest
-history_5.interests << history_interest
-history_6.interests << history_interest
-history_7.interests << history_interest
-history_8.interests << history_interest
-history_9.interests << history_interest
-history_10.interests << history_interest
 
 # Populate the database with fun facts
 fun_fact_1 = Activity.create({title: "Fun Fact #1", content_type: "text", completion_time: 1, link: "N/A", content: "It's impossible to sneeze with your eyes open!"})

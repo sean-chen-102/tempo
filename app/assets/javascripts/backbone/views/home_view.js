@@ -43,6 +43,7 @@ var HomeView = Backbone.View.extend({
 		this.selectedInterests = selectedInterests;
 		//save interests to activity view object
 		this.activitiesView.interests = this.selectedInterests;
+		this.activitiesView.time = duration;
 		//switch view to activities view
 		this.activitiesView.activities = new Activities();
 		window.location = '/tempo#activities?';

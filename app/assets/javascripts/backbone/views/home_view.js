@@ -10,6 +10,12 @@ var HomeView = Backbone.View.extend({
 			this.options = options;
 			this.interestView = options.interestView;
 			this.activitiesView = options.activitiesView;
+
+			var tag = document.createElement('script');
+
+		    tag.src = "https://www.youtube.com/iframe_api";
+		    var firstScriptTag = document.getElementsByTagName('script')[0];
+		    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 		},
 		render : function (options){
 			console.log("render home");

@@ -22,6 +22,20 @@ var ActivityView = Backbone.View.extend({
         } else {
             var backLink = 'activities';
         }
+
+        if(data['content_type']=='video'){
+            var player;
+            function onYouTubeIframeAPIReady() {
+              player = new YT.Player('content', {
+                height: '390',
+                width: '640',
+                videoId: 'M7lc1UVf-VE',
+                events: {
+                }
+              });
+            }
+        }
+
         var template = JST["backbone/templates/activities/activity"]({
               title: data['title'],
               content: data['content'],

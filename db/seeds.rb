@@ -145,7 +145,7 @@ news_5 = { title: "The strange Trump and Carson phenomenon explained", content_t
  and a fresh approach to the problems.\" Angela Nuzzi, a student at the nearby University of Central Florida, says she admires Mr Carson's willingness to persevere in the face of Mr Trump's criticism. \"His whole demeanour is so different than Trump's,\" she says. \"I think the soft-spokenness brings you in, and you just see he has all these ideas that are just genius.\" Earlier in the day Mr Carson's business manager said that his
  candidate admired Mr Trump and was praying for him - a sentiment that several Carson backers echoed later in the day. \"We like Donald Trump, but you can't pull back from that [criticism of Carson],\" says Annie Otto, a Wildwood, Florida, resident who has organised the group Grannies for Carson. \"I'm disappointed, but I do believe in the American people's common sense.\""}
 
-news_6 = { title: "Bear Killed After Escape From Russia Shopping Mall", content_type: "video", completion_time: 2, link: "https://www.youtube.com/watch?v=PM7h5Ptun28", like_count: 0 }
+news_6 = { title: "Bear Killed After Escape From Russia Shopping Mall", content_type: "video", completion_time: 2, link: "https://www.youtube.com/v/PM7h5Ptun28", like_count: 0 }
 
 
 news_list = [news_1, news_2, news_3, news_4, news_5, news_6]
@@ -155,7 +155,7 @@ news_list = [news_1, news_2, news_3, news_4, news_5, news_6]
 tech_1 = { title: "Bill Gates: Can online classrooms educate the developing world?", completion_time: 3, link: "http://www.theverge.com/2015/2/11/8016647/bill-gates-online-classes-education-the-big-future", content_type: "video", like_count: 0 }
 
 
-tech_2 = { title: "Nexus 6P Review!", completion_time: 14, link: "https://www.youtube.com/watch?v=Xc5fFvp8le4", content_type: "video"}
+tech_2 = { title: "Nexus 6P Review!", completion_time: 14, link: "https://www.youtube.com/v/Xc5fFvp8le4", content_type: "video"}
 
 tech_3 = { title: "Apple's first Singapore store will be powered entirely by renewable energy", completion_time: 3, link: "http://www.cnet.com/news/apples-first-singapore-store-will-be-powered-entirely-by-renewable-energy/", content_type: "text", content: "Apple wants to end its dependence on fossil fuel for all of its global facilities and the upcoming store in the city-state of Singapore will be one of the first in the world to be powered entirely by solar energy. The Cupertino consumer
  electronics giant has partnered with Singapore's largest clean energy provider, Sunseap Group, who will provide power to Apple's 2,5000-person corporate campus and retail store. Energy will be obtained from solar panels laid on the rooftops of 800 buildings. \"We're thrilled to be working with Sunseap and the government of Singapore to pioneer new ways to bring solar energy to the country and bring Apple even closer to our goal
@@ -164,7 +164,7 @@ tech_3 = { title: "Apple's first Singapore store will be powered entirely by ren
  list of day one product launches alongside bigger markets such as the US, Hong Kong and Japan, but has never had an Apple Store. Instead, Apple relies on local distributors, Apple Premium Resellers, for retail and servicing to its customer base in Singapore. The upcoming retail store will likely see Apple placing a larger focus on the Singapore market, which currently also serves as a shopping hub for more devoted fanbase in the
  region, who often travel down to the island-state during product launches to get their hands on Apple devices such as the iPhone 6 Plus. The expected location of its upcoming store will be at the heart of Singapore's shopping district on Orchard Road, where it will be taking over 15,000 square feet of space. The company has also posted job listings for Apple Geniuses and other retail positions."}
 
-tech_4 = { title: "Should you buy the iPhone 6s or iPad Pro?", completion_time: 8, link: "https://www.youtube.com/watch?v=g6ZfghiG70M", content_type: "video"}
+tech_4 = { title: "Should you buy the iPhone 6s or iPad Pro?", completion_time: 8, link: "https://www.youtube.com/v/g6ZfghiG70M", content_type: "video"}
 
 tech_5 = { title: "How Much Technology Is Too Much Technology?", completion_time: 15, link: "http://techcrunch.com/2015/11/15/how-much-technology-is-too-much-technology/", content_type: "text", content: "There are many visions of what our hyper-connected future might look like. We’re packaged countless variants on the shiny-techie-future vision theme every day as marketing departments lay it on thick to try to put gloss on their latest
  product and restless grease on the wheels of consumption. Thing is, these tales of shiny futures are not really that interesting. Given they are artless fictions. What’s far more interesting is how technology is being applied in the here and now — and how it’s already interacting with and impacting social structures. And if you look at those tell-tale signs then sure it’s possible to extrapolate some possible futures — some of which
@@ -192,13 +192,13 @@ tech_5 = { title: "How Much Technology Is Too Much Technology?", completion_time
  social structures aren’t ripped out or ripped apart by the indifferent interests of corporate accountancy. And — as individual users of technology — recognizing when it’s time to leave your phone alone for a bit and talk to the people around you. If we can find the right balance between technology and society, it’s possible to imagine many good things being created by humans using ever more sophisticated tools. But achieving that balance
  requires continuous sweating toil to define society’s red lines — and the discipline not to be distracted or swayed by the superficial sheen of shiny things. Hard work for sure, but the kind of socially engaged activity that yields genuinely satisfying rewards — and benefits the many, not the few."}
 
-tech_6 = { title: "The Best Tech Under $50 - November 2015", completion_time: 1, link: "https://www.youtube.com/watch?v=Gb8VJwT3OdU", content_type: "video"}
+tech_6 = { title: "The Best Tech Under $50 - November 2015", completion_time: 1, link: "https://www.youtube.com/v/Gb8VJwT3OdU", content_type: "video"}
 
 tech_list = [tech_1, tech_2, tech_3, tech_4, tech_5, tech_6]
 
 
 # SCIENCE ACTIVITIES
-science_1 = { title: "10 Cool Science Experiments Compilation #9", completion_time: 5, link: "https://www.youtube.com/watch?v=TDMXs2hJv28", content_type: "video" }
+science_1 = { title: "10 Cool Science Experiments Compilation #9", completion_time: 5, link: "https://www.youtube.com/v/TDMXs2hJv28", content_type: "video" }
 
 
 science_2 = { title: "These Huge Rats Can Sniff Out Land Mines", completion_time: 3, link: "http://video.nationalgeographic.com/video/news/151007-cambodia-rats-land-mines-sniff-vin?gc=%2Fvideo%2Fscience-space", content_type: "video", like_count: 0 }
@@ -233,7 +233,7 @@ science_4 = { title: "Undersea Internet Cables Are Surprisingly Vulnerable", com
  would also be easy to find and repair. The Times article raises a greater concern: the possibility of cuts made to deep-lying cables in remote parts of the ocean. In her book, Starosielski notes that the strategy for safeguarding undersea cables has been described as \"security through obscurity.\" Nobody gave much thought to the cables, and that was enough to protect them. In the future, it might not be." }
 
 
-science_5 = { title: "The Brightest Part of a Shadow is in the Middle", completion_time: 8, link: "https://www.youtube.com/watch?v=y9c8oZ49pFc", content_type: "video"}
+science_5 = { title: "The Brightest Part of a Shadow is in the Middle", completion_time: 8, link: "https://www.youtube.com/v/y9c8oZ49pFc", content_type: "video"}
 
 science_list = [science_1, science_2, science_3, science_4, science_5]
 
@@ -343,16 +343,16 @@ food_10.interests << food_interest
 food_11.interests << food_interest
 
 # Populate the database with history-based activities
-history_1 = Activity.create({ title: "US History Overview 1: Jamestown to the Civil War", content_type: "video", completion_time: 19, link: "https://www.youtube.com/watch?v=ghgPq2wjQUQ", content: "" })
-history_2 = Activity.create({ title: "Appomattox Court House and Lincoln's Assassination", content_type: "video", completion_time: 6, link: "https://www.youtube.com/watch?v=Frpq_A7Ky_Q", content: "" })
-history_3 = Activity.create({ title: "US History Overview 2 - Reconstruction to the Great Depression", content_type: "video", completion_time: 15, link: "https://www.youtube.com/watch?v=zmBV87XA52Q", content: "" })
-history_4 = Activity.create({ title: "US History Overview 3 - WWII to Vietnam", content_type: "video", completion_time: 15, link: "https://www.youtube.com/watch?v=j2eKaxU-8kA", content: "" })
-history_5 = Activity.create({ title: "Communism", content_type: "video", completion_time: 16, link: "https://www.youtube.com/watch?v=MmRgMAZyYN0", content: "" })
-history_6 = Activity.create({ title: "Korean War Overview", content_type: "video", completion_time: 17, link: "https://www.youtube.com/watch?v=MEGyRgYJKEY", content: "" })
-history_7 = Activity.create({ title: "Bay of Pigs Invasion", content_type: "video", completion_time: 14, link: "https://www.youtube.com/watch?v=XmkbAduMD_E", content: "" })
-history_8 = Activity.create({ title: "Cuban Missile Crisis", content_type: "video", completion_time: 19, link: "https://www.youtube.com/watch?v=VO40SpSBjbc", content: "" })
-history_9 = Activity.create({ title: "Vietnam War", content_type: "video", completion_time: 18, link: "https://www.youtube.com/watch?v=9e9GWdT2pEQ", content: "" })
-history_10 = Activity.create({ title: "Pattern of US Cold War Interventions", content_type: "video", completion_time: 10, link: "https://www.youtube.com/watch?v=aNkrawaaiZQ", content: "" })
+history_1 = Activity.create({ title: "US History Overview 1: Jamestown to the Civil War", content_type: "video", completion_time: 19, link: "https://www.youtube.com/v/ghgPq2wjQUQ", content: "" })
+history_2 = Activity.create({ title: "Appomattox Court House and Lincoln's Assassination", content_type: "video", completion_time: 6, link: "https://www.youtube.com/v/Frpq_A7Ky_Q", content: "" })
+history_3 = Activity.create({ title: "US History Overview 2 - Reconstruction to the Great Depression", content_type: "video", completion_time: 15, link: "https://www.youtube.com/v/zmBV87XA52Q", content: "" })
+history_4 = Activity.create({ title: "US History Overview 3 - WWII to Vietnam", content_type: "video", completion_time: 15, link: "https://www.youtube.com/v/j2eKaxU-8kA", content: "" })
+history_5 = Activity.create({ title: "Communism", content_type: "video", completion_time: 16, link: "https://www.youtube.com/v/MmRgMAZyYN0", content: "" })
+history_6 = Activity.create({ title: "Korean War Overview", content_type: "video", completion_time: 17, link: "https://www.youtube.com/v/MEGyRgYJKEY", content: "" })
+history_7 = Activity.create({ title: "Bay of Pigs Invasion", content_type: "video", completion_time: 14, link: "https://www.youtube.com/v/XmkbAduMD_E", content: "" })
+history_8 = Activity.create({ title: "Cuban Missile Crisis", content_type: "video", completion_time: 19, link: "https://www.youtube.com/v/VO40SpSBjbc", content: "" })
+history_9 = Activity.create({ title: "Vietnam War", content_type: "video", completion_time: 18, link: "https://www.youtube.com/v/9e9GWdT2pEQ", content: "" })
+history_10 = Activity.create({ title: "Pattern of US Cold War Interventions", content_type: "video", completion_time: 10, link: "https://www.youtube.com/v/aNkrawaaiZQ", content: "" })
 
 history_1.interests << history_interest
 history_2.interests << history_interest
@@ -389,16 +389,16 @@ fun_fact_9.interests <<  fun_facts_interest
 fun_fact_10.interests << fun_facts_interest
 
 # Populate the database with health-based activities
-health_1 = Activity.create({ title: "Flow through the Heart", content_type: "video", completion_time: 8, link: "https://www.youtube.com/watch?v=7XaftdE_h60", content: "" })
-health_2 = Activity.create({ title: "Lub Dub", content_type: "video", completion_time: 10, link: "https://www.youtube.com/watch?v=-4kGMI-qQ3I", content: "" })
-health_3 = Activity.create({ title: "Meet the heart!", content_type: "video", completion_time: 11, link: "https://www.youtube.com/watch?v=Vi1JK6IYVt8", content: "" })
-health_4 = Activity.create({ title: "Electrical System of the Heart", content_type: "video", completion_time: 10, link: "https://www.youtube.com/watch?v=7K2icszdxQc", content: "" })
-health_5 = Activity.create({ title: "Meet the Lungs", content_type: "video", completion_time: 10, link: "https://www.youtube.com/watch?v=qGiPZf7njqY", content: "" })
-health_6 = Activity.create({ title: "Basics of Metabolism", content_type: "video", completion_time: 12, link: "https://www.youtube.com/watch?v=wQ1QGZ6gJ8w", content: "" })
-health_7 = Activity.create({ title: "What's Inside of Blood?", content_type: "video", completion_time: 12, link: "https://www.youtube.com/watch?v=5MOn8X-tyFw", content: "" })
-health_8 = Activity.create({ title: "How do our kidneys work? (Renal Anatomy)", content_type: "video", completion_time: 8, link: "https://www.youtube.com/watch?v=ctGkLYuUCvU", content: "" })
-health_9 = Activity.create({ title: "Arteries vs. Veins - What's the Difference?", content_type: "video", completion_time: 12, link: "https://www.youtube.com/watch?v=7b6LRebCgb4", content: "" })
-health_10 = Activity.create({ title: "Digesting Food", content_type: "video", completion_time: 17, link: "https://www.youtube.com/watch?v=v2V4zMx33Mc", content: "" })
+health_1 = Activity.create({ title: "Flow through the Heart", content_type: "video", completion_time: 8, link: "https://www.youtube.com/v/7XaftdE_h60", content: "" })
+health_2 = Activity.create({ title: "Lub Dub", content_type: "video", completion_time: 10, link: "https://www.youtube.com/v/-4kGMI-qQ3I", content: "" })
+health_3 = Activity.create({ title: "Meet the heart!", content_type: "video", completion_time: 11, link: "https://www.youtube.com/v/Vi1JK6IYVt8", content: "" })
+health_4 = Activity.create({ title: "Electrical System of the Heart", content_type: "video", completion_time: 10, link: "https://www.youtube.com/v/7K2icszdxQc", content: "" })
+health_5 = Activity.create({ title: "Meet the Lungs", content_type: "video", completion_time: 10, link: "https://www.youtube.com/v/qGiPZf7njqY", content: "" })
+health_6 = Activity.create({ title: "Basics of Metabolism", content_type: "video", completion_time: 12, link: "https://www.youtube.com/v/wQ1QGZ6gJ8w", content: "" })
+health_7 = Activity.create({ title: "What's Inside of Blood?", content_type: "video", completion_time: 12, link: "https://www.youtube.com/v/5MOn8X-tyFw", content: "" })
+health_8 = Activity.create({ title: "How do our kidneys work? (Renal Anatomy)", content_type: "video", completion_time: 8, link: "https://www.youtube.com/v/ctGkLYuUCvU", content: "" })
+health_9 = Activity.create({ title: "Arteries vs. Veins - What's the Difference?", content_type: "video", completion_time: 12, link: "https://www.youtube.com/v/7b6LRebCgb4", content: "" })
+health_10 = Activity.create({ title: "Digesting Food", content_type: "video", completion_time: 17, link: "https://www.youtube.com/v/v2V4zMx33Mc", content: "" })
 
 health_1.interests << health_interest
 health_2.interests << health_interest

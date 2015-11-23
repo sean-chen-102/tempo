@@ -53,13 +53,8 @@ $buttonFontColor: #ECF0F1;
     height: 100px;
     top: 0;
     left: 0;
-    border-left: 3px solid #1f89e5;
   }
 
-  .top-bar:hover {
-  	opacity: .7;
-  	cursor: pointer;
-  }
 
   #logo {
     width: 80%;
@@ -81,25 +76,31 @@ $buttonFontColor: #ECF0F1;
     margin-top: 0;
   }
 
-  .menuSelection li{
+  .menuSelection a li{
     padding: 25px 10px 10px 30px;
   }
 
-  .menuSelection li a {
+  .menuSelection a  li {
     font-size: 25px;
-    font-family: 'Open Sans Condensed', sans-serif;
     text-decoration: none;
     color: $sidebarFontColor;
+    font-family: 'Open Sans Condensed';
   }
 
   .menuSelection li:hover {
+  	text-decoration: none;
   	background-color: $sidebarHighlight;
   	cursor: pointer;
   	border-left: 3px solid #1f89e5;
+
+  }
+
+  a:hover, a:visited {
+  	text-decoration: none;
   }
 
   .menuSelection li a:hover {
-    text-decoration: underline;
+  	text-decoration: none;
     background-color: $sidebarHighlight;
   }
 
@@ -107,6 +108,10 @@ $buttonFontColor: #ECF0F1;
     width: 100%;
     height: 1px;
     background-color: $sidebarMain;
+  }
+
+  .selected {
+  	border-left: 3px solid #1f89e5;
   }
 
   footer {
@@ -324,6 +329,9 @@ $containerHeaderColor: rgb(31, 137, 229);
 
 
 
+a, a:hover, a:active, a:visited {
+    text-decoration:none;
+}
 
 
 /*THE MAIN WRAPPER*/

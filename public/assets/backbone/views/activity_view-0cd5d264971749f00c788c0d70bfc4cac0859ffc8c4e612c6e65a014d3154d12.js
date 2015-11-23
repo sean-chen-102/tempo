@@ -18,9 +18,9 @@ var ActivityView = Backbone.View.extend({
             data['link'] = 'javascript:;';
         }
         if(this.history){
-            var backLink = '/tempo#history';
+            var backLink = 'history';
         } else {
-            var backLink = '/tempo#activities';
+            var backLink = 'activities';
         }
 
         if(data['content_type'] == "video"){

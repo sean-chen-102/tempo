@@ -125,7 +125,7 @@ $containerHeaderColor: rgb(31, 137, 229);
   	border-left: 3px solid #2286ED !important;
   }
 
-  footer {
+  #footer {
     position: absolute;
     bottom: 0;
     height: 50px;
@@ -136,14 +136,14 @@ $containerHeaderColor: rgb(31, 137, 229);
     text-align: center;
   }
 
-  footer h3 {
+  #footer h3 {
     margin: 0;
     margin-top: 20px;
     margin-left: 200px;
     font-weight: normal;
   }
 
-  footer.mainFooter {
+  #footer{
     position: fixed;
   }
 

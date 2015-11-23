@@ -22,8 +22,6 @@ gem 'jwt'
 gem 'httparty'
 # For underscore.js
 gem 'underscore-rails'
-# For Capybara UI Testing
-gem 'capybara'
 
 # Use bootstrap
 gem 'bootstrap-sass', '~> 3.2.0'
@@ -42,6 +40,10 @@ gem 'handlebars_assets'
 
 #backbone templating
 gem 'ejs'
+
+# Youtube gem
+gem 'yt', '~> 0.25.5'
+gem 'omniauth-google-oauth2'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -78,6 +80,12 @@ group :development, :test do
   gem 'teaspoon-jasmine'
   gem 'phantomjs'
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  # For Capybara UI Testing
+  gem 'capybara'
+  # For cleaning up database with Capybara 
+  gem 'database_cleaner'
+  gem 'capybara-webkit'
 end
 
 group :test do

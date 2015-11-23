@@ -50,6 +50,10 @@ $containerHeaderColor: rgb(31, 137, 229);
 	background-color: $sidebarMain;
   }
 
+   button, button:focus {
+    outline: none;
+  }
+
   .top-bar {
     width: 100%;
     position: relative;
@@ -199,11 +203,6 @@ $containerHeaderColor: rgb(31, 137, 229);
 			font-size: 16px
 		}
 
-
-
-
-
-
 	}
 
 	.home-wrapper header {
@@ -313,25 +312,27 @@ $containerHeaderColor: rgb(31, 137, 229);
   	width: 300px; 
   	height: 900px;
   	margin-top: 0;
-  }
 
-  .home-wrapper ul {
-  	height: 200px;
-  	overflow: scroll;
-  }
+	  .home-wrapper ul {
+	  	height: 200px;
+	  	overflow: scroll;
+	  }
 
-  .interest-wrapper li {
-  	width: 100%;
-  }
+	  .interest-wrapper li {
+	  	width: 100%;
+	  }
 
-  .interest-wrapper {
-  	width: 300px;
-  	overflow: scroll;
-  }
+	  .interest-wrapper {
+	  	height: 250px;
+	  	width: 300px;
+	  	overflow: scroll;
+	  }
+	}
 }
 
 a, a:hover, a:active, a:visited {
     text-decoration:none;
+    color: $sidebarFontColor;
 }
 
 /*THE MAIN WRAPPER*/

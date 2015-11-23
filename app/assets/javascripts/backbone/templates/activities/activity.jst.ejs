@@ -18,7 +18,7 @@
     margin: 0 auto;
     width: 90%;
     min-height: 500px;
-    max-height: 600px;
+    max-height: 800px;
     background-color: white;
     border: 1px solid #ddd;
     box-shadow: 1px 1px 1px #eee;
@@ -71,6 +71,10 @@
     font-size: 18px;
   }
 
+  .activity section .content-video {
+    text-align: center;
+  }
+
   .activity section .likeContainer {
   	margin: 10px;
   	margin-bottom: 0;
@@ -79,7 +83,7 @@
   .activity footer {
   	background-color: #f5f5f5;
   	position: absolute;
-  	height: 15%;
+  	height: 20%;
   	bottom: 0;
   	border: 1px solid #ddd;
   }
@@ -126,14 +130,28 @@
   }
 
   .linkContainer {
-    float: left;
     margin-top: -35px;
     padding-left: 10px;
+    padding-right: 10px; 
   }
 
   a:hover {
   	background-color: transparent;
     font-size: 100%;
+  }
+
+  #share {
+    float: right;
+    cursor: pointer;
+  }
+
+  #back {
+    float: left;
+  }
+
+  #link {
+    position: relative;
+    top: 40px;
   }
 </style>
 
@@ -148,7 +166,6 @@
       <!-- <img src="..." alt="..."> -->
       <div class="caption">
         <div id="content"><%= content %></div>
-        <div class="content-link"><a id="link" href='<%= link %>' target="_blank"> Link </a></div>
       </div>
     </div>
   </section>
@@ -160,7 +177,10 @@
       <button class='btn btn-primary like-btn' role="button">Like</button>
       <button class='btn btn-primary dislike-btn' role="button">Dislike</button><br>  
       <div class="linkContainer">
-        <a href='<%= backLink %>' id='back'> Back </a>     
+        <a id="back" href='<%= backLink %>' id='back'> Back </a>   
+        <a id="share"> Share </a>
+  
       </div>
+      <div class="content-link"><a id="link" href='<%= link %>' target="_blank"> Link </a></div>
   </footer>
 </div>

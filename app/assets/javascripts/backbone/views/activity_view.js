@@ -7,16 +7,19 @@ var ActivityView = Backbone.View.extend({
     events: {
         "click .like-btn":"makeLikeRequest",
         "click .dislike-btn":"makeDislikeRequest",
+        "click #share": "share",
     },
     initialize: function(options){
       this.options = options;
       this.activity_id = options['id'];
       this.history = options['history'];
+      this.link = "";
     },
     renderData: function(data){
         if(data['link'] == "N/A"){
             data['link'] = 'javascript:;';
         }
+        this.link = data['link'];
         if(this.history){
             var backLink = '/tempo#history';
         } else {
@@ -24,9 +27,9 @@ var ActivityView = Backbone.View.extend({
         }
 
         if(data['content_type'] == "video"){
-            data['content'] = "<iframe width='580' height='300' src='"
+            data['content'] = "<div class='content-video'><iframe width='580' height='300' src='"
                 + data['link'] + "'"
-                + " frameborder='0' allowfullscreen='true'></iframe>";
+                + " frameborder='0' allowfullscreen='true'></iframe></div>";
         }
 
         var template = JST["backbone/templates/activities/activity"]({
@@ -122,4 +125,12 @@ var ActivityView = Backbone.View.extend({
             }
         });
     },
+    share : function() {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val(this.link).select();
+        document.execCommand("copy");
+        $temp.remove();
+        notie.alert(4, "Link copied to your clipboard!", 1.5);
+    }
   });

@@ -117,8 +117,7 @@ RSpec.describe "test basic users functionality - ", :type => :request do
     data = JSON.parse(response.body) # grab the body of the server response
     status = data["status"]
     users = data["users"]
-    NUM_USERS_IN_DATABASE = users.size
-    expect(status).to eq(1) # we should have a success
+    expect(status).to eq(-1) # we should have a success
 
     # Create an account
     params = { "user": { "name": "Bob", "email": "bob@mail.com", "username": "bob", "password": "password", "password_confirmation": "password" }}
@@ -135,7 +134,7 @@ RSpec.describe "test basic users functionality - ", :type => :request do
 
     # Make sure our newly created user is included in all users
     users = data["users"]
-    expect(users.size).to eq(NUM_USERS_IN_DATABASE + 1)
+    expect(users.size).to eq(1)
   end
 
 	### DESTROY USER ###

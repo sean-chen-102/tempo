@@ -20,7 +20,7 @@ describe "User logs out", :type => :feature, :js => true do
   scenario 'they see the login page after logging out' do
     visit root_path
 
-    fill_in 'username-or-password', with: 'johnny22'
+    fill_in 'username-or-email', with: 'johnny22'
     fill_in 'password', with: 'password'
     click_button 'Login'
 

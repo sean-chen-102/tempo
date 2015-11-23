@@ -43,6 +43,10 @@ gem 'handlebars_assets'
 #backbone templating
 gem 'ejs'
 
+# Youtube gem
+gem 'yt', '~> 0.25.5'
+gem 'omniauth-google-oauth2'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

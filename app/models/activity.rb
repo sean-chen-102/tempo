@@ -169,7 +169,7 @@ class Activity < ActiveRecord::Base
           videos.first(10).each do |video|
             unique_id = video.id
             title = video.title
-            link = "https://www.youtube.com/v/" + unique_id
+            link = "https://www.youtube.com/embed/" + unique_id
             completion_time = (video.duration/60).ceil
             content = video.description
 
@@ -187,7 +187,7 @@ class Activity < ActiveRecord::Base
 
           unique_id = video.id
           title = video.title
-          link = "https://www.youtube.com/v/" + unique_id
+          link = "https://www.youtube.com/embed/" + unique_id
           completion_time = (video.duration/60).ceil
           content = video.description
 

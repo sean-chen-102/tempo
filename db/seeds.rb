@@ -94,9 +94,9 @@ fitness_5 = {title: "The One Trick That Will Help You Stick to Your Workouts", c
 fitness_list = [fitness_1, fitness_2, fitness_3, fitness_4, fitness_5]
 
 # TECH ACTIVITIES
-tech_1 = { title: "5 Mind Blowing Facts About Your Smartphone!", completion_time: 10, link: "https://www.youtube.com/v/3MYhhO_nSAk", content_type: "video", like_count: 0 }
+tech_1 = { title: "5 Mind Blowing Facts About Your Smartphone!", completion_time: 10, link: "https://www.youtube.com/embed/3MYhhO_nSAk", content_type: "video", like_count: 0 }
 
-tech_2 = { title: "Nexus 6P Review!", completion_time: 14, link: "https://www.youtube.com/v/Xc5fFvp8le4", content_type: "video"}
+tech_2 = { title: "Nexus 6P Review!", completion_time: 14, link: "https://www.youtube.com/embed/Xc5fFvp8le4", content_type: "video"}
 
 tech_3 = { title: "Apple's first Singapore store will be powered entirely by renewable energy", completion_time: 3, link: "http://www.cnet.com/news/apples-first-singapore-store-will-be-powered-entirely-by-renewable-energy/", content_type: "text", content: "Apple wants to end its dependence on fossil fuel for all of its global facilities and the upcoming store in the city-state of Singapore will be one of the first in the world to be powered entirely by solar energy. The Cupertino consumer
  electronics giant has partnered with Singapore's largest clean energy provider, Sunseap Group, who will provide power to Apple's 2,5000-person corporate campus and retail store. Energy will be obtained from solar panels laid on the rooftops of 800 buildings. \"We're thrilled to be working with Sunseap and the government of Singapore to pioneer new ways to bring solar energy to the country and bring Apple even closer to our goal
@@ -105,7 +105,7 @@ tech_3 = { title: "Apple's first Singapore store will be powered entirely by ren
  list of day one product launches alongside bigger markets such as the US, Hong Kong and Japan, but has never had an Apple Store. Instead, Apple relies on local distributors, Apple Premium Resellers, for retail and servicing to its customer base in Singapore. The upcoming retail store will likely see Apple placing a larger focus on the Singapore market, which currently also serves as a shopping hub for more devoted fanbase in the
  region, who often travel down to the island-state during product launches to get their hands on Apple devices such as the iPhone 6 Plus. The expected location of its upcoming store will be at the heart of Singapore's shopping district on Orchard Road, where it will be taking over 15,000 square feet of space. The company has also posted job listings for Apple Geniuses and other retail positions."}
 
-tech_4 = { title: "Should you buy the iPhone 6s or iPad Pro?", completion_time: 8, link: "https://www.youtube.com/v/g6ZfghiG70M", content_type: "video"}
+tech_4 = { title: "Should you buy the iPhone 6s or iPad Pro?", completion_time: 8, link: "https://www.youtube.com/embed/g6ZfghiG70M", content_type: "video"}
 
 tech_5 = { title: "How Much Technology Is Too Much Technology?", completion_time: 15, link: "http://techcrunch.com/2015/11/15/how-much-technology-is-too-much-technology/", content_type: "text", content: "There are many visions of what our hyper-connected future might look like. We’re packaged countless variants on the shiny-techie-future vision theme every day as marketing departments lay it on thick to try to put gloss on their latest
  product and restless grease on the wheels of consumption. Thing is, these tales of shiny futures are not really that interesting. Given they are artless fictions. What’s far more interesting is how technology is being applied in the here and now — and how it’s already interacting with and impacting social structures. And if you look at those tell-tale signs then sure it’s possible to extrapolate some possible futures — some of which
@@ -133,15 +133,15 @@ tech_5 = { title: "How Much Technology Is Too Much Technology?", completion_time
  social structures aren’t ripped out or ripped apart by the indifferent interests of corporate accountancy. And — as individual users of technology — recognizing when it’s time to leave your phone alone for a bit and talk to the people around you. If we can find the right balance between technology and society, it’s possible to imagine many good things being created by humans using ever more sophisticated tools. But achieving that balance
  requires continuous sweating toil to define society’s red lines — and the discipline not to be distracted or swayed by the superficial sheen of shiny things. Hard work for sure, but the kind of socially engaged activity that yields genuinely satisfying rewards — and benefits the many, not the few."}
 
-tech_6 = { title: "The Best Tech Under $50 - November 2015", completion_time: 1, link: "https://www.youtube.com/v/Gb8VJwT3OdU", content_type: "video"}
+tech_6 = { title: "The Best Tech Under $50 - November 2015", completion_time: 1, link: "https://www.youtube.com/embed/Gb8VJwT3OdU", content_type: "video"}
 
 tech_list = [tech_1, tech_2, tech_3, tech_4, tech_5, tech_6]
 
 
 # SCIENCE ACTIVITIES
-science_1 = { title: "10 Cool Science Experiments Compilation #9", completion_time: 5, link: "https://www.youtube.com/v/TDMXs2hJv28", content_type: "video" }
+science_1 = { title: "10 Cool Science Experiments Compilation #9", completion_time: 5, link: "https://www.youtube.com/embed/TDMXs2hJv28", content_type: "video" }
 
-science_2 = { title: "10 Amazing Science Tricks Using Liquid!", completion_time: 7, link: "https://www.youtube.com/v/HQx5Be9g16U", content_type: "video", like_count: 0 }
+science_2 = { title: "10 Amazing Science Tricks Using Liquid!", completion_time: 7, link: "https://www.youtube.com/embed/HQx5Be9g16U", content_type: "video", like_count: 0 }
 
 science_3 = { title: "No, Mount St. Helens Doesn’t Have New Magma Chambers", completion_time: 8, link: "http://www.wired.com/2015/11/no-mount-st-helens-doesnt-have-new-magma-chambers/", content_type: "text", content: "You may have noticed a lot of rumbling in the science media over the past week over a study presented at last week’s Geological Society of America meeting concerning the state of things underneath Mount St. Helens. Many of
  those articles declared that “new magma chambers were discovered under St. Helens!” and “magma is on the move!” and “the volcano may erupt again!“—all of it said breathlessly and based on a brief talk (we’re talking less than 15 minutes) at the meeting. Well, as with most of these types of things, there is a lot less to it than it seems and no, it doesn’t change the chances of a new Mount St. Helens eruption. All of this static comes
@@ -171,7 +171,7 @@ science_4 = { title: "Undersea Internet Cables Are Surprisingly Vulnerable", com
  the cables are clearly marked by pink squiggly lines on navigational charts, and, on the water, signs warning boaters not to drop anchor. The flip side of all these warnings is a potential tip off to would-be saboteurs. Cable sabotage was common during both World Wars, but Starosielski says she knows of no recent incidents. That doesn’t mean it couldn’t happen, though. It would be relatively easy to cut a cable near shore, but such damage
  would also be easy to find and repair. The Times article raises a greater concern: the possibility of cuts made to deep-lying cables in remote parts of the ocean. In her book, Starosielski notes that the strategy for safeguarding undersea cables has been described as \"security through obscurity.\" Nobody gave much thought to the cables, and that was enough to protect them. In the future, it might not be." }
 
-science_5 = { title: "The Brightest Part of a Shadow is in the Middle", completion_time: 8, link: "https://www.youtube.com/v/y9c8oZ49pFc", content_type: "video"}
+science_5 = { title: "The Brightest Part of a Shadow is in the Middle", completion_time: 8, link: "https://www.youtube.com/embed/y9c8oZ49pFc", content_type: "video"}
 
 science_list = [science_1, science_2, science_3, science_4, science_5]
 
@@ -298,16 +298,16 @@ fun_fact_9.interests <<  fun_facts_interest
 fun_fact_10.interests << fun_facts_interest
 
 # Populate the database with health-based activities
-health_1 = Activity.create({ title: "Flow through the Heart", content_type: "video", completion_time: 8, link: "https://www.youtube.com/v/7XaftdE_h60", content: "" })
-health_2 = Activity.create({ title: "Lub Dub", content_type: "video", completion_time: 10, link: "https://www.youtube.com/v/-4kGMI-qQ3I", content: "" })
-health_3 = Activity.create({ title: "Meet the heart!", content_type: "video", completion_time: 11, link: "https://www.youtube.com/v/Vi1JK6IYVt8", content: "" })
-health_4 = Activity.create({ title: "Electrical System of the Heart", content_type: "video", completion_time: 10, link: "https://www.youtube.com/v/7K2icszdxQc", content: "" })
-health_5 = Activity.create({ title: "Meet the Lungs", content_type: "video", completion_time: 10, link: "https://www.youtube.com/v/qGiPZf7njqY", content: "" })
-health_6 = Activity.create({ title: "Basics of Metabolism", content_type: "video", completion_time: 12, link: "https://www.youtube.com/v/wQ1QGZ6gJ8w", content: "" })
-health_7 = Activity.create({ title: "What's Inside of Blood?", content_type: "video", completion_time: 12, link: "https://www.youtube.com/v/5MOn8X-tyFw", content: "" })
-health_8 = Activity.create({ title: "How do our kidneys work? (Renal Anatomy)", content_type: "video", completion_time: 8, link: "https://www.youtube.com/v/ctGkLYuUCvU", content: "" })
-health_9 = Activity.create({ title: "Arteries vs. Veins - What's the Difference?", content_type: "video", completion_time: 12, link: "https://www.youtube.com/v/7b6LRebCgb4", content: "" })
-health_10 = Activity.create({ title: "Digesting Food", content_type: "video", completion_time: 17, link: "https://www.youtube.com/v/v2V4zMx33Mc", content: "" })
+health_1 = Activity.create({ title: "Flow through the Heart", content_type: "video", completion_time: 8, link: "https://www.youtube.com/embed/7XaftdE_h60", content: "" })
+health_2 = Activity.create({ title: "Lub Dub", content_type: "video", completion_time: 10, link: "https://www.youtube.com/embed/-4kGMI-qQ3I", content: "" })
+health_3 = Activity.create({ title: "Meet the heart!", content_type: "video", completion_time: 11, link: "https://www.youtube.com/embed/Vi1JK6IYVt8", content: "" })
+health_4 = Activity.create({ title: "Electrical System of the Heart", content_type: "video", completion_time: 10, link: "https://www.youtube.com/embed/7K2icszdxQc", content: "" })
+health_5 = Activity.create({ title: "Meet the Lungs", content_type: "video", completion_time: 10, link: "https://www.youtube.com/embed/qGiPZf7njqY", content: "" })
+health_6 = Activity.create({ title: "Basics of Metabolism", content_type: "video", completion_time: 12, link: "https://www.youtube.com/embed/wQ1QGZ6gJ8w", content: "" })
+health_7 = Activity.create({ title: "What's Inside of Blood?", content_type: "video", completion_time: 12, link: "https://www.youtube.com/embed/5MOn8X-tyFw", content: "" })
+health_8 = Activity.create({ title: "How do our kidneys work? (Renal Anatomy)", content_type: "video", completion_time: 8, link: "https://www.youtube.com/embed/ctGkLYuUCvU", content: "" })
+health_9 = Activity.create({ title: "Arteries vs. Veins - What's the Difference?", content_type: "video", completion_time: 12, link: "https://www.youtube.com/embed/7b6LRebCgb4", content: "" })
+health_10 = Activity.create({ title: "Digesting Food", content_type: "video", completion_time: 17, link: "https://www.youtube.com/embed/v2V4zMx33Mc", content: "" })
 
 health_1.interests << health_interest
 health_2.interests << health_interest

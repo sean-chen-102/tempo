@@ -7,28 +7,29 @@ var ActivityView = Backbone.View.extend({
     events: {
         "click .like-btn":"makeLikeRequest",
         "click .dislike-btn":"makeDislikeRequest",
+        "click #share": "share",
     },
     initialize: function(options){
       this.options = options;
       this.activity_id = options['id'];
       this.history = options['history'];
+      this.link = "";
     },
     renderData: function(data){
         if(data['link'] == "N/A"){
             data['link'] = 'javascript:;';
         }
+        this.link = data['link'];
         if(this.history){
-            var backLink = 'history';
+            var backLink = '/tempo#history';
         } else {
-            var backLink = 'activities';
+            var backLink = '/tempo#activities';
         }
 
         if(data['content_type'] == "video"){
-            console.log("video linkn");
-            console.log(data['content'])
-            data['content'] = "<iframe width='600' height='300' src='"
+            data['content'] = "<div class='content-video'><iframe width='580' height='300' src='"
                 + data['link'] + "'"
-                + " frameborder='0' allowfullscreen=''></iframe>";
+                + " frameborder='0' allowfullscreen></iframe></div>";
         }
 
         var template = JST["backbone/templates/activities/activity"]({
@@ -124,4 +125,12 @@ var ActivityView = Backbone.View.extend({
             }
         });
     },
+    share : function() {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val(this.link).select();
+        document.execCommand("copy");
+        $temp.remove();
+        notie.alert(4, "Link copied to your clipboard!", 1.5);
+    }
   });

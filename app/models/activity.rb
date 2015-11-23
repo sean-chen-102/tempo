@@ -48,8 +48,27 @@ class Activity < ActiveRecord::Base
       activities = activities.where("completion_time <= ?", time)
     end
 
-    activities = activities.as_json
-    return activities
+    activities.each do |activity|
+      formatted_activity = activity.get_advanced_info()
+      activities_list.append(formatted_activity)
+    end
+
+    return activities_list.as_json
+  end
+
+  # Returns the advanced info of an Activity in JSON format.
+  def get_advanced_info
+    info = {}
+    info = self.as_json
+    interests = self.interests
+    interests_list = []
+
+    interests.each do |interest|
+      interests_list.append(interest.name)
+    end
+
+    info["interests"] = interests_list
+    return info.as_json
   end
 
   # Returns a list of all interests that the specified activity belongs to

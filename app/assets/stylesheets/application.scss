@@ -26,12 +26,15 @@ $sidebarFontColor: #28b5f6;
 $containerHeaderColor: rgb(31, 137, 229);
 $buttonFontColor: #ECF0F1;
 
+$containerHeaderColor: rgb(31, 137, 229);
+
+
   body {
     /*background-color: #F4F4F4;*/
     background-color: #edf0f2;
     padding: 0px;
     margin: 0;
-    font-family: 'Open Sans Condensed', sans-serif;
+    font-family: sans-serif;
     /*font-family: "Avenir", "Lato", Arial, Helvetica, sans-serif;*/
     font-size: 120%;
   }
@@ -53,13 +56,8 @@ $buttonFontColor: #ECF0F1;
     height: 100px;
     top: 0;
     left: 0;
-    border-left: 3px solid #1f89e5;
   }
 
-  .top-bar:hover {
-  	opacity: .7;
-  	cursor: pointer;
-  }
 
   #logo {
     width: 80%;
@@ -81,25 +79,31 @@ $buttonFontColor: #ECF0F1;
     margin-top: 0;
   }
 
-  .menuSelection li{
+  .menuSelection a li{
     padding: 25px 10px 10px 30px;
   }
 
-  .menuSelection li a {
+  .menuSelection a  li {
     font-size: 25px;
-    font-family: 'Open Sans Condensed', sans-serif;
     text-decoration: none;
     color: $sidebarFontColor;
+    font-family: 'Open Sans Condensed';
   }
 
   .menuSelection li:hover {
+  	text-decoration: none;
   	background-color: $sidebarHighlight;
   	cursor: pointer;
   	border-left: 3px solid #1f89e5;
+
+  }
+
+  a:hover, a:visited {
+  	text-decoration: none;
   }
 
   .menuSelection li a:hover {
-    text-decoration: underline;
+  	text-decoration: none;
     background-color: $sidebarHighlight;
   }
 
@@ -107,6 +111,10 @@ $buttonFontColor: #ECF0F1;
     width: 100%;
     height: 1px;
     background-color: $sidebarMain;
+  }
+
+  .selected {
+  	border-left: 3px solid #1f89e5;
   }
 
   footer {
@@ -136,16 +144,64 @@ $buttonFontColor: #ECF0F1;
 		min-width: 425px;
 		max-width: 700px;
 		height: 700px;
-		border: 1px solid green;
 		margin: 0 auto;
-		margin-top: 100px;
+		margin-top: 30px;
 		text-align: center;
-		/*padding: 20px;*/
 	    border: 1px solid #dedede;
 	    border-radius: 3px;
 	    background-color: white;
 	    box-shadow: .5px .5px .5px #888888;		
 	    position: relative;
+
+
+	  .interest-wrapper {
+		width: 100%;
+		height: 50%;
+		margin: 0 auto;
+		text-align: center;
+		position: relative;
+		top: 55%;
+		margin-top: 45px;    
+	  }
+
+		  .interest-wrapper  h4 {
+		  	text-align: center;
+			margin: 0;
+			font-size: 22px;
+			color: black;
+			margin-bottom: 10px;
+		}
+
+		  .interest-wrapper ul {
+		  	overflow: scroll;
+		  }
+
+		  .interest-wrapper li {
+		  	margin-top: 10px;
+		  }
+
+		  .interest-wrapper input {
+		  	float: left;
+		  	margin-right: 75px !important;
+		  }
+
+		  .interest-wrapper li {
+		  	text-align: left;
+		  	width: 50%;
+			float: left;
+			list-style-type: none;
+			font-size: 12px
+		}
+
+		  .interest-wrapper p {
+			font-size: 16px
+		}
+
+
+
+
+
+
 	}
 
 	.home-wrapper header {
@@ -248,53 +304,6 @@ $buttonFontColor: #ECF0F1;
 		opacity: .6;
 	}
 
-// Place all the styles related to the Interests controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-$containerHeaderColor: rgb(31, 137, 229);
-
-  .interest-wrapper {
-	width: 600px;
-	margin: 0 auto;
-	text-align: center;
-	position: relative;
-	top: 55%;
-	margin-top: 50px;    
-  }
-
-  .interest-wrapper  h4 {
-  	text-align: center;
-	margin: 0;
-	font-size: 22px;
-	color: black;
-	margin-bottom: 10px;
-}
-
-  .interest-wrapper ul {
-  	overflow: scroll;
-  }
-
-  .interest-wrapper li {
-  	margin-top: 10px;
-  }
-
-  .interest-wrapper input {
-  	float: left;
-  	margin-right: 75px !important;
-  }
-
-  .interest-wrapper li {
-  	text-align: left;
-  	width: 50%;
-	float: left;
-	list-style-type: none;
-	font-size: 12px
-}
-
-  .interest-wrapper p {
-	font-size: 16px
-}
 
 
 @media (max-width: 800px) {
@@ -319,12 +328,9 @@ $containerHeaderColor: rgb(31, 137, 229);
   }
 }
 
-
-
-
-
-
-
+a, a:hover, a:active, a:visited {
+    text-decoration:none;
+}
 
 /*THE MAIN WRAPPER*/
 

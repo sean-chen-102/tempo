@@ -47,10 +47,10 @@ var ActivitiesView = Backbone.View.extend({
                 + "</tr>";  
           }
         });
-        html += " </tbody> </table> </div> </section> <footer>";
+        html += " </tbody> </table> </div> </section> <footer> </footer> </div>";
         if (data['length'] == 0){
           html += "<div id='no-activities' style='color: #b51c1c;'>No activities found for the interests "
-                  + "and amount of time selected</div> </footer> </div>";
+                  + "and amount of time selected</div>";
         }
         //Adding activity link
         // html += " <a href='/activities#show' id='add'> Add activity </a>";

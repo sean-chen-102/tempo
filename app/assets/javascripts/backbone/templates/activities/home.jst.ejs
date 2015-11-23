@@ -2,10 +2,10 @@
 
 <div class="home-wrapper animated bounceIn">
 	<header>
-		<h3> Welcome Home <%= name %></h3>
+		<h3> Welcome Home,  <%= name %>!</h3>
 	</header>
 	<div class="subtitle">
-		<h3> Activity duration </h3>
+		<h3> How much time do you have?</h3>
 	</div>
 	<section> 
 		<input class="knob" data-width="100" data-displayinput="true" value="0" height="100" >
@@ -13,8 +13,16 @@
 			<button class='go-btn'>GO</button>
 		</div>
 	</section>
-	<footer>
-		<a href='tempo#interests'>Toggle interests</a>	
-		<br>
-	</footer>
+	<div class="interest-wrapper">
+	 	<h4> Toggle Interests </h4> 
+		<ul>
+		<% _.each(interests, function(interest, i) { %> 
+			<li>
+				<input type=checkbox name= "<%= interest%>"  id="interest-<%= i%>" checked >
+				<P> <%= interest %> </p>
+			</li>
+		<% }); %>
+		</ul>
+	</div>
+
 </div>

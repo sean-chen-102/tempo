@@ -1,68 +1,4 @@
 var HomeView = Backbone.View.extend({
-<<<<<<< HEAD
-		el: ".testDiv",
-		tagName : 'div',
-		options: null,
-		events:{
-        	"click .go-btn":"makeGoRequest",
-        	"click .login-submit":"login"
-    	},
-		initialize: function(options){
-			this.options = options;
-			this.interestView = options.interestView;
-			this.activitiesView = options.activitiesView;
-
-			var tag = document.createElement('script');
-
-		    tag.src = "https://www.youtube.com/iframe_api";
-		    var firstScriptTag = document.getElementsByTagName('script')[0];
-		    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-		},
-		render : function (options){
-			console.log("render home");
-			this.interestView.user = options.user;
-			this.interestView.interests = null;
-			var that = this;
-	        this.name = options.user.name;
-			//TODO: Move template to separate page, custom welcome name
-			//populate the home_template with times collection
-			var home_template = JST["backbone/templates/activities/home"]({
-            	labelValue: 'Times',
-            	name: this.name
-    	    });
-        	this.$el.html(home_template);
-        	$(function() {
-        		$(".knob").knob({
-        			max: 60,
-        			min:1,
-        			width: 150,
-        			height: 150,
-        			step: 1,
-        			fgColor: "#2C7EBF",
-        			inputColor: "#2C7EBF"
-        		});
-        		$(".knob").val(30).trigger('change');
-    		});
-		},
-		makeGoRequest : function(options){
-			//called when the go button is clicked
-			var duration = $(".knob").val();
-			//save duration to activity view object
-			this.activitiesView.time = duration;
-			//save interests to activity view object
-			var interests = this.interestView.selectedInterests;
-			if (interests){
-				this.activitiesView.interests = interests;
-			} else {
-				var that = this;
-				App.Views['interestView'].getInterests({callback: function(data, that){
-					var userInterests = []
-					data.each(function(model){
-						userInterests.push(model.get('name'));
-					});
-					that.activitiesView.interests = userInterests;
-				}, scope: that});
-=======
 	el: ".testDiv",
 	tagName : 'div',
 	options: null,
@@ -82,6 +18,11 @@ var HomeView = Backbone.View.extend({
 		this.numInterests = 0;
 		this.selectedInterests = null;
 
+		var tag = document.createElement('script');
+
+	    tag.src = "https://www.youtube.com/iframe_api";
+	    var firstScriptTag = document.getElementsByTagName('script')[0];
+	    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 	},
 	render : function (options){
 		console.log("render home");
@@ -102,7 +43,6 @@ var HomeView = Backbone.View.extend({
 			var name = currInterest.attr('name')
 			if (currInterest.is(":checked")) {
 				selectedInterests.push(name);
->>>>>>> e3e31228c47b40703adefbc8d7c46a0983fe23a9
 			}
 		}
 		this.selectedInterests = selectedInterests;

@@ -16,6 +16,14 @@ var TempoRouter = Backbone.Router.extend({
       "logout": 'logout',
       "history": "history",
     },
+
+    highlightMenu: function(view) {
+      $(".menuSelection li").removeClass("selected");
+      console.log(view);
+      console.log("hellow?");
+      $("#" + view + " li").addClass("selected");
+
+    },
     verifyUser: function(view) {
       console.log(Cookies.get("login-token"));
       console.log("Verify USer Called");
@@ -40,6 +48,7 @@ var TempoRouter = Backbone.Router.extend({
       }
     },
     renderView : function(view, data) {
+      this.highlightMenu(view);
       console.log(view, data);
       console.log("renderView called");
       if (view === "login") {

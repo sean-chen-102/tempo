@@ -24,9 +24,11 @@ var ActivityView = Backbone.View.extend({
         }
 
         if(data['content_type'] == "video"){
+            console.log("video linkn");
+            console.log(data['content'])
             data['content'] = "<iframe width='580' height='300' src='"
                 + data['link'] + "'"
-                + " frameborder='0' allowfullscreen='true'></iframe>";
+                + " frameborder='0' allowfullscreen></iframe>";
         }
 
         var template = JST["backbone/templates/activities/activity"]({

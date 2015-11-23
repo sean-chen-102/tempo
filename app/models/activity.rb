@@ -69,9 +69,11 @@ class Activity < ActiveRecord::Base
 
   # Populates the database with new Activities based on news.
   def self.populate_database_with_news()
+    puts "we are in function"
     potential_activities = GuardianScraper.get_articles_by_keyword
 
     potential_activities.each do |potential_activity|
+      puts "got an activity!"
       potential_activity.save_to_database
     end
   end
@@ -226,9 +228,9 @@ class Activity < ActiveRecord::Base
           activity = Activity.new({ title: @title, content: @content, completion_time: @completion_time, content_type: @content_type, link: @link })
           if not activity.save
             puts "ERRORS populating database with new activities: #{activity.errors.inspect}"
+          else
+            activity.add_interest(@interest_name)
           end
-
-          activity.add_interest(@interest_name)
         end
       end
     end

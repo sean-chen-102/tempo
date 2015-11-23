@@ -125,9 +125,9 @@
   }
 
   .linkContainer {
-    float: right;
+    float: left;
     margin-top: -35px;
-    padding-right: 10px;
+    padding-left: 10px;
   }
 
   a:hover {
@@ -147,6 +147,7 @@
       <!-- <img src="..." alt="..."> -->
       <div class="caption">
         <div id="content"><%= content %></div>
+        <div class="content-link"><a id="link" href='<%= link %>' target="_blank"> Link </a></div>
       </div>
     </div>
   </section>
@@ -156,9 +157,8 @@
       <span id="dislikes">Disikes: <span id="dislike-count"><%= dislikes %></span></span>
       <br>
       <button class='btn btn-primary like-btn' role="button">Like</button>
-      <button class='btn btn-default dislike-btn' role="button">Dislike</button><br>  
+      <button class='btn btn-primary dislike-btn' role="button">Dislike</button><br>  
       <div class="linkContainer">
-        <a id="link" href='<%= link %>' target="_blank"> Link </a>
         <a href='<%= backLink %>' id='back'> Back </a>     
       </div>
   </footer>

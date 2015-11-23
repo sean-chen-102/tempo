@@ -48,23 +48,6 @@ class Activity < ActiveRecord::Base
       activities = activities.where("completion_time <= ?", time)
     end
 
-    # FOR YOUTUBE EMBEDS - TEMPORARY
-    if activities.length > 0
-      activities.each do |activity|
-        type = activity.content_type
-        if type == "video"
-          link = activity.link
-
-          if link.include? "watch?v="
-            link = link.sub! "watch?v=", "v/"
-          end
-
-          activity.content = "<iframe width=\"345\" height=\"200\" src=\"#{link}\" frameborder=\"0\" allowfullscreen></iframe>"
-          activity.save
-        end
-      end
-    end
-
     activities = activities.as_json
     return activities
   end

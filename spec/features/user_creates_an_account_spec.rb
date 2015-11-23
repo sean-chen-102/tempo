@@ -1,6 +1,7 @@
 # Capybara test - run with 'bundle exec rspec'
+require 'rails_helper'
 
-feature 'User creates an account' do
+describe "User creates an account", :type => :feature, :js => true do
   scenario 'they see themselves logged in after account creation' do
     visit (root_path + "#signup")
 

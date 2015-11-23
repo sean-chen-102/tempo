@@ -112,13 +112,13 @@ RSpec.describe "test basic users functionality - ", :type => :request do
 
 	### GET ALL USERS ###
   it "getting all users" do
-    NUM_USERS_IN_SEEDS = 0
-
     # Get all default users
     get "/api/users", {}, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
     data = JSON.parse(response.body) # grab the body of the server response
     status = data["status"]
-    expect(status).to eq(-1) # we should have a failure
+    users = data["users"]
+    NUM_USERS_IN_DATABASE = users.length
+    expect(status).to eq(1) # we should have a success
 
     # Create an account
     params = { "user": { "name": "Bob", "email": "bob@mail.com", "username": "bob", "password": "password", "password_confirmation": "password" }}
@@ -135,7 +135,7 @@ RSpec.describe "test basic users functionality - ", :type => :request do
 
     # Make sure our newly created user is included in all users
     users = data["users"]
-    expect(users.length).to eq(NUM_USERS_IN_SEEDS + 1)
+    expect(users.length).to eq(NUM_USERS_IN_DATABASE + 1)
   end
 
 	### DESTROY USER ###

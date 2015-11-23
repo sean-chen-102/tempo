@@ -17,7 +17,6 @@ var HomeView = Backbone.View.extend({
 		this.user = null;
 		this.numInterests = 0;
 		this.selectedInterests = null;
-
 	},
 	render : function (options){
 		console.log("render home");

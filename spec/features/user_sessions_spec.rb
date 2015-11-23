@@ -15,3 +15,16 @@ describe "User creates an account", :type => :feature, :js => true do
     expect(page).to have_css 'h3', 'Welcome Home Jill'
   end
 end
+
+describe "User logs out", :type => :feature, :js => true do
+  scenario 'they see the login page after logging out' do
+    visit root_path
+
+    fill_in 'username-or-password', with: 'johnny22'
+    fill_in 'password', with: 'password'
+    click_button 'Login'
+
+    click_link 'Logout'
+    expect(page).to have_css 'h3', 'Login'
+  end
+end

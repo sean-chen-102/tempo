@@ -62,6 +62,8 @@ var HomeView = Backbone.View.extend({
 				data.each(function(model) {
 					selectedInterests.push(model.get("name"));
 				});
+				console.log("interests");
+				console.log(selectedInterests);
 				var home_template = JST["backbone/templates/activities/home"]({
         			name: that.name,
         			interests: selectedInterests

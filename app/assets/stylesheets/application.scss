@@ -51,7 +51,7 @@ $buttonFontColor: #ECF0F1;
   .top-bar {
     width: 100%;
     position: relative;
-    background-color: $logoColor;
+    background-color: $sidebarMain;
     height: 100px;
     top: 0;
     left: 0;
@@ -72,7 +72,7 @@ $buttonFontColor: #ECF0F1;
     left: 50%;
     margin-left: -80px;
     opacity: .9;
-    background-color: $logoColor;
+    background-color: $sidebarMain;
   }
   
   .menuSelection {
@@ -115,7 +115,7 @@ $buttonFontColor: #ECF0F1;
     position: absolute;
     bottom: 0;
     height: 50px;
-    background-color: #1B1B1B;
+    background-color: $sidebarMain;
     width: 100%;
     color: #91c5f2;
     font-size: 20px;

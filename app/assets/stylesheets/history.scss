@@ -11,17 +11,20 @@ $greenBackground: #3c763d;
 $greenText: rgb(104, 187, 108);
 
 .histContainer {
-    width: 675px;
+    width: 44%;
     height: 550px;
     position: relative;
-    margin: 0 auto;
-    margin-top: 100px;
+    margin-top: 50px;
     background-color: white;
     border: 1px solid #f5f5f5;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px; 
     border-bottom-right-radius: 2px;
     border-bottom-left-radius: 2px;  
+    float: left;
+    margin-left: 4%;
+    margin-right: 2%;
+    min-width: 300px;
 
     header {
       height: 10%;
@@ -44,7 +47,7 @@ $greenText: rgb(104, 187, 108);
   section {
       position: relative;
       width: 100%;
-      height: 75%;
+      height: 90%;
       overflow: scroll;
 
       .tableContainer {
@@ -57,7 +60,6 @@ $greenText: rgb(104, 187, 108);
         /*border: 1px solid green;	*/
 
         #histTable {
-          position: relative;
           border-radius: 3px;
           margin: 0 auto;
           width: 100%;
@@ -70,12 +72,12 @@ $greenText: rgb(104, 187, 108);
 
           tbody tr td {
             font-family: 'Open Sans Condensed', sans-serif;
-            font-size: 16px;
+            font-size: 18px;
           }
 
           tbody tr td a:hover {
           	text-decoration: none;
-          	font-size: 16px;
+          	font-size: 18px;
           	opacity: .7;
           	background-color: transparent;
           }
@@ -90,17 +92,20 @@ $greenText: rgb(104, 187, 108);
 }
 
 .custHistContainer {
-    width: 675px;
+    width: 44%;
     height: 550px;
     position: relative;
-    margin: 0 auto;
-    margin-top: 100px;
+    margin-top: 50px;
     background-color: white;
     border: 1px solid #f5f5f5;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px; 
     border-bottom-right-radius: 2px;
-    border-bottom-left-radius: 2px;  
+    border-bottom-left-radius: 2px;
+    float: left;
+    margin-left: 2%;
+    margin-right: 4%;
+    min-width: 300px;
 
     header {
       height: 10%;
@@ -123,7 +128,7 @@ $greenText: rgb(104, 187, 108);
   section {
       position: relative;
       width: 100%;
-      height: 75%;
+      height: 90%;
       overflow: scroll;
 
       .tableContainer {
@@ -136,7 +141,6 @@ $greenText: rgb(104, 187, 108);
         /*border: 1px solid green;  */
 
         #customHistTable {
-          position: relative;
           border-radius: 3px;
           margin: 0 auto;
           width: 100%;
@@ -149,12 +153,12 @@ $greenText: rgb(104, 187, 108);
 
           tbody tr td {
             font-family: 'Open Sans Condensed', sans-serif;
-            font-size: 16px;
+            font-size: 18px;
           }
 
           tbody tr td a:hover {
             text-decoration: none;
-            font-size: 16px;
+            font-size: 18px;
             opacity: .7;
             background-color: transparent;
           }

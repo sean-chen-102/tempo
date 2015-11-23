@@ -50,6 +50,10 @@ $containerHeaderColor: rgb(31, 137, 229);
 	background-color: $sidebarMain;
   }
 
+   button, button:focus {
+    outline: none;
+  }
+
   .top-bar {
     width: 100%;
     position: relative;

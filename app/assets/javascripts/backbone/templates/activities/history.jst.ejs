@@ -11,7 +11,8 @@
 				<tbody>
 					<% _.each(data, function(custAct) { %> 
 						<tr class='history <%= custAct.id %>'>
-							<td> <a href='/tempo#activities/<%= custAct.id%>?history=true'> <%= custAct.title%> </a></td>
+							<td> <a href='/tempo#activities/<%= custAct.id%>?history=true'> <%= custAct.title%> </a>
+								<button class="btn share-button" id="activity-<%= custAct.id%>"> share </button> </td>
 						</tr>
 						<% }); %>			
 				</tbody>
@@ -30,7 +31,9 @@
 				<tbody>
 					<% _.each(custData, function(custAct) { %> 
 						<tr class='history <%= custAct.id %>'>
-							<td>  <a href='/tempo#customActivity/<%= custAct.id%>?history=true'> <%= custAct.title%> </a></td>
+							<td>  
+								<a href='/tempo#customActivity/<%= custAct.id%>?history=true'> <%= custAct.title%> </a>
+							</td>
 						</tr>
 						<% }); %>			
 				</tbody>

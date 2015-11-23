@@ -1,3 +1,10 @@
+# Note: to run spec tests, use 'rake exec spec'
+# If specs aren't working make sure you:
+# 1. Bundle install with capybara-webkit - if this errors, see #2
+# 2. Have QT version 5+ installed on your local machine
+# 3. Have QT linked via Homebrew
+# 4. Bundle install again 
+
 require 'capybara/rspec' # for Capybara UI testing
 
 # FOR CODE COVERAGE

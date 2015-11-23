@@ -222,12 +222,14 @@ class Activity < ActiveRecord::Base
 
     def save_to_database
       if (@interest == "News" and @wordcount >= @average_words_per_minute) or (@interest != "News")
-        activity = Activity.new({ title: @title, content: @content, completion_time: @completion_time, content_type: @content_type, link: @link })
-        if not activity.save
-          puts "ERRORS populating database with new activities: #{activity.errors.inspect}"
-        end
+        if @title.include? " " # don't add titles that are too long without spaces
+          activity = Activity.new({ title: @title, content: @content, completion_time: @completion_time, content_type: @content_type, link: @link })
+          if not activity.save
+            puts "ERRORS populating database with new activities: #{activity.errors.inspect}"
+          end
 
-        activity.add_interest(@interest_name)
+          activity.add_interest(@interest_name)
+        end
       end
     end
   end

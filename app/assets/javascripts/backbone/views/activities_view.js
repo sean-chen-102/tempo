@@ -23,8 +23,7 @@ var ActivitiesView = Backbone.View.extend({
         // $(this.el).html(template);  
 
         var html = "<div class='actContainer'> <header id='activityTitle'> <h3> Activity List </h3> </header>"
-              + "<section> <div class='tableContainer'> <table id='actTable' class='table table-bordered table-hover activityTable'> <thead> <tr> <th>Title</th><th>Type</th><th>Likes</th><th>Dislikes</th>"
-              + " </tr> </thead>" 
+              + "<section> <div class='tableContainer'> <table id='actTable' class='table table-bordered table-hover activityTable'>"
               + " <tbody> ";
 
         //Iterate throught he collections of Activities and create a template
@@ -35,10 +34,17 @@ var ActivitiesView = Backbone.View.extend({
             html += "<tr class='tRow'>" 
                 + "<td> <a href='/tempo#customActivity/" +model.get('id') + "'>" +  model.get('title') + " </a> </td>"
                 + "<td id='contentType'> text </td>"
-                + "<td id='likeCount'> 0 </td>"
-                + "<td id='dislikeCount''> 0 </td>"
                 + "</tr>";  
           } else {
+            var completionTime = model.get("completion_time");
+            var interest = model.get("interest");
+            console.log(interest);
+            if (model.get("content_type") === "text") {
+                console.log("text");
+            } else {
+                console.log("video")
+            }
+            console.log(model);
             html += "<tr class='tRow'>" 
                 + "<td> <a href='/tempo#activities/" +model.get('id') + "'>" +  model.get('title') + " </a> </td>"
                 + "<td id='contentType'> " +  model.get('content_type') + " </td>"

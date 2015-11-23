@@ -7,6 +7,7 @@ var HistoryView = Backbone.View.extend({
     completedActivities: null,
     events: {
         // "click .del-btn":"deleteActivity"
+        "click .share-button":"share"  
     },
     initialize: function(options){
       this.options = options;
@@ -70,6 +71,20 @@ var HistoryView = Backbone.View.extend({
         dataType: "json",
         data: {"token": Cookies.get('login-token')}       		
      	});
-    }
+    }, 
+    share: function(event) {
+      var button = event.currentTarget.id;
+      var id = button.split("-")[1];
+      console.log(id);
+      var location = window.location.href;
+      var link = location.split("#")[0];
+      link = link + "#activities/"  + id;
+      var $temp = $("<input>");
+      $("body").append($temp);
+      $temp.val(link).select();
+      document.execCommand("copy");
+      $temp.remove();
+      notie.alert(4, "Link copied to your clipboard!", 1.5);
+    } 
   });
 

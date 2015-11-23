@@ -314,7 +314,8 @@ activity_list_tech[0].interests << news_interest
 activity_list_tech[0].interests << science_interest
 
 # Populate the databse via external APIs
-# TODO: uncomment this: Activity.populate_database_with_news() # add news articles to the database
+Activity.populate_database_with_news() # add news articles to the database
+Activity.populate_database_with_videos()
 
 # Populate the database with food-based activities
 food_1 = Activity.create({ title: "Recipe: Butternut Squash and Cranberry Muffins", content_type: "text", completion_time: 40, link: "http://allrecipes.com/recipe/239607/butternut-squash-and-cranberry-muffins/", content: "\"I got some butternut squash and cranberries (both I am not fond of) in my 'Bountiful Basket' last week. Not having a clue what to do with them, I came up with this surprisingly yummy muffin. I made up this recipe with what I had on hand. It is really very light, tasty, and not too sweet. I serve mine with honey or sweetened cream cheese. If possible, always choose organic.\"" })

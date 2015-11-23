@@ -24,6 +24,8 @@ var ActivityView = Backbone.View.extend({
         }
 
         if(data['content_type'] == "video"){
+            console.log("video linkn");
+            console.log(data['content'])
             var vidLink = data['content'];
             data['content'] = "<iframe width='380' height='200' src='"
                 + vidLink + "'"

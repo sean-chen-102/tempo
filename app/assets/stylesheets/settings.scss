@@ -203,7 +203,7 @@ a:hover {
 	position: relative;
 	padding: 5px;
 	margin: 0;
-	font-size: 20px;
+	font-size: 23px;
 	color: rgb(40, 181, 246);
 }
 
@@ -212,9 +212,10 @@ a:hover {
 	width: 100%;
 	text-align: center;
 	height: 45%;
-	margin-top: 45px;
+	margin-top: 30px;
 	border-collapse: separate; 
 	border-spacing: .5em;
+	overflow: scroll;
 }
 
 .settingInterests .settingInterestTable tbody {
@@ -223,7 +224,7 @@ a:hover {
 
 .settingInterests td {
 	font-family: 'Open Sans Condensed', sans-serif;
-	font-size: 100%;
+	font-size: 110%;
 }
 
 .settingInterests td input {

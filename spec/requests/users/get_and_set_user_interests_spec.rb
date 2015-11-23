@@ -99,12 +99,13 @@ RSpec.describe "get and set user interests - ", :type => :request do
     status = data["status"]
     expect(status).to eq(-1) # we should have a failure
 
-    # Set user interests without 'interests' in params - should fail
+    # Set user interests without 'interests' in params - should succeed
     params = { "token": token }
     put "/api/users/#{id}/interests", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
     data = JSON.parse(response.body) # grab the body of the server response
     status = data["status"]
-    expect(status).to eq(-1) # we should have a failure
+    expect(status).to eq(1) # we should have a failure
+    expect(data["interests_added"]).to eq([])
 
     # Set user interests without 'token' in params - should fail
     params = { "interests": interests }

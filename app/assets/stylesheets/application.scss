@@ -135,7 +135,8 @@ $buttonFontColor: #ECF0F1;
 
 /*HOME VIEW STYLING */
 	.home-wrapper {
-		width: 700px;
+		min-width: 425px;
+		max-width: 700px;
 		height: 700px;
 		border: 1px solid green;
 		margin: 0 auto;
@@ -248,6 +249,83 @@ $buttonFontColor: #ECF0F1;
 		background-color: white;
 		opacity: .6;
 	}
+
+// Place all the styles related to the Interests controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$containerHeaderColor: rgb(31, 137, 229);
+
+  .interest-wrapper {
+	width: 600px;
+	margin: 0 auto;
+	text-align: center;
+	position: relative;
+	top: 55%;
+	margin-top: 50px;    
+  }
+
+  .interest-wrapper  h4 {
+  	text-align: center;
+	margin: 0;
+	font-size: 22px;
+	color: black;
+	margin-bottom: 10px;
+}
+
+  .interest-wrapper ul {
+  	overflow: scroll;
+  }
+
+  .interest-wrapper li {
+  	margin-top: 10px;
+  }
+
+  .interest-wrapper input {
+  	float: left;
+  	margin-right: 75px !important;
+  }
+
+  .interest-wrapper li {
+  	text-align: left;
+  	width: 50%;
+	float: left;
+	list-style-type: none;
+	font-size: 12px
+}
+
+  .interest-wrapper p {
+	font-size: 16px
+}
+
+
+@media (max-width: 800px) {
+  .home-wrapper {
+  	width: 300px; 
+  	height: 900px;
+  	margin-top: 0;
+  }
+
+  .home-wrapper ul {
+  	height: 200px;
+  	overflow: scroll;
+  }
+
+  .interest-wrapper li {
+  	width: 100%;
+  }
+
+  .interest-wrapper {
+  	width: 300px;
+  	overflow: scroll;
+  }
+}
+
+
+
+
+
+
 
 
 /*THE MAIN WRAPPER*/

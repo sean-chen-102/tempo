@@ -178,3 +178,11 @@ $sidebarFontColor: #28b5f6;
       color: white;
       background-color: $sidebarFontColor;
 }
+
+@media (max-width: 900px) {
+
+  .histContainer, .custHistContainer {
+    width: 85%;
+    margin-left: 7.5%;
+  }
+}

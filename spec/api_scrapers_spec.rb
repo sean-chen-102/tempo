@@ -14,9 +14,7 @@ RSpec.describe "Guardian API scraper", :type => :request do
     #expect(number_of_news_activities_after_scrape).to be > number_of_news_activities # we should have successfully gathered more news activities
 
     total_activities_before_scrape = Activity.all.size
-    puts "Synching data with Guardian API, this may take a while..."
     Activity.populate_database_with_news()
-    puts "Done."
     total_activities_after_scrape = Activity.all.size
     expect(total_activities_before_scrape).to be < total_activities_after_scrape
   end
@@ -34,9 +32,7 @@ RSpec.describe "YouTube API scraper", :type => :request do
     #expect(number_of_news_activities_after_scrape).to be > number_of_news_activities # we should have successfully gathered more news activities
 
     total_activities_before_scrape = Activity.all.size
-    puts "Synching data with YouTube API, this may take a while..."
     Activity.populate_database_with_videos()
-    puts "Done."
     total_activities_after_scrape = Activity.all.size
     expect(total_activities_before_scrape).to be < total_activities_after_scrape
   end

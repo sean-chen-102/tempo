@@ -69,24 +69,27 @@ class Activity < ActiveRecord::Base
 
   # Populates the database with new Activities based on news.
   def self.populate_database_with_news()
-    puts "we are in function"
+    puts "Synching data with The Guardian API, this may take a while..."
     potential_activities = GuardianScraper.get_articles_by_keyword
 
     potential_activities.each do |potential_activity|
-      puts "got an activity!"
       potential_activity.save_to_database
     end
+    puts "Done!"
   end
 
   # Populates the database with new Activities based on news.
   def self.populate_database_with_videos()
+    puts "Synching data with YouTube API, this may take a while..."
     interests = ["Technology", "Science", "Food", "Health", "History"]
+
     interests.each do |interest|
       potential_activities = YoutubeImporter.get_videos_by_keyword(interest)
       potential_activities.each do |potential_activity|
         potential_activity.save_to_database
       end
     end
+    puts "Done!"
   end
 
   # FOR SCRAPING EXTERNAL DATA

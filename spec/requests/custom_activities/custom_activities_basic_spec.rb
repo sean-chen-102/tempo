@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "test basic custom activities functionality - ", :type => :request do
-
-
 	before (:each) do
 		params = { "user": { "name": "Bob", "email": "bob@mail.com", "username": "bob", "password": "password", "password_confirmation": "password" }}
   	post "/api/users", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
@@ -91,17 +89,19 @@ RSpec.describe "test basic custom activities functionality - ", :type => :reques
 	it "creates and edits custom_activity" do
 		params = {"custom_activity": {"title": "Title 1", "completion_time": 10, "content": "Lorem ipsum content here!"}, "token": @token}
 		post "/api/users/#{@user_id}/custom_activities", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
-
 		data = JSON.parse(response.body)
-
 		expect(data["status"]).to equal(1)
 		custom_activity_id = data["custom_activity"]["id"]
 
 		params = {"custom_activity": {"title": "Title 2", "completion_time": 30, "content": "Lorem ipsum content here!"}, "token": @token}
 		put "/api/users/#{@user_id}/custom_activities/#{custom_activity_id}", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
-
 		data = JSON.parse(response.body)
+		expect(data["status"]).to equal(1)
 
+		# get the edited custom activity
+		params = {"token": @token}
+		get "/api/users/#{@user_id}/custom_activities/#{custom_activity_id}", params.as_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+		data = JSON.parse(response.body)
 		expect(data["status"]).to equal(1)
 
 		custom_activity = data["custom_activity"]
@@ -365,6 +365,67 @@ RSpec.describe "test basic custom activities functionality - ", :type => :reques
 		expect(data["status"]).to equal(-1)
 		errors = data["errors"]
 		expect(errors[0]).to eq("Error: custom activity ##{custom_activity_id} doesn't belong to user ##{@user_id}.")
+	end
+
+	### GET A CUSTOM_ACTIVITY ###
+	it "attempts to get a specific custom_activity" do
+		# create a custom activity
+		params = {"custom_activity": {"title": "Title 1", "completion_time": 10, "content": "Lorem ipsum content here!"}, "token": @token}
+		post "/api/users/#{@user_id}/custom_activities", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+		data = JSON.parse(response.body)
+		expect(data["status"]).to equal(1)
+		custom_activity_id = data["custom_activity"]["id"]
+
+		# get the edited custom activity
+		params = {"token": @token}
+		get "/api/users/#{@user_id}/custom_activities/#{custom_activity_id}", params.as_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+		data = JSON.parse(response.body)
+		expect(data["status"]).to equal(1)
+	end
+
+	it "attempts to get a custom_activity (fails because custom_activity doesn't belong to user)" do
+		# create a custom activity
+		params = {"custom_activity": {"title": "Title 1", "completion_time": 10, "content": "Lorem ipsum content here!"}, "token": @token2}
+		post "/api/users/#{@user_id2}/custom_activities", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+		data = JSON.parse(response.body)
+		expect(data["status"]).to equal(1)
+		custom_activity_id = data["custom_activity"]["id"]
+
+		# get the edited custom activity - should fail
+		params = {"token": @token}
+		get "/api/users/#{@user_id}/custom_activities/#{custom_activity_id}", params.as_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+		data = JSON.parse(response.body)
+		expect(data["status"]).to equal(-1) 
+	end
+
+	it "attempts to get a custom_activity (fails because user has invalid token)" do
+		# create a custom activity
+		params = {"custom_activity": {"title": "Title 1", "completion_time": 10, "content": "Lorem ipsum content here!"}, "token": @token}
+		post "/api/users/#{@user_id}/custom_activities", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+		data = JSON.parse(response.body)
+		expect(data["status"]).to equal(1)
+		custom_activity_id = data["custom_activity"]["id"]
+
+		# get the edited custom activity - should fail
+		params = {"token": "garbage"}
+		get "/api/users/#{@user_id}/custom_activities/#{custom_activity_id}", params.as_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+		data = JSON.parse(response.body)
+		expect(data["status"]).to equal(-2) 
+	end
+
+	it "attempts to get a custom_activity (fails because user_id is invalid)" do
+		# create a custom activity
+		params = {"custom_activity": {"title": "Title 1", "completion_time": 10, "content": "Lorem ipsum content here!"}, "token": @token}
+		post "/api/users/#{@user_id}/custom_activities", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+		data = JSON.parse(response.body)
+		expect(data["status"]).to equal(1)
+		custom_activity_id = data["custom_activity"]["id"]
+
+		# get the edited custom activity - should fail
+		params = {"token": "garbage"}
+		get "/api/users/-1/custom_activities/#{custom_activity_id}", params.as_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+		data = JSON.parse(response.body)
+		expect(data["status"]).to equal(-1) 
 	end
 
 end

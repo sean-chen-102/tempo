@@ -1,2 +1,0 @@
-(function() { this.JST || (this.JST = {}); this.JST["backbone/templates/activities/settings"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<h3 style=\'color: #e74c3c;\'> Settings Page </h3>\n<span>\n<form>\n  New password:<br>\n  <input type="change-password" name="change-password" id="password-change">\n</form>\n  <button class="change-submit"> Change password </button>\n</span>\n<br>\n<a href=\'tempo#home\'> Go Home</a>\n');}return __p.join('');};
-}).call(this);

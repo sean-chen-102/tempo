@@ -93,68 +93,10 @@ fitness_5 = {title: "The One Trick That Will Help You Stick to Your Workouts", c
 
 fitness_list = [fitness_1, fitness_2, fitness_3, fitness_4, fitness_5]
 
-
-# NEWS ACTIVITIES
-news_1 = { title: "Why Fannie Mae and Freddie Mac Survived", content_type: "text", completion_time: 6, link: "https://www.washingtonpost.com/opinions/why-fannie-mae-and-freddie-mac-survived/2015/11/15/86cba904-8a20-11e5-9a07-453018f9a0ec_story.html?hpid=hp_no-name_opinion-card-c%3Ahomepage%2Fstory", content: "One of the most interesting and uncovered stories these days is the survival of Fannie Mae and Freddie Mac — the giant
- housing entities created by the government and known collectively as the GSEs (government-sponsored enterprises). On Sept. 6, 2008, nine days before the Lehman Brothers bankruptcy, Treasury Secretary Henry Paulson put the GSEs into \"conservatorship.” This meant that the government would cover their costs because they were bankrupt. The government’s aid ultimately totaled $187 billion. Even in Washington, that’s serious money,
- and it fostered an informal consensus: Fannie and Freddie had to go; taxpayers’ exposure was too great. \"This is an opportunity to get rid of institutions that shouldn’t exist,” former Federal Reserve chairman Paul Volcker said. The GSEs had been — it was widely assumed — \"consigned to the dustbin of history,” as financial writer Bethany McLean says in her new book, \"Shaky Ground: The Strange Saga of the U.S. Mortgage Giants.”
- Well, not yet — and possibly never. Remarkably, their importance today is unparalleled. In 2013, President Obama said that \"our housing system should operate where there’s a limited government role and private lending should be the backbone.” Just the opposite applies now: Government dominates housing finance. Here are the numbers. Fannie and Freddie provide government mortgage guarantees (i.e., if homeowners default, the
- GSEs repay mortgage investors in full). In 2015, GSE guarantees cover about half of new mortgages for home purchases; including other agencies — the Federal Housing Administration, which caters to lower-income borrowers, and Veterans Affairs — the government guarantees three-quarters of new mortgages. By contrast, the government’s share in 2006 was slightly more than 30 percent, with the GSEs representing most of that. We
- have effectively nationalized housing finance. Private money retreated, and the GSEs have returned to profitability — with all the profits going to the U.S. treasury. So far, these amount to $241 billion. To be sure, some profits reflected one-time increases, says housing expert Jim Parrott of the Urban Institute. During the financial crisis, the GSEs overestimated their losses, resulting in huge write-offs. As the economy
- revived, it became clear that the GSEs had been too pessimistic. When some write-offs were reversed, profits temporarily surged. In 2013, they totaled $133 billion. But these profit bonanzas won’t likely be repeated, says Parrott. Still, the GSEs’ underlying profitability has improved, though more modestly. Losses on loans made in the early 2000s have faded, while tighter lending standards have made new loans less risky. And
- guarantee fees — what borrowers pay to cover losses — have increased. Nevertheless, taxpayers could face billions of losses in another crisis. Doesn’t this suggest that the GSEs should be eased out of backstopping the $9 trillion mortgage market? Apparently not. Two obstacles arose. One is pragmatic: fear for the housing recovery. All the real estate agents, builders, carpenters, mortgage bankers and others who depend on home
- buying worry that dismantling the GSEs would push interest rates up and housing activity down. \"Without GSE backing, banks have shown very little interest in lending to American homeowners, even ones with very high credit scores,” writes McLean. Even with the GSEs, housing’s recovery has been sluggish. Annualized sales are about 8 percent below a normal level of 6.5 million, notes Mark Zandi of Moody’s Analytics. Housing starts
- are weaker at about 1.1 million annually, well below a more normal level of 1.7 million, he says. The second obstacle is philosophical: protecting the 30-year fixed-rate mortgage, which Americans prefer. It’s said that, without government guarantees, institutional investors won’t hold loans with such long maturities. The danger of huge losses is too great. If government guarantees end, mortgage maturities will shorten and adjustable
- interest rates will become more common, the argument goes. What’s wrong with that?, asks Peter Wallison of the American Enterprise Institute. Subsidized long-term mortgages encourage overinvestment in big homes. Shorter maturities would favor smaller homes. Borrowers would also earn equity in their homes faster than with 30-year fixed loans, where early payments go mostly to interest. These are important choices. The GSEs
- are part of a larger agenda that McLean rightly calls \"the cult of homeownership”: that it’s an essential marker of social success. We should be discussing whether this approach still serves our interests. But that’s a debate we’ve evaded. There’s a wild card in all this: suits by private investors, who still own about 20 percent of the GSEs. They allege that the government has mistreated them. A legal victory could compel
- change. Meanwhile, the safest course for the White House and Congress has been to save the GSEs and enlist them in the housing recovery. So that’s what they did — and that’s how Fannie and Freddie survived."}
-
-
-news_2 = {title: "SeaWorld’s whales still deserve better", content_type: "text", completion_time: 3, link: "https://www.washingtonpost.com/opinions/do-better-by-the-whales/2015/11/15/f58474ac-8967-11e5-be39-0034bb576eee_story.html?hpid=hp_no-name_opinion-card-b%3Ahomepage%2Fstory", content: "SEAWORLD ENTERTAINMENT has announced it will phase out its controversial killer whale show at its San Diego park, replacing it with one
- that doesn’t rely on human-designed stunts but focuses on behaviors in the wild. Any improvement in the treatment of these magnificent marine animals must be welcomed. But it will take far more than a repackaging of the show to address the physical and psychological problems that orcas in captivity experience. Last week’s announcement that next year will be last for SeaWorld’s signature \"Shamu” show of flips and tricks was
- seen as an effort to counter the backlash that has hurt its brand and depressed attendance. The explosive 2013 documentary \"Blackfish,” tracing the history of killer whales in captivity leading up to the 2010 killing of a SeaWorld trainer by a whale associated with the death of two other people, criticized the Orlando-based company’s treatment of these highly intelligent and far-ranging creatures. SeaWorld has called \"Blackfish”
- inaccurate and mounted a public relations campaign emphasizing the company’s conservation efforts. Pressure has been particularly intense in California, with state and federal officials pushing SeaWorld to end the captive breeding of orcas. The California Coastal Commission has made ending the captive breeding of orcas a condition — which SeaWorld says it will challenge — for proceeding with a tank expansion project. Maybe
- that’s why the move to drop the circuslike aspects of the show is limited to San Diego and wasn’t extended to the parks in Orlando or San Antonio. Just as the Ringling Bros. and Barnum & Bailey Circus had to come to grips with the reality that dressing up elephants and forcing them to stand on their heads was a callous holdover of another age, SeaWorld should recognize the need for new thinking and bold action. The whales now
- in captivity are unlikely to survive in the wild, but sanctuaries could be created that would better emulate conditions of their natural habitat. The existing tanks would be put to far better use accommodating the injured animals that are a part of SeaWorld’s admirable rescue efforts. Since breeding orcas only consigns future generations to captivity and its inherent cruelty, SeaWorld should voluntarily end the practice."}
-
-news_3 = {title: "Apple's Tim Cook says a converged MacBook and iPad won't happen" , content_type: "text", completion_time: 3, link: "http://www.engadget.com/2015/11/16/apple-tim-cook-converged-macbook-and-ipad/", content: "Apple CEO Tim Cook isn't sold on the Surface, and the company doesn't plan on bringing together its MacBook or iPad into a single product like Microsoft's computing device, either. In an interview with the
- Irish Independent, Cook said: \"We feel strongly that customers are not really looking for a converged Mac and iPad.\" This follows comments the CEO made in an interview with the Daily Telegraph, where he questioned why anyone would buy a PC -- those comments were apparently aimed at Windows PCs, not his company's own computer range. \"We don't regard Macs and PCs to be the same.\" \"It's true that the difference between the
- X86 [PC architecture] and A-series [iPad architecture] is much less than it's ever been. That said, what we've tired to do is to recognize that people use both iOS and Mac devices ... so with things like Handoff we just made it really simple to work on one of our products and pick it up and work on the next product.\" But if Apple tried to fuse the two together, the CEO believes it might not be in the best interests of users:
- \"...So we want to make the best tablet in the world and the best Mac in the world. And putting those two together would not achieve either. You'd begin to compromise in different ways.\" - Tim Cook, Apple That said, Apple's said plenty of things before reassessing its options years later." }
-
-news_4 = { title: "What happens when a self-driving Google vehicle gets pulled over?", content_type: "text", completion_time: 3, link: "http://rapidnewsnetwork.com/what-happens-when-a-self-driving-google-vehicle-gets-pulled-over/286224/", content: "In their own blog post on the the incident, the Mountain View Police Department said an officer \"noticed traffic backing up behind a slow-moving car\". It’s worth noting that under
- California’s Neighborhood Electric Vehicle Definition in its Vehicle Code, Google’s self-driving cars can travel no faster than 35 miles per hour. In September, Google said it was working to make its cars drive \"more humanistically\" following complaints that they were too polite. In the end, the officer determined the vehicle had broken no law. Google responded to the hubbub yesterday on its Self-Driving vehicle Project page
- on Google+. There was a passenger in the auto, though. A police officer pulled over a vehicle in California recently with the intention of giving the driver a ticket, but there was one problem: there was no driver. After realizing that it was an autonomous auto of Google’s, the policeman contacted the operators and \"educated them about impeding traffic\". The search engine giant has said that alike the officer, the operators
- of these vehicles have been flagged down by many people, who are interested in the vehicles, but it hasn’t violated any laws so far. Reports also surfaced that the driverless vessel had not been careening about town but instead had been going 25 miles per hour in a 35 miles per hour lane, causing traffic to build up. In a blog post on Policemag.com, Lt. Dan Fink of the San Rafael, Calif., Police Department wrote, \"an additional
- unintended outcome of smart cars may be significantly fewer law enforcement personnel assigned to traffic enforcement\". It turns out the Google vehicle operates only on roadways with speed limits at or under 35mph, and the road it was transversing, El Camino Real, is rated at 35mph. Other self-driving cars that Google has been testing on California roads and highways were involved in 17 minor collisions since May 2010, according
- to the company."}
-
-news_5 = { title: "The strange Trump and Carson phenomenon explained", content_type: "text", completion_time: 7, link: "http://www.bbc.com/news/world-us-canada-34824987", content: "Pundits have long been wondering why two political outsiders, Donald Trump and Ben Carson, hold such a commanding lead in the Republican race for the White House. For their supporters, the answer is simple. A day after Trump sharply criticised fellow
- candidate Carson, they shared a stage at the Sunshine Summit in Orlando, Florida. There were no pyrotechnics, however - just evidence that both frontrunners have a dedicated base of support in Florida, a key electoral battleground, that shows no signs of fading any time soon. Mr Trump returned to his usual form as he addressed a packed ballroom in a luxury resort near major tourist attractions like Disney World and Universal
- Studios - \"right down the road\" from his palatial home in Palm Beach, the candidate noted. For 20 minutes he regaled the crowd with a typical mix of boasting about his poll numbers and book sales, denunciations of current US immigration and foreign policy, and promises to build a wall on the Mexican border. \"It's going to be a beautiful wall because some day they're probably going to name it after me,\" he said as the audience
- cheered. \"The Trump wall.\" The closest he came to swiping at fellow candidates this time was when he noted the war of words between two senators earlier in the day over immigration reform. \"I watched Ted Cruz and Marco Rubio fighting over who's tougher,\" he said. \"Let me tell you something - I was tougher when it wasn't politically popular to be tough.\" If Donald Trump's campaign was damaged by his dishevelled, often
- rambling 95-minute diatribe at an Iowa rally on Thursday - in which he mocked Mr Carson's personal history and said he had an incurable, \"pathological\" temper - there was no evidence of it Friday evening. Supporter after supporter in attendance praised Mr Trump for his business acumen and dismissed the earlier remarks as simply evidence of the candidate's tell-it-like-it is personality. \"I like that he's over the top,\" says
- Victoria Wilen of Orlando. \"My president needs to have bravado. I need to have somebody that's big and strong and loud and powerful.\" Yolanda Esquivel from Wauchula, Florida, says the recent criticisms of Mr Trump are just the latest attempts to bring him down. \"I'm looking at what candidates can do, not the picky little things they say that people want to make a big deal of and make into drama,\" she says. \"Come on, let's
- act like grown-ups.\" Before Trump's speech, loyalists lined the hallways of the conference centre to greet their man like a conquering hero. When he plunged into the crowd, flanked by his newly acquired Secret Service escort, the multitude pressed against him, seeking autographs and selfies. \"People say he doesn't have experience, but he has a lot more experience than Marco Rubio or Ted Cruz because he has executive experience,\"
- says Nicholas Poucher, a 16-year-old supporter from Lakeland, Florida. \"He has experience running a billion dollar company, and that's the business that counts - not just sitting in a Senate seat.\" One supporter placed a hand on Mr Trump's face as he passed - a strange, loving gesture that the New Yorker, who is reluctant to even shake hands, surely found off-putting. It's all part of life on the presidential campaign circuit,
- however. And if Mr Trump seemed exhausted by the gruelling day-after-day, cross-country schedule he's been keeping during his rally in Iowa, he was nonplussed on Friday. Linda Callahan of Pinellas County, Florida, said Mr Trump has started a revolution. \"He's brought energy back into the people, and I haven't seen that in a long time,\" she says. \"People are tired of politicians. They want somebody that's not connected with the
- government. They don't trust government anymore.\" Mr Carson, the other outsider candidate who has benefitted the most from this mistrust of government, took the stage shortly after Mr Trump departed - and the contrast between the two men couldn't have been more stark. Where Mr Trump was bombastic, Mr Carson was demure. Where the billionaire mogul was boastful, the retired neurosurgeon was humble. \"The good thing about God,\"
- he told the crowd, \"is you don't have to have a PhD to talk to him. You just have to have faith.\" In his quiet manner, however, he was equally scornful of the current Democratic government. He offered a litany of ways progressives are bringing the nation down - driving up debt, allowing illegal immigration, pushing people onto food stamps, promising free education, reducing funding for national defence, ignoring crumbling public
- infrastructure and neglecting veterans affairs. \"That's what I would do if I were trying to destroy the country,\" he said. After his speech Mr Carson was asked if he was angered by Mr Trump's recent attacks. \"When I was a youngster, I used to get irritated by that kind of thing - 'he said this about you, he said this about your momma',\" he said. \"I've moved so far beyond that, I don't pay attention to that kind of stuff.\"
- He added, however, that his quiet manner shouldn't be taken as a sign of weakness. \"Strength is not determined by the number of decibels in your voice,\" he said. Although Mr Carson doesn't display Mr Trump's fire on the campaign trail, his supporters are equally dedicated. \"He has a lot of good virtuous qualities that I'm looking for in a candidate,\" says Amy Handshoe of Winchester, Kentucky. \"I feel like he has a fresh vision
- and a fresh approach to the problems.\" Angela Nuzzi, a student at the nearby University of Central Florida, says she admires Mr Carson's willingness to persevere in the face of Mr Trump's criticism. \"His whole demeanour is so different than Trump's,\" she says. \"I think the soft-spokenness brings you in, and you just see he has all these ideas that are just genius.\" Earlier in the day Mr Carson's business manager said that his
- candidate admired Mr Trump and was praying for him - a sentiment that several Carson backers echoed later in the day. \"We like Donald Trump, but you can't pull back from that [criticism of Carson],\" says Annie Otto, a Wildwood, Florida, resident who has organised the group Grannies for Carson. \"I'm disappointed, but I do believe in the American people's common sense.\""}
-
-news_6 = { title: "Bear Killed After Escape From Russia Shopping Mall", content_type: "video", completion_time: 2, link: "https://www.youtube.com/v/PM7h5Ptun28", like_count: 0 }
-
-
-news_list = [news_1, news_2, news_3, news_4, news_5, news_6]
-
-
 # TECH ACTIVITIES
-tech_1 = { title: "5 Mind Blowing Facts About Your Smartphone!", completion_time: 10, link: "https://www.youtube.com/v/3MYhhO_nSAk", content_type: "video", like_count: 0 }
+tech_1 = { title: "5 Mind Blowing Facts About Your Smartphone!", completion_time: 10, link: "https://www.youtube.com/embed/3MYhhO_nSAk", content_type: "video", like_count: 0 }
 
-tech_2 = { title: "Nexus 6P Review!", completion_time: 14, link: "https://www.youtube.com/v/Xc5fFvp8le4", content_type: "video"}
+tech_2 = { title: "Nexus 6P Review!", completion_time: 14, link: "https://www.youtube.com/embed/Xc5fFvp8le4", content_type: "video"}
 
 tech_3 = { title: "Apple's first Singapore store will be powered entirely by renewable energy", completion_time: 3, link: "http://www.cnet.com/news/apples-first-singapore-store-will-be-powered-entirely-by-renewable-energy/", content_type: "text", content: "Apple wants to end its dependence on fossil fuel for all of its global facilities and the upcoming store in the city-state of Singapore will be one of the first in the world to be powered entirely by solar energy. The Cupertino consumer
  electronics giant has partnered with Singapore's largest clean energy provider, Sunseap Group, who will provide power to Apple's 2,5000-person corporate campus and retail store. Energy will be obtained from solar panels laid on the rooftops of 800 buildings. \"We're thrilled to be working with Sunseap and the government of Singapore to pioneer new ways to bring solar energy to the country and bring Apple even closer to our goal
@@ -163,7 +105,7 @@ tech_3 = { title: "Apple's first Singapore store will be powered entirely by ren
  list of day one product launches alongside bigger markets such as the US, Hong Kong and Japan, but has never had an Apple Store. Instead, Apple relies on local distributors, Apple Premium Resellers, for retail and servicing to its customer base in Singapore. The upcoming retail store will likely see Apple placing a larger focus on the Singapore market, which currently also serves as a shopping hub for more devoted fanbase in the
  region, who often travel down to the island-state during product launches to get their hands on Apple devices such as the iPhone 6 Plus. The expected location of its upcoming store will be at the heart of Singapore's shopping district on Orchard Road, where it will be taking over 15,000 square feet of space. The company has also posted job listings for Apple Geniuses and other retail positions."}
 
-tech_4 = { title: "Should you buy the iPhone 6s or iPad Pro?", completion_time: 8, link: "https://www.youtube.com/v/g6ZfghiG70M", content_type: "video"}
+tech_4 = { title: "Should you buy the iPhone 6s or iPad Pro?", completion_time: 8, link: "https://www.youtube.com/embed/g6ZfghiG70M", content_type: "video"}
 
 tech_5 = { title: "How Much Technology Is Too Much Technology?", completion_time: 15, link: "http://techcrunch.com/2015/11/15/how-much-technology-is-too-much-technology/", content_type: "text", content: "There are many visions of what our hyper-connected future might look like. We’re packaged countless variants on the shiny-techie-future vision theme every day as marketing departments lay it on thick to try to put gloss on their latest
  product and restless grease on the wheels of consumption. Thing is, these tales of shiny futures are not really that interesting. Given they are artless fictions. What’s far more interesting is how technology is being applied in the here and now — and how it’s already interacting with and impacting social structures. And if you look at those tell-tale signs then sure it’s possible to extrapolate some possible futures — some of which
@@ -191,17 +133,15 @@ tech_5 = { title: "How Much Technology Is Too Much Technology?", completion_time
  social structures aren’t ripped out or ripped apart by the indifferent interests of corporate accountancy. And — as individual users of technology — recognizing when it’s time to leave your phone alone for a bit and talk to the people around you. If we can find the right balance between technology and society, it’s possible to imagine many good things being created by humans using ever more sophisticated tools. But achieving that balance
  requires continuous sweating toil to define society’s red lines — and the discipline not to be distracted or swayed by the superficial sheen of shiny things. Hard work for sure, but the kind of socially engaged activity that yields genuinely satisfying rewards — and benefits the many, not the few."}
 
-tech_6 = { title: "The Best Tech Under $50 - November 2015", completion_time: 1, link: "https://www.youtube.com/v/Gb8VJwT3OdU", content_type: "video"}
+tech_6 = { title: "The Best Tech Under $50 - November 2015", completion_time: 1, link: "https://www.youtube.com/embed/Gb8VJwT3OdU", content_type: "video"}
 
 tech_list = [tech_1, tech_2, tech_3, tech_4, tech_5, tech_6]
 
 
 # SCIENCE ACTIVITIES
-science_1 = { title: "10 Cool Science Experiments Compilation #9", completion_time: 5, link: "https://www.youtube.com/v/TDMXs2hJv28", content_type: "video" }
+science_1 = { title: "10 Cool Science Experiments Compilation #9", completion_time: 5, link: "https://www.youtube.com/embed/TDMXs2hJv28", content_type: "video" }
 
-
-science_2 = { title: "10 Amazing Science Tricks Using Liquid!", completion_time: 7, link: "https://www.youtube.com/v/HQx5Be9g16U", content_type: "video", like_count: 0 }
-
+science_2 = { title: "10 Amazing Science Tricks Using Liquid!", completion_time: 7, link: "https://www.youtube.com/embed/HQx5Be9g16U", content_type: "video", like_count: 0 }
 
 science_3 = { title: "No, Mount St. Helens Doesn’t Have New Magma Chambers", completion_time: 8, link: "http://www.wired.com/2015/11/no-mount-st-helens-doesnt-have-new-magma-chambers/", content_type: "text", content: "You may have noticed a lot of rumbling in the science media over the past week over a study presented at last week’s Geological Society of America meeting concerning the state of things underneath Mount St. Helens. Many of
  those articles declared that “new magma chambers were discovered under St. Helens!” and “magma is on the move!” and “the volcano may erupt again!“—all of it said breathlessly and based on a brief talk (we’re talking less than 15 minutes) at the meeting. Well, as with most of these types of things, there is a lot less to it than it seems and no, it doesn’t change the chances of a new Mount St. Helens eruption. All of this static comes
@@ -231,8 +171,7 @@ science_4 = { title: "Undersea Internet Cables Are Surprisingly Vulnerable", com
  the cables are clearly marked by pink squiggly lines on navigational charts, and, on the water, signs warning boaters not to drop anchor. The flip side of all these warnings is a potential tip off to would-be saboteurs. Cable sabotage was common during both World Wars, but Starosielski says she knows of no recent incidents. That doesn’t mean it couldn’t happen, though. It would be relatively easy to cut a cable near shore, but such damage
  would also be easy to find and repair. The Times article raises a greater concern: the possibility of cuts made to deep-lying cables in remote parts of the ocean. In her book, Starosielski notes that the strategy for safeguarding undersea cables has been described as \"security through obscurity.\" Nobody gave much thought to the cables, and that was enough to protect them. In the future, it might not be." }
 
-
-science_5 = { title: "The Brightest Part of a Shadow is in the Middle", completion_time: 8, link: "https://www.youtube.com/v/y9c8oZ49pFc", content_type: "video"}
+science_5 = { title: "The Brightest Part of a Shadow is in the Middle", completion_time: 8, link: "https://www.youtube.com/embed/y9c8oZ49pFc", content_type: "video"}
 
 science_list = [science_1, science_2, science_3, science_4, science_5]
 
@@ -240,7 +179,6 @@ science_list = [science_1, science_2, science_3, science_4, science_5]
 # combine activity lists
 activity_list_science = Activity.create(science_list)
 activity_list_tech = Activity.create(tech_list)
-activity_list_news = Activity.create(news_list)
 activity_list_fitness = Activity.create(fitness_list)
 
 
@@ -296,11 +234,6 @@ end
 # Give technology Interests to technology Activities
 activity_list_tech.each do |technology_activity|
   technology_activity.interests << technology_interest
-end
-
-# Give news Interests to news Activities
-activity_list_news.each do |news_activity|
-  news_activity.interests << news_interest
 end
 
 # Give science Interests to science Activities
@@ -365,16 +298,16 @@ fun_fact_9.interests <<  fun_facts_interest
 fun_fact_10.interests << fun_facts_interest
 
 # Populate the database with health-based activities
-health_1 = Activity.create({ title: "Flow through the Heart", content_type: "video", completion_time: 8, link: "https://www.youtube.com/v/7XaftdE_h60", content: "" })
-health_2 = Activity.create({ title: "Lub Dub", content_type: "video", completion_time: 10, link: "https://www.youtube.com/v/-4kGMI-qQ3I", content: "" })
-health_3 = Activity.create({ title: "Meet the heart!", content_type: "video", completion_time: 11, link: "https://www.youtube.com/v/Vi1JK6IYVt8", content: "" })
-health_4 = Activity.create({ title: "Electrical System of the Heart", content_type: "video", completion_time: 10, link: "https://www.youtube.com/v/7K2icszdxQc", content: "" })
-health_5 = Activity.create({ title: "Meet the Lungs", content_type: "video", completion_time: 10, link: "https://www.youtube.com/v/qGiPZf7njqY", content: "" })
-health_6 = Activity.create({ title: "Basics of Metabolism", content_type: "video", completion_time: 12, link: "https://www.youtube.com/v/wQ1QGZ6gJ8w", content: "" })
-health_7 = Activity.create({ title: "What's Inside of Blood?", content_type: "video", completion_time: 12, link: "https://www.youtube.com/v/5MOn8X-tyFw", content: "" })
-health_8 = Activity.create({ title: "How do our kidneys work? (Renal Anatomy)", content_type: "video", completion_time: 8, link: "https://www.youtube.com/v/ctGkLYuUCvU", content: "" })
-health_9 = Activity.create({ title: "Arteries vs. Veins - What's the Difference?", content_type: "video", completion_time: 12, link: "https://www.youtube.com/v/7b6LRebCgb4", content: "" })
-health_10 = Activity.create({ title: "Digesting Food", content_type: "video", completion_time: 17, link: "https://www.youtube.com/v/v2V4zMx33Mc", content: "" })
+health_1 = Activity.create({ title: "Flow through the Heart", content_type: "video", completion_time: 8, link: "https://www.youtube.com/embed/7XaftdE_h60", content: "" })
+health_2 = Activity.create({ title: "Lub Dub", content_type: "video", completion_time: 10, link: "https://www.youtube.com/embed/-4kGMI-qQ3I", content: "" })
+health_3 = Activity.create({ title: "Meet the heart!", content_type: "video", completion_time: 11, link: "https://www.youtube.com/embed/Vi1JK6IYVt8", content: "" })
+health_4 = Activity.create({ title: "Electrical System of the Heart", content_type: "video", completion_time: 10, link: "https://www.youtube.com/embed/7K2icszdxQc", content: "" })
+health_5 = Activity.create({ title: "Meet the Lungs", content_type: "video", completion_time: 10, link: "https://www.youtube.com/embed/qGiPZf7njqY", content: "" })
+health_6 = Activity.create({ title: "Basics of Metabolism", content_type: "video", completion_time: 12, link: "https://www.youtube.com/embed/wQ1QGZ6gJ8w", content: "" })
+health_7 = Activity.create({ title: "What's Inside of Blood?", content_type: "video", completion_time: 12, link: "https://www.youtube.com/embed/5MOn8X-tyFw", content: "" })
+health_8 = Activity.create({ title: "How do our kidneys work? (Renal Anatomy)", content_type: "video", completion_time: 8, link: "https://www.youtube.com/embed/ctGkLYuUCvU", content: "" })
+health_9 = Activity.create({ title: "Arteries vs. Veins - What's the Difference?", content_type: "video", completion_time: 12, link: "https://www.youtube.com/embed/7b6LRebCgb4", content: "" })
+health_10 = Activity.create({ title: "Digesting Food", content_type: "video", completion_time: 17, link: "https://www.youtube.com/embed/v2V4zMx33Mc", content: "" })
 
 health_1.interests << health_interest
 health_2.interests << health_interest

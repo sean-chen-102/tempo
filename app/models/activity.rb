@@ -69,22 +69,27 @@ class Activity < ActiveRecord::Base
 
   # Populates the database with new Activities based on news.
   def self.populate_database_with_news()
+    puts "Synching data with The Guardian API, this may take a while..."
     potential_activities = GuardianScraper.get_articles_by_keyword
 
     potential_activities.each do |potential_activity|
       potential_activity.save_to_database
     end
+    puts "Done!"
   end
 
   # Populates the database with new Activities based on news.
   def self.populate_database_with_videos()
+    puts "Synching data with YouTube API, this may take a while..."
     interests = ["Technology", "Science", "Food", "Health", "History"]
+
     interests.each do |interest|
       potential_activities = YoutubeImporter.get_videos_by_keyword(interest)
       potential_activities.each do |potential_activity|
         potential_activity.save_to_database
       end
     end
+    puts "Done!"
   end
 
   # FOR SCRAPING EXTERNAL DATA
@@ -105,6 +110,7 @@ class Activity < ActiveRecord::Base
       params = {}
       params["api-key"] = @api_key
       params["show-fields"] = "all"
+      params["page-size"] = 30
       params["q"] = @interest_name
 
       # Make the JSON API call
@@ -163,7 +169,7 @@ class Activity < ActiveRecord::Base
           videos.first(10).each do |video|
             unique_id = video.id
             title = video.title
-            link = "https://www.youtube.com/v/" + unique_id
+            link = "https://www.youtube.com/embed/" + unique_id
             completion_time = (video.duration/60).ceil
             content = video.description
 
@@ -181,7 +187,7 @@ class Activity < ActiveRecord::Base
 
           unique_id = video.id
           title = video.title
-          link = "https://www.youtube.com/v/" + unique_id
+          link = "https://www.youtube.com/embed/" + unique_id
           completion_time = (video.duration/60).ceil
           content = video.description
 
@@ -226,9 +232,9 @@ class Activity < ActiveRecord::Base
           activity = Activity.new({ title: @title, content: @content, completion_time: @completion_time, content_type: @content_type, link: @link })
           if not activity.save
             puts "ERRORS populating database with new activities: #{activity.errors.inspect}"
+          else
+            activity.add_interest(@interest_name)
           end
-
-          activity.add_interest(@interest_name)
         end
       end
     end

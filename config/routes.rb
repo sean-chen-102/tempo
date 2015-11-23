@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   put '/api/users/:id/change_password', to: 'users#change_password', defaults: { format: 'json' }
   put '/api/users/:id', to: 'users#edit_user', defaults: { format: 'json' }
   delete '/api/users/:id', to: 'users#destroy_user', defaults: { format: 'json' }
-  
 
   # Interests routing 
   get '/api/interests/:id', to: 'interests#get_interest', defaults: { format: 'json' }

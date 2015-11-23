@@ -86,7 +86,7 @@ RSpec.describe "test basic activities functionality - ", :type => :request do
   end
 
   ### GET ALL ACTIVITIES ###
-  it "getting a single activity" do
+  it "getting all activities" do
     # Get all of the activities - should be []
     get "/api/activities", {}, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
     data = JSON.parse(response.body) # grab the body of the server response
@@ -142,6 +142,24 @@ RSpec.describe "test basic activities functionality - ", :type => :request do
 
     # Get activities filtered by time=20 and interests = "news" or "fitness"
     params = { "time": 20, "interests": ["news", "fitness"] }
+    get "/api/activities/", params.as_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body) # grab the body of the server response
+    status = data["status"]
+    expect(status).to eq(1) # we should have a success
+    activities = data["activities"]
+    expect(activities.length).to eq(0)
+
+    # Create a user to test CustomActivity inclusion
+    params = { "user": { "name": "Bob", "email": "bob@mail.com", "username": "bob", "password": "password", "password_confirmation": "password" }}
+    post "/api/users", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body) # grab the body of the server response
+    status = data["status"]
+    expect(status).to eq(1) # we should have a success
+    user_id = data["user"]["id"]
+    token = data["user"]["token"]
+
+    # Get activities and custom_activities filtered by time=20 and interests = "news" or "fitness"
+    params = { "token": token, "user_id": user_id, "time": 20, "interests": ["news", "fitness"] }
     get "/api/activities/", params.as_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
     data = JSON.parse(response.body) # grab the body of the server response
     status = data["status"]

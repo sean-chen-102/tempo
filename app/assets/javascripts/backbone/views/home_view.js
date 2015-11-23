@@ -70,9 +70,9 @@ var HomeView = Backbone.View.extend({
     			$(function() {
     				$(".knob").knob({
     					max: 60,
-    					min:1,
-    					width: 150,
-    					height: 150,
+    					min: 0,
+    					width: 200,
+    					height: 200,
     					step: 1,
     					fgColor: "#2C7EBF",
     					inputColor: "#2C7EBF"

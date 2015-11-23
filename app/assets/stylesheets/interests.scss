@@ -9,13 +9,14 @@ $containerHeaderColor: rgb(31, 137, 229);
 	margin: 0 auto;
 	text-align: center;
 	position: relative;
-	top: 350px;
+	top: 55%;
 	margin-top: 50px;    
   }
 
   .interest-wrapper  h4 {
+  	text-align: center;
 	margin: 0;
-	font-size: 28px;
+	font-size: 22px;
 	color: black;
 	margin-bottom: 10px;
 }
@@ -38,10 +39,26 @@ $containerHeaderColor: rgb(31, 137, 229);
   	width: 50%;
 	float: left;
 	list-style-type: none;
-	font-size: 18px
+	font-size: 12px
 }
 
   .interest-wrapper p {
-	font-size: 18px
+	font-size: 16px
+}
+
+
+@media (max-width: 800px) {
+  .home-wrapper {
+  	width: 300px; 
+  	height: 1200px;
+  }
+
+  .interest-wrapper li {
+  	width: 100%;
+  }
+
+  .interest-wrapper {
+  	width: 300px;
+  }
 }
 

@@ -751,6 +751,7 @@ eli5_9.interests << eli5_interest
 eli5_10.interests << eli5_interest
 
 # Populate the databse via external APIs
-Activity.populate_database_with_news() # add news articles to the database
-Activity.populate_database_with_videos() # add videos with various interests to the database
+# TODO: UNCOMMENT THESE
+#Activity.populate_database_with_news() # add news articles to the database
+#Activity.populate_database_with_videos() # add videos with various interests to the database
 

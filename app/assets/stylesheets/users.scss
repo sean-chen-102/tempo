@@ -218,6 +218,22 @@ $orangeButton: #e65000;
 	    margin: 0 auto;
 	  }
 
+	  .login {
+	    width: 315px;
+	    height: 35px;
+	    display: block;
+	    margin: 0 auto;
+	    text-align: center;
+	    color: $darkBlue;
+	    margin-top: 10px;
+    	font-size: 12px;
+	  }
+
+	  .login:hover {
+	    opacity: .6;
+	    cursor: pointer;
+	  }
+
 }
 
 

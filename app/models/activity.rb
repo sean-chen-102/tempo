@@ -110,6 +110,7 @@ class Activity < ActiveRecord::Base
       params = {}
       params["api-key"] = @api_key
       params["show-fields"] = "all"
+      params["page-size"] = 30
       params["q"] = @interest_name
 
       # Make the JSON API call

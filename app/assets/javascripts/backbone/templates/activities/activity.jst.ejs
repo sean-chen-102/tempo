@@ -16,7 +16,7 @@
     position: relative;
     top: 45px;
     margin: 0 auto;
-    width: 650px;
+    width: 90%;
     min-height: 500px;
     max-height: 600px;
     background-color: white;
@@ -67,6 +67,8 @@
     max-height: 365px;
     overflow: scroll;
     position: relative;
+    border: none;
+    font-size: 18px;
   }
 
   .activity section .likeContainer {
@@ -97,7 +99,7 @@
 
   #like-count {
     color: rgb(92, 184, 92);
-
+    margin-right: 45px;
   }
 
   #dislike-count {
@@ -107,8 +109,6 @@
   .like-btn {
     background-color: rgb(92, 184, 92);
     border-color: rgb(92, 184, 92);    
-
-
   }
 
   .dislike-btn {
@@ -126,9 +126,9 @@
   }
 
   .linkContainer {
-    float: right;
+    float: left;
     margin-top: -35px;
-    padding-right: 10px;
+    padding-left: 10px;
   }
 
   a:hover {
@@ -148,18 +148,18 @@
       <!-- <img src="..." alt="..."> -->
       <div class="caption">
         <div id="content"><%= content %></div>
+        <div class="content-link"><a id="link" href='<%= link %>' target="_blank"> Link </a></div>
       </div>
     </div>
   </section>
 
   <footer>
-      <span id="likes">Likes: <span id="like-count"><%= likes %></span></span>
-      <span id="dislikes">Disikes: <span id="dislike-count"><%= dislikes %></span></span>
+      <span id="likes"><span id="like-count"><%= likes %></span></span>
+      <span id="dislikes"><span id="dislike-count"><%= dislikes %></span></span>
       <br>
       <button class='btn btn-primary like-btn' role="button">Like</button>
-      <button class='btn btn-default dislike-btn' role="button">Dislike</button><br>  
+      <button class='btn btn-primary dislike-btn' role="button">Dislike</button><br>  
       <div class="linkContainer">
-        <a id="link" href='<%= link %>' target="_blank"> Link </a>
         <a href='<%= backLink %>' id='back'> Back </a>     
       </div>
   </footer>

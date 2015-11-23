@@ -1,6 +1,14 @@
+# Note: to run spec tests, use 'rake exec spec'
+# If specs aren't working make sure you:
+# 1. Bundle install with capybara-webkit - if this errors, see #2
+# 2. Have QT version 5+ installed on your local machine
+# 3. Have QT linked via Homebrew
+# 4. Bundle install again 
+
+require 'capybara/rspec' # for Capybara UI testing
+
 # FOR CODE COVERAGE
 require 'simplecov'
-require 'capybara/rspec' # for Capybara UI testing
 SimpleCov.start do 
   add_group "Models", "app/models"
   add_group "Controllers", "app/controllers"
@@ -29,6 +37,7 @@ RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
+  Capybara.javascript_driver = :webkit
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
     # and `failure_message` of custom matchers include text for helper methods

@@ -19,8 +19,7 @@ rake db:reset
 
 
 ## 3. Tests
-To run all of the functional and unit tests on the back end, run:
-	bundle exec rspec
+To run all of the functional and unit tests on the back end, run: `bundle exec rspec`
 	
 After running these tests, you will also be able to see our code coverage percentage in the terminal. If you'd like to see a visualization of our code coverage, open up the folder in tempo/coverage and open the file index.html in a web browser. Our code coverage should be around ~99.82%.
 

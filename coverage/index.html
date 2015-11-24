@@ -14,27 +14,27 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-11-23T02:18:44-08:00">2015-11-23T02:18:44-08:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-11-23T15:17:09-08:00">2015-11-23T15:17:09-08:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">99.86%</span></span>
+    (<span class="covered_percent"><span class="green">99.82%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         6.93
+         6.94
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>52</b> files in total.
-    <b>2820</b> relevant lines. 
-    <span class="green"><b>2816</b> lines covered</span> and
-    <span class="red"><b>4</b> lines missed </span>
+    <b>2831</b> relevant lines. 
+    <span class="green"><b>2826</b> lines covered</span> and
+    <span class="red"><b>5</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -192,12 +192,12 @@
       
       <tr>
         <td class="strong"><a href="#861c4f1771fe0552c48347502fcc983cac340063" class="src_link" title="app/models/activity.rb">app/models/activity.rb</a></td>
-        <td class="green strong">97.69 %</td>
-        <td>242</td>
-        <td>130</td>
-        <td>127</td>
-        <td>3</td>
-        <td>36.5</td>
+        <td class="green strong">97.16 %</td>
+        <td>262</td>
+        <td>141</td>
+        <td>137</td>
+        <td>4</td>
+        <td>34.5</td>
       </tr>
       
       <tr>
@@ -383,7 +383,7 @@
       <tr>
         <td class="strong"><a href="#265037d4eb7a4b2e1dacc4359ccacecd8b2786f1" class="src_link" title="spec/api_scrapers_spec.rb">spec/api_scrapers_spec.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>41</td>
+        <td>39</td>
         <td>13</td>
         <td>13</td>
         <td>0</td>
@@ -579,20 +579,20 @@
           <div class="file_list_container" id="Models">
   <h2>
     <span class="group_name">Models</span>
-    (<span class="covered_percent"><span class="green">98.32%</span></span>
+    (<span class="covered_percent"><span class="green">97.99%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         36.01
+         34.9
        </span>
     </span> hits/line)
   </h2>
   <a name="Models"></a>
   <div>
     <b>4</b> files in total.
-    <b>238</b> relevant lines. 
-    <span class="green"><b>234</b> lines covered</span> and
-    <span class="red"><b>4</b> lines missed </span>
+    <b>249</b> relevant lines. 
+    <span class="green"><b>244</b> lines covered</span> and
+    <span class="red"><b>5</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -610,12 +610,12 @@
       
       <tr>
         <td class="strong"><a href="#861c4f1771fe0552c48347502fcc983cac340063" class="src_link" title="app/models/activity.rb">app/models/activity.rb</a></td>
-        <td class="green strong">97.69 %</td>
-        <td>242</td>
-        <td>130</td>
-        <td>127</td>
-        <td>3</td>
-        <td>36.5</td>
+        <td class="green strong">97.16 %</td>
+        <td>262</td>
+        <td>141</td>
+        <td>137</td>
+        <td>4</td>
+        <td>34.5</td>
       </tr>
       
       <tr>
@@ -1015,7 +1015,7 @@
       <tr>
         <td class="strong"><a href="#265037d4eb7a4b2e1dacc4359ccacecd8b2786f1" class="src_link" title="spec/api_scrapers_spec.rb">spec/api_scrapers_spec.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>41</td>
+        <td>39</td>
         <td>13</td>
         <td>13</td>
         <td>0</td>
@@ -11276,11 +11276,11 @@
         <div class="source_table" id="861c4f1771fe0552c48347502fcc983cac340063">
   <div class="header">
     <h3>app/models/activity.rb</h3>
-    <h4><span class="green">97.69 %</span> covered</h4>
+    <h4><span class="green">97.16 %</span> covered</h4>
     <div>
-      <b>130</b> relevant lines. 
-      <span class="green"><b>127</b> lines covered</span> and
-      <span class="red"><b>3</b> lines missed.</span>
+      <b>141</b> relevant lines. 
+      <span class="green"><b>137</b> lines covered</span> and
+      <span class="red"><b>4</b> lines missed.</span>
     </div>
   </div>
   
@@ -11590,109 +11590,109 @@
         <li class="covered" data-hits="8" data-linenumber="51">
           <span class="hits">8</span>
           
-          <code class="ruby">    activities = activities.as_json</code>
+          <code class="ruby">    activities.each do |activity|</code>
         </li>
       
-        <li class="covered" data-hits="8" data-linenumber="52">
-          <span class="hits">8</span>
+        <li class="covered" data-hits="6" data-linenumber="52">
+          <span class="hits">6</span>
           
-          <code class="ruby">    return activities</code>
+          <code class="ruby">      formatted_activity = activity.get_advanced_info()</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="53">
+        <li class="covered" data-hits="6" data-linenumber="53">
+          <span class="hits">6</span>
           
-          
-          <code class="ruby">  end</code>
+          <code class="ruby">      activities_list.append(formatted_activity)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="54">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="55">
           
           
-          <code class="ruby">  # Returns a list of all interests that the specified activity belongs to</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="56">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="8" data-linenumber="56">
+          <span class="hits">8</span>
           
-          <code class="ruby">  def self.get_interests(activity_id)</code>
+          <code class="ruby">    return activities_list.as_json</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="57">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="57">
           
-          <code class="ruby">    return interests = Interest.joins(:activities).where(activities: {id: activity_id})\</code>
+          
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="58">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="59">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  # Returns the advanced info of an Activity in JSON format.</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="60">
-          
-          
-          <code class="ruby">  # Associates an interest with this Activity</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="61">
+        <li class="covered" data-hits="1" data-linenumber="60">
           <span class="hits">1</span>
           
-          <code class="ruby">  def add_interest(interest_name)</code>
+          <code class="ruby">  def get_advanced_info</code>
         </li>
       
-        <li class="covered" data-hits="163" data-linenumber="62">
-          <span class="hits">163</span>
+        <li class="covered" data-hits="6" data-linenumber="61">
+          <span class="hits">6</span>
           
-          <code class="ruby">    interest = Interest.find_by(name: interest_name)</code>
+          <code class="ruby">    info = {}</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="63">
+        <li class="covered" data-hits="6" data-linenumber="62">
+          <span class="hits">6</span>
+          
+          <code class="ruby">    info = self.as_json</code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="63">
+          <span class="hits">6</span>
+          
+          <code class="ruby">    interests = self.interests</code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="64">
+          <span class="hits">6</span>
+          
+          <code class="ruby">    interests_list = []</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="65">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="163" data-linenumber="64">
-          <span class="hits">163</span>
+        <li class="covered" data-hits="6" data-linenumber="66">
+          <span class="hits">6</span>
           
-          <code class="ruby">    if not interest.nil?</code>
+          <code class="ruby">    interests.each do |interest|</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="65">
+        <li class="missed" data-hits="0" data-linenumber="67">
           
           
-          <code class="ruby">      self.interests &lt;&lt; interest</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="66">
-          
-          
-          <code class="ruby">      self.save</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="67">
-          
-          
-          <code class="ruby">    end</code>
+          <code class="ruby">      interests_list.append(interest.name)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="68">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="69">
@@ -11701,208 +11701,208 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="70">
+        <li class="covered" data-hits="6" data-linenumber="70">
+          <span class="hits">6</span>
           
-          
-          <code class="ruby">  # Populates the database with new Activities based on news.</code>
+          <code class="ruby">    info[&quot;interests&quot;] = interests_list</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="71">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="6" data-linenumber="71">
+          <span class="hits">6</span>
           
-          <code class="ruby">  def self.populate_database_with_news()</code>
+          <code class="ruby">    return info.as_json</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="72">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="72">
           
-          <code class="ruby">    puts &quot;we are in function&quot;</code>
+          
+          <code class="ruby">  end</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="73">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="73">
           
-          <code class="ruby">    potential_activities = GuardianScraper.get_articles_by_keyword</code>
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="74">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  # Returns a list of all interests that the specified activity belongs to</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="75">
           <span class="hits">1</span>
           
-          <code class="ruby">    potential_activities.each do |potential_activity|</code>
+          <code class="ruby">  def self.get_interests(activity_id)</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="76">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="1" data-linenumber="76">
+          <span class="hits">1</span>
           
-          <code class="ruby">      puts &quot;got an activity!&quot;</code>
+          <code class="ruby">    return interests = Interest.joins(:activities).where(activities: {id: activity_id})\</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="77">
-          <span class="hits">10</span>
+        <li class="never" data-hits="" data-linenumber="77">
           
-          <code class="ruby">      potential_activity.save_to_database</code>
+          
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="78">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="79">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">  # Associates an interest with this Activity</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="80">
+        <li class="covered" data-hits="1" data-linenumber="80">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def add_interest(interest_name)</code>
+        </li>
+      
+        <li class="covered" data-hits="183" data-linenumber="81">
+          <span class="hits">183</span>
+          
+          <code class="ruby">    interest = Interest.find_by(name: interest_name)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="82">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="81">
+        <li class="covered" data-hits="183" data-linenumber="83">
+          <span class="hits">183</span>
           
-          
-          <code class="ruby">  # Populates the database with new Activities based on news.</code>
+          <code class="ruby">    if not interest.nil?</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="82">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="84">
           
-          <code class="ruby">  def self.populate_database_with_videos()</code>
+          
+          <code class="ruby">      self.interests &lt;&lt; interest</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="83">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="85">
           
-          <code class="ruby">    interests = [&quot;Technology&quot;, &quot;Science&quot;, &quot;Food&quot;, &quot;Health&quot;, &quot;History&quot;]</code>
+          
+          <code class="ruby">      self.save</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="84">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    interests.each do |interest|</code>
-        </li>
-      
-        <li class="covered" data-hits="5" data-linenumber="85">
-          <span class="hits">5</span>
-          
-          <code class="ruby">      potential_activities = YoutubeImporter.get_videos_by_keyword(interest)</code>
-        </li>
-      
-        <li class="covered" data-hits="5" data-linenumber="86">
-          <span class="hits">5</span>
-          
-          <code class="ruby">      potential_activities.each do |potential_activity|</code>
-        </li>
-      
-        <li class="covered" data-hits="156" data-linenumber="87">
-          <span class="hits">156</span>
-          
-          <code class="ruby">        potential_activity.save_to_database</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="88">
-          
-          
-          <code class="ruby">      end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="89">
+        <li class="never" data-hits="" data-linenumber="86">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="90">
+        <li class="never" data-hits="" data-linenumber="87">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="91">
+        <li class="never" data-hits="" data-linenumber="88">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="92">
+        <li class="never" data-hits="" data-linenumber="89">
           
           
-          <code class="ruby">  # FOR SCRAPING EXTERNAL DATA</code>
+          <code class="ruby">  # Populates the database with new Activities based on news.</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="93">
+        <li class="covered" data-hits="1" data-linenumber="90">
           <span class="hits">1</span>
           
-          <code class="ruby">  class Scraper</code>
+          <code class="ruby">  def self.populate_database_with_news()</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="94">
+        <li class="covered" data-hits="1" data-linenumber="91">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">  end</code>
+          <code class="ruby">    puts &quot;Synching data with The Guardian API, this may take a while...&quot;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="95">
+        <li class="covered" data-hits="1" data-linenumber="92">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    potential_activities = GuardianScraper.get_articles_by_keyword</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="93">
           
           
           <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="94">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    potential_activities.each do |potential_activity|</code>
+        </li>
+      
+        <li class="covered" data-hits="30" data-linenumber="95">
+          <span class="hits">30</span>
+          
+          <code class="ruby">      potential_activity.save_to_database</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="96">
           
           
-          <code class="ruby">  # FOR SCRAPING EXTERNAL DATA FROM THE GUARDIAN</code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="97">
           <span class="hits">1</span>
           
-          <code class="ruby">  class GuardianScraper &lt; Scraper</code>
+          <code class="ruby">    puts &quot;Done!&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="98">
           
           
-          <code class="ruby">    # Example API requests at:</code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="99">
           
           
-          <code class="ruby">    # http://explorer.content.guardianapis.com/search?api-key=2fpuqbm55pzzra87m9rvnkgc&amp;show-fields=all&amp;q=technology</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="100">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  # Populates the database with new Activities based on news.</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="101">
           <span class="hits">1</span>
           
-          <code class="ruby">    @api_key = &quot;2fpuqbm55pzzra87m9rvnkgc&quot;</code>
+          <code class="ruby">  def self.populate_database_with_videos()</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="102">
           <span class="hits">1</span>
           
-          <code class="ruby">    @base_url = &quot;http://content.guardianapis.com/search&quot;</code>
+          <code class="ruby">    puts &quot;Synching data with YouTube API, this may take a while...&quot;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="103">
           <span class="hits">1</span>
           
-          <code class="ruby">    @interest_name = &quot;News&quot;</code>
+          <code class="ruby">    interests = [&quot;Technology&quot;, &quot;Science&quot;, &quot;Food&quot;, &quot;Health&quot;, &quot;History&quot;]</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="104">
@@ -11914,397 +11914,397 @@
         <li class="covered" data-hits="1" data-linenumber="105">
           <span class="hits">1</span>
           
-          <code class="ruby">    def self.get_articles_by_keyword</code>
+          <code class="ruby">    interests.each do |interest|</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="106">
+        <li class="covered" data-hits="5" data-linenumber="106">
+          <span class="hits">5</span>
           
-          
-          <code class="ruby">      # Set up the parameters for a call to the Guardian API</code>
+          <code class="ruby">      potential_activities = YoutubeImporter.get_videos_by_keyword(interest)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="107">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="5" data-linenumber="107">
+          <span class="hits">5</span>
           
-          <code class="ruby">      params = {}</code>
+          <code class="ruby">      potential_activities.each do |potential_activity|</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="108">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="156" data-linenumber="108">
+          <span class="hits">156</span>
           
-          <code class="ruby">      params[&quot;api-key&quot;] = @api_key</code>
+          <code class="ruby">        potential_activity.save_to_database</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="109">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      params[&quot;show-fields&quot;] = &quot;all&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="110">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      params[&quot;q&quot;] = @interest_name</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="111">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="112">
-          
-          
-          <code class="ruby">      # Make the JSON API call</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="113">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      body = HTTParty.get(@base_url, query: params).body</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="114">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      body = JSON.parse(body)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="115">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      body = body[&quot;response&quot;]</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="116">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      articles = body[&quot;results&quot;]</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="117">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      potential_activities = []</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="118">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="119">
-          
-          
-          <code class="ruby">      # Create PotentialActivities out of all of the found articles</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="120">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      articles.each do |article|</code>
-        </li>
-      
-        <li class="covered" data-hits="10" data-linenumber="121">
-          <span class="hits">10</span>
-          
-          <code class="ruby">        unique_id = article[&quot;id&quot;]</code>
-        </li>
-      
-        <li class="covered" data-hits="10" data-linenumber="122">
-          <span class="hits">10</span>
-          
-          <code class="ruby">        title = article[&quot;webTitle&quot;]</code>
-        </li>
-      
-        <li class="covered" data-hits="10" data-linenumber="123">
-          <span class="hits">10</span>
-          
-          <code class="ruby">        content = article[&quot;fields&quot;][&quot;body&quot;]</code>
-        </li>
-      
-        <li class="covered" data-hits="10" data-linenumber="124">
-          <span class="hits">10</span>
-          
-          <code class="ruby">        content_type = &quot;text&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="10" data-linenumber="125">
-          <span class="hits">10</span>
-          
-          <code class="ruby">        link = article[&quot;webUrl&quot;]</code>
-        </li>
-      
-        <li class="covered" data-hits="10" data-linenumber="126">
-          <span class="hits">10</span>
-          
-          <code class="ruby">        wordcount = article[&quot;fields&quot;][&quot;wordcount&quot;]</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="127">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="10" data-linenumber="128">
-          <span class="hits">10</span>
-          
-          <code class="ruby">        potential_activity = PotentialActivity.new(unique_id, title, content, content_type, link, wordcount, @interest_name)</code>
-        </li>
-      
-        <li class="covered" data-hits="10" data-linenumber="129">
-          <span class="hits">10</span>
-          
-          <code class="ruby">        potential_activities.append(potential_activity)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="130">
+        <li class="never" data-hits="" data-linenumber="109">
           
           
           <code class="ruby">      end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="131">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="132">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      return potential_activities</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="133">
+        <li class="never" data-hits="" data-linenumber="110">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="134">
+        <li class="covered" data-hits="1" data-linenumber="111">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    puts &quot;Done!&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="112">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="135">
+        <li class="never" data-hits="" data-linenumber="113">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="136">
+        <li class="never" data-hits="" data-linenumber="114">
+          
+          
+          <code class="ruby">  # FOR SCRAPING EXTERNAL DATA</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="115">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  class Scraper</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="116">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="117">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="118">
           
           
           <code class="ruby">  # FOR SCRAPING EXTERNAL DATA FROM THE GUARDIAN</code>
         </li>
       
+        <li class="covered" data-hits="1" data-linenumber="119">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  class GuardianScraper &lt; Scraper</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="120">
+          
+          
+          <code class="ruby">    # Example API requests at:</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="121">
+          
+          
+          <code class="ruby">    # http://explorer.content.guardianapis.com/search?api-key=2fpuqbm55pzzra87m9rvnkgc&amp;show-fields=all&amp;q=technology</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="122">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="123">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    @api_key = &quot;2fpuqbm55pzzra87m9rvnkgc&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="124">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    @base_url = &quot;http://content.guardianapis.com/search&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="125">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    @interest_name = &quot;News&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="126">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="127">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    def self.get_articles_by_keyword</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="128">
+          
+          
+          <code class="ruby">      # Set up the parameters for a call to the Guardian API</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="129">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      params = {}</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="130">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      params[&quot;api-key&quot;] = @api_key</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="131">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      params[&quot;show-fields&quot;] = &quot;all&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="132">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      params[&quot;page-size&quot;] = 30</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="133">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      params[&quot;q&quot;] = @interest_name</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="134">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="135">
+          
+          
+          <code class="ruby">      # Make the JSON API call</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="136">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      body = HTTParty.get(@base_url, query: params).body</code>
+        </li>
+      
         <li class="covered" data-hits="1" data-linenumber="137">
           <span class="hits">1</span>
           
-          <code class="ruby">  class YoutubeImporter &lt; Scraper</code>
+          <code class="ruby">      body = JSON.parse(body)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="138">
+        <li class="covered" data-hits="1" data-linenumber="138">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">    </code>
+          <code class="ruby">      body = body[&quot;response&quot;]</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="139">
           <span class="hits">1</span>
           
-          <code class="ruby">    @tech_channel_ids = [ &quot;UCBJycsmduvYEL83R_U4JriQ&quot;, &quot;UCDlQwv99CovKafGvxyaiNDA&quot;, &quot;UCR0AnNR7sViH3TWMJl5jyxw&quot;, &quot;UCgyqtNWZmIxTx3b6OxTSALw&quot;]</code>
+          <code class="ruby">      articles = body[&quot;results&quot;]</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="140">
           <span class="hits">1</span>
           
-          <code class="ruby">    @science_channel_ids = [&quot;UC6nSFpj9HTCZ5t-N3Rm3-HA&quot;, &quot;UCHnyfMqiRRG1u-2MsSQLbXA&quot;, &quot;UCZYTClx2T1of7BRZ86-8fow&quot;, &quot;UCsXVk37bltHxD1rDPwtNM8Q&quot;, &quot;UCUHW94eEFW7hkUMVaZz4eDg&quot;]</code>
+          <code class="ruby">      potential_activities = []</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="141">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    @food_channel_ids = [&quot;UCaLfMkkHhSA_LaCta0BzyhQ&quot;, &quot;UCIEv3lZ_tNXHzL3ox-_uUGQ&quot;, &quot;UCfyehHM_eo4g5JUyWmms2LA&quot;]</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="142">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    @medicine_channel_ids = [&quot;UCJayvjGvKEblkA3KYK1BQQw&quot;]</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="143">
+        <li class="never" data-hits="" data-linenumber="141">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="144">
+        <li class="never" data-hits="" data-linenumber="142">
+          
+          
+          <code class="ruby">      # Create PotentialActivities out of all of the found articles</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="143">
           <span class="hits">1</span>
           
-          <code class="ruby">    def self.get_videos_by_keyword(interest)</code>
+          <code class="ruby">      articles.each do |article|</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="145">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="30" data-linenumber="144">
+          <span class="hits">30</span>
           
-          <code class="ruby">      ids = nil</code>
+          <code class="ruby">        unique_id = article[&quot;id&quot;]</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="146">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="30" data-linenumber="145">
+          <span class="hits">30</span>
           
-          <code class="ruby">      content_type = &quot;video&quot;</code>
+          <code class="ruby">        title = article[&quot;webTitle&quot;]</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="147">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="30" data-linenumber="146">
+          <span class="hits">30</span>
           
-          <code class="ruby">      potential_videos = []</code>
+          <code class="ruby">        content = article[&quot;fields&quot;][&quot;body&quot;]</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="148">
+        <li class="covered" data-hits="30" data-linenumber="147">
+          <span class="hits">30</span>
+          
+          <code class="ruby">        content_type = &quot;text&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="30" data-linenumber="148">
+          <span class="hits">30</span>
+          
+          <code class="ruby">        link = article[&quot;webUrl&quot;]</code>
+        </li>
+      
+        <li class="covered" data-hits="30" data-linenumber="149">
+          <span class="hits">30</span>
+          
+          <code class="ruby">        wordcount = article[&quot;fields&quot;][&quot;wordcount&quot;]</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="150">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="149">
+        <li class="covered" data-hits="30" data-linenumber="151">
+          <span class="hits">30</span>
           
-          
-          <code class="ruby">      # Figure out which channelIds to use</code>
+          <code class="ruby">        potential_activity = PotentialActivity.new(unique_id, title, content, content_type, link, wordcount, @interest_name)</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="150">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="30" data-linenumber="152">
+          <span class="hits">30</span>
           
-          <code class="ruby">      if (interest == &quot;Technology&quot;)</code>
+          <code class="ruby">        potential_activities.append(potential_activity)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="151">
-          <span class="hits">1</span>
-          
-          <code class="ruby">        ids = @tech_channel_ids</code>
-        </li>
-      
-        <li class="covered" data-hits="4" data-linenumber="152">
-          <span class="hits">4</span>
-          
-          <code class="ruby">      elsif (interest == &quot;Science&quot;)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="153">
-          <span class="hits">1</span>
-          
-          <code class="ruby">        ids = @science_channel_ids</code>
-        </li>
-      
-        <li class="covered" data-hits="3" data-linenumber="154">
-          <span class="hits">3</span>
-          
-          <code class="ruby">      elsif (interest == &quot;Food&quot;)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="155">
-          <span class="hits">1</span>
-          
-          <code class="ruby">        ids = @food_channel_ids</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="156">
-          <span class="hits">2</span>
-          
-          <code class="ruby">      elsif (interest == &quot;Health&quot;)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="157">
-          <span class="hits">1</span>
-          
-          <code class="ruby">        ids = @medicine_channel_ids</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="158">
+        <li class="never" data-hits="" data-linenumber="153">
           
           
           <code class="ruby">      end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="159">
-          
-          
-          <code class="ruby">    </code>
-        </li>
-      
-        <li class="covered" data-hits="5" data-linenumber="160">
-          <span class="hits">5</span>
-          
-          <code class="ruby">      if interest != &quot;History&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="4" data-linenumber="161">
-          <span class="hits">4</span>
-          
-          <code class="ruby">        ids.each do |id|</code>
-        </li>
-      
-        <li class="covered" data-hits="13" data-linenumber="162">
-          <span class="hits">13</span>
-          
-          <code class="ruby">          channel = Yt::Channel.new id: id</code>
-        </li>
-      
-        <li class="covered" data-hits="13" data-linenumber="163">
-          <span class="hits">13</span>
-          
-          <code class="ruby">          videos = channel.videos</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="164">
+        <li class="never" data-hits="" data-linenumber="154">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="13" data-linenumber="165">
-          <span class="hits">13</span>
+        <li class="covered" data-hits="1" data-linenumber="155">
+          <span class="hits">1</span>
           
-          <code class="ruby">          videos.first(10).each do |video|</code>
+          <code class="ruby">      return potential_activities</code>
         </li>
       
-        <li class="covered" data-hits="130" data-linenumber="166">
-          <span class="hits">130</span>
+        <li class="never" data-hits="" data-linenumber="156">
           
-          <code class="ruby">            unique_id = video.id</code>
+          
+          <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="130" data-linenumber="167">
-          <span class="hits">130</span>
+        <li class="never" data-hits="" data-linenumber="157">
           
-          <code class="ruby">            title = video.title</code>
+          
+          <code class="ruby">  end</code>
         </li>
       
-        <li class="covered" data-hits="130" data-linenumber="168">
-          <span class="hits">130</span>
+        <li class="never" data-hits="" data-linenumber="158">
           
-          <code class="ruby">            link = &quot;https://www.youtube.com/v/&quot; + unique_id</code>
+          
+          <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="130" data-linenumber="169">
-          <span class="hits">130</span>
+        <li class="never" data-hits="" data-linenumber="159">
           
-          <code class="ruby">            completion_time = (video.duration/60).ceil</code>
+          
+          <code class="ruby">  # FOR SCRAPING EXTERNAL DATA FROM THE GUARDIAN</code>
         </li>
       
-        <li class="covered" data-hits="130" data-linenumber="170">
-          <span class="hits">130</span>
+        <li class="covered" data-hits="1" data-linenumber="160">
+          <span class="hits">1</span>
           
-          <code class="ruby">            content = video.description</code>
+          <code class="ruby">  class YoutubeImporter &lt; Scraper</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="161">
+          
+          
+          <code class="ruby">    </code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="162">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    @tech_channel_ids = [ &quot;UCBJycsmduvYEL83R_U4JriQ&quot;, &quot;UCDlQwv99CovKafGvxyaiNDA&quot;, &quot;UCR0AnNR7sViH3TWMJl5jyxw&quot;, &quot;UCgyqtNWZmIxTx3b6OxTSALw&quot;]</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="163">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    @science_channel_ids = [&quot;UC6nSFpj9HTCZ5t-N3Rm3-HA&quot;, &quot;UCHnyfMqiRRG1u-2MsSQLbXA&quot;, &quot;UCZYTClx2T1of7BRZ86-8fow&quot;, &quot;UCsXVk37bltHxD1rDPwtNM8Q&quot;, &quot;UCUHW94eEFW7hkUMVaZz4eDg&quot;]</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="164">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    @food_channel_ids = [&quot;UCaLfMkkHhSA_LaCta0BzyhQ&quot;, &quot;UCIEv3lZ_tNXHzL3ox-_uUGQ&quot;, &quot;UCfyehHM_eo4g5JUyWmms2LA&quot;]</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="165">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    @medicine_channel_ids = [&quot;UCJayvjGvKEblkA3KYK1BQQw&quot;]</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="166">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="167">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    def self.get_videos_by_keyword(interest)</code>
+        </li>
+      
+        <li class="covered" data-hits="5" data-linenumber="168">
+          <span class="hits">5</span>
+          
+          <code class="ruby">      ids = nil</code>
+        </li>
+      
+        <li class="covered" data-hits="5" data-linenumber="169">
+          <span class="hits">5</span>
+          
+          <code class="ruby">      content_type = &quot;video&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="5" data-linenumber="170">
+          <span class="hits">5</span>
+          
+          <code class="ruby">      potential_videos = []</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="171">
@@ -12313,136 +12313,136 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="130" data-linenumber="172">
-          <span class="hits">130</span>
+        <li class="never" data-hits="" data-linenumber="172">
           
-          <code class="ruby">            potential_video = PotentialActivity.new(unique_id, title, content, content_type, link, completion_time, interest)</code>
+          
+          <code class="ruby">      # Figure out which channelIds to use</code>
         </li>
       
-        <li class="covered" data-hits="130" data-linenumber="173">
-          <span class="hits">130</span>
+        <li class="covered" data-hits="5" data-linenumber="173">
+          <span class="hits">5</span>
           
-          <code class="ruby">            potential_videos.append(potential_video)</code>
+          <code class="ruby">      if (interest == &quot;Technology&quot;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="174">
+        <li class="covered" data-hits="1" data-linenumber="174">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">          end</code>
+          <code class="ruby">        ids = @tech_channel_ids</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="175">
+        <li class="covered" data-hits="4" data-linenumber="175">
+          <span class="hits">4</span>
           
-          
-          <code class="ruby">        end</code>
+          <code class="ruby">      elsif (interest == &quot;Science&quot;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="176">
+        <li class="covered" data-hits="1" data-linenumber="176">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">        ids = @science_channel_ids</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="177">
+        <li class="covered" data-hits="3" data-linenumber="177">
+          <span class="hits">3</span>
           
-          
-          <code class="ruby">      elsif interest == &quot;History&quot;</code>
+          <code class="ruby">      elsif (interest == &quot;Food&quot;)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="178">
           <span class="hits">1</span>
           
-          <code class="ruby">        playlist_id = &quot;PLAC6B9F15C835224C&quot;</code>
+          <code class="ruby">        ids = @food_channel_ids</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="179">
+        <li class="covered" data-hits="2" data-linenumber="179">
+          <span class="hits">2</span>
+          
+          <code class="ruby">      elsif (interest == &quot;Health&quot;)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="180">
           <span class="hits">1</span>
           
-          <code class="ruby">        playlist = Yt::Playlist.new id: playlist_id</code>
+          <code class="ruby">        ids = @medicine_channel_ids</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="180">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="181">
-          <span class="hits">1</span>
-          
-          <code class="ruby">        playlist.playlist_items.first(30).each do |item|</code>
-        </li>
-      
-        <li class="covered" data-hits="26" data-linenumber="182">
-          <span class="hits">26</span>
-          
-          <code class="ruby">          video = Yt::Video.new id: item.snippet.data[&quot;resourceId&quot;][&quot;videoId&quot;]</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="183">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="26" data-linenumber="184">
-          <span class="hits">26</span>
-          
-          <code class="ruby">          unique_id = video.id</code>
-        </li>
-      
-        <li class="covered" data-hits="26" data-linenumber="185">
-          <span class="hits">26</span>
-          
-          <code class="ruby">          title = video.title</code>
-        </li>
-      
-        <li class="covered" data-hits="26" data-linenumber="186">
-          <span class="hits">26</span>
-          
-          <code class="ruby">          link = &quot;https://www.youtube.com/v/&quot; + unique_id</code>
-        </li>
-      
-        <li class="covered" data-hits="26" data-linenumber="187">
-          <span class="hits">26</span>
-          
-          <code class="ruby">          completion_time = (video.duration/60).ceil</code>
-        </li>
-      
-        <li class="covered" data-hits="26" data-linenumber="188">
-          <span class="hits">26</span>
-          
-          <code class="ruby">          content = video.description</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="189">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="26" data-linenumber="190">
-          <span class="hits">26</span>
-          
-          <code class="ruby">          potential_video = PotentialActivity.new(unique_id, title, content, content_type, link, completion_time, interest)</code>
-        </li>
-      
-        <li class="covered" data-hits="26" data-linenumber="191">
-          <span class="hits">26</span>
-          
-          <code class="ruby">          potential_videos.append(potential_video)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="192">
-          
-          
-          <code class="ruby">        end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="193">
+        <li class="never" data-hits="" data-linenumber="181">
           
           
           <code class="ruby">      end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="182">
+          
+          
+          <code class="ruby">    </code>
+        </li>
+      
+        <li class="covered" data-hits="5" data-linenumber="183">
+          <span class="hits">5</span>
+          
+          <code class="ruby">      if interest != &quot;History&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="4" data-linenumber="184">
+          <span class="hits">4</span>
+          
+          <code class="ruby">        ids.each do |id|</code>
+        </li>
+      
+        <li class="covered" data-hits="13" data-linenumber="185">
+          <span class="hits">13</span>
+          
+          <code class="ruby">          channel = Yt::Channel.new id: id</code>
+        </li>
+      
+        <li class="covered" data-hits="13" data-linenumber="186">
+          <span class="hits">13</span>
+          
+          <code class="ruby">          videos = channel.videos</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="187">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="13" data-linenumber="188">
+          <span class="hits">13</span>
+          
+          <code class="ruby">          videos.first(10).each do |video|</code>
+        </li>
+      
+        <li class="covered" data-hits="130" data-linenumber="189">
+          <span class="hits">130</span>
+          
+          <code class="ruby">            unique_id = video.id</code>
+        </li>
+      
+        <li class="covered" data-hits="130" data-linenumber="190">
+          <span class="hits">130</span>
+          
+          <code class="ruby">            title = video.title</code>
+        </li>
+      
+        <li class="covered" data-hits="130" data-linenumber="191">
+          <span class="hits">130</span>
+          
+          <code class="ruby">            link = &quot;https://www.youtube.com/embed/&quot; + unique_id</code>
+        </li>
+      
+        <li class="covered" data-hits="130" data-linenumber="192">
+          <span class="hits">130</span>
+          
+          <code class="ruby">            completion_time = (video.duration/60).ceil</code>
+        </li>
+      
+        <li class="covered" data-hits="130" data-linenumber="193">
+          <span class="hits">130</span>
+          
+          <code class="ruby">            content = video.description</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="194">
@@ -12451,178 +12451,178 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="195">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="130" data-linenumber="195">
+          <span class="hits">130</span>
           
-          <code class="ruby">      return potential_videos</code>
+          <code class="ruby">            potential_video = PotentialActivity.new(unique_id, title, content, content_type, link, completion_time, interest)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="196">
+        <li class="covered" data-hits="130" data-linenumber="196">
+          <span class="hits">130</span>
           
-          
-          <code class="ruby">    end</code>
+          <code class="ruby">            potential_videos.append(potential_video)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="197">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">          end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="198">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">        end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="199">
           
           
-          <code class="ruby">  # A Class that represents a potential new activity that will be added to the database</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="200">
+        <li class="never" data-hits="" data-linenumber="200">
+          
+          
+          <code class="ruby">      elsif interest == &quot;History&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="201">
           <span class="hits">1</span>
           
-          <code class="ruby">  class PotentialActivity</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="201">
-          
-          
-          <code class="ruby"></code>
+          <code class="ruby">        playlist_id = &quot;PLAC6B9F15C835224C&quot;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="202">
           <span class="hits">1</span>
           
-          <code class="ruby">    def initialize(unique_id, title, content, content_type, link, wordcount, interest_name)</code>
+          <code class="ruby">        playlist = Yt::Playlist.new id: playlist_id</code>
         </li>
       
-        <li class="covered" data-hits="166" data-linenumber="203">
-          <span class="hits">166</span>
-          
-          <code class="ruby">      @average_words_per_minute = 300</code>
-        </li>
-      
-        <li class="covered" data-hits="166" data-linenumber="204">
-          <span class="hits">166</span>
-          
-          <code class="ruby">      @unique_id = unique_id</code>
-        </li>
-      
-        <li class="covered" data-hits="166" data-linenumber="205">
-          <span class="hits">166</span>
-          
-          <code class="ruby">      @title = title</code>
-        </li>
-      
-        <li class="covered" data-hits="166" data-linenumber="206">
-          <span class="hits">166</span>
-          
-          <code class="ruby">      @content = content</code>
-        </li>
-      
-        <li class="covered" data-hits="166" data-linenumber="207">
-          <span class="hits">166</span>
-          
-          <code class="ruby">      @content_type = content_type</code>
-        </li>
-      
-        <li class="covered" data-hits="166" data-linenumber="208">
-          <span class="hits">166</span>
-          
-          <code class="ruby">      @link = link</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="209">
+        <li class="never" data-hits="" data-linenumber="203">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="166" data-linenumber="210">
-          <span class="hits">166</span>
+        <li class="covered" data-hits="1" data-linenumber="204">
+          <span class="hits">1</span>
           
-          <code class="ruby">      if content_type == &quot;text&quot;</code>
+          <code class="ruby">        playlist.playlist_items.first(30).each do |item|</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="211">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="26" data-linenumber="205">
+          <span class="hits">26</span>
           
-          <code class="ruby">        @wordcount = wordcount.to_i</code>
+          <code class="ruby">          video = Yt::Video.new id: item.snippet.data[&quot;resourceId&quot;][&quot;videoId&quot;]</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="212">
-          <span class="hits">10</span>
+        <li class="never" data-hits="" data-linenumber="206">
           
-          <code class="ruby">        @completion_time = self.calculate_estimated_time</code>
+          
+          <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="213">
+        <li class="covered" data-hits="26" data-linenumber="207">
+          <span class="hits">26</span>
           
-          
-          <code class="ruby">      else</code>
+          <code class="ruby">          unique_id = video.id</code>
         </li>
       
-        <li class="covered" data-hits="156" data-linenumber="214">
-          <span class="hits">156</span>
+        <li class="covered" data-hits="26" data-linenumber="208">
+          <span class="hits">26</span>
           
-          <code class="ruby">        @completion_time = wordcount # set the video completion_time</code>
+          <code class="ruby">          title = video.title</code>
+        </li>
+      
+        <li class="covered" data-hits="26" data-linenumber="209">
+          <span class="hits">26</span>
+          
+          <code class="ruby">          link = &quot;https://www.youtube.com/embed/&quot; + unique_id</code>
+        </li>
+      
+        <li class="covered" data-hits="26" data-linenumber="210">
+          <span class="hits">26</span>
+          
+          <code class="ruby">          completion_time = (video.duration/60).ceil</code>
+        </li>
+      
+        <li class="covered" data-hits="26" data-linenumber="211">
+          <span class="hits">26</span>
+          
+          <code class="ruby">          content = video.description</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="212">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="26" data-linenumber="213">
+          <span class="hits">26</span>
+          
+          <code class="ruby">          potential_video = PotentialActivity.new(unique_id, title, content, content_type, link, completion_time, interest)</code>
+        </li>
+      
+        <li class="covered" data-hits="26" data-linenumber="214">
+          <span class="hits">26</span>
+          
+          <code class="ruby">          potential_videos.append(potential_video)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="215">
           
           
-          <code class="ruby">      end</code>
+          <code class="ruby">        end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="216">
           
           
-          <code class="ruby">      </code>
+          <code class="ruby">      end</code>
         </li>
       
-        <li class="covered" data-hits="166" data-linenumber="217">
-          <span class="hits">166</span>
-          
-          <code class="ruby">      @interest_name = interest_name</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="218">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="219">
+        <li class="never" data-hits="" data-linenumber="217">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="220">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="5" data-linenumber="218">
+          <span class="hits">5</span>
           
-          <code class="ruby">    def calculate_estimated_time</code>
+          <code class="ruby">      return potential_videos</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="221">
-          <span class="hits">10</span>
-          
-          <code class="ruby">      estimate = (@wordcount / @average_words_per_minute.to_f).ceil # round up</code>
-        </li>
-      
-        <li class="covered" data-hits="10" data-linenumber="222">
-          <span class="hits">10</span>
-          
-          <code class="ruby">      return estimate</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="223">
+        <li class="never" data-hits="" data-linenumber="219">
           
           
           <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="220">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="221">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="222">
+          
+          
+          <code class="ruby">  # A Class that represents a potential new activity that will be added to the database</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="223">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  class PotentialActivity</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="224">
@@ -12634,79 +12634,79 @@
         <li class="covered" data-hits="1" data-linenumber="225">
           <span class="hits">1</span>
           
-          <code class="ruby">    def save_to_database</code>
+          <code class="ruby">    def initialize(unique_id, title, content, content_type, link, wordcount, interest_name)</code>
         </li>
       
-        <li class="covered" data-hits="166" data-linenumber="226">
-          <span class="hits">166</span>
+        <li class="covered" data-hits="186" data-linenumber="226">
+          <span class="hits">186</span>
           
-          <code class="ruby">      puts &quot;in save_to_database&quot;</code>
+          <code class="ruby">      @average_words_per_minute = 300</code>
         </li>
       
-        <li class="covered" data-hits="166" data-linenumber="227">
-          <span class="hits">166</span>
+        <li class="covered" data-hits="186" data-linenumber="227">
+          <span class="hits">186</span>
           
-          <code class="ruby">      if (@interest == &quot;News&quot; and @wordcount &gt;= @average_words_per_minute) or (@interest != &quot;News&quot;)</code>
+          <code class="ruby">      @unique_id = unique_id</code>
         </li>
       
-        <li class="covered" data-hits="166" data-linenumber="228">
-          <span class="hits">166</span>
+        <li class="covered" data-hits="186" data-linenumber="228">
+          <span class="hits">186</span>
           
-          <code class="ruby">        puts &quot;passed first check&quot;</code>
+          <code class="ruby">      @title = title</code>
         </li>
       
-        <li class="covered" data-hits="166" data-linenumber="229">
-          <span class="hits">166</span>
+        <li class="covered" data-hits="186" data-linenumber="229">
+          <span class="hits">186</span>
           
-          <code class="ruby">        if @title.include? &quot; &quot; # don&#39;t add titles that are too long without spaces</code>
+          <code class="ruby">      @content = content</code>
         </li>
       
-        <li class="covered" data-hits="163" data-linenumber="230">
-          <span class="hits">163</span>
+        <li class="covered" data-hits="186" data-linenumber="230">
+          <span class="hits">186</span>
           
-          <code class="ruby">          puts &quot;passed second check&quot;</code>
+          <code class="ruby">      @content_type = content_type</code>
         </li>
       
-        <li class="covered" data-hits="163" data-linenumber="231">
-          <span class="hits">163</span>
+        <li class="covered" data-hits="186" data-linenumber="231">
+          <span class="hits">186</span>
           
-          <code class="ruby">          activity = Activity.new({ title: @title, content: @content, completion_time: @completion_time, content_type: @content_type, link: @link })</code>
+          <code class="ruby">      @link = link</code>
         </li>
       
-        <li class="covered" data-hits="163" data-linenumber="232">
-          <span class="hits">163</span>
+        <li class="never" data-hits="" data-linenumber="232">
           
-          <code class="ruby">          if not activity.save</code>
+          
+          <code class="ruby"></code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="233">
+        <li class="covered" data-hits="186" data-linenumber="233">
+          <span class="hits">186</span>
           
-          
-          <code class="ruby">            puts &quot;ERRORS populating database with new activities: #{activity.errors.inspect}&quot;</code>
+          <code class="ruby">      if content_type == &quot;text&quot;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="234">
+        <li class="covered" data-hits="30" data-linenumber="234">
+          <span class="hits">30</span>
           
-          
-          <code class="ruby">          else</code>
+          <code class="ruby">        @wordcount = wordcount.to_i</code>
         </li>
       
-        <li class="covered" data-hits="163" data-linenumber="235">
-          <span class="hits">163</span>
+        <li class="covered" data-hits="30" data-linenumber="235">
+          <span class="hits">30</span>
           
-          <code class="ruby">            activity.add_interest(@interest_name)</code>
+          <code class="ruby">        @completion_time = self.calculate_estimated_time</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="236">
           
           
-          <code class="ruby">          end</code>
+          <code class="ruby">      else</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="237">
+        <li class="covered" data-hits="156" data-linenumber="237">
+          <span class="hits">156</span>
           
-          
-          <code class="ruby">        end</code>
+          <code class="ruby">        @completion_time = wordcount # set the video completion_time</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="238">
@@ -12718,22 +12718,142 @@
         <li class="never" data-hits="" data-linenumber="239">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">      </code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="240">
+        <li class="covered" data-hits="186" data-linenumber="240">
+          <span class="hits">186</span>
           
-          
-          <code class="ruby">  end</code>
+          <code class="ruby">      @interest_name = interest_name</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="241">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="242">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="243">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    def calculate_estimated_time</code>
+        </li>
+      
+        <li class="covered" data-hits="30" data-linenumber="244">
+          <span class="hits">30</span>
+          
+          <code class="ruby">      estimate = (@wordcount / @average_words_per_minute.to_f).ceil # round up</code>
+        </li>
+      
+        <li class="covered" data-hits="30" data-linenumber="245">
+          <span class="hits">30</span>
+          
+          <code class="ruby">      return estimate</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="246">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="247">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="248">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    def save_to_database</code>
+        </li>
+      
+        <li class="covered" data-hits="186" data-linenumber="249">
+          <span class="hits">186</span>
+          
+          <code class="ruby">      if (@interest == &quot;News&quot; and @wordcount &gt;= @average_words_per_minute) or (@interest != &quot;News&quot;)</code>
+        </li>
+      
+        <li class="covered" data-hits="186" data-linenumber="250">
+          <span class="hits">186</span>
+          
+          <code class="ruby">        if @title.include? &quot; &quot; # don&#39;t add titles that are too long without spaces</code>
+        </li>
+      
+        <li class="covered" data-hits="183" data-linenumber="251">
+          <span class="hits">183</span>
+          
+          <code class="ruby">          activity = Activity.new({ title: @title, content: @content, completion_time: @completion_time, content_type: @content_type, link: @link })</code>
+        </li>
+      
+        <li class="covered" data-hits="183" data-linenumber="252">
+          <span class="hits">183</span>
+          
+          <code class="ruby">          if not activity.save</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="253">
+          
+          
+          <code class="ruby">            puts &quot;ERRORS populating database with new activities: #{activity.errors.inspect}&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="254">
+          
+          
+          <code class="ruby">          else</code>
+        </li>
+      
+        <li class="covered" data-hits="183" data-linenumber="255">
+          <span class="hits">183</span>
+          
+          <code class="ruby">            activity.add_interest(@interest_name)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="256">
+          
+          
+          <code class="ruby">          end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="257">
+          
+          
+          <code class="ruby">        end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="258">
+          
+          
+          <code class="ruby">      end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="259">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="260">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="261">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="262">
           
           
           <code class="ruby">end</code>
@@ -16270,40 +16390,28 @@
         <li class="covered" data-hits="1" data-linenumber="35">
           <span class="hits">1</span>
           
-          <code class="ruby">    puts &quot;Synching data with YouTube API, this may take a while...&quot;</code>
+          <code class="ruby">    Activity.populate_database_with_videos()</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="36">
           <span class="hits">1</span>
           
-          <code class="ruby">    Activity.populate_database_with_videos()</code>
+          <code class="ruby">    total_activities_after_scrape = Activity.all.size</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="37">
           <span class="hits">1</span>
           
-          <code class="ruby">    puts &quot;Done.&quot;</code>
+          <code class="ruby">    expect(total_activities_before_scrape).to be &lt; total_activities_after_scrape</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="38">
           
           
-          <code class="ruby">    total_activities_after_scrape = Activity.all.size</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="39">
-          
-          
-          <code class="ruby">    expect(total_activities_before_scrape).to be &lt; total_activities_after_scrape</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="40">
-          
-          
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="41">
+        <li class="never" data-hits="" data-linenumber="39">
           
           
           <code class="ruby">end</code>

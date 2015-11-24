@@ -9,7 +9,6 @@ var SettingsView = Backbone.View.extend({
 	},
 	renderData : function(data){
 		var that = this;
-		console.log(data);
 		//Iterate throught he collections of Activities and create a template
 		var numInterests = 0;
 		data.each(function(model){
@@ -69,7 +68,6 @@ var SettingsView = Backbone.View.extend({
       			if (response.status === 1) {
       				notie.alert(1, 'Interests Saved!', 1.5);
       			} else {
-      				console.log(response.errors);
       				notie.alert(3, response.errors[0], 1.5);
       			}
       		},
@@ -90,7 +88,6 @@ var SettingsView = Backbone.View.extend({
 			success: function(data){
 				that.userInterests = [];
 				data.each(function(model){
-					console.log("hi")
 					that.userInterests.push(model.get('name'));
 				});
 				that.getInterests();
@@ -123,7 +120,6 @@ var SettingsView = Backbone.View.extend({
 
 	},
 	getInterests : function(){
-		console.log("pls");
 		var interests = new Interests();
 		var that = this;
 		interests.fetch({
@@ -134,11 +130,9 @@ var SettingsView = Backbone.View.extend({
 	},
 	render : function (options){
 		this.templateData = [];
-		console.log("render");
 		this.user = options["user"];
 		this.getUserInterests();
 		// Set scope, construct new activity collection, call fetch, render data on callback function
 		var that = this; // To fix callback scoping error
-		console.log(that.templateData);
 	}, 
 });

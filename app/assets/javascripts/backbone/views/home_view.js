@@ -26,13 +26,12 @@ var HomeView = Backbone.View.extend({
 		this.renderData();
 	},
 	makeGoRequest : function(options){
-		console.log("hi3e3");
 		//called when the go button is clicked
 		var duration = $(".knob").val();
 		//save duration to activity view object
 		var that = this;
 		var selectedInterests = [];
-		for (var j = 0; j < that.numInterests; j++) {
+ 		for (var j = 0; j < that.numInterests; j++) {
 			var currInterest = $('#interest-' + j);
 			var name = currInterest.attr('name')
 			if (currInterest.is(":checked")) {
@@ -62,13 +61,14 @@ var HomeView = Backbone.View.extend({
 				data.each(function(model) {
 					selectedInterests.push(model.get("name"));
 				});
-				console.log("interests");
-				console.log(selectedInterests);
 				var home_template = JST["backbone/templates/activities/home"]({
         			name: that.name,
         			interests: selectedInterests
 	    		});
     			that.$el.html(home_template);
+    			if (data.length === 0){
+    				$(".interest-wrapper").append("<h1> Looks like you don't have any interests, head to the <a id='settings-link' href='tempo#settings'> settings </a> page to pick some! </h1>");
+    			}
     			$(function() {
     				$(".knob").knob({
     					max: 60,

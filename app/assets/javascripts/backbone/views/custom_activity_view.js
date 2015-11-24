@@ -31,7 +31,6 @@ var CustomActivityView = Backbone.View.extend({
       this.$el.html(template);
     },
     render : function (options){
-      console.log("customAC render");
       // Set scope, construct new activity collection, call fetch, render data on callback function
       var that = this; // To fix callback scoping error	
       this.user = options.user;
@@ -51,7 +50,6 @@ var CustomActivityView = Backbone.View.extend({
     },
     deleteActivity: function(options){
       //DELETE /api/users/:id/custom_activities/:cid
-      console.log("deleting");
       var that = this; // To fix callback scoping error 
       var activityId = options.currentTarget.id;
       var activity = new CustomActivity();

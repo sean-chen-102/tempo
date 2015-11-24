@@ -3,33 +3,33 @@
 
 ## 1. Heroku
 To view this application, please go to: https://tempo169.herokuapp.com/
----
+
 
 ## 2. Local Server
 To run it locally, have Ruby on Rails installed with Ruby version 2.2.0 and Rails version 4.2.4. Run 'rails s' in the folder to run the server on localhost:3000.
 
 Upon first install, you will need to set up the database before any data will be displayed in the app. This can be done by running:
-rake db:create
-rake db:setup
-rake db:migrate
-rake db:reset
----
+	rake db:create
+	rake db:setup
+	rake db:migrate
+	rake db:reset
+
 
 ## 3. Tests
 To run all of the functional and unit tests on the back end, run:
-bundle exec rspec
+	bundle exec rspec
 	
-	After running these tests, you will also be able to see our code coverage percentage in the terminal. If you'd like to see a visualization of our code coverage, open up the folder in tempo/coverage and open the file index.html in a web browser. Our code coverage should be around ~99.82%.
+After running these tests, you will also be able to see our code coverage percentage in the terminal. If you'd like to see a visualization of our code coverage, open up the folder in tempo/coverage and open the file index.html in a web browser. Our code coverage should be around ~99.82%.
 
 You can also run some model-only unit tests on the back end through the command:
-rake test:models
+	rake test:models
 
 To run the front end tests over the Backbone.js framework, run the command:
-bundle exec teaspoon --coverage=default
+	bundle exec teaspoon --coverage=default
 
-Note: some Backbone.js tests will fail due to conflicts with Sinon, Teaspoon, and Backbone.js. However, you will
+**Note**: some Backbone.js tests will fail due to conflicts with Sinon, Teaspoon, and Backbone.js. However, you will
 still be able to see our code coverage for this part. Backbone.js tests are insignificant, as we run automated UI testing through Capybara and the Capybara-Webkit driver (these are included when running bundle exec rspec).
----
+
 
 ## 4. Troubleshooting
 If things aren't working right, try:
@@ -51,4 +51,3 @@ If you are getting an error related to 'qt', 'capybara', 'capybara-webkit', or '
   * -> This should return /usr/local/bin/qmake
 4. Bundle install again 
 
----

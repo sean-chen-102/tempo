@@ -10,12 +10,12 @@
 	</header>
 	<section> 
 		<label for="title"> Title: </label> <br> 
-		<input type="textarea" name"title" id="title" value=''> <br> 
+		<input type="textarea" name"title" id="title" value='<%= title %>'> <br> 
 		<label for="content"> Content: </label> <br> <b>
-		<textarea type="text" name"content" id="content" value=''> </textarea> <br> 
+		<textarea type="text" name"content" id="content" value='<%= content %>'> <%= content %></textarea> <br> 
 		<label for="completion_time"> Completion time: </label> <br> 
 		<section> 
-			<input class="knob" data-width="100" data-displayinput="true" value="0" height="100" >
+			<input class="knob" data-width="100" data-displayinput="true" value="<%= completion_time%>" height="100" >
 		</section>		
 		<p id="warning"> </p> 
 		<br>

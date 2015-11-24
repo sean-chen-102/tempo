@@ -15,35 +15,31 @@ var EditCustomActivityView = Backbone.View.extend({
       // this.customActivities = new CustomActivities();
       // alert("initialized model for custom activity");
     },
-    render: function (options){
+    render : function (options){
       // this.activity = this.options.activity.attributes;
       // console.log(this.options);
       // this.user_id = this.activity.user_id;
       // console.log(this.user_id);
       // Set scope, construct new activity collection, call fetch, render data on callback function
       var that = this;
-      this.user_id = options.user.id;
 
       var activity = new CustomActivity();
       activity.id = this.activity_id;
       activity.url = "/api/users/" + options.user.id + "/custom_activities/" + this.activity_id;
       activity.fetch({
           success: function(data){
-              console.log(data.attributes);
-              that.renderData(data.attributes['custom_activity']);
+              that.renderData(data.attributes['activity']);
           },
           data: {"token": Cookies.get('login-token')}
       });
     },
-    renderData: function(data){
-      // TODO: Move HTML into templates
-      var that = this;
-      var customActTemplate = JST["backbone/templates/activities/editCustomActivity"]({
-        title: data['title'],
-        content: data['content'],
-        completion_time: data['completion_time']
-      });
-      $(".testDiv").html(customActTemplate);
+    var renderData = function(){
+        // TODO: Move HTML into templates
+        var customActTemplate = JST["backbone/templates/activities/editCustomActivity"]({
+          title: data['title'],
+          content: data['content']
+        });
+        $(".testDiv").html(customActTemplate);
 
       $(function() {
         $(".knob").knob({
@@ -56,15 +52,19 @@ var EditCustomActivityView = Backbone.View.extend({
           inputColor: "#2C7EBF"
         });
         // $("#title").val(that.activity.title);
-        // $("#content").val(data['content']);
-        $(".knob").val(data['completion_time']).trigger('change');
+        // $("#content").val(that.activity.content);
+        $(".knob").val(that.activity.completion_time).trigger('change');
       });
+    },
+    fillData : function(data) {
+      console.log(" i was called");
+      console.log(data);
     },
     editActivity: function (e){
       var self = this,
       el = $(this.el);
       e.preventDefault();
-      console.log(this.activity_id);
+      console.log(this.activity);
       console.log(this.user_id);
 
       var title = $('#title').val();
@@ -73,11 +73,11 @@ var EditCustomActivityView = Backbone.View.extend({
       var model = new CustomActivity();
       model.attributes.title = title;
       model.attributes.content = content;
-      model.attributes.id = this.activity_id;
+      model.attributes.id = this.activity.id;
       model.attributes.completion_time = $('.knob').val();
       model.attributes.token = Cookies.get('login-token');
       console.log("hi");
-      model.url = "/api/users/" + this.user_id + "/custom_activities/" + this.activity_id;
+      model.url = "/api/users/" + this.user_id + "/custom_activities/" + this.activity.id;
       model.save(model.attributes, {        
           success: function(userSession, response) {
             if (response.status === 1) {

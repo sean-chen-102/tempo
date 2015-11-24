@@ -6,6 +6,11 @@ To view this application, please go to: https://tempo169.herokuapp.com/
 
 **Note:** if the app doesn't display properly on Heroku for you, you properly have an outdated cookie stored in your browser. Please clear your cookies for this site and revist the website again. Viewing the website in incognito mode will not clear the cookie.
 
+You can create your own account, or log in with our friend Sally's credentials: 
+```
+*username:* sillysally23
+*password:* password
+```
 
 ## 2. Local Server
 To run it locally, have Ruby on Rails installed with Ruby version 2.2.0 and Rails version 4.2.4. Run `rails s` in the terminal at the folder in which tempo is located. This will run the application on localhost:3000.

@@ -25,6 +25,8 @@ var HistoryView = Backbone.View.extend({
       activities.url = "/api/users/"+ this.user.id + "/completed_activities";
       activities.fetch({
         success: function(data){
+          console.log('success!');
+          console.log(data);
           that.renderData(data);
         },
         error: function(data){
@@ -39,6 +41,7 @@ var HistoryView = Backbone.View.extend({
       var templateData = [];
       //Iterate throught he collections of Activities and create a template
       data.each(function(model){
+        console.log('hi');
         templateData.push({"title": model.get("title"), "time": model.get("completion_time"),
                            "id" : model.get("id")})
       });
@@ -48,6 +51,7 @@ var HistoryView = Backbone.View.extend({
         custData: that.custData,
         name: that.user.name
       });
+      console.log(template);
       this.$el.html(template);
     },
     render : function (options){

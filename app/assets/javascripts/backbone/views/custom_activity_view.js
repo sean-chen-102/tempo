@@ -9,7 +9,8 @@ var CustomActivityView = Backbone.View.extend({
     activities : null,
     user: null,
     events: {
-        "click .del-btn":"deleteActivity"
+        "click .del-btn":"deleteActivity",
+        "click .edit-btn": "editActivity"
     },
     initialize: function(options){
       this.options = options;
@@ -73,6 +74,12 @@ var CustomActivityView = Backbone.View.extend({
               console.log("failure!");
           }
       });
+    },   
+    editActivity: function(event) {
+      clickedCustomActivity = this.customActivities.get(event.currentTarget.id);
+      var editView = new EditCustomActivityView({activity: clickedCustomActivity});
+      editView.render();
+      
     }
   });
 

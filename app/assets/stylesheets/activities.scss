@@ -156,6 +156,18 @@ $greenText: rgb(104, 187, 108);
     color: black;
   }
 
+  .completion-time {
+    display: inline-block;
+    text-align: center;
+    border-radius: 5px;
+    background-color: $greenText;
+    width: 45px;
+    padding: 2px;
+    margin-top: 3px;
+    margin-right: 10px;
+    color: black;
+  }
+
   .icon {
     color: $greenText;
     display: inline-block;

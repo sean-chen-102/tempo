@@ -47,7 +47,6 @@ var ActivityView = Backbone.View.extend({
         $(this.el).html(template);
     },
     render: function(options){
-        console.log("activity view render call");
         //mark activity as complete because it has been viewed
         this.markAsComplete(options);
         var that = this;

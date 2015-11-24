@@ -50,6 +50,7 @@ var ActivitiesView = Backbone.View.extend({
             html += "<tr class='tRow'>" 
                 + "<td> <a href='/tempo#activities/" +model.get('id') + "'>" +  model.get('title') + " </a> <br>"
                 + "<div class='interest-type'>" + interest + "</div>"
+                 + "<div class='completion-time'>" + completionTime + "</div>"
                 + icon + "</td>"
                 + "<td class='rating-cell'>" + "<p class='rating-text'>" + count +  "</p>  <div class='rating'> <i class='fa fa-signal'> </i> </div> </td>"
                 + "</tr>";  

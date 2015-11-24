@@ -42,12 +42,13 @@ If things aren't working right, try:
 
 If you are getting an error related to 'qt', 'capybara', 'capybara-webkit', or 'bundle install', you probably don't have the correct applications installed on your local machine required to run our app with Capybara (this only applies for test and development environments). In that case, you need to install qt version 5+. Some brief steps you can take to do this are:
 	
-	1. Bundle install with capybara-webkit - if this errors, see #2
-	2. Have QT version 5+ installed on your local machine (brew install qt5)
+1. Bundle install with capybara-webkit - if this errors, see #2
+2. Have QT version 5+ installed on your local machine (brew install qt5)
 	    -> If you have a conflict with QT version 4, you will need to remove version 4 and reinstall version 5+
-	3. Have QT linked via Homebrew: brew link --force qt5
+3. Have QT linked via Homebrew: brew link --force qt5
 	    -> If you don't have permission to do this, try: sudo chown -R $USER /usr/local    and run the command at #3 again
 	    -> Then run: which qmake
 	    -> This should return /usr/local/bin/qmake
-    4. Bundle install again 
+4. Bundle install again 
+
 ---

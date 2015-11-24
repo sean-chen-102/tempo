@@ -200,6 +200,11 @@ $dangerRed: #891515;
     border-color: #357ebd;
   }
 
+  #custom-activities-form a.back-button:hover{
+    font-size: 14px;
+    background-color: #357ebd;
+  }
+
   .submitCustomActivity {
     width: 100%;
   /*  background-image: linear-gradient(rgb(31, 137, 229) 0%, rgb(31, 137, 229) 100%);*/

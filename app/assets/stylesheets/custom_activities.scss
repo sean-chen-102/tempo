@@ -194,6 +194,16 @@ $dangerRed: #891515;
     resize: none;
   }
 
+  #custom-activities-form .back-button {
+    color: #fff;
+    background-color: #428bca;
+    border-color: #357ebd;
+  }
+
+  #custom-activities-form a.back-button:hover{
+    font-size: 14px;
+    background-color: #357ebd;
+  }
 
   .submitCustomActivity {
     width: 100%;

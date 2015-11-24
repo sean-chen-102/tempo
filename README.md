@@ -8,8 +8,8 @@ To view this application, please go to: https://tempo169.herokuapp.com/
 
 You can create your own account, or log in with our friend Sally's credentials: 
 ```
-*username:* sillysally23
-*password:* password
+username: sillysally23
+password: password
 ```
 
 ## 2. Local Server

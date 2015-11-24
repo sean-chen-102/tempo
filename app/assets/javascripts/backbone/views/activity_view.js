@@ -14,6 +14,7 @@ var ActivityView = Backbone.View.extend({
       this.activity_id = options['id'];
       this.history = options['history'];
       this.link = "";
+      this.activitiesView = options.activitiesView;
     },
     renderData: function(data){
         if(data['link'] == "N/A"){
@@ -80,6 +81,7 @@ var ActivityView = Backbone.View.extend({
     makeLikeRequest : function(options){
         //called when the like button is clicked
         console.log("liked");
+        var that = this;
         var activity = new Activity();
         activity.url = "/api/activities/" + this.activity_id + "/like";
         var token = Cookies.get('login-token');
@@ -94,6 +96,7 @@ var ActivityView = Backbone.View.extend({
                     console.log("liked!");
                     $("#like-count").html(response['like_count']);
                     $("#dislike-count").html(response['dislike_count']);
+                    that.activitiesView.updateLikeCount(that.activity_id, response["like_count"], response["dislike_count"])
                 }
             },
             error: function(userSession, response) {
@@ -105,6 +108,7 @@ var ActivityView = Backbone.View.extend({
         //called when the dislike button is clicked
         console.log("disliked");
         var activity = new Activity();
+        var that = this;
         activity.url = "/api/activities/" + this.activity_id + "/dislike";
         var token = Cookies.get('login-token');
         activity.attributes = {id:this.activity_id, user_id:this.user.id,
@@ -118,6 +122,8 @@ var ActivityView = Backbone.View.extend({
                     console.log("disliked!");
                     $("#like-count").html(response['like_count']);
                     $("#dislike-count").html(response['dislike_count']);
+                    that.activitiesView.updateLikeCount(that.activity_id, response["like_count"], response["dislike_count"])
+
                 }
             },
             error: function(userSession, response) {

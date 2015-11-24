@@ -20,7 +20,6 @@ var LoginView = Backbone.View.extend({
     	    });
         	this.$el.html(home_template);
         	$("input").keyup(function(e) {
-        		console.log(e);
         		if (e.which == 13) {
     				that.login(options);
   				}
@@ -40,13 +39,11 @@ var LoginView = Backbone.View.extend({
 				this.loginDetails.password = usernameOrEmail
 			}
 			this.loginDetails.password = password;
-			console.log(this.model.attributes);
 		    this.model.save(this.loginDetails, {
 	      		success: function(userSession, response) {
 	      			if (response.status === 1 ) {
 	      				console.log("success!");
 	      				Cookies.set("login-token", response.token);
-	      				console.log(response);
 	      				Backbone.Events.trigger("user-interests", [response.user.interests, response.user.id]);
 	      				Backbone.history.navigate('home', {trigger: true}); 
 	      			} else {
@@ -58,7 +55,6 @@ var LoginView = Backbone.View.extend({
 	      }
 	    });
 		    if (this.model.validationError) {
-		    	console.log(this.model);
 		    	notie.alert(3, "please enter a username and password", 1.5);
   // validate error(s) accessible in model.validationError
 			}

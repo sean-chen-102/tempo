@@ -26,7 +26,6 @@ var HomeView = Backbone.View.extend({
 		this.renderData();
 	},
 	makeGoRequest : function(options){
-		console.log("hi3e3");
 		//called when the go button is clicked
 		var duration = $(".knob").val();
 		//save duration to activity view object
@@ -62,8 +61,6 @@ var HomeView = Backbone.View.extend({
 				data.each(function(model) {
 					selectedInterests.push(model.get("name"));
 				});
-				console.log("interests");
-				console.log(selectedInterests);
 				var home_template = JST["backbone/templates/activities/home"]({
         			name: that.name,
         			interests: selectedInterests

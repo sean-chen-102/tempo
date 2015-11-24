@@ -54,7 +54,6 @@ var CreateCustomActivityView = Backbone.View.extend({
       model.attributes.token = Cookies.get('login-token');
 
       model.url = "/api/users/" + this.user.id + "/custom_activities";
-      console.log("Going to create custom activity");
 
       model.save(model.attributes, {        
           success: function(userSession, response) {

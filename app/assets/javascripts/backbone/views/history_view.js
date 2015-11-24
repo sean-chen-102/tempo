@@ -13,8 +13,6 @@ var HistoryView = Backbone.View.extend({
       this.options = options;
     },
     saveCustData: function(data){
-      console.log("cust data");
-      console.log(data);
       var that = this;
       var custData = [];
       data.each(function(model){
@@ -37,7 +35,6 @@ var HistoryView = Backbone.View.extend({
       });
     },
     renderData : function(data){
-      console.log(data);
       var that = this;
       var templateData = [];
       //Iterate throught he collections of Activities and create a template
@@ -75,7 +72,6 @@ var HistoryView = Backbone.View.extend({
     share: function(event) {
       var button = event.currentTarget.id;
       var id = button.split("-")[1];
-      console.log(id);
       var location = window.location.href;
       var link = location.split("#")[0];
       link = link + "#activities/"  + id;

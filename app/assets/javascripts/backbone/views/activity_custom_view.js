@@ -41,7 +41,6 @@ var ActivityCustomView = Backbone.View.extend({
         });
     },
     markAsComplete: function(options){
-        console.log("marking custom as complete");
         var activity = new Activity();
         activity.url = "/api/custom_activities/" + this.activity_id + "/complete";
         var token = Cookies.get('login-token');

@@ -12,7 +12,7 @@
 		<label for="title"> Title: </label> <br> 
 		<input type="textarea" name"title" id="title" value='<%= title %>'> <br> 
 		<label for="content"> Content: </label> <br> <b>
-		<textarea type="text" name"content" id="content" value='<%= content %>'> <%= content %></textarea> <br> 
+		<textarea type="text" name"content" id="content" value='<%= content %>'><%= content %></textarea> <br> 
 		<label for="completion_time"> Completion time: </label> <br> 
 		<section> 
 			<input class="knob" data-width="100" data-displayinput="true" value="<%= completion_time%>" height="100" >
@@ -20,7 +20,7 @@
 		<p id="warning"> </p> 
 		<br>
 		<button type="button" class="editActivityButton btn btn-primary"> Save </button> 
-		<button type="button" class="back-button btn btn-primary"> Back </button> 
+		<a class="back-button btn btn-primary" href="/tempo#customActivities"> Back </a> 
 	</section> 
 </form>
 <div>

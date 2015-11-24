@@ -5,7 +5,6 @@ var EditCustomActivityView = Backbone.View.extend({
     user_id:null,
     events: {
       "click .editActivityButton" : "editActivity",
-      "click .back-button": "backButton"
     },
     interests: [],
     user : null,
@@ -43,7 +42,7 @@ var EditCustomActivityView = Backbone.View.extend({
         content: data['content'],
         completion_time: data['completion_time']
       });
-      $(".testDiv").html(customActTemplate);
+      $(this.el).html(customActTemplate);
 
       $(function() {
         $(".knob").knob({
@@ -55,13 +54,11 @@ var EditCustomActivityView = Backbone.View.extend({
           fgColor: "#2C7EBF",
           inputColor: "#2C7EBF"
         });
-        // $("#title").val(that.activity.title);
-        // $("#content").val(data['content']);
         $(".knob").val(data['completion_time']).trigger('change');
       });
     },
     editActivity: function (e){
-      var self = this,
+      var that = this;
       el = $(this.el);
       e.preventDefault();
       console.log(this.activity_id);
@@ -81,6 +78,7 @@ var EditCustomActivityView = Backbone.View.extend({
       model.save(model.attributes, {        
           success: function(userSession, response) {
             if (response.status === 1) {
+              that.undelegateEvents();
               notie.alert(1, "Custom Activity Saved!", 1.5);
             } else {
               notie.alert(3, response.errors[0], 1.5);

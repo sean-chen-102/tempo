@@ -20,7 +20,6 @@ var CustomActivityView = Backbone.View.extend({
     renderData : function(data){
       var that = this;
       var templateData = [];
-      console.log(data);
       //Iterate throught he collections of Activities and create a template
       data.each(function(model){
         templateData.push({"title": model.get("title"), "content" : model.get("content"), 

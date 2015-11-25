@@ -117,6 +117,12 @@ feature "User clicks on sidebar links", :type => :feature, :js => true do
     click_link 'Settings'
     expect(page).to have_content 'User Settings'
   end
+end
+
+feature "User interacts with Custom Activities", :type => :feature, :js => true do
+  background do
+    User.create(name: 'John', username: 'johnny22', email: 'johnny22@mail.com', password: 'password')
+  end
 
   scenario "the 'Create a new Custom Activity' feature works" do
     visit root_path
@@ -142,6 +148,23 @@ feature "User clicks on sidebar links", :type => :feature, :js => true do
     expect(page).to have_content 'Custom Activity List'
     expect(page).to have_content 'Asdf my new title'
     expect(page).to have_content 'Jkl; my new content'
+  end
+end
+
+feature "User interacts with interests", :type => :feature, :js => true do
+  background do
+    User.create(name: 'John', username: 'johnny22', email: 'johnny22@mail.com', password: 'password')
+  end
+
+  scenario "the User has no interests selected upon account creation" do
+    visit root_path
+
+    # Login
+    fill_in 'username-or-email', with: 'johnny22'
+    fill_in 'password', with: 'password'
+    click_button 'Login'
+    expect(page).to have_content 'Welcome Home, John!'
+    expect(page).to have_content 'Looks like you don\'t have any interests'
   end
 end
 

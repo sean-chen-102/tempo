@@ -76,7 +76,7 @@ feature "User clicks on sidebar links", :type => :feature, :js => true do
     expect(page).to have_content 'Welcome Home, John!'
   end
 
-  scenario 'the Custom Activities view is displayed' do
+  scenario "the Custom Activities view is displayed" do
     visit root_path
 
     # Login
@@ -90,7 +90,7 @@ feature "User clicks on sidebar links", :type => :feature, :js => true do
     expect(page).to have_content 'Custom Activity List'
   end
 
-  scenario 'the History view is displayed' do
+  scenario "the History view is displayed" do
     visit root_path
 
     # Login
@@ -104,7 +104,7 @@ feature "User clicks on sidebar links", :type => :feature, :js => true do
     expect(page).to have_content 'History for'
   end
 
-  scenario 'the Settings view is displayed' do
+  scenario "the Settings view is displayed" do
     visit root_path
 
     # Login
@@ -116,6 +116,55 @@ feature "User clicks on sidebar links", :type => :feature, :js => true do
     # Click 'Settings' link
     click_link 'Settings'
     expect(page).to have_content 'User Settings'
+  end
+end
+
+feature "User interacts with Custom Activities", :type => :feature, :js => true do
+  background do
+    User.create(name: 'John', username: 'johnny22', email: 'johnny22@mail.com', password: 'password')
+  end
+
+  scenario "the 'Create a new Custom Activity' feature works" do
+    visit root_path
+
+    # Login
+    fill_in 'username-or-email', with: 'johnny22'
+    fill_in 'password', with: 'password'
+    click_button 'Login'
+    expect(page).to have_content 'Welcome Home, John!'
+
+    # Click 'Custom Activities' link
+    click_link 'Custom Activities'
+    expect(page).to have_content 'Custom Activity List'
+
+    # Click 'Create a Custom Activity' button
+    click_link 'add'
+    expect(page).to have_content 'Create New Custom Activity'
+
+    # Fill in Custom Activity info and create it
+    fill_in 'title', with: 'Asdf my new title'
+    fill_in 'content', with: 'Jkl; my new content'
+    click_button 'Submit'
+    expect(page).to have_content 'Custom Activity List'
+    expect(page).to have_content 'Asdf my new title'
+    expect(page).to have_content 'Jkl; my new content'
+  end
+end
+
+feature "User interacts with interests", :type => :feature, :js => true do
+  background do
+    User.create(name: 'John', username: 'johnny22', email: 'johnny22@mail.com', password: 'password')
+  end
+
+  scenario "the User has no interests selected upon account creation" do
+    visit root_path
+
+    # Login
+    fill_in 'username-or-email', with: 'johnny22'
+    fill_in 'password', with: 'password'
+    click_button 'Login'
+    expect(page).to have_content 'Welcome Home, John!'
+    expect(page).to have_content 'Looks like you don\'t have any interests'
   end
 end
 

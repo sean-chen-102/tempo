@@ -38,6 +38,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = false
 
   Capybara.javascript_driver = :webkit
+  Capybara.ignore_hidden_elements = false # work with hidden elements
   
   # FOR DATABASE CLEANER
   config.before(:suite) do

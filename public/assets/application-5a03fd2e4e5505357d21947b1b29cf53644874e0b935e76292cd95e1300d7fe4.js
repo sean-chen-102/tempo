@@ -23923,21 +23923,23 @@ var __module0__ = (function(__dependency1__, __dependency2__, __dependency3__, _
 
   return __module0__;
 }));
-(function() { this.JST || (this.JST = {}); this.JST["backbone/templates/activities/activity"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<style>\n\t/*Activity module*/\n  @media screen and (max-width: 675px) {\n      .activity {\n          width: 300px;\n      }\n  }\n\n  .jumbotron {\n    padding: 0;\n    min-height: 500px;\n    position: relative;\n  }\n\n  .activity {\n    position: relative;\n    top: 45px;\n    margin: 0 auto;\n    width: 90%;\n    min-height: 500px;\n    max-height: 800px;\n    background-color: white;\n    border: 1px solid #ddd;\n    box-shadow: 1px 1px 1px #eee;\n    border-top-left-radius: 5px;\n  \tborder-top-right-radius: 5px;\n  }\n\n  .activity header {\n    position: relative;\n    top: 0;\n    height: 12%;\n    background-color: rgb(31, 137, 229);\n    color: white;\n  }\n\n  .activity header h3 {\n  \tmargin: 0;\n    padding: 7px;\n  \tline-height: 23px;\n  }\n\n  /*TODO: Fix adjusting section container*/\n  .activity section {\n  \theight: 90%;\n    max-height: 375px;\n  \toverflow: hidden;\n  \tmargin-bottom: 0;\n    padding: 10px;\n\n  }\n\n  .activity section p {\n  \toverflow: scroll;\n  \theight: 100%;\n    width: 100%;\n  \tfont-family: \'Lato\', sans-serif;\n    font-weight: 300;\n  \tfont-size: 100%;\n  \tmargin: 10px;\n    padding: 10px;\n  }\n\n  .activity section .thumbnail {\n    height: 90%;\n    width: 100%;\n    max-height: 365px;\n    overflow: scroll;\n    position: relative;\n    border: none;\n    font-size: 18px;\n  }\n\n  .activity section .content-video {\n    text-align: center;\n  }\n\n  .activity section .likeContainer {\n  \tmargin: 10px;\n  \tmargin-bottom: 0;\n  }\n\n  .activity footer {\n  \tbackground-color: #f5f5f5;\n  \tposition: absolute;\n  \theight: 20%;\n  \tbottom: 0;\n  \tborder: 1px solid #ddd;\n  }\n\n  .activity footer a {\n  \tposition: relative;\n  \ttop: 10px;\n  \ttext-decoration: none;\n  \tcolor: #2980B9;\n  }\n\n  .activity footer a:hover {\n  \tbackground-color: #f5f5f5;\n  \tcolor: #2980B9;\n  \topacity: .7;\n  }\n\n  #like-count {\n    color: rgb(92, 184, 92);\n    margin-right: 45px;\n  }\n\n  #dislike-count {\n    color: rgb(217, 83, 79);\n  }\n\n  .like-btn {\n    background-color: rgb(92, 184, 92);\n    border-color: rgb(92, 184, 92);  \n  }\n\n  .like-btn:hover, .like-btn:active, .like-btn:visited, .like-btn:focus {\n    background-color: #198A00;\n    outline: none;\n  }\n\n  .dislike-btn {\n    background-color: rgb(217, 83, 79);\n    border-color: rgb(217, 83, 79);\n  }\n\n    .dislike-btn:hover, .dislike-btn:active, .dislike-btn:visited, .dislike-btn:focus {\n    background-color: #9D251B;\n    outline: none;\n  }\n\n  .likeContainer {\n\n  }\n\n  .likeContainer button:hover {\n  \topacity: .8;\n  \tcursor: pointer;\n  }\n\n\n  .linkContainer {\n    margin-top: -35px;\n    padding-left: 10px;\n    padding-right: 10px; \n  }\n\n  a:hover {\n  \tbackground-color: transparent;\n    font-size: 100%;\n  }\n\n  #share {\n    float: right;\n    cursor: pointer;\n  }\n\n  #back {\n    float: left;\n  }\n\n  #link {\n    position: relative;\n    top: 40px;\n  }\n</style>\n\n\n<div class="jumbotron activity">\n  <header>\n      <h3 id="title">',  title ,'</h3>\n  </header>  \n\n  <section>\n    <div class="thumbnail">\n      <!-- <img src="..." alt="..."> -->\n      <div class="caption">\n        <div id="content">',  content ,'</div>\n      </div>\n    </div>\n  </section>\n\n  <footer>\n      <span id="likes"><span id="like-count">',  likes ,'</span></span>\n      <span id="dislikes"><span id="dislike-count">',  dislikes ,'</span></span>\n      <br>\n      <button class=\'btn btn-primary like-btn\' role="button">Like</button>\n      <button class=\'btn btn-primary dislike-btn\' role="button">Dislike</button><br>  \n      <div class="linkContainer">\n        <a id="back" href=\'',  backLink ,'\' id=\'back\'> Back </a>   \n        <a id="share"> Share </a>\n  \n      </div>\n      <div class="content-link"><a id="link" href=\'',  link ,'\' target="_blank"> Link </a></div>\n  </footer>\n</div>\n');}return __p.join('');};
+(function() { this.JST || (this.JST = {}); this.JST["backbone/templates/activities/activity"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<style>\n\t/*Activity module*/\n  @media screen and (max-width: 675px) {\n      .activity {\n          width: 300px;\n      }\n  }\n\n  .jumbotron {\n    padding: 0;\n    position: relative;\n  }\n\n  .activity {\n    position: relative;\n    top: 75px;\n    margin: 0 auto;\n    width: 90%;\n    background-color: white;\n    border: 1px solid #ddd;\n    box-shadow: 1px 1px 1px #eee;\n    border-top-left-radius: 5px;\n  \tborder-top-right-radius: 5px;\n    margin-bottom: 50px;\n  }\n\n  .activity header {\n    text-align: center;\n    vertical-align: center;\n    background-color: rgb(31, 137, 229);\n    color: white;\n  }\n\n  .activity header h3 {\n  \tmargin: 0;\n    padding: 15px;\n  }\n\n  /*TODO: Fix adjusting section container*/\n  .activity section {\n  \toverflow: hidden;\n  \tmargin-bottom: 0;\n    padding: 10px;\n\n  }\n\n  .activity section p {\n  \toverflow: scroll;\n    width: 100%;\n  \tfont-family: \'Lato\', sans-serif;\n    font-weight: 300;\n  \tfont-size: 100%;\n  \tmargin: 10px;\n    padding: 10px;\n  }\n\n  .activity section .thumbnail {\n    width: 100%;\n    overflow: scroll;\n    border: none;\n    font-size: 18px;\n    margin-bottom: 100px;\n  }\n\n  .activity section .content-video {\n    text-align: center;\n  }\n\n  .activity section .likeContainer {\n  \tmargin: 0 auto;\n  }\n\n  .activity .footer {\n    height: 100px;\n    position: absolute;\n    width: 100%;\n  \tbackground-color: #f5f5f5;\n  \tbottom: 0;\n  \tborder: 1px solid #ddd;\n    margin-top: 30px;\n  }\n\n  .activity .footer a {\n  \ttop: 10px;\n  \ttext-decoration: none;\n  \tcolor: #2980B9;\n  }\n\n  .activity footer a:hover {\n  \tbackground-color: #f5f5f5;\n  \tcolor: #2980B9;\n  \topacity: .7;\n  }\n\n  #like-count {\n    color: rgb(92, 184, 92);\n  }\n\n  #dislike-count {\n    color: rgb(217, 83, 79);\n  }\n\n  .like-btn {\n    background-color: rgb(92, 184, 92);\n    border-color: rgb(92, 184, 92);  \n    margin-bottom: 10px;\n  }\n\n  .like-btn:hover, .like-btn:active, .like-btn:visited, .like-btn:focus {\n    background-color: #198A00;\n    outline: none;\n  }\n\n  .dislike-btn {\n    background-color: rgb(217, 83, 79);\n    border-color: rgb(217, 83, 79);\n    margin-bottom: 10px;\n  }\n\n    .dislike-btn:hover, .dislike-btn:active, .dislike-btn:visited, .dislike-btn:focus {\n    background-color: #9D251B;\n    outline: none;\n  }\n\n  .buttonContainer {\n    width: 100%;\n    margin: 0 auto;\n    margin-top: 10px;\n\n  }\n\n  .buttonContainer button:hover {\n  \topacity: .8;\n  \tcursor: pointer;\n  }\n\n  .likeContainer {\n    width: 25%;\n    margin: 0 auto;\n    text-align: center; \n  }\n\n\n  .linkContainer {\n    margin-top: -35px;\n    padding-left: 10px;\n    padding-right: 10px; \n  }\n\n  a:hover {\n  \tbackground-color: transparent;\n    font-size: 100%;\n  }\n\n  #share {\n    float: right;\n    cursor: pointer;\n    margin-right: 10px;\n    font-size: 25px;\n    margin-top: 25px;\n\n  }\n\n  #back {\n    font-size: 25px;\n    margin-left: 10px;\n    float: left;\n    margin-top: 25px;\n  }\n\n  #likes {\n    margin-right: 25px;\n    font-size: 14px;\n  }\n\n  #dislikes {\n    font-size: 14px;\n    margin-left: 28px;\n  }\n\n\n  #link {\n    margin-top: 10px;\n    font-size: 18px;\n  }\n</style>\n\n\n<div class="jumbotron activity">\n  <header>\n      <h3 id="title">',  title ,'</h3>\n  </header>  \n\n  <section>\n    <div class="thumbnail">\n      <!-- <img src="..." alt="..."> -->\n      <p>\n        <div id="content">',  content ,'</div>\n      </p>\n    </div>\n  </section>\n\n  <footer class="footer">\n      <div class="buttonContainer">\n      <a id="back" href=\'',  backLink ,'\' id=\'back\'> Back </a>   \n      <a id="share"> Share </a>\n      <div class="likeContainer">\n      <span id="likes"><span id="like-count">',  likes ,'</span></span>\n      <span id="dislikes"><span id="dislike-count">',  dislikes ,'</span></span>\n      <br>\n      <button class=\'btn btn-primary like-btn\' role="button">Like</button>\n      <button class=\'btn btn-primary dislike-btn\' role="button">Dislike</button><br> \n      <div class="content-link"><a id="link" href=\'',  link ,'\' target="_blank"> Link </a></div>\n      </div> \n      </div>\n  </footer>\n</div>\n');}return __p.join('');};
 }).call(this);
-(function() { this.JST || (this.JST = {}); this.JST["backbone/templates/activities/activityCustom"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<style>\n  /*Activity module*/\n  @media screen and (max-width: 675px) {\n      .activity {\n          width: 300px;\n      }\n  }\n\n  .jumbotron {\n    padding: 0;\n    min-height: 500px;\n    position: relative;\n  }\n\n  .activity {\n    position: relative;\n    top: 45px;\n    margin: 0 auto;\n    width: 90%;\n    min-height: 500px;\n    max-height: 800px;\n    background-color: white;\n    border: 1px solid #ddd;\n    box-shadow: 1px 1px 1px #eee;\n    border-top-left-radius: 5px;\n    border-top-right-radius: 5px;\n  }\n\n  .activity header {\n    position: relative;\n    top: 0;\n    height: 12%;\n    background-color: rgb(31, 137, 229);\n    color: white;\n  }\n\n  .activity header h3 {\n    margin: 0;\n    padding: 7px;\n    line-height: 23px;\n  }\n\n  /*TODO: Fix adjusting section container*/\n  .activity section {\n    height: 90%;\n    max-height: 375px;\n    overflow: hidden;\n    margin-bottom: 0;\n    padding: 10px;\n\n  }\n\n  .activity section p {\n    overflow: scroll;\n    height: 100%;\n    width: 100%;\n    font-family: \'Lato\', sans-serif;\n    font-weight: 300;\n    font-size: 100%;\n    margin: 10px;\n    padding: 10px;\n  }\n\n  .activity section .thumbnail {\n    height: 90%;\n    width: 100%;\n    max-height: 365px;\n    overflow: scroll;\n    position: relative;\n    border: none;\n    font-size: 18px;\n  }\n\n  .activity section .content-video {\n    text-align: center;\n  }\n\n  .activity section .likeContainer {\n    margin: 10px;\n    margin-bottom: 0;\n  }\n\n  .activity footer {\n    background-color: #f5f5f5;\n    position: absolute;\n    height: 10%;\n    bottom: 0;\n    border: 1px solid #ddd;\n  }\n\n  .activity footer a {\n    position: relative;\n    top: 10px;\n    text-decoration: none;\n    color: #2980B9;\n  }\n\n  .activity footer a:hover {\n    background-color: #f5f5f5;\n    color: #2980B9;\n    opacity: .7;\n  }\n\n  #like-count {\n    color: rgb(92, 184, 92);\n    margin-right: 45px;\n  }\n\n  #dislike-count {\n    color: rgb(217, 83, 79);\n  }\n\n  .like-btn {\n    background-color: rgb(92, 184, 92);\n    border-color: rgb(92, 184, 92);    \n  }\n\n  .dislike-btn {\n    background-color: rgb(217, 83, 79);\n    border-color: rgb(217, 83, 79);\n  }\n\n  .likeContainer {\n\n  }\n\n  .likeContainer button:hover {\n    opacity: .8;\n    cursor: pointer;\n  }\n\n  .linkContainer {\n    margin-top: -35px;\n    padding-left: 10px;\n    padding-right: 10px; \n  }\n\n  a:hover {\n    background-color: transparent;\n    font-size: 100%;\n  }\n\n  #share {\n    float: right;\n    cursor: pointer;\n  }\n\n  #back {\n    margin: 0 auto;\n  }\n\n  #link {\n    position: relative;\n    top: 40px;\n  }\n</style>\n\n<div class="jumbotron activity">\n  <header>\n      <h3 id="title">',  title ,'</h3>\n  </header>  \n\n  <section>\n    <div class="thumbnail">\n      <!-- <img src="..." alt="..."> -->\n      <div class="caption">\n        <div id="content">',  content ,'</div>\n      </div>\n    </div>\n  </section>\n\n  <footer>\n    <a id="back" href=\'',  backLink ,'\' id=\'back\'> Back </a>   \n  </footer>\n</div>\n');}return __p.join('');};
+(function() { this.JST || (this.JST = {}); this.JST["backbone/templates/activities/activityCustom"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<style>\n  /*Activity module*/\n  @media screen and (max-width: 675px) {\n      .activity {\n          width: 300px;\n      }\n  }\n\n  .jumbotron {\n    padding: 0;\n    min-height: 500px;\n    position: relative;\n  }\n\n  .activity {\n    position: relative;\n    top: 75px;\n    margin: 0 auto;\n    width: 90%;\n    min-height: 500px;\n    max-height: 800px;\n    background-color: white;\n    border: 1px solid #ddd;\n    box-shadow: 1px 1px 1px #eee;\n    border-top-left-radius: 5px;\n    border-top-right-radius: 5px;\n  }\n\n  .activity header {\n    position: relative;\n    top: 0;\n    height: 12%;\n    background-color: rgb(31, 137, 229);\n    color: white;\n  }\n\n  .activity header h3 {\n    margin: 0;\n    padding: 7px;\n    line-height: 23px;\n  }\n\n  /*TODO: Fix adjusting section container*/\n  .activity section {\n    height: 90%;\n    max-height: 375px;\n    overflow: hidden;\n    margin-bottom: 0;\n    padding: 10px;\n\n  }\n\n  .activity section p {\n    overflow: scroll;\n    height: 100%;\n    width: 100%;\n    font-family: \'Lato\', sans-serif;\n    font-weight: 300;\n    font-size: 100%;\n    margin: 10px;\n    padding: 10px;\n  }\n\n  .activity section .thumbnail {\n    height: 90%;\n    width: 100%;\n    max-height: 365px;\n    overflow: scroll;\n    position: relative;\n    border: none;\n    font-size: 18px;\n  }\n\n  .activity section .content-video {\n    text-align: center;\n  }\n\n  .activity section .likeContainer {\n    margin: 10px;\n    margin-bottom: 0;\n  }\n\n  .activity .footer {\n    margin: 0 auto;\n    background-color: #f5f5f5;\n    position: absolute;\n    width: 100%;\n    height: 10%;\n    bottom: 0;\n    border: 1px solid #ddd;\n  }\n\n  .activity footer a {\n    position: relative;\n    top: 10px;\n    text-decoration: none;\n    color: #2980B9;\n  }\n\n  .activity footer a:hover {\n    background-color: #f5f5f5;\n    color: #2980B9;\n    opacity: .7;\n  }\n\n  #like-count {\n    color: rgb(92, 184, 92);\n    margin-right: 45px;\n  }\n\n  #dislike-count {\n    color: rgb(217, 83, 79);\n  }\n\n  .like-btn {\n    background-color: rgb(92, 184, 92);\n    border-color: rgb(92, 184, 92);    \n  }\n\n  .dislike-btn {\n    background-color: rgb(217, 83, 79);\n    border-color: rgb(217, 83, 79);\n  }\n\n  .likeContainer {\n\n  }\n\n  .likeContainer button:hover {\n    opacity: .8;\n    cursor: pointer;\n  }\n\n  .linkContainer {\n    margin-top: -35px;\n    padding-left: 10px;\n    padding-right: 10px; \n  }\n\n  a:hover {\n    background-color: transparent;\n    font-size: 100%;\n  }\n\n  #share {\n    float: right;\n    cursor: pointer;\n  }\n\n  #back {\n    font-size: 25px;\n    margin: 0 auto;\n  }\n\n  .back-wrapper {\n    width: 25%;\n    margin: 0 auto;\n    text-align: center;\n  }\n\n  #link {\n    position: relative;\n    top: 40px;\n  }\n</style>\n\n<div class="jumbotron activity">\n  <header>\n      <h3 id="title">',  title ,'</h3>\n  </header>  \n\n  <section>\n    <div class="thumbnail">\n      <!-- <img src="..." alt="..."> -->\n      <div class="caption">\n        <div id="content">',  content ,'</div>\n      </div>\n    </div>\n  </section>\n\n  <footer class="footer">\n    <div class="back-wrapper">\n      <a id="back" href=\'',  backLink ,'\' id=\'back\'> Back </a> \n    </div>  \n  </footer>\n</div>\n');}return __p.join('');};
 }).call(this);
 (function() { this.JST || (this.JST = {}); this.JST["backbone/templates/activities/activityList"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<p> test </p>\n<!-- \n<h4 style=\'color: #9b59b6;\'> Activity List </h4> <br>\n<table> \n\t<thead> <tr> <th>Title</th><th>Type</th><th>Likes</th><th>Dislikes</th>\n\t<th colspan=\'3\'></th> </tr> </thead> \n\t<tbody> \n\t<tr> \n\t\t<td> <a href=\'/tempo#activities/" +model.get(\'id\') + "\'> ',  title ,' </a> </td>\n\t      <td> ',  content_type ,' </td>\n\t      <td> ',  like_count ,' </td>\n\t      <td> ',  dislike_count ,'</td>\n     </tr>\n\t</tbody> \n</table> </br> \t\t -->\n');}return __p.join('');};
 }).call(this);
-(function() { this.JST || (this.JST = {}); this.JST["backbone/templates/activities/createCustomActivity"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<!-- Temporary styling -->\n<!-- TODO: move this away -->\n\n<style>\n\n</style>\n<div class="jumbotron activity">\n\n<form id="custom-activities-form" name="custom-activity"> \n\t<header id="head">\n\t\t<h3> Create New Custom Activity  </h3>\n\t</header>\n\t<section> \n\t\t<label for="title"> Title: </label> <br> \n\t\t<input type="text" name"title" id="title" value=""> <br> \n\t\t<label for="content"> Content: </label> <br> \n\t\t<input type="text" name"content" id="content" value=""> <br> \n\t\t<label for="completion_time"> Completion time: </label> <br> \n\t\t<section> \n\t\t\t<input class="knob" data-width="100" data-displayinput="true" value="0" height="100" >\n\t\t</section>\t\t\n\t\t<p id="warning"> </p> \n\t\t<br>\n\t\t<button type="button" class="submitCustomActivity btn btn-primary"> Submit </button> \n\t</section> \n</form>\n<div>\n');}return __p.join('');};
+(function() { this.JST || (this.JST = {}); this.JST["backbone/templates/activities/createCustomActivity"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<!-- Temporary styling -->\n<!-- TODO: move this away -->\n\n\n<div class="jumbotron activity">\n\n<form id="custom-activities-form" name="custom-activity"> \n\t<header id="head">\n\t\t<h3> Create New Custom Activity  </h3>\n\t</header>\n\t<section> \n\t\t<label for="title"> Title: </label> <br> \n\t\t<input type="textarea" name"title" id="title" value=""> <br> \n\t\t<label for="content"> Content: </label> <br> <b>\n\t\t<textarea type="text" name"content" id="content" value=""> </textarea> <br> \n\t\t<label for="completion_time"> Completion time: </label> <br> \n\t\t<section> \n\t\t\t<input class="knob" data-width="100" data-displayinput="true" value="0" height="100" >\n\t\t</section>\t\t\n\t\t<p id="warning"> </p> \n\t\t<br>\n\t\t<button type="button" class="submitCustomActivity btn btn-primary"> Submit </button> \n\t</section> \n</form>\n<div>\n');}return __p.join('');};
 }).call(this);
-(function() { this.JST || (this.JST = {}); this.JST["backbone/templates/activities/customActivity"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<!-- Temporary styling -->\n<!-- TODO: move this away -->\n<!-- \n<div class="customActivity">\n\t<header> \n\t\t<h4 id=\'customActivityTitle\' style=\'color: #9b59b6;\'> Custom Activity List for ',  name,' </h4> \n\t</header>\n\t<br>\n\t<table class=\'customActivityTable\' >\n\t\t<thead>\n\t\t\t<tr>\n\t\t\t\t<th>Title</th> <th>Content</th> <th>Time</th> <th>Delete</th>\n\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody>\n\t\t');  _.each(data, function(custAct) { ; __p.push(' \n\t\t\t<tr class=\'activity ',  custAct.id ,'\'>\n\t\t\t\t<td>  ',  custAct.title,' </td>\n\t\t\t\t<td>  ',  custAct.content,' </td>\n\t\t\t\t<td>  ',  custAct.time,' </td>\n\t\t\t\t<td>  <button class=\'del-btn\' id=\'',  custAct.id ,'\'>Delete</button> </td>\n\t\t\t</tr>\n\t\t\t');  }); ; __p.push('\n\t\t</tbody> \n\t</table> </br>\n\n\t<footer> \n\t\t<a href=\'/tempo#createCustomActivity\' id=\'add\'> Create a \tCustom Activity </a>\n\t</footer>\n</div>\n -->\n\n\n\n\n<div class="custActContainer animated pulse">\n\t<header> \n\t\t<h3 id=\'customActivityTitle\'> Custom Activity List for ',  name,' </h3> \n\t</header>\n\t<section>\n\t\t<div class="tableContainer">\n\t\t\t<table id="custActTable" class="table table-bordered table-hover">\n\t\t\t\t<thead>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Title</th> <th>Content</th> <th>Time</th> <th>Delete</th>\n\t\t\t\t\t</tr>\n\t\t\t\t</thead>\n\n\t\t\t\t<tbody>\n\t\t\t\t\t');  _.each(data, function(custAct) { ; __p.push(' \n\t\t\t\t\t\t<tr class=\'activity ',  custAct.id ,'\'>\n\t\t\t\t\t\t\t<td>  ',  custAct.title,' </td>\n\t\t\t\t\t\t\t<td>  ',  custAct.content,' </td>\n\t\t\t\t\t\t\t<td>  ',  custAct.time,' </td>\n\t\t\t\t\t\t\t<td>  <button class=\'del-btn\' id=\'',  custAct.id ,'\'>Delete</button> </td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t');  }); ; __p.push('\t\t\t\n\t\t\t\t</tbody>\n\t\t\t</table>\n\t\t</div>\n\t</section>\n\t<footer> \n\t\t<a href=\'/tempo#createCustomActivity\' id=\'add\'> Create a \tCustom Activity </a>\n\t</footer>\t\n</div>\n');}return __p.join('');};
+(function() { this.JST || (this.JST = {}); this.JST["backbone/templates/activities/customActivity"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<!-- Temporary styling -->\n<!-- TODO: move this away -->\n<!-- \n<div class="customActivity">\n\t<header> \n\t\t<h4 id=\'customActivityTitle\' style=\'color: #9b59b6;\'> Custom Activity List for ',  name,' </h4> \n\t</header>\n\t<br>\n\t<table class=\'customActivityTable\' >\n\t\t<thead>\n\t\t\t<tr>\n\t\t\t\t<th>Title</th> <th>Content</th> <th>Time</th> <th>Delete</th>\n\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody>\n\t\t');  _.each(data, function(custAct) { ; __p.push(' \n\t\t\t<tr class=\'activity ',  custAct.id ,'\'>\n\t\t\t\t<td>  ',  custAct.title,' </td>\n\t\t\t\t<td>  ',  custAct.content,' </td>\n\t\t\t\t<td>  ',  custAct.time,' </td>\n\t\t\t\t<td>  <button class=\'del-btn\' id=\'',  custAct.id ,'\'>Delete</button> </td>\n\t\t\t</tr>\n\t\t\t');  }); ; __p.push('\n\t\t</tbody> \n\t</table> </br>\n\n\t<footer> \n\t\t<a href=\'/tempo#createCustomActivity\' id=\'add\'> Create a \tCustom Activity </a>\n\t</footer>\n</div>\n -->\n\n\n\n\n<div class="custActContainer">\n\t<header> \n\t\t<h3 id=\'customActivityTitle\'> Custom Activity List for ',  name,' </h3> \n\t</header>\n\t<section>\n\t\t<div class="tableContainer">\n\t\t\t<table id="custActTable" class="table table-bordered table-hover">\n\t\t\t\t<thead>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Title</th> <th>Content</th> <th>Time</th> <th>Delete</th> <th>Edit</th>\n\t\t\t\t\t</tr>\n\t\t\t\t</thead>\n\n\t\t\t\t<tbody>\n\t\t\t\t\t');  _.each(data, function(custAct) { ; __p.push(' \n\t\t\t\t\t\t<tr class=\'activity ',  custAct.id ,'\'>\n\t\t\t\t\t\t\t<td>  ',  custAct.title,' </td>\n\t\t\t\t\t\t\t<td>  ',  custAct.content,' </td>\n\t\t\t\t\t\t\t<td>  ',  custAct.time,' </td>\n\t\t\t\t\t\t\t<td>  <button class=\'del-btn\' id=\'',  custAct.id ,'\'>Delete</button> </td>\n\t\t\t\t\t\t\t<td>   <button class=\'edit-btn\' id=\'',  custAct.id ,'\'>Edit</button></td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t');  }); ; __p.push('\t\t\t\n\t\t\t\t</tbody>\n\t\t\t</table>\n\t\t</div>\n\t</section>\n\t<footer> \n\t\t<a href=\'/tempo#createCustomActivity\' id=\'add\'> Create a \tCustom Activity </a>\n\t</footer>\t\n</div>\n');}return __p.join('');};
 }).call(this);
 (function() { this.JST || (this.JST = {}); this.JST["backbone/templates/activities/edit"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<h1>Edit activity</h1>\n\n<form id="edit-activity" name="activity">\n  <div class="field">\n    <label for="title"> title:</label>\n    <input type="text" name="title" id="title" value="',  title ,'" >\n  </div>\n\n  <div class="field">\n    <label for="content"> content:</label>\n    <input type="text" name="content" id="content" value="',  content ,'" >\n  </div>\n\n  <div class="field">\n    <label for="completion_time"> completion_time:</label>\n    <input type="text" name="completion_time" id="completion_time" value="',  completion_time ,'" >\n  </div>\n\n  <div class="field">\n    <label for="content_type"> content_type:</label>\n    <input type="text" name="content_type" id="content_type" value="',  content_type ,'" >\n  </div>\n\n  <div class="field">\n    <label for="link"> link:</label>\n    <input type="text" name="link" id="link" value="',  link ,'" >\n  </div>\n\n  <div class="actions">\n    <input type="submit" value="Update Activity" />\n  </div>\n\n</form>\n\n<a href="#/index">Back</a>\n');}return __p.join('');};
 }).call(this);
-(function() { this.JST || (this.JST = {}); this.JST["backbone/templates/activities/history"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<!-- Temporary styling -->\n\n<div class="historyOuter">\n<div class="histContainer animated pulse">\n\t<header> \n\t\t<h3 id=\'historyTitle\'> History for ',  name,' </h3> \n\t</header>\n\t<section>\n\t\t<div class="tableContainer">\n\t\t\t<table id="histTable" class="table table-hover">\n\t\t\t\t<tbody>\n\t\t\t\t\t');  _.each(data, function(custAct) { ; __p.push(' \n\t\t\t\t\t\t<tr class=\'history ',  custAct.id ,'\'>\n\t\t\t\t\t\t\t<td> <a href=\'/tempo#activities/',  custAct.id,'?history=true\'> ',  custAct.title,' </a>\n\t\t\t\t\t\t\t\t<button class="btn share-button" id="activity-',  custAct.id,'"> share </button> </td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t');  }); ; __p.push('\t\t\t\n\t\t\t\t</tbody>\n\t\t\t</table>\n\t\t</div>\n\t</section>\n</div>\n\n<div class="custHistContainer animated pulse">\n\t<header> \n\t\t<h3 id=\'customHistoryTitle\'> Custom Activity History for ',  name,' </h3> \n\t</header>\n\t<section>\n\t\t<div class="tableContainer">\n\t\t\t<table id="customHistTable" class="table table-hover">\n\t\t\t\t<tbody>\n\t\t\t\t\t');  _.each(custData, function(custAct) { ; __p.push(' \n\t\t\t\t\t\t<tr class=\'history ',  custAct.id ,'\'>\n\t\t\t\t\t\t\t<td>  \n\t\t\t\t\t\t\t\t<a href=\'/tempo#customActivity/',  custAct.id,'?history=true\'> ',  custAct.title,' </a>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t');  }); ; __p.push('\t\t\t\n\t\t\t\t</tbody>\n\t\t\t</table>\n\t\t</div>\n\t</section>\n</div>\n</div>\n');}return __p.join('');};
+(function() { this.JST || (this.JST = {}); this.JST["backbone/templates/activities/editCustomActivity"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<!-- Temporary styling -->\n<!-- TODO: move this away -->\n\n\n<div class="jumbotron activity">\n\n<form id="custom-activities-form" name="custom-activity"> \n\t<header id="head">\n\t\t<h3> Edit Custom Activity  </h3>\n\t</header>\n\t<section> \n\t\t<label for="title"> Title: </label> <br> \n\t\t<input type="textarea" name"title" id="title" value=\'',  title ,'\'> <br> \n\t\t<label for="content"> Content: </label> <br> <b>\n\t\t<textarea type="text" name"content" id="content" value=\'',  content ,'\'>',  content ,'</textarea> <br> \n\t\t<label for="completion_time"> Completion time: </label> <br> \n\t\t<section> \n\t\t\t<input class="knob" data-width="100" data-displayinput="true" value="',  completion_time,'" height="100" >\n\t\t</section>\t\t\n\t\t<p id="warning"> </p> \n\t\t<br>\n\t\t<button type="button" class="editActivityButton btn btn-primary"> Save </button> \n\t\t<a class="back-button btn btn-primary" href="/tempo#customActivities"> Back </a> \n\t</section> \n</form>\n<div>\n');}return __p.join('');};
 }).call(this);
-(function() { this.JST || (this.JST = {}); this.JST["backbone/templates/activities/home"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<!-- Temporary styling -->\n\n<div class="home-wrapper animated bounceIn">\n\t<header>\n\t\t<h3> Welcome Home,  ',  name ,'!</h3>\n\t</header>\n\t<div class="subtitle">\n\t\t<h3> How much time do you have?</h3>\n\t</div>\n\t<section> \n\t\t<input class="knob" data-width="100" data-displayinput="true" value="0" height="100" >\n\t\t<div id="btn-wrapper">\n\t\t\t<button class=\'go-btn\'>GO</button>\n\t\t</div>\n\t</section>\n\t<div class="interest-wrapper">\n\t \t<h4> Toggle Interests </h4> \n\t\t<ul>\n\t\t');  _.each(interests, function(interest, i) { ; __p.push(' \n\t\t\t<li>\n\t\t\t\t<input type=checkbox name= "',  interest,'"  id="interest-',  i,'" checked >\n\t\t\t\t<P> ',  interest ,' </p>\n\t\t\t</li>\n\t\t');  }); ; __p.push('\n\t\t</ul>\n\t</div>\n\n</div>\n');}return __p.join('');};
+(function() { this.JST || (this.JST = {}); this.JST["backbone/templates/activities/history"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<!-- Temporary styling -->\n\n<div class="historyOuter">\n<div class="histContainer">\n\t<header> \n\t\t<h3 id=\'historyTitle\'> History for ',  name,' </h3> \n\t</header>\n\t<section>\n\t\t<div class="tableContainer">\n\t\t\t<table id="histTable" class="table table-hover">\n\t\t\t\t<tbody>\n\t\t\t\t\t');  _.each(data, function(custAct) { ; __p.push(' \n\t\t\t\t\t\t<tr class=\'history ',  custAct.id ,'\'>\n\t\t\t\t\t\t\t<td> <a href=\'/tempo#activities/',  custAct.id,'?history=true\'> ',  custAct.title,' </a> </td>\n\t\t\t\t\t\t\t<td>\t<button class="btn share-button" id="activity-',  custAct.id,'"> share </button> </td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t');  }); ; __p.push('\t\t\t\n\t\t\t\t</tbody>\n\t\t\t</table>\n\t\t</div>\n\t</section>\n</div>\n\n<div class="custHistContainer">\n\t<header> \n\t\t<h3 id=\'customHistoryTitle\'> Custom Activity History for ',  name,' </h3> \n\t</header>\n\t<section>\n\t\t<div class="tableContainer">\n\t\t\t<table id="customHistTable" class="table table-hover">\n\t\t\t\t<tbody>\n\t\t\t\t\t');  _.each(custData, function(custAct) { ; __p.push(' \n\t\t\t\t\t\t<tr class=\'history ',  custAct.id ,'\'>\n\t\t\t\t\t\t\t<td>  \n\t\t\t\t\t\t\t\t<a href=\'/tempo#customActivity/',  custAct.id,'?history=true\'> ',  custAct.title,' </a>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t');  }); ; __p.push('\t\t\t\n\t\t\t\t</tbody>\n\t\t\t</table>\n\t\t</div>\n\t</section>\n</div>\n</div>\n');}return __p.join('');};
+}).call(this);
+(function() { this.JST || (this.JST = {}); this.JST["backbone/templates/activities/home"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<!-- Temporary styling -->\n\n<div class="home-wrapper animated pulse">\n\t<header>\n\t\t<h3> Welcome Home,  ',  name ,'!</h3>\n\t</header>\n\t<div class="subtitle">\n\t\t<h3> How much time do you have?</h3>\n\t</div>\n\t<section> \n\t\t<input class="knob" data-width="100" data-displayinput="true" value="0" height="100" >\n\t\t<div id="btn-wrapper">\n\t\t\t<button class=\'go-btn\'>GO</button>\n\t\t</div>\n\t</section>\n\t<div class="interest-wrapper">\n\t \t<h4> Toggle Interests </h4> \n\t\t<ul>\n\t\t');  _.each(interests, function(interest, i) { ; __p.push(' \n\t\t\t<li>\n\t\t\t\t<input type=checkbox name= "',  interest,'"  id="interest-',  i,'" checked >\n\t\t\t\t<p> ',  interest ,' </p>\n\t\t\t</li>\n\t\t');  }); ; __p.push('\n\t\t</ul>\n\t</div>\n\n</div>\n');}return __p.join('');};
 }).call(this);
 (function() { this.JST || (this.JST = {}); this.JST["backbone/templates/activities/new"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<h1>New activity</h1>\n\n<form id="new-activity" name="activity">\n  <div class="field">\n    <label for="title"> title:</label>\n    <input type="text" name="title" id="title" value="',  title ,'" >\n  </div>\n\n  <div class="field">\n    <label for="content"> content:</label>\n    <input type="text" name="content" id="content" value="',  content ,'" >\n  </div>\n\n  <div class="field">\n    <label for="completion_time"> completion_time:</label>\n    <input type="text" name="completion_time" id="completion_time" value="',  completion_time ,'" >\n  </div>\n\n  <div class="field">\n    <label for="content_type"> content_type:</label>\n    <input type="text" name="content_type" id="content_type" value="',  content_type ,'" >\n  </div>\n\n  <div class="field">\n    <label for="link"> link:</label>\n    <input type="text" name="link" id="link" value="',  link ,'" >\n  </div>\n\n  <div class="actions">\n    <input type="submit" value="Create Activity" />\n  </div>\n\n</form>\n\n<a href="#/index">Back</a>\n');}return __p.join('');};
 }).call(this);
@@ -24112,8 +24114,6 @@ var ActivitiesView = Backbone.View.extend({
       this.activities = new Activities();
     },
     render : function (options){
-      console.log("I am rendering the activity view");
-      console.log(this.activities);
       // Set scope, construct new activity collection, call fetch, render data on callback function
       var that = this; // To fix callback scoping error
 
@@ -24123,28 +24123,39 @@ var ActivitiesView = Backbone.View.extend({
         // var template = JST["backbone/templates/activities/activityList"]({});
         // $(this.el).html(template);  
 
-        var html = "<div class='actContainer animated pulse'> <header id='activityTitle'> <h3> Activity List </h3> </header>"
-              + "<section> <div class='tableContainer'> <table id='actTable' class='table table-bordered table-hover activityTable'> <thead> <tr> <th>Title</th><th>Type</th><th>Likes</th><th>Dislikes</th>"
-              + " </tr> </thead>" 
+        var html = "<div class='actContainer'> <header id='activityTitle'> <h3> Activity List </h3> </header>"
+              + "<section> <div class='tableContainer'> <table id='actTable' class='table table-bordered table-hover activityTable'>"
               + " <tbody> ";
 
         //Iterate throught he collections of Activities and create a template
-        console.log("activity");
         data.each(function(model){
           //jank way to determine if it's a custom activity
           if (model.get('activity_type') == "custom_activity"){
             html += "<tr class='tRow'>" 
-                + "<td> <a href='/tempo#customActivity/" +model.get('id') + "'>" +  model.get('title') + " </a> </td>"
-                + "<td id='contentType'> text </td>"
-                + "<td id='likeCount'> 0 </td>"
-                + "<td id='dislikeCount''> 0 </td>"
+                + "<td> <a href='/tempo#customActivity/" +model.get('id') + "'>" +  model.get('title') + " </a> <br>"
+                + "<div class='interest-type'> Custom </div></td>"
                 + "</tr>";  
           } else {
+            var completionTime = model.get("completion_time");
+            var interest = model.get("interests")[0];
+            if (interest === "Explain It Like I'm 5") {
+              interest = "ELI5";
+            }
+            var icon = "";
+            if (model.get("content_type") === "text") {
+                icon = "<div class='icon'> <i class='fa fa-newspaper-o'></i> </div>";
+            } else {
+                icon = "<div class='icon'> <i class='fa fa-video-camera'></i> </div>";
+
+            }
+            var className = "";
+            var count = model.get("like_count") - model.get('dislike_count');
             html += "<tr class='tRow'>" 
-                + "<td> <a href='/tempo#activities/" +model.get('id') + "'>" +  model.get('title') + " </a> </td>"
-                + "<td id='contentType'> " +  model.get('content_type') + " </td>"
-                + "<td id='likeCount'> " +  model.get('like_count') + " </td>"
-                + "<td id='dislikeCount''> " +  model.get('dislike_count') + " </td>"
+                + "<td> <a href='/tempo#activities/" +model.get('id') + "'>" +  model.get('title') + " </a> <br>"
+                + "<div class='interest-type'>" + interest + "</div>"
+                 + "<div class='completion-time'>" + completionTime + "</div>"
+                + icon + "</td>"
+                + "<td class='rating-cell'>" + "<p class='rating-text'>" + count +  "</p>  <div class='rating'> <i class='fa fa-signal'> </i> </div> </td>"
                 + "</tr>";  
           }
         });
@@ -24161,7 +24172,6 @@ var ActivitiesView = Backbone.View.extend({
 
       //TODO: Find better way to do this
       var token = Cookies.get('login-token');
-      console.log(this.time);
       if (this.activities.length > 0) {
         renderData(this.activities);
       } else if (this.time) {
@@ -24182,6 +24192,16 @@ var ActivitiesView = Backbone.View.extend({
           data: {"interests": this.interests, "user_id": options.user.id,
                  "token":token}
         });
+      }
+     }, 
+     updateLikeCount : function(activityId, like, dislike) {
+      var that = this;
+      for (i = 0; i < this.activities.models.length; i++) {
+        if (this.activities.models[i].id == activityId) {
+            this.activities.models[i].attributes.like_count = like;
+            this.activities.models[i].attributes.dislike_count = dislike;
+            return;
+        }
       }
      }
   });
@@ -24228,7 +24248,6 @@ var ActivityCustomView = Backbone.View.extend({
         });
     },
     markAsComplete: function(options){
-        console.log("marking custom as complete");
         var activity = new Activity();
         activity.url = "/api/custom_activities/" + this.activity_id + "/complete";
         var token = Cookies.get('login-token');
@@ -24260,7 +24279,6 @@ var ActivityModalView = Backbone.View.extend({
     },
 
     show: function() {
-      console.log("in show for modal");
       // TODO: Modal isn't being displayed as a modal, check bootstrap?
       this.$el.modal('show');
     },
@@ -24306,6 +24324,7 @@ var ActivityView = Backbone.View.extend({
       this.activity_id = options['id'];
       this.history = options['history'];
       this.link = "";
+      this.activitiesView = options.activitiesView;
     },
     renderData: function(data){
         if(data['link'] == "N/A"){
@@ -24338,7 +24357,6 @@ var ActivityView = Backbone.View.extend({
         $(this.el).html(template);
     },
     render: function(options){
-        console.log("activity view render call");
         //mark activity as complete because it has been viewed
         this.markAsComplete(options);
         var that = this;
@@ -24372,6 +24390,7 @@ var ActivityView = Backbone.View.extend({
     makeLikeRequest : function(options){
         //called when the like button is clicked
         console.log("liked");
+        var that = this;
         var activity = new Activity();
         activity.url = "/api/activities/" + this.activity_id + "/like";
         var token = Cookies.get('login-token');
@@ -24386,6 +24405,7 @@ var ActivityView = Backbone.View.extend({
                     console.log("liked!");
                     $("#like-count").html(response['like_count']);
                     $("#dislike-count").html(response['dislike_count']);
+                    that.activitiesView.updateLikeCount(that.activity_id, response["like_count"], response["dislike_count"])
                 }
             },
             error: function(userSession, response) {
@@ -24397,6 +24417,7 @@ var ActivityView = Backbone.View.extend({
         //called when the dislike button is clicked
         console.log("disliked");
         var activity = new Activity();
+        var that = this;
         activity.url = "/api/activities/" + this.activity_id + "/dislike";
         var token = Cookies.get('login-token');
         activity.attributes = {id:this.activity_id, user_id:this.user.id,
@@ -24410,6 +24431,8 @@ var ActivityView = Backbone.View.extend({
                     console.log("disliked!");
                     $("#like-count").html(response['like_count']);
                     $("#dislike-count").html(response['dislike_count']);
+                    that.activitiesView.updateLikeCount(that.activity_id, response["like_count"], response["dislike_count"])
+
                 }
             },
             error: function(userSession, response) {
@@ -24482,7 +24505,6 @@ var CreateCustomActivityView = Backbone.View.extend({
       model.attributes.token = Cookies.get('login-token');
 
       model.url = "/api/users/" + this.user.id + "/custom_activities";
-      console.log("Going to create custom activity");
 
       model.save(model.attributes, {        
           success: function(userSession, response) {
@@ -24513,7 +24535,8 @@ var CustomActivityView = Backbone.View.extend({
     activities : null,
     user: null,
     events: {
-        "click .del-btn":"deleteActivity"
+        "click .del-btn":"deleteActivity",
+        "click .edit-btn": "editActivity"
     },
     initialize: function(options){
       this.options = options;
@@ -24523,6 +24546,7 @@ var CustomActivityView = Backbone.View.extend({
     renderData : function(data){
       var that = this;
       var templateData = [];
+      console.log(data);
       //Iterate throught he collections of Activities and create a template
       data.each(function(model){
         templateData.push({"title": model.get("title"), "content" : model.get("content"), 
@@ -24535,7 +24559,6 @@ var CustomActivityView = Backbone.View.extend({
       this.$el.html(template);
     },
     render : function (options){
-      console.log("customAC render");
       // Set scope, construct new activity collection, call fetch, render data on callback function
       var that = this; // To fix callback scoping error	
       this.user = options.user;
@@ -24555,7 +24578,6 @@ var CustomActivityView = Backbone.View.extend({
     },
     deleteActivity: function(options){
       //DELETE /api/users/:id/custom_activities/:cid
-      console.log("deleting");
       var that = this; // To fix callback scoping error 
       var activityId = options.currentTarget.id;
       var activity = new CustomActivity();
@@ -24579,9 +24601,114 @@ var CustomActivityView = Backbone.View.extend({
               console.log("failure!");
           }
       });
+    },   
+    editActivity: function(event) {
+      // clickedCustomActivity = this.customActivities.get(event.currentTarget.id);
+      // var editView = new EditCustomActivityView({activity: clickedCustomActivity});
+      // editView.render();
+      window.location = "/tempo#customActivities/" + event.currentTarget.id;
     }
   });
 
+// Custom Activity View
+var EditCustomActivityView = Backbone.View.extend({
+    el: ".testDiv",
+    options: null,
+    user_id:null,
+    events: {
+      "click .editActivityButton" : "editActivity",
+    },
+    interests: [],
+    user : null,
+    initialize: function(options){
+      this.options = options;
+      this.activity_id = options['id'];
+      // this.customActivities = new CustomActivities();
+      // alert("initialized model for custom activity");
+    },
+    render: function (options){
+      // this.activity = this.options.activity.attributes;
+      // console.log(this.options);
+      // this.user_id = this.activity.user_id;
+      // console.log(this.user_id);
+      // Set scope, construct new activity collection, call fetch, render data on callback function
+      var that = this;
+      this.user_id = options.user.id;
+
+      var activity = new CustomActivity();
+      activity.id = this.activity_id;
+      activity.url = "/api/users/" + options.user.id + "/custom_activities/" + this.activity_id;
+      activity.fetch({
+          success: function(data){
+              console.log(data.attributes);
+              that.renderData(data.attributes['custom_activity']);
+          },
+          data: {"token": Cookies.get('login-token')}
+      });
+    },
+    renderData: function(data){
+      // TODO: Move HTML into templates
+      var that = this;
+      var customActTemplate = JST["backbone/templates/activities/editCustomActivity"]({
+        title: data['title'],
+        content: data['content'],
+        completion_time: data['completion_time']
+      });
+      $(this.el).html(customActTemplate);
+
+      $(function() {
+        $(".knob").knob({
+          max: 60,
+          min: 0,
+          width: 150,
+          height: 150,
+          step: 1,
+          fgColor: "#2C7EBF",
+          inputColor: "#2C7EBF"
+        });
+        $(".knob").val(data['completion_time']).trigger('change');
+      });
+    },
+    editActivity: function (e){
+      var that = this;
+      el = $(this.el);
+      e.preventDefault();
+      console.log(this.activity_id);
+      console.log(this.user_id);
+
+      var title = $('#title').val();
+      var content = $('#content').val();
+      var completion_time = $('#completion_time').val();
+      var model = new CustomActivity();
+      model.attributes.title = title;
+      model.attributes.content = content;
+      model.attributes.id = this.activity_id;
+      model.attributes.completion_time = $('.knob').val();
+      model.attributes.token = Cookies.get('login-token');
+      console.log("hi");
+      model.url = "/api/users/" + this.user_id + "/custom_activities/" + this.activity_id;
+      model.save(model.attributes, {        
+          success: function(userSession, response) {
+            if (response.status === 1) {
+              that.undelegateEvents();
+              notie.alert(1, "Custom Activity Saved!", 1.5);
+            } else {
+              notie.alert(3, response.errors[0], 1.5);
+            }
+          },
+         error: function(userSession, response) {
+            alert("failure!");
+          }
+      });    
+       // validate error(s) accessible in model.validationError
+      if (model.validationError) {
+          notie.alert(3, model.validationError, 1.5);
+      }  
+    },
+    backButton : function() {
+      window.location = "/tempo#customActivities"
+    }
+  });
 // Custom Activity View
 var HistoryView = Backbone.View.extend({
     el: ".testDiv",
@@ -24597,8 +24724,6 @@ var HistoryView = Backbone.View.extend({
       this.options = options;
     },
     saveCustData: function(data){
-      console.log("cust data");
-      console.log(data);
       var that = this;
       var custData = [];
       data.each(function(model){
@@ -24611,6 +24736,8 @@ var HistoryView = Backbone.View.extend({
       activities.url = "/api/users/"+ this.user.id + "/completed_activities";
       activities.fetch({
         success: function(data){
+          console.log('success!');
+          console.log(data);
           that.renderData(data);
         },
         error: function(data){
@@ -24621,11 +24748,11 @@ var HistoryView = Backbone.View.extend({
       });
     },
     renderData : function(data){
-      console.log(data);
       var that = this;
       var templateData = [];
       //Iterate throught he collections of Activities and create a template
       data.each(function(model){
+        console.log('hi');
         templateData.push({"title": model.get("title"), "time": model.get("completion_time"),
                            "id" : model.get("id")})
       });
@@ -24635,6 +24762,7 @@ var HistoryView = Backbone.View.extend({
         custData: that.custData,
         name: that.user.name
       });
+      console.log(template);
       this.$el.html(template);
     },
     render : function (options){
@@ -24659,7 +24787,6 @@ var HistoryView = Backbone.View.extend({
     share: function(event) {
       var button = event.currentTarget.id;
       var id = button.split("-")[1];
-      console.log(id);
       var location = window.location.href;
       var link = location.split("#")[0];
       link = link + "#activities/"  + id;
@@ -24700,13 +24827,12 @@ var HomeView = Backbone.View.extend({
 		this.renderData();
 	},
 	makeGoRequest : function(options){
-		console.log("hi3e3");
 		//called when the go button is clicked
 		var duration = $(".knob").val();
 		//save duration to activity view object
 		var that = this;
 		var selectedInterests = [];
-		for (var j = 0; j < that.numInterests; j++) {
+ 		for (var j = 0; j < that.numInterests; j++) {
 			var currInterest = $('#interest-' + j);
 			var name = currInterest.attr('name')
 			if (currInterest.is(":checked")) {
@@ -24736,13 +24862,14 @@ var HomeView = Backbone.View.extend({
 				data.each(function(model) {
 					selectedInterests.push(model.get("name"));
 				});
-				console.log("interests");
-				console.log(selectedInterests);
 				var home_template = JST["backbone/templates/activities/home"]({
         			name: that.name,
         			interests: selectedInterests
 	    		});
     			that.$el.html(home_template);
+    			if (data.length === 0){
+    				$(".interest-wrapper").append("<h1> Looks like you don't have any interests, head to the <a id='settings-link' href='tempo#settings'> settings </a> page to pick some! </h1>");
+    			}
     			$(function() {
     				$(".knob").knob({
     					max: 60,
@@ -24781,7 +24908,6 @@ var LoginView = Backbone.View.extend({
     	    });
         	this.$el.html(home_template);
         	$("input").keyup(function(e) {
-        		console.log(e);
         		if (e.which == 13) {
     				that.login(options);
   				}
@@ -24801,13 +24927,11 @@ var LoginView = Backbone.View.extend({
 				this.loginDetails.password = usernameOrEmail
 			}
 			this.loginDetails.password = password;
-			console.log(this.model.attributes);
 		    this.model.save(this.loginDetails, {
 	      		success: function(userSession, response) {
 	      			if (response.status === 1 ) {
 	      				console.log("success!");
 	      				Cookies.set("login-token", response.token);
-	      				console.log(response);
 	      				Backbone.Events.trigger("user-interests", [response.user.interests, response.user.id]);
 	      				Backbone.history.navigate('home', {trigger: true}); 
 	      			} else {
@@ -24819,7 +24943,6 @@ var LoginView = Backbone.View.extend({
 	      }
 	    });
 		    if (this.model.validationError) {
-		    	console.log(this.model);
 		    	notie.alert(3, "please enter a username and password", 1.5);
   // validate error(s) accessible in model.validationError
 			}
@@ -24839,7 +24962,6 @@ var SettingsView = Backbone.View.extend({
 	},
 	renderData : function(data){
 		var that = this;
-		console.log(data);
 		//Iterate throught he collections of Activities and create a template
 		var numInterests = 0;
 		data.each(function(model){
@@ -24899,7 +25021,6 @@ var SettingsView = Backbone.View.extend({
       			if (response.status === 1) {
       				notie.alert(1, 'Interests Saved!', 1.5);
       			} else {
-      				console.log(response.errors);
       				notie.alert(3, response.errors[0], 1.5);
       			}
       		},
@@ -24920,7 +25041,6 @@ var SettingsView = Backbone.View.extend({
 			success: function(data){
 				that.userInterests = [];
 				data.each(function(model){
-					console.log("hi")
 					that.userInterests.push(model.get('name'));
 				});
 				that.getInterests();
@@ -24953,7 +25073,6 @@ var SettingsView = Backbone.View.extend({
 
 	},
 	getInterests : function(){
-		console.log("pls");
 		var interests = new Interests();
 		var that = this;
 		interests.fetch({
@@ -24964,12 +25083,10 @@ var SettingsView = Backbone.View.extend({
 	},
 	render : function (options){
 		this.templateData = [];
-		console.log("render");
 		this.user = options["user"];
 		this.getUserInterests();
 		// Set scope, construct new activity collection, call fetch, render data on callback function
 		var that = this; // To fix callback scoping error
-		console.log(that.templateData);
 	}, 
 });
 (function() {
@@ -25103,6 +25220,7 @@ var TempoRouter = Backbone.Router.extend({
       "settings":"settings",
       "customActivities": "customActivities",
       "createCustomActivity": "createCustomActivity",
+      "customActivities/:customActivity": "editCustomActivity",
       "activities/:activity?history=:history":"activityHistory",
       "activities/:activity":"activity",
       "customActivity/:activity?history=:history":"customActivityHistory",
@@ -25196,7 +25314,7 @@ var TempoRouter = Backbone.Router.extend({
     activity: function(activity_id) {
       console.log("The activity router was called");
       console.log(activity_id);
-      App.Views['activityView']= new ActivityView({id:activity_id});
+      App.Views['activityView']= new ActivityView({id:activity_id, activitiesView: App.Views['activitiesView']});
       this.verifyUser("activityView");
     },
     activityHistory: function(activity_id, history) {
@@ -25204,9 +25322,14 @@ var TempoRouter = Backbone.Router.extend({
       App.Views['activityView']= new ActivityView({id:activity_id, history:history});
       this.verifyUser("activityView");
     },
+    editCustomActivity: function(activity_id) {
+      console.log("The edit custom activity router was called");
+      App.Views['editCustomActivityView']= new EditCustomActivityView({id:activity_id});
+      this.verifyUser("editCustomActivityView");
+    },
     customActivity: function(activity_id) {
       console.log("The custom activity router was called");
-      App.Views['customActivityView']= new ActivityCustomView({id:activity_id});
+      App.Views['customActivityView']= new ActivityCustomView({id:activity_id, activitiesView: App.Views['activitiesView']});
       this.verifyUser("customActivityView");
     },
     customActivityHistory: function(activity_id, history) {

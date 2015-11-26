@@ -58,5 +58,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'tempo#index'
 
+  # For 404 redirection
+  get "*any", via: :all, to: "tempo#index"
   
 end

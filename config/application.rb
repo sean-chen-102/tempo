@@ -25,5 +25,8 @@ module Tempo
     config.assets.compile = true
     config.assets.precompile =  ['*.js', '*.png' '*.css', '*.css.erb']    
 
+    # For custom 404 routing
+    config.exceptions_app = self.routes
+
   end
 end

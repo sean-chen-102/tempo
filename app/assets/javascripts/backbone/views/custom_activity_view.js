@@ -53,27 +53,27 @@ var CustomActivityView = Backbone.View.extend({
     deleteActivity: function(options){
       //DELETE /api/users/:id/custom_activities/:cid
       var that = this; // To fix callback scoping error 
-      var activityId = options.currentTarget.id;
-      var activity = new CustomActivity();
-      activity.url = "/api/users/" + this.user.id + "/custom_activities/" + activityId;
-      var token = Cookies.get('login-token');
-      activity.attributes = {token:token, id:activityId};
-      activity.destroy({data : activity.attributes, processData: true,
-          success: function(userSession, response) {
-              console.log("success");
-              //remove custom activity from the DOM
-              if (response.status === 1) {
-                notie.confirm('Are you sure you want to delete this Activity?', 'Yes', 'Cancel', function() {
+      notie.confirm('Are you sure you want to delete this Activity?', 'Yes', 'Cancel', function() {
+        var activityId = options.currentTarget.id;
+        var activity = new CustomActivity();
+        activity.url = "/api/users/" + that.user.id + "/custom_activities/" + activityId;
+        var token = Cookies.get('login-token');
+        activity.attributes = {token:token, id:activityId};
+        activity.destroy({data : activity.attributes, processData: true,
+            success: function(userSession, response) {
+                console.log("success");
+                //remove custom activity from the DOM
+                if (response.status === 1) {
                   notie.alert(1, 'Activity Deleted!', 1.5);
                   $(".activity."+activityId).remove();
-                });
-              } else {
-                notie.alert(4, "Custom activity could not be deleted.", 1.5);
-              }
-          },
-          error: function(userSession, response) {
-              console.log("failure!");
-          }
+                } else {
+                  notie.alert(4, "Custom activity could not be deleted.", 1.5);
+                }
+            },
+            error: function(userSession, response) {
+                console.log("failure!");
+            }
+        });
       });
     },   
     editActivity: function(event) {

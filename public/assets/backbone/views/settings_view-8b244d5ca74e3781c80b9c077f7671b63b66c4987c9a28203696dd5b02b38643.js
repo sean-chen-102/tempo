@@ -35,6 +35,7 @@ var SettingsView = Backbone.View.extend({
 	  				$("#new-password-confirmation-error").css("visibility", "hidden");
 	  			} else {
 	  				$("#new-password-confirmation-error").css("visibility", "visible");
+
 	  			}
   			}
 		});

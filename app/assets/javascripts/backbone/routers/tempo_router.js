@@ -101,7 +101,9 @@ var TempoRouter = Backbone.Router.extend({
     },
     activity: function(activity_id) {
       console.log("The activity router was called");
-      console.log(activity_id);
+      if (App.Views['activityView']){
+        App.Views['activityView'].close();
+      }
       App.Views['activityView']= new ActivityView({id:activity_id, activitiesView: App.Views['activitiesView']});
       this.verifyUser("activityView");
     },

@@ -137,5 +137,9 @@ var ActivityView = Backbone.View.extend({
         document.execCommand("copy");
         $temp.remove();
         notie.alert(4, "Link copied to your clipboard!", 1.5);
+    },
+    close : function() {
+        this.undelegateEvents();
+        // this.remove();
     }
   });

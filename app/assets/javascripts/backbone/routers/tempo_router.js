@@ -21,14 +21,11 @@ var TempoRouter = Backbone.Router.extend({
     highlightMenu: function(view) {
       $(".menuSelection li").removeClass("selected");
       console.log(view);
-      console.log("hellow?");
       $("#" + view + " li").addClass("selected");
 
     },
     verifyUser: function(view) {
-      console.log(Cookies.get("login-token"));
       console.log("Verify USer Called");
-      console.log(Cookies.get("login-token"));
       var cookie = Cookies.get("login-token");
       var token = new Token();
       token.url += cookie;
@@ -138,6 +135,9 @@ var TempoRouter = Backbone.Router.extend({
     signup: function(){
       console.log("The signup router was called ");
       //Constructing View 
+      if (App.Views['signupView']){
+        App.Views['signupView'].close();
+      }
       App.Views['signupView'] = new SignupView()
       App.Views['signupView'].render()      
     },

@@ -109,5 +109,8 @@ var SignupView = Backbone.View.extend({
 	  },
 	  login : function(options) {
 		Backbone.history.navigate('login', {trigger: true}); 
-	  }
-	});
+	  },
+    close : function() {
+        this.undelegateEvents();
+    }
+});

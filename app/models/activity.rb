@@ -37,14 +37,14 @@ class Activity < ActiveRecord::Base
     activities_list = []
 
     if interests_list.nil?
-      activities = Activity.all
+      activities = []
     else
       # make sure each name begins with a capital letter
       interests_list.map! { |interest_name| interest_name.titleize }
       activities = Activity.joins(:interests).distinct.where(interests: {name: interests_list})
     end
 
-    if not time.nil?
+    if not time.nil? and not activities.empty?
       activities = activities.where("completion_time <= ?", time)
     end
 

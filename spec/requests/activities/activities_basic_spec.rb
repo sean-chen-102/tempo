@@ -120,7 +120,7 @@ RSpec.describe "test basic activities functionality - ", :type => :request do
     status = data["status"]
     expect(status).to eq(1) # we should have a success
     activities = data["activities"]
-    expect(activities.length).to eq(3) # the number of activities should equal the amount we added
+    expect(activities.length).to eq(0) # the number of activities should equal to 0 because we have no interests selected
 
     # Get activities filtered by time=10
     params = { "time": 10 }
@@ -129,7 +129,7 @@ RSpec.describe "test basic activities functionality - ", :type => :request do
     status = data["status"]
     expect(status).to eq(1) # we should have a success
     activities = data["activities"]
-    expect(activities.length).to eq(1)
+    expect(activities.length).to eq(0)
 
     # Get activities filtered by time=20
     params = { "time": 20 }
@@ -138,7 +138,7 @@ RSpec.describe "test basic activities functionality - ", :type => :request do
     status = data["status"]
     expect(status).to eq(1) # we should have a success
     activities = data["activities"]
-    expect(activities.length).to eq(2)
+    expect(activities.length).to eq(0)
 
     # Get activities filtered by time=20 and interests = "news" or "fitness"
     params = { "time": 20, "interests": ["news", "fitness"] }

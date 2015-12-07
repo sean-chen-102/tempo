@@ -21,6 +21,15 @@ var ActivityView = Backbone.View.extend({
             data['link'] = 'javascript:;';
         }
         this.link = data['link'];
+
+
+        // Don't display if no link given
+        console.log(" LINK " + this.link);
+        if (this.link == 'javascript:;'){
+            console.log("ah");
+        }
+
+
         if(this.history){
             var backLink = '/tempo#history';
         } else {

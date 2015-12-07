@@ -13,6 +13,7 @@ var LoginView = Backbone.View.extend({
 		},
 		render : function (options){
 			console.log("render login");
+			this.model = new UserLogin();
 			var that = this;
 			//TODO: Move template to separate page, custom welcome name
 			//populate the home_template with times collection
@@ -33,11 +34,7 @@ var LoginView = Backbone.View.extend({
 			var usernameOrEmail = $('#username-or-email').val();
 
 			var password = $('#password').val();
-			if(usernameOrEmail.indexOf('@') === -1) {
-				this.loginDetails.username = usernameOrEmail
-			} else {
-				this.loginDetails.password = usernameOrEmail
-			}
+			this.loginDetails.username = usernameOrEmail
 			this.loginDetails.password = password;
 		    this.model.save(this.loginDetails, {
 	      		success: function(userSession, response) {

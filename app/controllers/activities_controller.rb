@@ -168,9 +168,6 @@ class ActivitiesController < ApplicationController
 	  json_response["status"] = status
 	  json_response = json_response.to_json
 
-
-	  puts "\n\n****** Activity length: #{activities.size}\n\n"
-
 	  respond_to do |format|
 	    format.json { render json: json_response }
 	  end

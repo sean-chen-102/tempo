@@ -210,8 +210,17 @@
       <br>
       <button class='btn btn-primary like-btn' role="button">Like</button>
       <button class='btn btn-primary dislike-btn' role="button">Dislike</button><br> 
-      <div class="content-link"><a id="link" href='<%= link %>' target="_blank"> Link </a></div>
+      <div class="content-link"><a id="link" href='<%= link %>' target="_blank"> Link </a></div>   
       </div> 
       </div>
   </footer>
 </div>
+
+<script>
+  // To check if there is a link given or not.
+  if ('<%= link %>' == 'javascript:;'){
+    console.log("Dont show this");
+    document.getElementById('link').style.visibility = 'hidden';
+  }
+</script>   
+

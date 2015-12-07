@@ -34,7 +34,11 @@ var LoginView = Backbone.View.extend({
 			var usernameOrEmail = $('#username-or-email').val();
 
 			var password = $('#password').val();
-			this.loginDetails.username = usernameOrEmail
+			if(usernameOrEmail.indexOf('@') === -1) {
+				this.loginDetails.username = usernameOrEmail;
+			} else {
+				this.loginDetails.email = usernameOrEmail;
+			}
 			this.loginDetails.password = password;
 		    this.model.save(this.loginDetails, {
 	      		success: function(userSession, response) {

@@ -19,7 +19,6 @@ var ActivitiesView = Backbone.View.extend({
 
         // var template = JST["backbone/templates/activities/activityList"]({});
         // $(this.el).html(template);  
-
         var html = "<div class='actContainer'> <header id='activityTitle'> <h3> Activity List </h3> </header>"
               + "<section> <div class='tableContainer'> <table id='actTable' class='table table-bordered table-hover activityTable'>"
               + " <tbody> ";

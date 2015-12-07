@@ -158,7 +158,9 @@ class UsersController < ApplicationController
     if not @user.nil? # if the User exists
       if not token.nil? and user_has_permission(User.authenticate_token(token), @user.id) # if the token was provided and is valid and the user has permission
         if @user.authenticate(old_password) # if the old_password matches the one in the database
-          if @user.change_password(new_password)
+          if old_password == new_password
+            error_list.append("Error: your new password cannot be the same as your old password.")
+          elsif @user.change_password(new_password)
             status = 1
           else
             error_list << @user.errors

@@ -8,6 +8,7 @@ var TempoRouter = Backbone.Router.extend({
       "settings":"settings",
       "customActivities": "customActivities",
       "createCustomActivity": "createCustomActivity",
+      "customActivities/:customActivity": "editCustomActivity",
       "activities/:activity?history=:history":"activityHistory",
       "activities/:activity":"activity",
       "customActivity/:activity?history=:history":"customActivityHistory",
@@ -16,10 +17,15 @@ var TempoRouter = Backbone.Router.extend({
       "logout": 'logout',
       "history": "history",
     },
+
+    highlightMenu: function(view) {
+      $(".menuSelection li").removeClass("selected");
+      console.log(view);
+      $("#" + view + " li").addClass("selected");
+
+    },
     verifyUser: function(view) {
-      console.log(Cookies.get("login-token"));
       console.log("Verify USer Called");
-      console.log(Cookies.get("login-token"));
       var cookie = Cookies.get("login-token");
       var token = new Token();
       token.url += cookie;
@@ -40,6 +46,7 @@ var TempoRouter = Backbone.Router.extend({
       }
     },
     renderView : function(view, data) {
+      this.highlightMenu(view);
       console.log(view, data);
       console.log("renderView called");
       if (view === "login") {
@@ -91,8 +98,10 @@ var TempoRouter = Backbone.Router.extend({
     },
     activity: function(activity_id) {
       console.log("The activity router was called");
-      console.log(activity_id);
-      App.Views['activityView']= new ActivityView({id:activity_id});
+      if (App.Views['activityView']){
+        App.Views['activityView'].close();
+      }
+      App.Views['activityView']= new ActivityView({id:activity_id, activitiesView: App.Views['activitiesView']});
       this.verifyUser("activityView");
     },
     activityHistory: function(activity_id, history) {
@@ -100,9 +109,14 @@ var TempoRouter = Backbone.Router.extend({
       App.Views['activityView']= new ActivityView({id:activity_id, history:history});
       this.verifyUser("activityView");
     },
+    editCustomActivity: function(activity_id) {
+      console.log("The edit custom activity router was called");
+      App.Views['editCustomActivityView']= new EditCustomActivityView({id:activity_id});
+      this.verifyUser("editCustomActivityView");
+    },
     customActivity: function(activity_id) {
       console.log("The custom activity router was called");
-      App.Views['customActivityView']= new ActivityCustomView({id:activity_id});
+      App.Views['customActivityView']= new ActivityCustomView({id:activity_id, activitiesView: App.Views['activitiesView']});
       this.verifyUser("customActivityView");
     },
     customActivityHistory: function(activity_id, history) {
@@ -121,6 +135,9 @@ var TempoRouter = Backbone.Router.extend({
     signup: function(){
       console.log("The signup router was called ");
       //Constructing View 
+      if (App.Views['signupView']){
+        App.Views['signupView'].close();
+      }
       App.Views['signupView'] = new SignupView()
       App.Views['signupView'].render()      
     },

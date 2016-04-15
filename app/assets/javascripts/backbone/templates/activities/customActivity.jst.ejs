@@ -34,7 +34,7 @@
 
 
 
-<div class="custActContainer animated pulse">
+<div class="custActContainer">
 	<header> 
 		<h3 id='customActivityTitle'> Custom Activity List for <%= name%> </h3> 
 	</header>
@@ -43,7 +43,7 @@
 			<table id="custActTable" class="table table-bordered table-hover">
 				<thead>
 					<tr>
-						<th>Title</th> <th>Content</th> <th>Time</th> <th>Delete</th>
+						<th>Title</th> <th>Content</th> <th>Time</th> <th>Delete</th> <th>Edit</th>
 					</tr>
 				</thead>
 
@@ -54,6 +54,7 @@
 							<td>  <%= custAct.content%> </td>
 							<td>  <%= custAct.time%> </td>
 							<td>  <button class='del-btn' id='<%= custAct.id %>'>Delete</button> </td>
+							<td>   <button class='edit-btn' id='<%= custAct.id %>'>Edit</button></td>
 						</tr>
 						<% }); %>			
 				</tbody>

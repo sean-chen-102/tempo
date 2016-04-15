@@ -8,42 +8,36 @@
 
   .jumbotron {
     padding: 0;
-    min-height: 500px;
     position: relative;
   }
 
   .activity {
     position: relative;
-    top: 45px;
+    top: 75px;
     margin: 0 auto;
-    width: 650px;
-    min-height: 500px;
-    max-height: 600px;
+    width: 90%;
     background-color: white;
     border: 1px solid #ddd;
     box-shadow: 1px 1px 1px #eee;
     border-top-left-radius: 5px;
   	border-top-right-radius: 5px;
+    margin-bottom: 50px;
   }
 
   .activity header {
-    position: relative;
-    top: 0;
-    height: 12%;
+    text-align: center;
+    vertical-align: center;
     background-color: rgb(31, 137, 229);
     color: white;
   }
 
   .activity header h3 {
   	margin: 0;
-    padding: 7px;
-  	line-height: 23px;
+    padding: 15px;
   }
 
   /*TODO: Fix adjusting section container*/
   .activity section {
-  	height: 90%;
-    max-height: 375px;
   	overflow: hidden;
   	margin-bottom: 0;
     padding: 10px;
@@ -52,37 +46,41 @@
 
   .activity section p {
   	overflow: scroll;
-  	height: 100%;
     width: 100%;
-  	font-family: 'Open Sans Condensed', sans-serif;
+  	font-family: 'Lato', sans-serif;
+    font-weight: 300;
   	font-size: 100%;
   	margin: 10px;
     padding: 10px;
   }
 
   .activity section .thumbnail {
-    height: 90%;
     width: 100%;
-    max-height: 365px;
     overflow: scroll;
-    position: relative;
+    border: none;
+    font-size: 18px;
+    margin-bottom: 100px;
+  }
+
+  .activity section .content-video {
+    text-align: center;
   }
 
   .activity section .likeContainer {
-  	margin: 10px;
-  	margin-bottom: 0;
+  	margin: 0 auto;
   }
 
-  .activity footer {
+  .activity .footer {
+    height: 100px;
+    position: absolute;
+    width: 100%;
   	background-color: #f5f5f5;
-  	position: absolute;
-  	height: 15%;
   	bottom: 0;
   	border: 1px solid #ddd;
+    margin-top: 30px;
   }
 
-  .activity footer a {
-  	position: relative;
+  .activity .footer a {
   	top: 10px;
   	text-decoration: none;
   	color: #2980B9;
@@ -96,7 +94,6 @@
 
   #like-count {
     color: rgb(92, 184, 92);
-
   }
 
   #dislike-count {
@@ -105,34 +102,86 @@
 
   .like-btn {
     background-color: rgb(92, 184, 92);
-    border-color: rgb(92, 184, 92);    
+    border-color: rgb(92, 184, 92);  
+    margin-bottom: 10px;
+  }
 
-
+  .like-btn:hover, .like-btn:active, .like-btn:visited, .like-btn:focus {
+    background-color: #198A00;
+    outline: none;
   }
 
   .dislike-btn {
     background-color: rgb(217, 83, 79);
     border-color: rgb(217, 83, 79);
+    margin-bottom: 10px;
   }
 
-  .likeContainer {
+    .dislike-btn:hover, .dislike-btn:active, .dislike-btn:visited, .dislike-btn:focus {
+    background-color: #9D251B;
+    outline: none;
+  }
+
+  .buttonContainer {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 10px;
 
   }
 
-  .likeContainer button:hover {
+  .buttonContainer button:hover {
   	opacity: .8;
   	cursor: pointer;
   }
 
+  .likeContainer {
+    width: 25%;
+    margin: 0 auto;
+    text-align: center; 
+  }
+
+
   .linkContainer {
-    float: right;
     margin-top: -35px;
-    padding-right: 10px;
+    padding-left: 10px;
+    padding-right: 10px; 
   }
 
   a:hover {
   	background-color: transparent;
     font-size: 100%;
+  }
+
+  #share {
+    float: right;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 25px;
+    margin-top: 25px;
+
+  }
+
+  #back {
+    font-size: 25px;
+    margin-left: 10px;
+    float: left;
+    margin-top: 25px;
+  }
+
+  #likes {
+    margin-right: 25px;
+    font-size: 14px;
+  }
+
+  #dislikes {
+    font-size: 14px;
+    margin-left: 28px;
+  }
+
+
+  #link {
+    margin-top: 10px;
+    font-size: 18px;
   }
 </style>
 
@@ -145,45 +194,33 @@
   <section>
     <div class="thumbnail">
       <!-- <img src="..." alt="..."> -->
-      <div class="caption">
-        <p><%= content %></p>
-      </div>
+      <p>
+        <div id="content"><%= content %></div>
+      </p>
     </div>
   </section>
 
-  <footer>
-      <span id="likes">Likes: <span id="like-count"><%= likes %></span></span>
-      <span id="dislikes">Disikes: <span id="dislike-count"><%= dislikes %></span></span>
+  <footer class="footer">
+      <div class="buttonContainer">
+      <a id="back" href='<%= backLink %>'> Back </a>   
+      <a id="share"> Share </a>
+      <div class="likeContainer">
+      <span id="likes"><span id="like-count"><%= likes %></span></span>
+      <span id="dislikes"><span id="dislike-count"><%= dislikes %></span></span>
       <br>
       <button class='btn btn-primary like-btn' role="button">Like</button>
-      <button class='btn btn-default dislike-btn' role="button">Dislike</button><br>  
-      <div class="linkContainer">
-        <a id="link" href='<%= link %>' target="_blank"> Link </a>
-        <a href='tempo#activities' id='back'> Back </a>     
+      <button class='btn btn-primary dislike-btn' role="button">Dislike</button><br> 
+      <div class="content-link"><a id="link" href='<%= link %>' target="_blank"> Link </a></div>   
+      </div> 
       </div>
   </footer>
 </div>
 
+<script>
+  // To check if there is a link given or not.
+  if ('<%= link %>' == 'javascript:;'){
+    console.log("Dont show this");
+    document.getElementById('link').style.visibility = 'hidden';
+  }
+</script>   
 
-
-
-<!-- 
-<div class="activity">
-	<header>
-		
-	</header> 
-	<section id="content">
-		<p><%= content %></p>
-		<div class="likeContainer">
-			<div id="likes">Likes: <a id="like-count"><%= likes %></a></div>
-			<div id="dislikes">Disikes: <a id="dislike-count"><%= dislikes %></a></div>
-			<button class='like-btn'>Like</button>
-			<button class='dislike-btn'>Dislike</button><br>	
-		</div>
-	</section>
-
-	<footer>
-		<a id="link" href='<%= link %>' target="_blank"> Link </a>
-		<a href='tempo#<%= backLink %>'> Back </a>
-	</footer>
-</div> -->

@@ -117,8 +117,7 @@ RSpec.describe "test basic users functionality - ", :type => :request do
     data = JSON.parse(response.body) # grab the body of the server response
     status = data["status"]
     users = data["users"]
-    NUM_USERS_IN_DATABASE = users.length
-    expect(status).to eq(1) # we should have a success
+    expect(status).to eq(-1) # we should have a success
 
     # Create an account
     params = { "user": { "name": "Bob", "email": "bob@mail.com", "username": "bob", "password": "password", "password_confirmation": "password" }}
@@ -135,7 +134,7 @@ RSpec.describe "test basic users functionality - ", :type => :request do
 
     # Make sure our newly created user is included in all users
     users = data["users"]
-    expect(users.length).to eq(NUM_USERS_IN_DATABASE + 1)
+    expect(users.size).to eq(1)
   end
 
 	### DESTROY USER ###
@@ -159,6 +158,13 @@ RSpec.describe "test basic users functionality - ", :type => :request do
     expect(status).to eq(1) # we should have a success
     token = data["token"]
 
+    # Try to delete a user with a bad token
+    params = { "token": "random" }
+    delete "/api/users/#{id}", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    data = JSON.parse(response.body) # grab the body of the server response
+    status = data["status"]
+    expect(status).to eq(-2) # we should have a failure
+
     # Delete the User
     params = { "token": token }
     delete "/api/users/#{id}", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
@@ -180,11 +186,5 @@ RSpec.describe "test basic users functionality - ", :type => :request do
     status = data["status"]
     expect(status).to eq(-1) # we should have a failure
 
-    # Try to delete a user with a bad token
-    params = { "token": "random" }
-    delete "/api/users/#{id}", params.to_json, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
-    data = JSON.parse(response.body) # grab the body of the server response
-    status = data["status"]
-    expect(status).to eq(-1) # we should have a failure
   end
 end

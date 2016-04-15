@@ -1,7 +1,7 @@
 <!-- Temporary styling -->
 
 <div class="historyOuter">
-<div class="histContainer animated pulse">
+<div class="histContainer">
 	<header> 
 		<h3 id='historyTitle'> History for <%= name%> </h3> 
 	</header>
@@ -11,7 +11,8 @@
 				<tbody>
 					<% _.each(data, function(custAct) { %> 
 						<tr class='history <%= custAct.id %>'>
-							<td> <a href='/tempo#activities/<%= custAct.id%>?history=true'> <%= custAct.title%> </a></td>
+							<td> <a href='/tempo#activities/<%= custAct.id%>?history=true'> <%= custAct.title%> </a> </td>
+							<td>	<button class="btn share-button" id="activity-<%= custAct.id%>"> share </button> </td>
 						</tr>
 						<% }); %>			
 				</tbody>
@@ -20,7 +21,7 @@
 	</section>
 </div>
 
-<div class="custHistContainer animated pulse">
+<div class="custHistContainer">
 	<header> 
 		<h3 id='customHistoryTitle'> Custom Activity History for <%= name%> </h3> 
 	</header>
@@ -30,7 +31,9 @@
 				<tbody>
 					<% _.each(custData, function(custAct) { %> 
 						<tr class='history <%= custAct.id %>'>
-							<td>  <a href='/tempo#customActivity/<%= custAct.id%>?history=true'> <%= custAct.title%> </a></td>
+							<td>  
+								<a href='/tempo#customActivity/<%= custAct.id%>?history=true'> <%= custAct.title%> </a>
+							</td>
 						</tr>
 						<% }); %>			
 				</tbody>

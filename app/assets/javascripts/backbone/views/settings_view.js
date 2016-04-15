@@ -9,7 +9,6 @@ var SettingsView = Backbone.View.extend({
 	},
 	renderData : function(data){
 		var that = this;
-		console.log(data);
 		//Iterate throught he collections of Activities and create a template
 		var numInterests = 0;
 		data.each(function(model){
@@ -30,6 +29,13 @@ var SettingsView = Backbone.View.extend({
   				$("#new-password-error").css("visibility", "visible");
   			} else {
   				$("#new-password-error").css("visibility", "hidden");
+  			}
+  			if ($("#new-password-confirmation").val().length > 0){
+	  			if ($("#new-password").val() === $("#new-password-confirmation").val()) {
+	  				$("#new-password-confirmation-error").css("visibility", "hidden");
+	  			} else {
+	  				$("#new-password-confirmation-error").css("visibility", "visible");
+	  			}
   			}
 		});
 		$("#new-password-confirmation").keyup(function() {
@@ -89,7 +95,6 @@ var SettingsView = Backbone.View.extend({
 			success: function(data){
 				that.userInterests = [];
 				data.each(function(model){
-					console.log("hi")
 					that.userInterests.push(model.get('name'));
 				});
 				that.getInterests();
@@ -99,30 +104,35 @@ var SettingsView = Backbone.View.extend({
 	changePassword : function() {
 		var oldPassword = $("#old-password").val();
 		var newPassword = $("#new-password").val();
-		var passwordChange = new PasswordChange();
-		passwordChange.url = "/api/users/" + this.user.id + "/change_password";
-		var token = Cookies.get('login-token');
-		passwordChange.attributes = {id:this.user.id, old_password: oldPassword, new_password: newPassword, token:token};
-		passwordChange.save(passwordChange.attributes, {
-      		success: function(userSession, response) {
-      			console.log("password Changed");
-      			if (response.status === 1) {
-      				notie.alert(1, 'Password Changed!', 1.5);
-      			} else {
-      				notie.alert(3, response.errors[0], 1.5);
-      			}
-      			$("#old-password").val("");
-      			$("#new-password").val("");
-      			$("#new-password-confirmation").val("");
-      		},
-      		error: function(userSession, response) {
-      			console.log("failed to save interest");
-      		}
-    	});
+
+		if (newPassword === $("#new-password-confirmation").val()){
+			var passwordChange = new PasswordChange();
+			passwordChange.url = "/api/users/" + this.user.id + "/change_password";
+			var token = Cookies.get('login-token');
+			passwordChange.attributes = {id:this.user.id, old_password: oldPassword, new_password: newPassword, token:token};
+			passwordChange.save(passwordChange.attributes, {
+	      		success: function(userSession, response) {
+	      			console.log("password Changed");
+	      			if (response.status === 1) {
+	      				notie.alert(1, 'Password Changed!', 1.5);
+	      			} else {
+	      				notie.alert(3, response.errors[0], 1.5);
+	      			}
+	      			$("#old-password").val("");
+	      			$("#new-password").val("");
+	      			$("#new-password-confirmation").val("");
+	      		},
+	      		error: function(userSession, response) {
+	      			console.log("failed to change password");
+	      			notie.alert(3, "failed to change password", 1.5);
+	      		}
+	    	});
+		} else {
+			notie.alert(3, "Passwords must match", 1.5);
+		}
 
 	},
 	getInterests : function(){
-		console.log("pls");
 		var interests = new Interests();
 		var that = this;
 		interests.fetch({
@@ -133,11 +143,9 @@ var SettingsView = Backbone.View.extend({
 	},
 	render : function (options){
 		this.templateData = [];
-		console.log("render");
 		this.user = options["user"];
 		this.getUserInterests();
 		// Set scope, construct new activity collection, call fetch, render data on callback function
 		var that = this; // To fix callback scoping error
-		console.log(that.templateData);
 	}, 
 });

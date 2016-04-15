@@ -1,6 +1,6 @@
 <!-- Temporary styling -->
 
-<div class="home-wrapper animated bounceIn">
+<div class="home-wrapper animated pulse">
 	<header>
 		<h3> Welcome Home,  <%= name %>!</h3>
 	</header>
@@ -19,7 +19,7 @@
 		<% _.each(interests, function(interest, i) { %> 
 			<li>
 				<input type=checkbox name= "<%= interest%>"  id="interest-<%= i%>" checked >
-				<P> <%= interest %> </p>
+				<p> <%= interest %> </p>
 			</li>
 		<% }); %>
 		</ul>

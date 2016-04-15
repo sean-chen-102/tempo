@@ -4,8 +4,8 @@
 */ /*Login */
 
 $signupFontColor: #c07130;
-$lightBlue: #7FA2C1;
-$darkBlue: #436786;
+$lightBlue: #2286ED;
+$darkBlue: #2286ED;
 $orangeBorder: #f06c00;
 $orangeButton: #e65000;
 
@@ -216,6 +216,22 @@ $orangeButton: #e65000;
 
 	  #signup {
 	    margin: 0 auto;
+	  }
+
+	  .login {
+	    width: 315px;
+	    height: 35px;
+	    display: block;
+	    margin: 0 auto;
+	    text-align: center;
+	    color: $darkBlue;
+	    margin-top: 10px;
+    	font-size: 12px;
+	  }
+
+	  .login:hover {
+	    opacity: .6;
+	    cursor: pointer;
 	  }
 
 }

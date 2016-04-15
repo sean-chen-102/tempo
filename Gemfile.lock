@@ -278,6 +278,3 @@ DEPENDENCIES
   underscore-rails
   web-console (~> 2.0)
   yt (~> 0.25.5)
-
-BUNDLED WITH
-   1.10.6

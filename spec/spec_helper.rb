@@ -1,8 +1,12 @@
 # Note: to run spec tests, use 'rake exec spec'
 # If specs aren't working make sure you:
 # 1. Bundle install with capybara-webkit - if this errors, see #2
-# 2. Have QT version 5+ installed on your local machine
-# 3. Have QT linked via Homebrew
+# 2. Have QT version 5+ installed on your local machine (brew install qt5)
+#    -> If you have a conflict with QT version 4, you will need to remove version 4 and reinstall version 5+
+# 3. Have QT linked via Homebrew: brew link --force qt5
+#    -> If you don't have permission to do this, try: sudo chown -R $USER /usr/local    and run the command at #3 again
+#    -> Then run: which qmake
+#    -> This should return /usr/local/bin/qmake
 # 4. Bundle install again 
 
 require 'capybara/rspec' # for Capybara UI testing

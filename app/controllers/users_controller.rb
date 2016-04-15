@@ -16,6 +16,12 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save 
       status = 1
+      # Give the User all Interests by default
+      Interest.all.each do |interest|
+        @user.interests << interest
+      end
+
+      @user.save
       user_data = @user.get_advanced_info()
       token = @user.get_signed_token()
       user_data["token"] = token
@@ -152,7 +158,9 @@ class UsersController < ApplicationController
     if not @user.nil? # if the User exists
       if not token.nil? and user_has_permission(User.authenticate_token(token), @user.id) # if the token was provided and is valid and the user has permission
         if @user.authenticate(old_password) # if the old_password matches the one in the database
-          if @user.change_password(new_password)
+          if old_password == new_password
+            error_list.append("Error: your new password cannot be the same as your old password.")
+          elsif @user.change_password(new_password)
             status = 1
           else
             error_list << @user.errors
@@ -338,22 +346,21 @@ class UsersController < ApplicationController
       if not token.nil? and user_has_permission(User.authenticate_token(token), user_id) # if the token was provided and is valid and the user has permission
         user = User.find_by(id: user_id)
 
-        if not interests.nil?
-          status = 1
-          user.interests = []
-          user.save
+        if interests.nil?
+          interests = []
+        end
 
-          interests.each do |interest_name|
-            interest_object = Interest.find_by(name: interest_name)
-            if not interest_object.nil?
-              user.interests << interest_object
-              user.save
-              successful_interests << interest_name
-            end
+        status = 1
+        user.interests = []
+        user.save
+
+        interests.each do |interest_name|
+          interest_object = Interest.find_by(name: interest_name)
+          if not interest_object.nil?
+            user.interests << interest_object
+            user.save
+            successful_interests << interest_name
           end
-        else
-          user.interests = []
-          user.save
         end
       else
         error_list.append(ErrorMessages::AUTHORIZATION_ERROR)

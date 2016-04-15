@@ -1,9 +1,8 @@
 <!-- Temporary styling -->
 <!-- TODO: move this away -->
 
-<style>
 
-</style>
+<div class="jumbotron activity">
 
 <form id="custom-activities-form" name="custom-activity"> 
 	<header id="head">
@@ -11,13 +10,16 @@
 	</header>
 	<section> 
 		<label for="title"> Title: </label> <br> 
-		<input type="text" name"title" id="title" value=""> <br> 
-		<label for="content"> Content: </label> <br> 
-		<input type="text" name"content" id="content" value=""> <br> 
+		<input type="textarea" name"title" id="title" value=""> <br> 
+		<label for="content"> Content: </label> <br> <b>
+		<textarea type="text" name"content" id="content" value=""> </textarea> <br> 
 		<label for="completion_time"> Completion time: </label> <br> 
-		<input type="text" name"completion_time" id="completion_time" value=""> 
+		<section> 
+			<input class="knob" data-width="100" data-displayinput="true" value="0" height="100" >
+		</section>		
 		<p id="warning"> </p> 
 		<br>
 		<button type="button" class="submitCustomActivity btn btn-primary"> Submit </button> 
 	</section> 
 </form>
+<div>
